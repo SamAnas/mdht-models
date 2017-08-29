@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Entry Reference - conformance rules</title>
+<shortdesc id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.122</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Act</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.122"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+<p>Known Subclasses: </p>
+</section>
+<section id="description">
+<p>
+This template represents the act of referencing another entry in the same CDA document instance. Its purpose is to remove the need to repeat the complete XML representation of the referred entry when relating one entry to another. This template can be used to reference many types of Act class derivations, such as encounters, observations, procedures etc., as it is often necessary when authoring CDA documents to repeatedly reference other Acts of these types. For example, in a Care Plan it is necessary to repeatedly relate Health Concerns, Goals, Interventions and Outcomes.
+
+
+The id is required and must be the same id as the entry/id it is referencing. The id cannot be a null value. Act/Code is set to nullFlavor="NP" (Not Present). This means the value is not present in the message (in act/Code).
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-31487, CONF:1098-31488 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.122"</tt></li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31485)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31486)
+</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-31489) such that it  <p><lines><i>The ID must equal another entry/id in the same document instance. Application Software must be responsible for resolving the identifier back to its original object and then rendering the information in the correct place in the containing section's narrative text.</i></lines></p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-31490)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-31498)<tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31499)
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31485)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31486)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-31489) such that it  <p><lines><i>The ID must equal another entry/id in the same document instance. Application Software must be responsible for resolving the identifier back to its original object and then rendering the information in the correct place in the containing section's narrative text.</i></lines></p>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-31490)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-31498)<tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31499)
+</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::EntryReference</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.122]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActClassDocumentEntryAct</entry><entry>CONF:1098-31485</entry><entry> ACCM</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_DocumentActMood</entry><entry>CONF:1098-31486</entry><entry> APT</entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1098-31498</entry><entry>ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
+<row><entry>actReferenceER</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1098-31559CONF:1098-31560CONF:1098-31588</entry><entry> </entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1098-31490</entry><entry> </entry></row> 
+<row><entry>entryReferenceDocInstance</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-32672, CONF:1198-32717, CONF:1198-32718</entry><entry> </entry></row> 
+<row><entry>entryReferenceGeneral</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-31549, CONF:1198-31550, CONF:1198-31551</entry><entry> </entry></row> 
+<row><entry>entryReferenceGoalObs</entry><entry>1..1</entry><entry>SHALL</entry><entry>EntryReference</entry><entry>CONF:1198-32673, CONF:1198-32720, CONF:1198-32721</entry><entry> </entry></row> 
+<row><entry>entryReferenceHasComponent</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-32183, CONF:1198-32232, CONF:1198-32233</entry><entry> </entry></row> 
+<row><entry>entryReferenceHealthConcern</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-32217, CONF:1198-32301, CONF:1198-32302</entry><entry> </entry></row> 
+<row><entry>entryReferenceInterventionAct</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1098-31688CONF:1098-31689CONF:1098-31690</entry><entry> </entry></row> 
+<row><entry>entryReferenceRelatesTo</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-32182, CONF:1198-32230, CONF:1198-32231</entry><entry> </entry></row> 
+<row><entry>healthConcernActER</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1098-30701CONF:1098-30702CONF:1098-30703</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:1098-31489</entry><entry> </entry></row> 
+<row><entry>interventionEntryReference</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-31545, CONF:1198-31554, CONF:1198-31555</entry><entry> </entry></row> 
+<row><entry>plannedERs</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1098-30704CONF:1098-30705CONF:1098-32879</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../GoalObservation.dita">Goal Observation</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../HealthConcernAct.dita">Health Concern Act (V2)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../InterventionAct.dita">Intervention Act (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref href="../OutcomeObservation.dita">Outcome Observation</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry><xref href="../PlannedInterventionAct.dita">Planned Intervention Act (V2)</xref></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry><xref href="../RiskConcernAct.dita">Risk Concern Act (V2)</xref></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+</act>]]></codeblock>
+<section id="changes">
+</section>
+<p><ph id="classformalname">Entry Reference</ph></p>
+<p id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.122</tt>]</p>
+</body>
+</topic>

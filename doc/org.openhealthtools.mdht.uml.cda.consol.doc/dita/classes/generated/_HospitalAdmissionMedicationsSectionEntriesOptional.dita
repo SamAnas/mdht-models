@@ -9,64 +9,69 @@
 </prolog>
 <body>
 <section id="knownSubclasses">
+<p>Known Subclasses: <xref href="../AdmissionMedicationsSectionEntriesOptional2.dita">Admission Medications Section (entries optional) (V3)</xref></p>
 </section>
 <section id="description">
-<p><lines><i>The Hospital Admission Medications section defines the relevant medications administered prior to admission to the facility. The currently active medications must be listed.</i></lines></p>
+<p>The Hospital Admission Medications section defines the relevant medications administered prior to admission to the facility. The currently active medications must be listed.</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:10098, CONF:10392 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.22.2.44"</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15482)<tt><b>/@code</b>="42346-7" </tt><i>MEDICATIONS ON ADMISSION</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15483)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:10098, CONF:10392 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.44"</tt></li></ol></li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15482)<tt><b>/@code</b>="42346-7" </tt><i>MEDICATIONS ON ADMISSION</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15483)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:10101)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:10100, R2.0=CONF:1098-10100)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:10100)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:10101, R2.0=CONF:1098-10101)
 </li>
-<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:10102, CONF:10110)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../AdmissionMedication.dita">Admission Medication</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.36</tt>)</li></ol></li>
+<li>
+If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:10102, CONF:10110)<ol>
+<li>Conforms to <xref href="../AdmissionMedication.dita">Admission Medication</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.36</tt>)</li></ol>
+</li>
 </ol>
 <ol id="aggregate">
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15482)<tt><b>/@code</b>="42346-7" </tt><i>MEDICATIONS ON ADMISSION</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15483)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:10100)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:10100, R2.0=CONF:1098-10100)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:10101)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:10101, R2.0=CONF:1098-10101)
 </li>
-<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:10102, CONF:10110)
+<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:10102, CONF:10110)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../AdmissionMedication.dita">Admission Medication</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.36</tt>)</li></ol></li>
+<li>Conforms to <xref href="../AdmissionMedication.dita">Admission Medication</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.36</tt>)</li></ol></li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::HospitalAdmissionMedicationsSectionEntriesOptional</entry>  </row>  <row><entry namest="col0" nameend="col7" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.44]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>code</entry><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CE</entry><entry>CONF:15483</entry><entry>LOINC 2.16.840.1.113883.6.1 42346-7</entry></row> 
-<row><entry>title</entry><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>ST</entry><entry>CONF:10100</entry><entry> </entry></row> 
-<row><entry>admissionMedication</entry><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.36]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>YES</entry><entry>AdmissionMedication</entry><entry>CONF:10102CONF:10110</entry><entry> </entry></row> 
-<row><entry>hospitalAdmissionMedicationsSectionEntriesOptional</entry><entry>hospitalAdmissionMedicationsSectionEntriesOptional</entry><entry>0..1</entry><entry>MAY</entry><entry>YES</entry><entry>HospitalAdmissionMedicationsSectionEntriesOptional</entry><entry>CONF:10111</entry><entry> </entry></row> 
-<row><entry>text</entry><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>StrucDocText</entry><entry>CONF:10101</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::HospitalAdmissionMedicationsSectionEntriesOptional</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.44]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:15483</entry><entry>LOINC 2.16.840.1.113883.6.1 42346-7</entry></row> 
+<row><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>ST</entry><entry>CONF:10100R2.0=CONF:1098-10100</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.36]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AdmissionMedication</entry><entry>CONF:10102CONF:10110</entry><entry> </entry></row> 
+<row><entry>hospitalAdmissionMedicationsSectionEntriesOptional</entry><entry>0..1</entry><entry>MAY</entry><entry>HospitalAdmissionMedicationsSectionEntriesOptional</entry><entry>CONF:10111</entry><entry> </entry></row> 
+<row><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>StrucDocText</entry><entry>CONF:10101R2.0=CONF:1098-10101</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<section xmlns="urn:hl7-org:v3">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/DischargeSummary.html">Discharge Summary</xref></entry><entry><xref href="../AdmissionMedication.dita">Admission Medication</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
   <templateId root="2.16.840.1.113883.10.20.22.2.44"/>
-  <id root="MDHT" extension="1670067539"/>
   <code code="42346-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="MEDICATIONS ON ADMISSION"/>
-  <title>TEXT FOR TITLE</title>
-  <text/>
+  <title>MEDICATIONS ON ADMISSION</title>
+  <text>ZpVLQs nEBkmpyhm YjBKy nmyZjMMr tHovGeN nWbILla YODAxJ hLRZg xXhIXE jPoJYm IvWwFsAtA EoiRmO anelZu jgEYoQIN fYaph UhrZyg eIXJtQ thtbQNBHH lWLPfsztm uweVYQ euLvET vqACYbGvu QIZuWCkB HTEXWhQsD xnvjuE tApICetKZ DmPhHKKcM CBwFwMF kSThXNnBA aMlFubaog rlFCMwwp epLHq SnvkAH yBRbi GRAxpBYa yUUfEKLpo GGwyLoY AqclsJYZ QRUnAB KeMwrd QVcPz FlkLMcUN ViyFFuM vtjzkG ifOAUFSAE kcHJTdcg NVRfNRs JuJBSlGvq KxVLOoz CPzugNP ZZiRgnnX lsMypH RTjrIAj SWJkM 
+bxSRwKlP THJxn jNvzH EudNgAA hPylXdyf SBXbH PdQuqL abBKz AFBnnTWx BGOrv PYdLkwWx wkAAfzRo 
+CEvugMT lMpAjIyli XinDYhonE nlkwF EtJvkeaE oZZOBUx VMEduQ rGjXRu yPoyz hZMnJ kdWfhc TgrJSCbs shbwo NmfeBBX kvXTOs XjauQIZPh SlZgTMu qAvrKYZvl dkNkU rYSOcW lRKMs nvooWsL uWBPOJq sBfqoeYVk IrKdTzj hMjTStwo LPdhxEhFw wkqcQjAeY qrEjbvsm OECYjEL JrduufS OWBtTyT XnfCOWVz 
+KbhllyYv ioxFHCpf cNHOr RlyNdpB XzFJq curWJE krWrxi kbMwunhCe aGyMJskZd PIcbFZN hWxKW leEOUznq bmATxiVr qcccOg zPtJhzOFm kiedA siwmEV qDapF gpVGh Lajmt hRIoBye HQHAtYcOB vnDwwKE fcrDPPQrH 
+</text>
   <entry>
     <act classCode="ACT" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.36"/>
-      <id root="MDHT" extension="1778515578"/>
       <code code="42346-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medications on Admission"/>
       <text>Text Value</text>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <entryRelationship>
         <substanceAdministration classCode="SBADM">
           <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
-          <id root="MDHT" extension="893873666"/>
-          <code code="48893113"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <code code="1255888092"/>
           <text>Text Value</text>
-          <effectiveTime value="20140803"/>
           <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <consumable/>
           <performer/>
           <entryRelationship>
@@ -99,7 +104,7 @@
               <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
             </supply>
           </entryRelationship>
-          <precondition/>
+          <precondition typeCode="PRCN"/>
         </substanceAdministration>
       </entryRelationship>
     </act>

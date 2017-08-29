@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Indication2 - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.19</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.19"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template represents the rationale for an action such as an encounter, a medication administration, or a procedure. The id element can be used to reference a problem recorded elsewhere in the document, or can be used with a code and value to record the problem. Indications for treatment are not laboratory results; rather the problem associated with the laboratory result should be sited (e.g., hypokalemia instead of a laboratory result of Potassium 2.0 mEq/L). Use the Drug Monitoring Act [templateId 2.16.840.1.113883.10.20.22.4.123] to indicate if a particular drug needs special monitoring (e.g., anticoagulant therapy). Use Precondition for Substance Administration (V2) [templateId 2.16.840.1.113883.10.20.22.4.25.2] to represent that a medication is to be administered only when the associated criteria are met.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-7482, CONF:1098-10502, CONF:1098-32570 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.19"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../Indication.dita">Indication</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.19</tt>)</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-7483)<p>Note: If the id element is used to reference a problem recorded else where in the document then this id must equal another entry/id in the same document instance. Application Software must be responsible for resolving the identifier back to its original object and then rendering the information in the correct place in the containing section's narrative text. Its purpose is to obviate the need to repeat the complete XML representation of the referred to entry when relating one entry to another.</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>MAY</b> be selected from ValueSet<tt> Problem Type (LOINC) 2.16.840.1.113883.3.88.12.3221.7.2</tt><b> STATIC</b> 2014-09-02 (CONF:1098-31229)
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt> (CONF:1098-7488), which <b>SHOULD</b> be selected from ValueSet<tt> Problem 2.16.840.1.113883.3.88.12.3221.7.4</tt><b> DYNAMIC</b> (CONF:1098-7489)
+</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>SHALL</b> satisfy: The observation/id must equal another entry/id in the same document instance (CONF:1098-7483)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../Indication.dita">Indication</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.19</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7480, R2.0=CONF:1098-7480)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:7481, R2.0=CONF:1098-7481)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-7483)
+<p>Note: If the id element is used to reference a problem recorded else where in the document then this id must equal another entry/id in the same document instance. Application Software must be responsible for resolving the identifier back to its original object and then rendering the information in the correct place in the containing section's narrative text. Its purpose is to obviate the need to repeat the complete XML representation of the referred to entry when relating one entry to another.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>MAY</b> be selected from ValueSet<tt> Problem Type (LOINC) 2.16.840.1.113883.3.88.12.3221.7.2</tt><b> STATIC</b> 2014-09-02 (CONF:1098-31229)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt><tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:7487, R2.0=CONF:1098-7487, R2.0=CONF:1098-19105)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:7488, R2.0=CONF:1098-7488)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt> (CONF:1098-7488), which <b>SHOULD</b> be selected from ValueSet<tt> Problem 2.16.840.1.113883.3.88.12.3221.7.4</tt><b> DYNAMIC</b> (CONF:1098-7489)
+</li>
+<li><b>MAY</b> satisfy: Set the observation/id equal to an ID on the problem list to signify that problem as an indication (CONF:16885)</li>
+<li>The value element <b>MAY</b> contain @nullFlavor (CONF:15990)</li>
+<li>If the diagnosis is unkown or the SNOMED code is unknown, @nullFlavor <b>SHOULD</b> be "UNK".  If the code is something other than SNOMED, @nullFlavor <b>SHOULD</b> be "OTH" and the other code <b>SHOULD</b> be placed in the translation element. (CONF:15991)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>SHALL</b> satisfy: The observation/id must equal another entry/id in the same document instance (CONF:1098-7483)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::Indication2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.19]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>MAY</entry><entry>CD</entry><entry>CONF:1098-31229</entry><entry> null</entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:1098-7483</entry><entry> </entry></row> 
+<row><entry>value</entry><entry>0..1</entry><entry>MAY</entry><entry>CD</entry><entry>CONF:1098-7488</entry><entry> </entry></row> 
+<row><entry>indication2</entry><entry>0..*</entry><entry>MAY</entry><entry>Indication2</entry><entry>CONF:1098-7536CONF:1098-7537CONF:1098-16087</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../EncounterActivity2.dita">Encounter Activity (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../ImmunizationActivity2.dita">Immunization Activity (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../MedicationActivity2.dita">Medication Activity2</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref href="../PatientReferralAct.dita">Patient Referral Act</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry><xref href="../PlannedAct2.dita">Planned Act2</xref></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry><xref href="../PlannedEncounter2.dita">Planned Encounter2</xref></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry><xref href="../PlannedImmunizationActivity.dita">Planned Immunization Activity</xref></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry><xref href="../PlannedMedicationActivity2.dita">Planned Medication Activity2</xref></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry><xref href="../PlannedObservation2.dita">Planned Observation2</xref></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry><xref href="../PlannedProcedure2.dita">Planned Procedure2</xref></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry><xref href="../PlannedSupply2.dita">Planned Supply2</xref></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry><xref href="../ProcedureIndicationsSection2.dita">Procedure Indications Section2</xref></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+  <id root="MDHT" extension="1728335403"/>
+  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <value xsi:type="CD" code="241975346"/>
+</observation>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::Indication
+</p>
+<p id="Indication" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:7482, CONF:10502 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.19"
+</li><li>Consol Indication MAY satisfy: Set the observation/id equal to an ID on the problem list to signify that problem as an indication (CONF:16885)
+</li><li>Consol Indication The value element MAY contain @nullFlavor (CONF:15990)
+</li><li>Consol Indication If the diagnosis is unkown or the SNOMED code is unknown, @nullFlavor SHOULD be "UNK".  If the code is something other than SNOMED, @nullFlavor SHOULD be "OTH" and the other code SHOULD be placed in the translation element. (CONF:15991)
+</li><li>SHALL conform to CDA Observation
+</li><li>Consol Indication SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:7480, R2.0=CONF:1098-7480)
+</li><li>Consol Indication SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:7481, R2.0=CONF:1098-7481)
+</li><li>Consol Indication SHALL contain exactly one [1..1] id (CONF:7483)
+</li><li>Consol Indication SHALL contain exactly one [1..1] code, which SHOULD be selected from ValueSet Problem Type 2.16.840.1.113883.3.88.12.3221.7.2 STATIC 2008-12-18 (CONF:16886)
+</li><li>Consol Indication SHALL contain exactly one [1..1] statusCode/@code="completed"  (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:7487, R2.0=CONF:1098-7487, R2.0=CONF:1098-19105)
+</li><li>Consol Indication SHOULD contain zero or one [0..1] effectiveTime (CONF:7488, R2.0=CONF:1098-7488)
+</li><li>Consol Indication SHOULD contain zero or one [0..1] value with @xsi:type="CD" (CONF:7489), which SHOULD be selected from ValueSet Problem 2.16.840.1.113883.3.88.12.3221.7.4 DYNAMIC (CONF:15985)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Indication2</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.19</tt>]</p>
+</body>
+</topic>

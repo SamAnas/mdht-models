@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Mental Status Observation (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.74</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.74"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>The Mental Status Observation template represents an observation about mental status that can come from a broad range of subjective and objective information (including measured data) to address those categories described in the Mental Status Section. See also Assessment Scale Observation for specific collections of observations that together yield a summary evaluation of a particular condition.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-14255, CONF:1198-14256, CONF:1198-32565 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.74"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../CognitiveStatusResultObservation.dita">Cognitive Status Result Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.74</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-14249)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1198-14250)
+</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-14257)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-14591)<tt><b>/@code</b>="373930000" </tt><i>Cognitive function</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1198-32788, CONF:1198-32789)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-14254)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19092)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-14261)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> (CONF:1198-14263)
+</li>
+<li>
+contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li>
+contains zero or more [0..*] <tt><b>interpretationCode</b></tt>
+</li>
+<li>
+contain zero or one [0..1] <tt><b>methodCode</b></tt>
+</li>
+<li>
+contain zero or one [0..1] <tt><b>targetSiteCode</b></tt> with <tt><b>@xsi:type</b>="CE"</tt>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-14266)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-14469, CONF:1198-14595, CONF:1198-14470)<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>referenceRange</b></tt> such that it  (CONF:1198-14267) <p><lines><i>The referenceRange could be used to represent normal or expected capability for the mental function being evaluated.</i></lines></p><ol><li>contain exactly one [1..1] <tt><b>observationRange</b></tt> such that it  <ol><li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li></ol> 
+</li>
+<li>
+contain  [0..1] <tt><b>author</b></tt> such that it <ol>
+<li>Conforms to Author from CDA</li></ol>
+</li>
+<li>
+contains  [0..*] <tt><b>entryRelationship</b></tt> such that it <ol>
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50</tt>)</li></ol>
+</li>
+<li>
+contains  [0..*] <tt><b>entryRelationship</b></tt> such that it <ol>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol>
+</li>
+<li>If value/@xsi:type="CD", <b>SHOULD</b> contain a code from SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:1198-14271)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../ResultObservation.dita">Result Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.2</tt>)</li>
+<li><b>SHALL</b> conform to <xref href="../CognitiveStatusResultObservation.dita">Cognitive Status Result Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.74</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-14249)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1198-14250)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-14257)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-14591)<tt><b>/@code</b>="373930000" </tt><i>Cognitive function</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1198-32788, CONF:1198-32789)
+</li>
+<li>contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-14254)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19092)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-14261)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> (CONF:1198-14263)
+</li>
+<li>contains zero or more [0..*] <tt><b>interpretationCode</b></tt>
+</li>
+<li>contain zero or one [0..1] <tt><b>methodCode</b></tt>
+</li>
+<li>contain zero or one [0..1] <tt><b>targetSiteCode</b></tt> with <tt><b>@xsi:type</b>="CE"</tt>
+</li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:14272, CONF:14593, CONF:14273)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:14276, CONF:14594, CONF:14277)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:14469, CONF:14595, CONF:14470)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-14266)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-14469, CONF:1198-14595, CONF:1198-14470)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol></li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>referenceRange</b></tt> such that it  (CONF:1198-14267) <p><lines><i>The referenceRange could be used to represent normal or expected capability for the mental function being evaluated.</i></lines></p><ol><li>contain exactly one [1..1] <tt><b>observationRange</b></tt> such that it  <ol><li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li></ol> 
+</li>
+<li>contains  [0..*] <tt><b>entryRelationship</b></tt> such that it 
+<ol>
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50</tt>)</li></ol></li>
+<li>contains  [0..*] <tt><b>entryRelationship</b></tt> such that it 
+<ol>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol></li>
+<li>text, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:15924)</li>
+<li>reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:15925)</li>
+<li>This reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15926)</li>
+<li>The value for 'code' in a result observation <b>SHOULD</b> be selected from LOINC (codeSystem 2.16.840.1.113883.6.1) or SNOMED CT (codeSystem 2.16.840.1.113883.6.96)
+Laboratory results <b>SHOULD</b> be from LOINC (CodeSystem: 2.16.840.1.113883.6.1) or other constrained terminology named by the US Department of Health and Human Services Office of National Coordinator or other federal agency. Local and/or regional codes for laboratory results are allowed. The Local and/or regional codes <b>SHOULD</b> be sent in the translation element. (CONF:7166)</li>
+<li><b>SHOULD</b> contain zero or more [0..*] referenceRange. Such referenceRanges, if present, <b>SHALL</b> contain exactly one [1..1] observationRange. This observationRange <b>SHALL NOT</b> contain [0..0] code (CONF:7152)</li>
+<li><b>MAY</b> contain zero or one [0..1] author (CONF:7149)</li>
+<li>text, if present, <b>SHOULD</b> contain zero or one [0..1] reference/@value (CONF:15924)</li>
+<li>This reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15926)</li>
+<li>If value/@xsi:type=CD, <b>SHOULD</b> contain a code from SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:14271)</li>
+<li>If value/@xsi:type="CD", <b>SHOULD</b> contain a code from SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:1198-14271)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::MentalStatusObservation2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.74]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActClassObservation</entry><entry>CONF:1198-14249</entry><entry> ALRT</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActMoodDocumentObservation</entry><entry>CONF:1198-14250</entry><entry> DEF</entry></row> 
+<row><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_TS</entry><entry>CONF:1198-14261</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:1198-14257</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1198-14254</entry><entry>ActStatus 2.16.840.1.113883.5.14ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
+<row><entry>value</entry><entry>1..1</entry><entry>SHALL</entry><entry>ANY</entry><entry>CONF:1198-14263</entry><entry> </entry></row> 
+<row><entry>assessmentScaleObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>AssessmentScaleObservation</entry><entry>CONF:1198-14469, CONF:1198-14595, CONF:1198-14470</entry><entry> </entry></row> 
+<row><entry>author</entry><entry>0..1</entry><entry>MAY</entry><entry>Author</entry><entry>CONF:14266</entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1198-14266</entry><entry> </entry></row> 
+<row><entry>caregiverCharacteristics</entry><entry>0..*</entry><entry>MAY</entry><entry>CaregiverCharacteristics</entry><entry>CONF:14276CONF:14594CONF:14277</entry><entry> </entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1198-14591</entry><entry>SNOMEDCT 2.16.840.1.113883.6.96SNOMEDCT 2.16.840.1.113883.6.96 373930000</entry></row> 
+<row><entry>mentalStatusObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>MentalStatusObservation2</entry><entry>CONF:1198-28305, CONF:1198-28306</entry><entry> </entry></row> 
+<row><entry>mentalStatusObservation2B</entry><entry>0..*</entry><entry>MAY</entry><entry>MentalStatusObservation2</entry><entry>CONF:1198-32188, CONF:1198-32242, CONF:1198-32243</entry><entry> </entry></row> 
+<row><entry>mentalStatusObservation2C</entry><entry>0..*</entry><entry>MAY</entry><entry>MentalStatusObservation2</entry><entry>CONF:1198-32194, CONF:1198-32254, CONF:1198-32255</entry><entry> </entry></row> 
+<row><entry>nonMedicinalSupplyActivity</entry><entry>0..*</entry><entry>MAY</entry><entry>NonMedicinalSupplyActivity</entry><entry>CONF:14272CONF:14593CONF:14273</entry><entry> </entry></row> 
+<row><entry>referenceRange</entry><entry>0..*</entry><entry>MAY</entry><entry>ReferenceRange</entry><entry>CONF:1198-14267</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../HealthConcernAct.dita">Health Concern Act (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../MentalStatusOrganizer2.dita">Mental Status Organizer (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../MentalStatusSection.dita">Mental Status Section (V2)</xref></entry><entry><xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref></entry></row><row><entry><xref href="../RiskConcernAct.dita">Risk Concern Act (V2)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry></entry><entry><xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+  <id root="MDHT" extension="1489868217"/>
+  <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <interpretationCode code="115951272"/>
+  <methodCode code="1600300747"/>
+  <targetSiteCode xsi:type="CE" code="1189995393"/>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="1737077032"/>
+      <code code="1960696102"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <author/>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+      <id root="MDHT" extension="229540728"/>
+      <code code="946255932"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <interpretationCode code="1344180128"/>
+      <methodCode code="714816990"/>
+      <targetSiteCode code="1840245810"/>
+      <author/>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
+          <id root="MDHT" extension="928370492"/>
+          <code code="654223209"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <interpretationCode code="2137600438"/>
+          <methodCode code="705692146"/>
+          <targetSiteCode code="1297983073"/>
+        </observation>
+      </entryRelationship>
+      <referenceRange>
+        <observationRange/>
+      </referenceRange>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <supply classCode="SPLY">
+      <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+      <id root="MDHT" extension="1983411396"/>
+      <code code="337469159"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime value="20170828"/>
+    </supply>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+      <id root="MDHT" extension="1931323392"/>
+      <code code="1767496798"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <value xsi:type="CD" code="59019924"/>
+      <interpretationCode code="56084808"/>
+      <methodCode code="209643182"/>
+      <targetSiteCode code="2025634384"/>
+      <participant typeCode="IND">
+        <time>
+          <low value="2017"/>
+          <high value="2017"/>
+        </time>
+        <participantRole classCode="CAREGIVER"/>
+      </participant>
+    </observation>
+  </entryRelationship>
+  <referenceRange>
+    <observationRange>
+      <text>Text Value</text>
+    </observationRange>
+  </referenceRange>
+</observation>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::CognitiveStatusResultObservation
+</p>
+<p id="CognitiveStatusResultObservation" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:14255, CONF:14256 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.74"
+</li><li>Consol Cognitive Status Result Observation text, if present, SHOULD contain zero or one [0..1] reference/@value (CONF:15924)
+</li><li>Consol Cognitive Status Result Observation This reference/@value SHALL begin with a '#' and SHALL point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15926)
+</li><li>Consol Cognitive Status Result Observation If value/@xsi:type=CD, SHOULD contain a code from SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:14271)
+</li><li>SHALL conform to Result Observation template (templateId: 2.16.840.1.113883.10.20.22.4.2)
+</li><li>Consol Cognitive Status Result Observation SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:14249)
+</li><li>Consol Cognitive Status Result Observation SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:14250)
+</li><li>Consol Cognitive Status Result Observation SHALL contain at least one [1..*] id (CONF:14257)
+</li><li>Consol Cognitive Status Result Observation SHALL contain exactly one [1..1] code (CONF:14591)/@code="373930000" Cognitive function finding (CodeSystem: 2.16.840.1.113883.6.96 SNOMEDCT) (CONF:14592)
+</li><li>Consol Cognitive Status Result Observation SHOULD contain zero or one [0..1] text (CONF:14258)
+</li><li>Consol Cognitive Status Result Observation SHALL contain exactly one [1..1] statusCode (CONF:14254)/@code="completed" Completed (CodeSystem: 2.16.840.1.113883.5.14 ActStatus)
+</li><li>Consol Cognitive Status Result Observation SHALL contain exactly one [1..1] effectiveTime (CONF:14261)
+</li><li>Consol Cognitive Status Result Observation SHALL contain exactly one [1..1] value (CONF:14263)
+</li><li>Consol Cognitive Status Result Observation SHOULD contain zero or more [0..*] interpretationCode (CONF:14264)
+</li><li>Consol Cognitive Status Result Observation MAY contain zero or one [0..1] methodCode (CONF:14265)
+</li><li>Consol Cognitive Status Result Observation MAY contain zero or one [0..1] targetSiteCode with @xsi:type="CE" (CONF:14270)
+</li><li>Consol Cognitive Status Result Observation MAY contain  [0..1] author such that it  (CONF:14266) Conforms to Author from CDA
+</li><li>Consol Cognitive Status Result Observation MAY contain  [0..*] entryRelationship such that it  (CONF:14272, CONF:14593, CONF:14273) Contains @typeCode="REFR" REFR, and Conforms to Non Medicinal Supply Activity (templateId: 2.16.840.1.113883.10.20.22.4.50)
+</li><li>Consol Cognitive Status Result Observation MAY contain  [0..*] entryRelationship such that it  (CONF:14276, CONF:14594, CONF:14277) Contains @typeCode="REFR" REFR, and Conforms to Caregiver Characteristics (templateId: 2.16.840.1.113883.10.20.22.4.72)
+</li><li>Consol Cognitive Status Result Observation MAY contain  [0..*] entryRelationship such that it  (CONF:14469, CONF:14595, CONF:14470) Contains @typeCode="COMP" COMP, and Conforms to Assessment Scale Observation (templateId: 2.16.840.1.113883.10.20.22.4.69)
+</li><li>Consol Cognitive Status Result Observation SHOULD contain zero or more [0..*] referenceRange, where its type is Reference Range (CONF:14267)
+</li><li>SHALL conform to CDA Reference Range
+</li><li>Consol Reference Range SHALL contain exactly one [1..1] observationRange, where its type is Observation Range (CONF:14268)
+</li><li>Consol Observation Range observationRange SHALL NOT contain [0..0] code (CONF:14269)
+</li><li>SHALL conform to CDA Observation Range
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Mental Status Observation (V3)</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.74</tt>]</p>
+</body>
+</topic>

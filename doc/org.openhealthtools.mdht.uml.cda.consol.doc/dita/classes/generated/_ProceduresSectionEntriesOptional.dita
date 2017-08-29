@@ -9,71 +9,76 @@
 </prolog>
 <body>
 <section id="knownSubclasses">
-<p>Known Subclasses: <xref href="../ProceduresSection.dita">Procedures Section</xref></p>
+<p>Known Subclasses: <xref href="../ProceduresSection.dita">Procedures Section</xref>, <xref href="../ProceduresSectionEntriesOptional2.dita">Procedures Section Entries Optional2</xref></p>
 </section>
 <section id="description">
-<p><lines><i>This section defines all interventional, surgical, diagnostic, or therapeutic procedures or treatments pertinent to the patient historically at the time the document is generated. The section is intended to include notable procedures, but can contain all procedures for the period of time being summarized. The common notion of "procedure" is broader than that specified by the HL7 Version 3 Reference Information Model (RIM). Therefore this section contains procedure templates represented with three RIM classes: Act. Observation, and Procedure. Procedure act is for procedures the alter that physical condition of a patient (Splenectomy). Observation act is for procedures that result in new information about a patient but do not cause physical alteration (EEG). Act is for all other types of procedures (dressing change).
-The length of an encounter is documented in the documentationOf/encompassingEncounter/effectiveTime and length of service in documentationOf/ServiceEvent/effectiveTime.</i></lines></p>
+<p>This section defines all interventional, surgical, diagnostic, or therapeutic procedures or treatments pertinent to the patient historically at the time the document is generated. The section is intended to include notable procedures, but can contain all procedures for the period of time being summarized. The common notion of "procedure" is broader than that specified by the HL7 Version 3 Reference Information Model (RIM). Therefore this section contains procedure templates represented with three RIM classes: Act. Observation, and Procedure. Procedure act is for procedures the alter that physical condition of a patient (Splenectomy). Observation act is for procedures that result in new information about a patient but do not cause physical alteration (EEG). Act is for all other types of procedures (dressing change).
+The length of an encounter is documented in the documentationOf/encompassingEncounter/effectiveTime and length of service in documentationOf/ServiceEvent/effectiveTime.</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:6271 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.22.2.7"</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15423)<tt><b>/@code</b>="47519-4" </tt><i>History of Procedures</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15424)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:6271 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.7"</tt></li></ol></li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15423)<tt><b>/@code</b>="47519-4" </tt><i>History of Procedures</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15424)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:17184)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:17184, R2.0=CONF:1098-17184)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:6273)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:6273, R2.0=CONF:1098-6273)
 </li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:6274, CONF:15509)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../ProcedureActivityProcedure.dita">Procedure Activity Procedure</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.14</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:6278, CONF:15510)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../ProcedureActivityObservation.dita">Procedure Activity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.13</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:8533, CONF:15511)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../ProcedureActivityAct.dita">Procedure Activity Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.12</tt>)</li></ol></li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:6274, CONF:15509)<ol>
+<li>Conforms to <xref href="../ProcedureActivityProcedure.dita">Procedure Activity Procedure</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.14</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:6278, CONF:15510)<ol>
+<li>Conforms to <xref href="../ProcedureActivityObservation.dita">Procedure Activity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.13</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:8533, CONF:15511)<ol>
+<li>Conforms to <xref href="../ProcedureActivityAct.dita">Procedure Activity Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.12</tt>)</li></ol>
+</li>
 </ol>
 <ol id="aggregate">
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15423)<tt><b>/@code</b>="47519-4" </tt><i>History of Procedures</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15424)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:17184)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:17184, R2.0=CONF:1098-17184)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:6273)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:6273, R2.0=CONF:1098-6273)
 </li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:6274, CONF:15509)
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:6274, CONF:15509)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../ProcedureActivityProcedure.dita">Procedure Activity Procedure</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.14</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:6278, CONF:15510)
+<li>Conforms to <xref href="../ProcedureActivityProcedure.dita">Procedure Activity Procedure</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.14</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:6278, CONF:15510)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../ProcedureActivityObservation.dita">Procedure Activity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.13</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:8533, CONF:15511)
+<li>Conforms to <xref href="../ProcedureActivityObservation.dita">Procedure Activity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.13</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:8533, CONF:15511)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../ProcedureActivityAct.dita">Procedure Activity Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.12</tt>)</li></ol></li>
+<li>Conforms to <xref href="../ProcedureActivityAct.dita">Procedure Activity Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.12</tt>)</li></ol></li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::ProceduresSectionEntriesOptional</entry>  </row>  <row><entry namest="col0" nameend="col7" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.7]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>code</entry><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CE</entry><entry>CONF:15424</entry><entry>LOINC 2.16.840.1.113883.6.1 47519-4</entry></row> 
-<row><entry>title</entry><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>ST</entry><entry>CONF:17184</entry><entry> </entry></row> 
-<row><entry>procedureAcivityObservation</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.13]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>ProcedureActivityObservation</entry><entry>CONF:6278CONF:15510</entry><entry> </entry></row> 
-<row><entry>procedureActivityAct</entry><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.12]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>ProcedureActivityAct</entry><entry>CONF:8533CONF:15511</entry><entry> </entry></row> 
-<row><entry>procedureActivityProcedure</entry><entry>cda:entry/cda:procedure[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.14]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>ProcedureActivityProcedure</entry><entry>CONF:6274CONF:15509</entry><entry> </entry></row> 
-<row><entry>proceduresSectionEntriesOptional</entry><entry>proceduresSectionEntriesOptional</entry><entry>0..1</entry><entry>MAY</entry><entry>YES</entry><entry>ProceduresSectionEntriesOptional</entry><entry>CONF:9576</entry><entry> </entry></row> 
-<row><entry>text</entry><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>StrucDocText</entry><entry>CONF:6273</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::ProceduresSectionEntriesOptional</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.7]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:15424</entry><entry>LOINC 2.16.840.1.113883.6.1 47519-4</entry></row> 
+<row><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>ST</entry><entry>CONF:17184R2.0=CONF:1098-17184</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.12]</entry><entry>0..*</entry><entry>MAY</entry><entry>ProcedureActivityAct</entry><entry>CONF:8533CONF:15511</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.13]</entry><entry>0..*</entry><entry>MAY</entry><entry>ProcedureActivityObservation</entry><entry>CONF:6278CONF:15510</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:procedure[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.14]</entry><entry>0..*</entry><entry>MAY</entry><entry>ProcedureActivityProcedure</entry><entry>CONF:6274CONF:15509</entry><entry> </entry></row> 
+<row><entry>proceduresSectionEntriesOptional</entry><entry>0..1</entry><entry>MAY</entry><entry>ProceduresSectionEntriesOptional</entry><entry>CONF:9576</entry><entry> </entry></row> 
+<row><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>StrucDocText</entry><entry>CONF:6273R2.0=CONF:1098-6273</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<section xmlns="urn:hl7-org:v3">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ConsultationNote.html">Consultation Note</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/DischargeSummary.html">Discharge Summary</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/HistoryAndPhysicalNote.html">History And Physical Note</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ProcedureNote.html">Procedure Note</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct.dita">Procedure Activity Act</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation.dita">Procedure Activity Observation</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure.dita">Procedure Activity Procedure</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
   <templateId root="2.16.840.1.113883.10.20.22.2.7"/>
-  <id root="MDHT" extension="225449676"/>
   <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Procedures"/>
-  <title>TEXT FOR TITLE</title>
-  <text/>
+  <title>History of Procedures</title>
+  <text>sYOfPydy sJdsKbF UHnhoXsD bYVxahzT DQFIQhsN IcdyEGVo NdOsHBr FfSomZnoI cUaBQ pmGei LPFqndxS lqRgBPH vGdQI ujmmJzH HhQxpRek VdcmQY nHqXprFSF OOSlxPF GLKUifiS bKsIpOl rjeuO uXVBeA rshkIzDmv LaIkhZuNB thNWdToCK MTtBpiQQa HIQzHUD yNXSNNmH XOxORsE ymvvgR ZlGTc pgVngFI UGcMwbUc leXzxFYG rYVbJH Rocyzo maUgMX mFFBtb rUNoi QoNynqZ ITQCtZgi YjkRYGEi IgQrk wZpEE RDelOtxSl sQqfTwGZ qxPlwdk yexjdBKk 
+htsWE KYJqxUz wIDuZDZ kZQShttF yFExqm GipOBmgx KCBbjLSfJ lUnTSfT haHWTWWT rVbAATw WKJTLBMEX xsqiwMG sCgqjAO nrmWGIq Dvhba oPbmVgas SKSQo sqUaiITB MsuDfBnbq vIUFiYS UTSTK mGJCbyes XfPQDc wbnbyf VdTowLvR JHcCIMyN gxQERyYeD wTERi nfyPxhcE BBgdmDpRu XCzdrzfb dcSvxCjUF irLnlhi qWPAbcQHK oliHZBruw tmVCB pPFWvdLCb vXZxzH GAqrUZecs GocZdoPju QWJCmp jswUTJA AwcYSXdY 
+LVbYPDeLa SjSmaigP rCTviMNGd dtaNpnl FmMKif VXUlU VHmeJMPO YNQfLe BrqAC GbEfbv zcnlZ uNsmYvLJf hManlS BjGYBUEtL DKMVpnCL egYOzE PlkibUGPO XQFlHNB xlKFYic BBifZ ficni ftzZqW hxGIki RTXSg MIxmH UTivb BmNSp auBIgEZK XlzmieM ShqZEINp BHKNB vqqaQHUk 
+aEcPFBxHU hgxnsWwg aLQYnwHX vEGth yHjgfi yzogpKY IMkphLQ qNnba MjQSvlaDk WaVKvaPCF HHnkbSdC mmcHQG XIdceN koQnXTMb hAhft RoKRY dwzYd 
+</text>
   <entry>
     <procedure classCode="PROC">
       <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
-      <id root="MDHT" extension="2122944418"/>
-      <code code="702755141"/>
+      <code code="820440421"/>
       <text>Text Value</text>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
       <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
       <specimen>
@@ -88,25 +93,21 @@ The length of an encounter is documented in the documentationOf/encompassingEnco
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
-          <id root="MDHT" extension="224363974"/>
           <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <substanceAdministration classCode="SBADM">
           <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
-          <id root="MDHT" extension="281964820"/>
-          <code code="1480078455"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <code code="933545833"/>
           <text>Text Value</text>
-          <effectiveTime value="20140803"/>
           <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <consumable/>
           <performer/>
           <entryRelationship>
@@ -139,20 +140,15 @@ The length of an encounter is documented in the documentationOf/encompassingEnco
               <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
             </supply>
           </entryRelationship>
-          <precondition/>
+          <precondition typeCode="PRCN"/>
         </substanceAdministration>
       </entryRelationship>
       <entryRelationship>
         <act classCode="ACT" moodCode="INT">
           <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
-          <id root="MDHT" extension="1527868537"/>
           <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
         </act>
       </entryRelationship>
     </procedure>
@@ -160,13 +156,8 @@ The length of an encounter is documented in the documentationOf/encompassingEnco
   <entry>
     <observation classCode="OBS">
       <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
-      <id root="MDHT" extension="995009065"/>
-      <code code="707823483"/>
+      <code code="841207998"/>
       <text>Text Value</text>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
       <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
       <performer>
@@ -178,38 +169,29 @@ The length of an encounter is documented in the documentationOf/encompassingEnco
       <entryRelationship>
         <act classCode="ACT" moodCode="INT">
           <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
-          <id root="MDHT" extension="485129006"/>
           <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
         </act>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
-          <id root="MDHT" extension="1029938754"/>
           <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <substanceAdministration classCode="SBADM">
           <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
-          <id root="MDHT" extension="2031783396"/>
-          <code code="1805406500"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <code code="1906732454"/>
           <text>Text Value</text>
-          <effectiveTime value="20140803"/>
           <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <consumable/>
           <performer/>
           <entryRelationship>
@@ -242,7 +224,7 @@ The length of an encounter is documented in the documentationOf/encompassingEnco
               <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
             </supply>
           </entryRelationship>
-          <precondition/>
+          <precondition typeCode="PRCN"/>
         </substanceAdministration>
       </entryRelationship>
     </observation>
@@ -250,13 +232,8 @@ The length of an encounter is documented in the documentationOf/encompassingEnco
   <entry>
     <act classCode="ACT">
       <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
-      <id root="MDHT" extension="1254152012"/>
-      <code code="1652917151"/>
+      <code code="1353309297"/>
       <text>Text Value</text>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
       <performer>
         <assignedEntity/>
@@ -267,38 +244,29 @@ The length of an encounter is documented in the documentationOf/encompassingEnco
       <entryRelationship>
         <act classCode="ACT" moodCode="INT">
           <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
-          <id root="MDHT" extension="542718368"/>
           <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
         </act>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
-          <id root="MDHT" extension="1619015108"/>
           <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <substanceAdministration classCode="SBADM">
           <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
-          <id root="MDHT" extension="1675159282"/>
-          <code code="1393347222"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <code code="1765884056"/>
           <text>Text Value</text>
-          <effectiveTime value="20140803"/>
           <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <consumable/>
           <performer/>
           <entryRelationship>
@@ -331,7 +299,7 @@ The length of an encounter is documented in the documentationOf/encompassingEnco
               <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
             </supply>
           </entryRelationship>
-          <precondition/>
+          <precondition typeCode="PRCN"/>
         </substanceAdministration>
       </entryRelationship>
     </act>

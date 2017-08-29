@@ -11,23 +11,27 @@
 <section id="knownSubclasses">
 </section>
 <section id="description">
-<p><lines><i>An Assessment Scale Supporting observation represents the components of a scale used in an Assessment Scale Observation. The individual parts that make up the component may be a group of cognitive or functional status observations.</i></lines></p>
+<p>An Assessment Scale Supporting observation represents the components of a scale used in an Assessment Scale Observation. The individual parts that make up the component may be a group of cognitive or functional status observations.</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:16722, CONF:16723 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.22.4.86"</li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:16722, CONF:16723 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.86"</tt></li></ol></li>
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:16715)
 </li>
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:16716)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:16717)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:16717)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:16724)
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:16724)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:16720)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:16720)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>value</b></tt> (CONF:16754)
-<ol>
-<li>If xsi:type="CD" , <b>MAY</b> have a translation code to further specify the source if the instrument has an applicable code system and valueSet for the integer (CONF:14639, CONF:16755)</li></ol></li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>value</b></tt> (CONF:16754)<ol>
+<li>If xsi:type="CD" , <b>MAY</b> have a translation code to further specify the source if the instrument has an applicable code system and valueSet for the integer (CONF:14639, CONF:16755)</li></ol>
+</li>
 <li>observation/code <b>SHALL</b> be from LOINC (CodeSystem: 2.16.840.1.113883.6.1) or SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) and represents components of the scale (CONF:16738, CONF:14458, CONF:16739)</li>
 </ol>
 <ol id="aggregate">
@@ -47,23 +51,21 @@
 <li>observation/code <b>SHALL</b> be from LOINC (CodeSystem: 2.16.840.1.113883.6.1) or SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) and represents components of the scale (CONF:16738, CONF:14458, CONF:16739)</li>
 <li>If xsi:type="CD" , <b>MAY</b> have a translation code to further specify the source if the instrument has an applicable code system and valueSet for the integer (CONF:14639, CONF:16755)</li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::AssessmentScaleSupportingObservation</entry>  </row>  <row><entry namest="col0" nameend="col7" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.86]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>classCode</entry><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>ActClassObservation</entry><entry>CONF:16715</entry><entry> ALRT</entry></row> 
-<row><entry>moodCode</entry><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>x_ActMoodDocumentObservation</entry><entry>CONF:16716</entry><entry> DEF</entry></row> 
-<row><entry>code</entry><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CD</entry><entry>CONF:16717</entry><entry> </entry></row> 
-<row><entry>id</entry><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>YES</entry><entry>II</entry><entry>CONF:16724</entry><entry> </entry></row> 
-<row><entry>statusCode</entry><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CS</entry><entry></entry><entry>ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
-<row><entry>value</entry><entry>value</entry><entry>1..*</entry><entry>SHALL</entry><entry>YES</entry><entry>ANY</entry><entry>CONF:16754</entry><entry> </entry></row> 
-<row><entry>assessmentScaleSupportingObservation</entry><entry>assessmentScaleSupportingObservation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>YES</entry><entry>AssessmentScaleSupportingObservation</entry><entry>CONF:14451CONF:16741CONF:16742</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::AssessmentScaleSupportingObservation</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.86]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActClassObservation</entry><entry>CONF:16715</entry><entry> ALRT</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActMoodDocumentObservation</entry><entry>CONF:16716</entry><entry> DEF</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:16717</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:16724</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry></entry><entry>ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
+<row><entry>value</entry><entry>1..*</entry><entry>SHALL</entry><entry>ANY</entry><entry>CONF:16754</entry><entry> </entry></row> 
+<row><entry>assessmentScaleSupportingObservation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AssessmentScaleSupportingObservation</entry><entry>CONF:14451CONF:16741CONF:16742</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<observation xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
   <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
-  <id root="MDHT" extension="1375866552"/>
-  <code code="1127783245"/>
+  <id root="MDHT" extension="787257925"/>
+  <code code="979883352"/>
+  <text>Text Value</text>
   <statusCode code="completed"/>
-  <effectiveTime>
-    <low value="2014"/>
-    <high value="2014"/>
-  </effectiveTime>
 </observation>]]></codeblock>
 <section id="changes">
 </section>

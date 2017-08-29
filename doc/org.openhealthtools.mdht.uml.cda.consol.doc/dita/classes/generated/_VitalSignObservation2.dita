@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Vital Sign Observation2 - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.27</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.27"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template represents measurement of common vital signs. Vital signs are represented with additional vocabulary constraints for type of vital sign and unit of measure.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-7299, CONF:1098-10527, CONF:1098-32574 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.27"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../VitalSignObservation.dita">Vital Sign Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.27</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1098-7304)<p>null</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="PQ"</tt> (CONF:1098-7305)
+</li>
+<li>
+contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>interpretationCode</b></tt> (CONF:1098-7307), which <b>SHALL</b> be selected from ValueSet<tt> Observation Interpretation (HL7) DYNAMIC 2.16.840.1.113883.1.11.78</tt><b> DYNAMIC</b> (CONF:1098-32886, DSTU:1220)
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-7310)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+contain  [0..1] <tt><b>author</b></tt> such that it <ol>
+<li>Conforms to Author from CDA</li></ol>
+</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../VitalSignObservation.dita">Vital Sign Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.27</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7297, R2.0=CONF:1098-7297)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:7298, R2.0=CONF:1098-7298)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b> (Vital Sign ID)</tt> (CONF:7300, R2.0=CONF:1098-7300)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b> (Vital Sign Type)</tt>, which <b>SHOULD</b> be selected from ValueSet<tt> HITSP Vital Sign Result Type 2.16.840.1.113883.3.88.12.80.62</tt><b> DYNAMIC</b> (CONF:7301, R2.0=CONF:1098-7301)
+</li>
+<li>contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (R2.0=CONF:1098-7303)<tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:7303, R2.0=CONF:1098-19119)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1098-7304)
+<p>null</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="PQ"</tt> (CONF:1098-7305)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>interpretationCode</b></tt> (CONF:1098-7307), which <b>SHALL</b> be selected from ValueSet<tt> Observation Interpretation (HL7) DYNAMIC 2.16.840.1.113883.1.11.78</tt><b> DYNAMIC</b> (CONF:1098-32886, DSTU:1220)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>methodCode</b></tt> (CONF:7308, R2.0=CONF:1098-7308)
+<p>The method code element may be present to indicate the method used to obtain the measure. Note that method used is distinct from, but possibly related to the target site.</p></li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>targetSiteCode</b></tt> (CONF:7309, R2.0=CONF:1098-7309)
+<p>The target site of the measure may be identified in the targetSiteCode element (e.g., Left arm [blood pressure], oral [temperature], et cetera).</p></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-7310)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li>text, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:15943)</li>
+<li>reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:15944)</li>
+<li>reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15945)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::VitalSignObservation2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.27]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_TS</entry><entry>CONF:1098-7304</entry><entry> </entry></row> 
+<row><entry>interpretationCode</entry><entry>0..1</entry><entry>MAY</entry><entry>CE</entry><entry>CONF:1098-7307</entry><entry> null</entry></row> 
+<row><entry>value</entry><entry>1..1</entry><entry>SHALL</entry><entry>PQ</entry><entry>CONF:1098-7305</entry><entry> </entry></row> 
+<row><entry>author</entry><entry>0..1</entry><entry>MAY</entry><entry>Author</entry><entry>CONF:7310</entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1098-7310</entry><entry> </entry></row> 
+<row><entry>vitalSignObservation2</entry><entry>1..*</entry><entry>SHALL</entry><entry>VitalSignObservation2</entry><entry>CONF:1198-7285, CONF:1198-15946</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../HealthConcernAct.dita">Health Concern Act (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../RiskConcernAct.dita">Risk Concern Act (V2)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../VitalSignsOrganizer2.dita">Vital Signs Organizer (V3)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+  <id root="MDHT" extension="2147207392"/>
+  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <value xsi:type="PQ"/>
+  <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+  <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+  <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+  <methodCode code="993469726"/>
+  <targetSiteCode code="539580520"/>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="839261540"/>
+      <code code="910527729"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <author/>
+</observation>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::VitalSignObservation
+</p>
+<p id="VitalSignObservation" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( (CONF:7299, CONF:10527 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.27"
+</li><li>Consol Vital Sign Observation text, if present, SHOULD contain zero or one [0..1] reference (CONF:15943)
+</li><li>Consol Vital Sign Observation reference, if present, SHOULD contain zero or one [0..1] @value (CONF:15944)
+</li><li>Consol Vital Sign Observation reference/@value SHALL begin with a '#' and SHALL point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15945)
+</li><li>SHALL conform to CDA Observation
+</li><li>Consol Vital Sign Observation SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:7297, R2.0=CONF:1098-7297)
+</li><li>Consol Vital Sign Observation SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:7298, R2.0=CONF:1098-7298)
+</li><li>Consol Vital Sign Observation SHALL contain at least one [1..*] id (Vital Sign ID) (CONF:7300, R2.0=CONF:1098-7300)
+</li><li>Consol Vital Sign Observation SHALL contain exactly one [1..1] code (Vital Sign Type), which SHOULD be selected from ValueSet HITSP Vital Sign Result Type 2.16.840.1.113883.3.88.12.80.62 DYNAMIC (CONF:7301, R2.0=CONF:1098-7301)
+</li><li>Consol Vital Sign Observation SHALL contain exactly one [1..1] statusCode (R2.0=CONF:1098-7303)/@code="completed"  (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:7303, R2.0=CONF:1098-19119)
+</li><li>Consol Vital Sign Observation SHALL contain exactly one [1..1] effectiveTime (Vital Sign Date/Time) (CONF:7304)
+</li><li>Consol Vital Sign Observation SHALL contain exactly one [1..1] value (Vital Sign Value) with @xsi:type="PQ" (CONF:7305)
+</li><li>Consol Vital Sign Observation MAY contain zero or one [0..1] interpretationCode (Vital Sign Interpretation) (CONF:7307)
+</li><li>Consol Vital Sign Observation MAY contain zero or one [0..1] methodCode (CONF:7308, R2.0=CONF:1098-7308)
+</li><li>Consol Vital Sign Observation MAY contain zero or one [0..1] targetSiteCode (CONF:7309, R2.0=CONF:1098-7309)
+</li><li>Consol Vital Sign Observation SHOULD contain zero or one [0..1] text (CONF:7302)
+</li><li>Consol Vital Sign Observation MAY contain  [0..1] author such that it  (CONF:7310) Conforms to Author from CDA
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Vital Sign Observation2</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.27</tt>]</p>
+</body>
+</topic>

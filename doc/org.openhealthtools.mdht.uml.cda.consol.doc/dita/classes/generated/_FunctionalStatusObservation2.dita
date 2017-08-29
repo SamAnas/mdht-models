@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Functional Status Observation2 - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.67</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.67"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template represents the patient's physical function (e.g., mobility status, instrumental activities of daily living, self-care status) and problems that limit function (dyspnea, dysphagia). The template may include assessment scale observations, identify supporting caregivers, and provide information about non-medicinal supplies. This template is used to represent physical or developmental function of all patient populations.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-13889, CONF:1098-13890, CONF:1098-32568 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.67"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-13908)<tt><b>/@code</b>="54522-8" </tt><i>Functional status</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-31522, CONF:1098-31523)
+</li>
+<li>
+contain zero or one [0..1] <tt><b>text</b></tt><ol>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol>
+</li>
+<li>
+contains zero or more [0..*] <tt><b>interpretationCode</b></tt>
+</li>
+<li>
+contain zero or one [0..1] <tt><b>methodCode</b></tt>
+</li>
+<li>
+contain zero or one [0..1] <tt><b>targetSiteCode</b></tt> with <tt><b>@xsi:type</b>="CE"</tt>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>referenceRange</b></tt> such that it  (CONF:1098-13937) <p><lines><i>referenceRange could be used to represent normal or expected capability for the function being evaluated.</i></lines></p><ol><li>contain exactly one [1..1] <tt><b>observationRange</b></tt> such that it  <ol><li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li></ol> 
+</li>
+<li>
+contain  [0..1] <tt><b>author</b></tt> such that it <ol>
+<li>Conforms to Author from CDA</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-13936)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-13892, CONF:1098-14596, CONF:1098-14218)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity2.dita">Non Medicinal Supply Activity2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50:2014-06-09</tt>)</li></ol>
+</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../ResultObservation.dita">Result Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.2</tt>)</li>
+<li><b>SHALL</b> conform to <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:13905, R2.0=CONF:1098-13905)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:13906, R2.0=CONF:1098-13906)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:13907, R2.0=CONF:1098-13907)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-13908)<tt><b>/@code</b>="54522-8" </tt><i>Functional status</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-31522, CONF:1098-31523)
+</li>
+<li>contain zero or one [0..1] <tt><b>text</b></tt>
+<ol>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (R2.0=CONF:1098-13929)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:13929, R2.0=CONF:1098-19101)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:13930, R2.0=CONF:1098-13930)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> (CONF:13932, R2.0=CONF:1098-13932)
+</li>
+<li>contains zero or more [0..*] <tt><b>interpretationCode</b></tt>
+</li>
+<li>contain zero or one [0..1] <tt><b>methodCode</b></tt>
+</li>
+<li>contain zero or one [0..1] <tt><b>targetSiteCode</b></tt> with <tt><b>@xsi:type</b>="CE"</tt>
+</li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:13895, R2.0=CONF:1098-13895, CONF:14597, R2.0=CONF:1098-14597, CONF:13897, R2.0=CONF:1098-13897)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:14465, R2.0=CONF:1098-14465, CONF:14598, R2.0=CONF:1098-14598, CONF:14466, R2.0=CONF:1098-14466)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol></li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>referenceRange</b></tt> such that it  (CONF:1098-13937) <p><lines><i>referenceRange could be used to represent normal or expected capability for the function being evaluated.</i></lines></p><ol><li>contain exactly one [1..1] <tt><b>observationRange</b></tt> such that it  <ol><li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li></ol> 
+</li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-13936)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-13892, CONF:1098-14596, CONF:1098-14218)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity2.dita">Non Medicinal Supply Activity2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50:2014-06-09</tt>)</li></ol></li>
+<li>text, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:15924)</li>
+<li>reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:15925)</li>
+<li>This reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15926)</li>
+<li>The value for 'code' in a result observation <b>SHOULD</b> be selected from LOINC (codeSystem 2.16.840.1.113883.6.1) or SNOMED CT (codeSystem 2.16.840.1.113883.6.96)
+Laboratory results <b>SHOULD</b> be from LOINC (CodeSystem: 2.16.840.1.113883.6.1) or other constrained terminology named by the US Department of Health and Human Services Office of National Coordinator or other federal agency. Local and/or regional codes for laboratory results are allowed. The Local and/or regional codes <b>SHOULD</b> be sent in the translation element. (CONF:7166)</li>
+<li><b>SHOULD</b> contain zero or more [0..*] referenceRange. Such referenceRanges, if present, <b>SHALL</b> contain exactly one [1..1] observationRange. This observationRange <b>SHALL NOT</b> contain [0..0] code (CONF:7152)</li>
+<li><b>MAY</b> contain zero or one [0..1] author (CONF:7149)</li>
+<li>text, if present, <b>SHOULD</b> contain zero or one [0..1] reference/@value (CONF:13927)</li>
+<li>This reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:13928)</li>
+<li>If value/@xsi:type=CD, <b>SHOULD</b> contain a code from SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:14234, R2.0=CONF:1098-14234)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::FunctionalStatusObservation2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.67]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1098-13908</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 54522-8</entry></row> 
+<row><entry>author</entry><entry>0..1</entry><entry>MAY</entry><entry>Author</entry><entry>CONF:13936</entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1098-13936</entry><entry> </entry></row> 
+<row><entry>functionalStatusObservation2</entry><entry>1..*</entry><entry>SHALL</entry><entry>FunctionalStatusObservation2</entry><entry>CONF:1098-14359CONF:1098-14368</entry><entry> </entry></row> 
+<row><entry>nonMedicinalSupplyActivity2</entry><entry>0..1</entry><entry>MAY</entry><entry>NonMedicinalSupplyActivity2</entry><entry>CONF:1098-13892CONF:1098-14596CONF:1098-14218</entry><entry> </entry></row> 
+<row><entry>referenceRange</entry><entry>0..*</entry><entry>MAY</entry><entry>ReferenceRange</entry><entry>CONF:1098-13937</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../FunctionalStatusOrganizer2.dita">Functional Status Organizer2</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../FunctionalStatusSection2.dita">Functional Status Section2</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../HealthConcernAct.dita">Health Concern Act (V2)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry><xref href="../RiskConcernAct.dita">Risk Concern Act (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../NonMedicinalSupplyActivity2.dita">Non Medicinal Supply Activity2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+  <id root="MDHT" extension="1310927517"/>
+  <code code="54522-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <interpretationCode code="1343359044"/>
+  <methodCode code="546090281"/>
+  <targetSiteCode xsi:type="CE" code="2091086233"/>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="922197836"/>
+      <code code="332743171"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <author/>
+  <entryRelationship>
+    <supply classCode="SPLY">
+      <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+      <id root="MDHT" extension="1996096176"/>
+      <code code="1182067394"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime value="20170828"/>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+          <id root="MDHT" extension="479728263"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </act>
+      </entryRelationship>
+    </supply>
+  </entryRelationship>
+  <referenceRange>
+    <observationRange>
+      <text>Text Value</text>
+    </observationRange>
+  </referenceRange>
+</observation>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::FunctionalStatusResultObservation
+</p>
+<p id="FunctionalStatusResultObservation" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:13889, CONF:13890 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.67"
+</li><li>Consol Functional Status Result Observation text, if present, SHOULD contain zero or one [0..1] reference/@value (CONF:13927)
+</li><li>Consol Functional Status Result Observation This reference/@value SHALL begin with a '#' and SHALL point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:13928)
+</li><li>Consol Functional Status Result Observation If value/@xsi:type=CD, SHOULD contain a code from SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:14234, R2.0=CONF:1098-14234)
+</li><li>SHALL conform to Result Observation template (templateId: 2.16.840.1.113883.10.20.22.4.2)
+</li><li>Consol Functional Status Result Observation SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:13905, R2.0=CONF:1098-13905)
+</li><li>Consol Functional Status Result Observation SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:13906, R2.0=CONF:1098-13906)
+</li><li>Consol Functional Status Result Observation SHALL contain at least one [1..*] id (CONF:13907, R2.0=CONF:1098-13907)
+</li><li>Consol Functional Status Result Observation SHALL contain exactly one [1..1] code (CONF:13908), which SHOULD be selected from (CodeSystem: 2.16.840.1.113883.6.1 LOINC)
+</li><li>Consol Functional Status Result Observation SHOULD contain zero or one [0..1] text (CONF:13926)
+</li><li>Consol Functional Status Result Observation SHALL contain exactly one [1..1] statusCode (R2.0=CONF:1098-13929)/@code="completed" Completed (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:13929, R2.0=CONF:1098-19101)
+</li><li>Consol Functional Status Result Observation SHALL contain exactly one [1..1] effectiveTime (CONF:13930, R2.0=CONF:1098-13930)
+</li><li>Consol Functional Status Result Observation SHALL contain exactly one [1..1] value (CONF:13932, R2.0=CONF:1098-13932)
+</li><li>Consol Functional Status Result Observation SHOULD contain zero or more [0..*] interpretationCode (CONF:13933)
+</li><li>Consol Functional Status Result Observation MAY contain zero or one [0..1] methodCode (CONF:13934)
+</li><li>Consol Functional Status Result Observation MAY contain zero or one [0..1] targetSiteCode with @xsi:type="CE" (CONF:13935)
+</li><li>Consol Functional Status Result Observation MAY contain  [0..1] author such that it  (CONF:13936) Conforms to Author from CDA
+</li><li>Consol Functional Status Result Observation MAY contain  [0..1] entryRelationship such that it  (CONF:13892, CONF:14596, CONF:14218) Contains @typeCode="REFR" REFR, and Conforms to Non Medicinal Supply Activity (templateId: 2.16.840.1.113883.10.20.22.4.50)
+</li><li>Consol Functional Status Result Observation MAY contain  [0..1] entryRelationship such that it  (CONF:13895, R2.0=CONF:1098-13895, CONF:14597, R2.0=CONF:1098-14597, CONF:13897, R2.0=CONF:1098-13897) Contains @typeCode="REFR" REFR, and Conforms to Caregiver Characteristics (templateId: 2.16.840.1.113883.10.20.22.4.72)
+</li><li>Consol Functional Status Result Observation MAY contain  [0..1] entryRelationship such that it  (CONF:14465, R2.0=CONF:1098-14465, CONF:14598, R2.0=CONF:1098-14598, CONF:14466, R2.0=CONF:1098-14466) Contains @typeCode="COMP" COMP, and Conforms to Assessment Scale Observation (templateId: 2.16.840.1.113883.10.20.22.4.69)
+</li><li>Consol Functional Status Result Observation SHOULD contain zero or more [0..*] referenceRange, where its type is Reference Range (CONF:13937)
+</li><li>SHALL conform to CDA Reference Range
+</li><li>Consol Reference Range SHALL contain exactly one [1..1] observationRange, where its type is Observation Range (CONF:13938)
+</li><li>Consol Observation Range observationRange SHALL NOT contain [0..0] code (CONF:13939)
+</li><li>SHALL conform to CDA Observation Range
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Functional Status Observation2</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.67</tt>]</p>
+</body>
+</topic>

@@ -9,79 +9,91 @@
 </prolog>
 <body>
 <section id="knownSubclasses">
+<p>Known Subclasses: <xref href="../NumberOfPressureUlcersObservation2.dita">Number of Pressure Ulcers Observation (V3)</xref></p>
 </section>
 <section id="description">
-<p><lines><i>This clinical statement enumerates the number of pressure ulcers observed in a particular stage.</i></lines></p>
+<p>This clinical statement enumerates the number of pressure ulcers observed in a particular stage.</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:14707, CONF:14708 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.22.4.76"</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14705)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:14707, CONF:14708 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.76"</tt></li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14705, R2.1=CONF:1198-14705)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14706)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14706, R2.1=CONF:1198-14706)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14709)
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14709, R2.1=CONF:1198-14709)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:14767)<tt><b>/@code</b>="2264892003" </tt><i>number of pressure ulcers</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:14768)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:14767)<tt><b>/@code</b>="2264892003" </tt><i>number of pressure ulcers</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:14768)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:14714)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:14714, R2.1=CONF:1198-14714)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:14714, R2.1=CONF:1198-19108)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:14715)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:14715, R2.1=CONF:1198-14715)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with @xsi:type="INT" (CONF:14771)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="INT"</tt> (CONF:14771, R2.1=CONF:1198-14771)
 </li>
-<li><b>MAY</b> contain zero or one [0..1] <tt><b>author</b></tt> (CONF:14717)
-<ol>
-<li>Contains exactly one [1..1] CDA Author</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>entryRelationship</b></tt> (CONF:14718) <ol><li> This entryRelationship <b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="SUBJ" </tt> (CONF:14719)</li><li> This entryRelationship <b>SHALL</b> contain exactly one [1..1] <tt><b>observation</b></tt> (CONF:14720) <ol><li> This observation <b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14721)</li><li> This observation <b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14722)</li><li> This observation <b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with @xsi:type="CD" (CONF:14725), which <b>SHOULD</b> be selected from ValueSet<tt> <xref href="../../terminology/PressureUlcerStage.dita">Pressure Ulcer Stage</xref> 2.16.840.1.113883.11.20.9.35</tt><b> DYNAMIC</b></li></ol> </li></ol>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>author</b></tt> such that it  (CONF:14717, R2.1=CONF:1198-14717)<ol>
+<li>Conforms to Author from CDA</li></ol>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:14718) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="SUBJ" </tt> (CONF:14719)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>observation</b></tt> such that it  (CONF:14720) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14721)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14722)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt> (CONF:14725), which <b>SHOULD</b> be selected from ValueSet<tt> Pressure Ulcer Stage 2.16.840.1.113883.11.20.9.35</tt><b> STATIC</b> 2014-09-01</li></ol></li></ol> 
 </li>
 </ol>
 <ol id="aggregate">
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14705)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14705, R2.1=CONF:1198-14705)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14706)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14706, R2.1=CONF:1198-14706)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14709)
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14709, R2.1=CONF:1198-14709)
 </li>
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:14767)<tt><b>/@code</b>="2264892003" </tt><i>number of pressure ulcers</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:14768)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:14714)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:14714, R2.1=CONF:1198-14714)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:14714, R2.1=CONF:1198-19108)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:14715)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:14715, R2.1=CONF:1198-14715)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with @xsi:type="INT" (CONF:14771)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="INT"</tt> (CONF:14771, R2.1=CONF:1198-14771)
 </li>
-<li><b>MAY</b> contain zero or one [0..1] <tt><b>author</b></tt> (CONF:14717)
+<li><b>MAY</b> contain  [0..1] <tt><b>author</b></tt> such that it  (CONF:14717, R2.1=CONF:1198-14717)
 <ol>
-<li>Contains exactly one [1..1] CDA Author</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>entryRelationship</b></tt> (CONF:14718) <ol><li> This entryRelationship <b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="SUBJ" </tt> (CONF:14719)</li><li> This entryRelationship <b>SHALL</b> contain exactly one [1..1] <tt><b>observation</b></tt> (CONF:14720) <ol><li> This observation <b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14721)</li><li> This observation <b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14722)</li><li> This observation <b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with @xsi:type="CD" (CONF:14725), which <b>SHOULD</b> be selected from ValueSet<tt> <xref href="../../terminology/PressureUlcerStage.dita">Pressure Ulcer Stage</xref> 2.16.840.1.113883.11.20.9.35</tt><b> DYNAMIC</b></li></ol> </li></ol>
+<li>Conforms to Author from CDA</li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:14718) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="SUBJ" </tt> (CONF:14719)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>observation</b></tt> such that it  (CONF:14720) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14721)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14722)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt> (CONF:14725), which <b>SHOULD</b> be selected from ValueSet<tt> Pressure Ulcer Stage 2.16.840.1.113883.11.20.9.35</tt><b> STATIC</b> 2014-09-01</li></ol></li></ol> 
 </li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::NumberOfPressureUlcersObservation</entry>  </row>  <row><entry namest="col0" nameend="col7" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.76]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>classCode</entry><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>ActClassObservation</entry><entry>CONF:14705</entry><entry> ALRT</entry></row> 
-<row><entry>moodCode</entry><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>x_ActMoodDocumentObservation</entry><entry>CONF:14706</entry><entry> DEF</entry></row> 
-<row><entry>code</entry><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CD</entry><entry>CONF:14767</entry><entry>SNOMEDCT 2.16.840.1.113883.6.96 2264892003</entry></row> 
-<row><entry>effectiveTime</entry><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>IVL_TS</entry><entry>CONF:14715</entry><entry> </entry></row> 
-<row><entry>id</entry><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>YES</entry><entry>II</entry><entry>CONF:14709</entry><entry> </entry></row> 
-<row><entry>statusCode</entry><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CS</entry><entry>CONF:14714</entry><entry>ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
-<row><entry>value</entry><entry>value</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>INT</entry><entry>CONF:14771</entry><entry> </entry></row> 
-<row><entry>author</entry><entry>author</entry><entry>0..1</entry><entry>MAY</entry><entry>YES</entry><entry>Author</entry><entry>CONF:14717</entry><entry> </entry></row> 
-<row><entry>entryRelationship</entry><entry>entryRelationship</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>EntryRelationship</entry><entry>CONF:14718</entry><entry> </entry></row> 
-<row><entry>numberOfPressureUlcersObservation</entry><entry>numberOfPressureUlcersObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>NumberOfPressureUlcersObservation</entry><entry>CONF:17096CONF:17097</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::NumberOfPressureUlcersObservation</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.76]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActClassObservation</entry><entry>CONF:14705, R2.1=CONF:1198-14705</entry><entry> ALRT</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActMoodDocumentObservation</entry><entry>CONF:14706, R2.1=CONF:1198-14706</entry><entry> DEF</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:14767</entry><entry>SNOMEDCT 2.16.840.1.113883.6.96 2264892003</entry></row> 
+<row><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_TS</entry><entry>CONF:14715, R2.1=CONF:1198-14715</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:14709, R2.1=CONF:1198-14709</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:14714, R2.1=CONF:1198-14714</entry><entry>ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
+<row><entry>value</entry><entry>1..1</entry><entry>SHALL</entry><entry>INT</entry><entry>CONF:14771, R2.1=CONF:1198-14771</entry><entry> </entry></row> 
+<row><entry>author</entry><entry>0..1</entry><entry>MAY</entry><entry>Author</entry><entry>CONF:14717, R2.1=CONF:1198-14717</entry><entry> </entry></row> 
+<row><entry>entryRelationship</entry><entry>1..1</entry><entry>SHALL</entry><entry>EntryRelationship</entry><entry>CONF:14718</entry><entry> </entry></row> 
+<row><entry>numberOfPressureUlcersObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>NumberOfPressureUlcersObservation</entry><entry>CONF:17096, CONF:17097</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../FunctionalStatusSection.dita">Functional Status Section</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../FunctionalStatusSection2.dita">Functional Status Section2</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../PhysicalExamSection.dita">Physical Exam Section</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref href="../PhysicalExamSection2.dita">Physical Exam Section (V3)</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
   <templateId root="2.16.840.1.113883.10.20.22.4.76"/>
-  <id root="MDHT" extension="442727543"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.76"/>
+  <id root="MDHT" extension="1147825932"/>
   <code code="2264892003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="number of pressure ulcers"/>
+  <text>Text Value</text>
   <statusCode code="completed"/>
   <effectiveTime>
-    <low value="2014"/>
-    <high value="2014"/>
+    <low value="2017"/>
+    <high value="2017"/>
   </effectiveTime>
   <value xsi:type="INT" value="1"/>
   <author/>
   <entryRelationship typeCode="SUBJ">
     <observation classCode="OBS" moodCode="EVN">
-      <code code="721032283"/>
-      <value xsi:type="CD" code="1792019013"/>
+      <code code="162128066"/>
+      <text>Text Value</text>
+      <value xsi:type="CD" code="667572528"/>
     </observation>
   </entryRelationship>
 </observation>]]></codeblock>

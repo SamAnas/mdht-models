@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Vital Signs Organizer (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Organizer: templateId <tt>2.16.840.1.113883.10.20.22.4.26</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Organizer</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.26"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template provides a mechanism for grouping vital signs (e.g., grouping systolic blood pressure and diastolic blood pressure).</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-7281, CONF:1198-10528, CONF:1198-32582 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.26"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../VitalSignsOrganizer.dita">Vital Signs Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.26</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-32740)<tt><b>/@code</b>="46680005" </tt><i>Vital Signs</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1198-32741, CONF:1198-32742) <p><lines><i>Compatibility support for C-CDA R1.1 and C-CDA 2.1: A vitals organizer conformant to both C-CDA 1.1 and C-CDA 2.1 would contain the SNOMED code (46680005) from R1.1 in the root code and a LOINC code in the translation. A vitals organizer conformant to only C-CDA 2.1 would only contain the LOINC code in the root code.</i></lines></p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-7288)<p>Note: The effectiveTime is an interval that spans the effectiveTimes of the contained vital signs observations.</p>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31153)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>SHALL</b> contain  [1..*] <tt><b>component</b></tt> such that it  (CONF:1198-7285, CONF:1198-15946)<ol>
+<li>Conforms to <xref href="../VitalSignObservation2.dita">Vital Sign Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.27:2014-06-09</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../VitalSignsOrganizer.dita">Vital Signs Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.26</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7279, R2.1=CONF:1198-7279)
+<p>
+The vital signs organizer is a cluster of vital signs observations.
+</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:7280, R2.1=CONF:1198-7280)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:7282, R2.1=CONF:1198-7282)
+<p>The organizer shall have an &lt;id> element.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-32740)<tt><b>/@code</b>="46680005" </tt><i>Vital Signs</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1198-32741, CONF:1198-32742) <p><lines><i>Compatibility support for C-CDA R1.1 and C-CDA 2.1: A vitals organizer conformant to both C-CDA 1.1 and C-CDA 2.1 would contain the SNOMED code (46680005) from R1.1 in the root code and a LOINC code in the translation. A vitals organizer conformant to only C-CDA 2.1 would only contain the LOINC code in the root code.</i></lines></p>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (R2.1=CONF:1198-7284)<tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:7284, R2.1=CONF:1198-19120)
+<p>The observations have all been completed.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-7288)
+<p>Note: The effectiveTime is an interval that spans the effectiveTimes of the contained vital signs observations.</p></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31153)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>SHALL</b> contain  [1..*] <tt><b>component</b></tt> such that it  (CONF:1198-7285, CONF:1198-15946)
+<ol>
+<li>Conforms to <xref href="../VitalSignObservation2.dita">Vital Sign Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.27:2014-06-09</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::VitalSignsOrganizer2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.26]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_TS</entry><entry>CONF:1198-7288</entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1198-31153</entry><entry> </entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1198-32741, CONF:1198-32742</entry><entry>SNOMEDCT 2.16.840.1.113883.6.96SNOMEDCT 2.16.840.1.113883.6.96 46680005</entry></row> 
+<row><entry>vitalSignObservation2</entry><entry>1..*</entry><entry>SHALL</entry><entry>VitalSignObservation2</entry><entry>CONF:1198-7285, CONF:1198-15946</entry><entry> </entry></row> 
+<row><entry>vitalSignsOrganizer2</entry><entry>0..*</entry><entry>SHOULD</entry><entry>VitalSignsOrganizer2</entry><entry>CONF:1198-7271, CONF:1198-15517</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../VitalSignsSection2.dita">Vital Signs Section (entries required) (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../VitalSignsSectionEntriesOptional2.dita">Vital Signs Section (entries optional) (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row><row><entry></entry><entry><xref href="../VitalSignObservation2.dita">Vital Sign Observation2</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.26" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.26"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.26" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.26"/>
+  <id root="MDHT" extension="1188750395"/>
+  <code code="46680005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Vital signs"/>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="722508133"/>
+      <code code="979841368"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <component>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+      <id root="MDHT" extension="1261070418"/>
+      <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+      <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+      <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <author/>
+    </observation>
+  </component>
+</organizer>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::VitalSignsOrganizer
+</p>
+<p id="VitalSignsOrganizer" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:7281, CONF:10528 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.26"
+</li><li>SHALL conform to CDA Organizer
+</li><li>Consol Vital Signs Organizer SHALL contain exactly one [1..1] @classCode="CLUSTER"  (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:7279, R2.1=CONF:1198-7279)
+</li><li>Consol Vital Signs Organizer SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:7280, R2.1=CONF:1198-7280)
+</li><li>Consol Vital Signs Organizer SHALL contain at least one [1..*] id (CONF:7282, R2.1=CONF:1198-7282)
+</li><li>Consol Vital Signs Organizer SHALL contain exactly one [1..1] code/@code="46680005" Vital signs (CodeSystem: 2.16.840.1.113883.6.96 SNOMEDCT) (CONF:7283)
+</li><li>Consol Vital Signs Organizer SHALL contain exactly one [1..1] statusCode (R2.1=CONF:1198-7284)/@code="completed"  (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:7284, R2.1=CONF:1198-19120)
+</li><li>Consol Vital Signs Organizer SHALL contain exactly one [1..1] effectiveTime (CONF:7288)
+</li><li>Consol Vital Signs Organizer SHALL contain  [1..*] component (Vital Sign) such that it  (CONF:7285, CONF:15946) Conforms to Vital Sign Observation (templateId: 2.16.840.1.113883.10.20.22.4.27)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Vital Signs Organizer (V3)</ph></p>
+<p id="shortdesc">[Organizer: templateId <tt>2.16.840.1.113883.10.20.22.4.26</tt>]</p>
+</body>
+</topic>

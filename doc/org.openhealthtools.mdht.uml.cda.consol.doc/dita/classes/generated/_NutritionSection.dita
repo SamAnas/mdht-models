@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Nutrition Section - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.57</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.2.57"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>The Nutrition Section represents diet and nutrition information including special diet requirements and restrictions (e.g., texture modified diet, liquids only, enteral feeding). It also represents the overall nutritional status of the patient and nutrition assessment findings.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-30477, CONF:1098-30478 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.57"</tt></li></ol></li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-30318)<tt><b>/@code</b>="61144-2" </tt><i>Diet and nutrition</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-30319, CONF:1098-30320)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1098-31042)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:1098-31043)
+</li>
+<li>
+If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1098-30321, CONF:1098-30322)<ol>
+<li>Conforms to <xref href="../NutritionalStatusObservation.dita">Nutritional Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.124</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-30318)<tt><b>/@code</b>="61144-2" </tt><i>Diet and nutrition</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-30319, CONF:1098-30320)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1098-31042)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:1098-31043)
+</li>
+<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1098-30321, CONF:1098-30322)
+<ol>
+<li>Conforms to <xref href="../NutritionalStatusObservation.dita">Nutritional Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.124</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::NutritionSection</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.57]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1098-30318</entry><entry>LOINC 2.16.840.1.113883.6.1 61144-2</entry></row> 
+<row><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>ST</entry><entry>CONF:1098-31042</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.124]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>NutritionalStatusObservation</entry><entry>CONF:1098-30321CONF:1098-30322</entry><entry> </entry></row> 
+<row><entry>nutritionSection</entry><entry>0..1</entry><entry>SHOULD</entry><entry>NutritionSection</entry><entry>CONF:1198-30780, CONF:1198-30781</entry><entry> </entry></row> 
+<row><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>StrucDocText</entry><entry>CONF:1098-31043</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ConsultationNote2.html">Consultation Note (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ContinuityOfCareDocument2.html">Continuity of Care Document (CCD) (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/DischargeSummary2.html">Discharge Summary (V3)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ProgressNote2.html">Progress Note (V3)</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReferralNote.html">Referral Note (V2)</xref></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/TransferSummary.html">Transfer Summary (V2)</xref></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../NutritionalStatusObservation.dita">Nutritional Status Observation</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
+  <templateId root="2.16.840.1.113883.10.20.22.2.57"/>
+  <code code="61144-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diet and nutrition"/>
+  <title>Diet and nutrition</title>
+  <text>mXynAYFl ZPNVZLrT FHCrQb oGkqmwEg LWlBAbPRt yHiJavXse QwqmMDa tyNyPm AHuKV vQPFA zXaAZG KDlembi avrdTB msauFckU KcCFQFBgK zCnHLml chyFMJJ jREBswEw ejKRzmq OBfFqk aetGL pTzzuuPb nyUfahKYH fhzmxT hLsSTokxo TVxWaLGBG cEHDnySMW DbVwAPh NxlxULG sHXsxQXTB ESfbXVo YYCXwHKi hKBvErf vVFXvL xzpoBluZK VjiVOo JMTwCX xHlrd rLXytnY UqRYBva yOEBgDm LFYCglfw AkQpmZASt uSINkMxa MxjNop ChoBGuO JUooPSyy 
+qzYDHm zSahRmP GbDLa KfkTsN YkqEo QNMHKrY yJMVSp gKlJskhUN rNJgA WvJDnIYqz vtkocG bQlXQFjX PUWAan URLmQIeiQ YaGkW YuVRrAnue zDFbdluUH qVPeN okqTaFxBt dOLEp XrGleAxvP UUdji FTFdJLiP BizoD IIguNhlW KtKPF MzwUIc SVuLloiu gJLSjthO PTaaqaYv gbhTNPsxl fsUDDu ktHHHvyxm EbIokQdZ QuJcLEYB hMLxGl SrVdomOq PZLiiw xEoaRYngO QsduXKS wTzWy DpAsikHL NhZVeOqlK CvXnO bVRbEBjrW AiwDGBMk SWMLXYYIS kXetRPio pNBOCpOSl feXYG 
+DQEWB Rcdyu dECxbt ZRjsav cwOWErSr kDWnlTE PeiTv ATJHxY JtRsi qrnTOsUwa KMNyCz NGpOOulSr JlbGfWEs QHWIJOGU fXPAH wtuvrVTA CncqLr xQmUon AGLoUj NChsYHvV FgoYxY EehJs fnmjSzOJ IqnkPAer GqaqHuPkA ccyRwuv EZKbMhLja eZCLgUgl MYGjlTLQX tNfuHbEky LfuMYM KHqQf ZTkjmM IulqMvyYs JQheM uPXtk eGLmPVnR IhvGQHS wDaAv NXWJEFFCp tNWdFnd HyhnEhnW zcpkYPOdO keTNZoDas YUjzYV VCpDO zBZxlawFC NvLymPul sOCed ChbfPqWQ SWpsU dflpemPJ zCwXnUBf 
+tZjVkYwdG nRZgVgdB AlZIVyYX jvTdSS xLKBS menKBcyNJ vYaNV aiYRtUkO cFzGzR qvcRl HWPCFgR czAKBOsh KwdpSWWAE joSpPHXV uANesmBo TbAew sbKWec tKaRG xSCfY tYhciS QUZsxtf OKoDiQP KnnTdqTK wuwNqILEc CSajEnY xhMyC FUISlVRc lfyKIb xSClalgIf JgQCrws KdlVXxur AtoPiv GBLHWlXc olGsmXDr 
+</text>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.124"/>
+      <code code="75305-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition status"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+          <code code="75303-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition assessment"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+</section>
+<p><ph id="classformalname">Nutrition Section</ph></p>
+<p id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.57</tt>]</p>
+</body>
+</topic>

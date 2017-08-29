@@ -1,0 +1,1472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Operative Note - conformance rules" />
+<meta name="abstract" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.7]" />
+<meta name="description" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.7]" />
+<meta name="DC.Coverage" content="ClinicalDocument" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css" />
+<title>Operative Note - conformance rules</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+<h1 class="title topictitle1" id="ariaid-title1">Operative Note - conformance rules</h1>
+
+
+
+<div class="body"><p class="shortdesc">[ClinicalDocument: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.1.7</tt>]</p>
+
+<div class="section" id="classId__knownSubclasses">
+</div>
+
+<div class="section" id="classId__description">
+<p class="p">The Operative Note Fluids section may be used to record fluids administered during the surgical procedure.</p>
+
+</div>
+
+<ol class="ol" id="classId__conformance">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:8483, CONF:10048 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.1.7"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/GeneralHeaderConstraints.html">General Header Constraints</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:17187), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> SurgicalOperationNoteDocumentTypeCode 2.16.840.1.113883.11.20.1.1</tt><strong class="ph b"> DYNAMIC</strong> (CONF:17188)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:8486) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:8493) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (i., CONF:8487)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8494)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:8489) <p class="p"><p class="lines"><em class="ph i">The performer represents clinicians who actually and principally carry out the serviceEvent.  Typically, these are clinicians who have surgical privileges in their institutions such as Surgeons, Obstetrician/Gynecologists, and Family Practice Physicians.  The performer may also be Nonphysician Providers (NPP) who have surgical privileges. There may be more than one primary performer in the case of complicated surgeries.  There are occasionally co-surgeons.  Usually they will be billing separately and will each dictate their own notes.  An example may be spinal surgery , where a general surgeon and an orthopaedic surgeon both are present and billing off the same Current Procedural Terminology (CPT) codes.  Typically two Operative Notes are generated; however, each will list the other as a co-surgeon.</em></p>
+</p>
+<ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PPRF" </tt> (CONF:8495)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:10917) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8490, CONF:8491), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> ProviderType 2.16.840.1.113883.3.88.12.3221.4</tt><strong class="ph b"> DYNAMIC</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li">i. The value of Clinical Document /documentationOf/serviceEvent/code <strong class="ph b">SHALL</strong> be from ICD9 CM Procedures (CodeSystem 2.16.840.1.113883.6.104), CPT-4 (CodeSystem 2.16.840.1.113883.6.12), or values descending from 71388002 (Procedure) from the SNOMED CT (CodeSystem 2.16.840.1.113883.6.96) ValueSet Procedure 2.16.840.1.113883.3.88.12.80.28 DYNAMIC. (CONF:8487)</li>
+<li class="li">The serviceEvent/effectiveTime <strong class="ph b">SHALL</strong> be present with effectiveTime/low (CONF:8488)</li>
+<li class="li">If a width is not present, the serviceEvent/effectiveTime <strong class="ph b">SHALL</strong> include effectiveTime/high. (CONF:10058)</li>
+<li class="li">When only the date and the length of the procedure are known a width element <strong class="ph b">SHALL</strong> be present and the serviceEvent/effectiveTime/high <strong class="ph b">SHALL</strong> not be present. (CONF:10060)</li>
+<li class="li">Any assistants <strong class="ph b">SHALL</strong> be identified and <strong class="ph b">SHALL</strong> be identified as secondary performers (SPRF)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHALL</strong> be precise to the day (CONF:10136, CONF:10127)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHOULD</strong> be precise to the minute (CONF:10136, CONF:10128)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">MAY</strong> be precise to the second (CONF:10136, CONF:10129)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). If more precise than day, <strong class="ph b">SHOULD</strong> include time-zone offset (CONF:10136, CONF:10130)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9883)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../AnesthesiaSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.25]">Anesthesia Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.25</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9885)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ComplicationsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.37]">Complications Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.37</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9913)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../PostoperativeDiagnosisSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.35]">Postoperative Diagnosis Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.35</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9888)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../PreoperativeDiagnosisSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.34]">Preoperative Diagnosis Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.34</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9890)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureEstimatedBloodLossSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.18.2.9]">Procedure Estimated Blood Loss Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.18.2.9</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9892)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureFindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.28]">Procedure Findings Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.28</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9894)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureSpecimensTakenSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.31]">Procedure Specimens Taken Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.31</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9896)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureDescriptionSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.27]">Procedure Description Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.27</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9898)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureImplantsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.40]">Procedure Implants Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.40</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9900)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../OperativeNoteFluidSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.12]">Operative Note Fluid Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.7.12</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9902)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../OperativeNoteSurgicalProcedureSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.14]">Operative Note Surgical Procedure Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.7.14</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9904)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../PlanOfCareSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]">Plan Of Care Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.10</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9906)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../PlannedProcedureSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.30]">Planned Procedure Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.30</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9908)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureDispositionSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.18.2.12]">Procedure Disposition Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.18.2.12</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9910)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureIndicationsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.29]">Procedure Indications Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.29</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9912)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../SurgicalDrainsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.13]">Surgical Drains Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.7.13</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+<ol class="ol" id="classId__aggregate">
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/GeneralHeaderConstraints.html">General Header Constraints</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1</tt>)</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">realmCode</strong></tt><tt class="ph tt"><strong class="ph b">/@code</strong>="US" </tt> (CONF:16791)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">typeId</strong></tt> (CONF:5361, R2.1=CONF:1198-5361)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5363, R2.1=CONF:1198-5363)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:17187), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> SurgicalOperationNoteDocumentTypeCode 2.16.840.1.113883.11.20.1.1</tt><strong class="ph b"> DYNAMIC</strong> (CONF:17188)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">title</strong></tt> (CONF:5254)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:5256, R2.1=CONF:1198-5256) <p class="p"><p class="lines"><em class="ph i">Signifies the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created. The time when the transform occurred is not currently represented in CDA</em></p>
+</p>
+
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">confidentialityCode</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> HL7 BasicConfidentialityKind 2.16.840.1.113883.1.11.16926</tt><strong class="ph b"> STATIC</strong> 2010-04-21 (CONF:5259, R2.1=CONF:1198-5259)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">languageCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Language 2.16.840.1.113883.1.11.11526</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5372, R2.1=CONF:1198-5372, DSTU:806)
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">setId</strong></tt> (CONF:5261, R2.1=CONF:1198-5261)
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">versionNumber</strong></tt> (CONF:5264, R2.1=CONF:1198-5264)
+</li>
+
+<li class="li">contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt>, where its type is Component2
+<ol class="ol" type="a">
+<li class="li">Conforms to Component2</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">recordTarget</strong></tt> such that it  (CONF:5266) <p class="p"><p class="lines"><em class="ph i">The recordTarget records the patient whose health information is described by the clinical document; it must contain at least one patientRole element.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">patientRole</strong></tt> such that it  (CONF:5268) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5268, R2.1=CONF:1198-5268)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5271, R2.1=CONF:1198-5271)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5280, R2.1=CONF:1198-5280)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">patient</strong></tt> such that it  (CONF:1198-5283) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5284, CONF:10411, R2.1=CONF:1198-5284, DSTU:808)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">administrativeGenderCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Administrative Gender (HL7 V3) 2.16.840.1.113883.1.11.1</tt><strong class="ph b"> DYNAMIC</strong> (CONF:6394, R2.1=CONF:1198-6394)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">birthTime</strong></tt> (CONF:5298)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">maritalStatusCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> HL7 Marital Status 2.16.840.1.113883.1.11.12212</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5303, R2.1=CONF:1198-5303)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">religiousAffiliationCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> HL7 Religious Affiliation 2.16.840.1.113883.1.11.19185</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5317, R2.1=CONF:1198-5317)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">raceCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Race 2.16.840.1.113883.1.11.14914</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5322)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">sDTCRaceCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Race 2.16.840.1.113883.1.11.14914</tt><strong class="ph b"> DYNAMIC</strong> (CONF:7263, R2.1=CONF:1198-7263)<p class="p"><p class="lines"><em class="ph i">Note: The sdtc:raceCode is only used to record additional values when the patient has indicated multiple races or additional race detail beyond the five categories required for Meaningful Use Stage 2. The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the additional raceCode elements.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">ethnicGroupCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Ethnicity Value Set 2.16.840.1.114222.4.11.837</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5323)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">guardian</strong></tt> such that it  (CONF:5325) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:5326)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5359, CONF:10413, R2.1=CONF:1198-5359)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt></li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">guardianPerson</strong></tt> such that it  (CONF:5385, R2.1=CONF:1198-5385) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5386, R2.1=CONF:1198-5386)</li>
+<li class="li">The content of name <strong class="ph b">SHALL</strong> be a conformant US Realm Person Name (PTN.US.FIELDED) (2.16.840.1.113883.10.20.22.5.1.1) (CONF:10414, R2.1=CONF:1198-5386)</li>
+</ol>
+</li>
+<li class="li">The guardian code, if present, <strong class="ph b">SHALL</strong> be selected from ValueSet PersonalRelationshipRoleType 2.16.840.1.113883.1.11.19563 DYNAMIC or ValueSet Responsible Party 2.16.840.1.113883.1.11.19830 DYNAMIC (CONF:5326)</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">birthplace</strong></tt> such that it  (CONF:5395) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">place</strong></tt> such that it  (CONF:5396) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5397, R2.1=CONF:1198-5397)</li>
+<li class="li">This addr <strong class="ph b">SHOULD</strong> contain zero or one [0..1] country, which <strong class="ph b">SHALL</strong> be selected from ValueSet Country 2.16.840.1.113883.3.88.12.80.63 DYNAMIC (CONF:1198-5404, R2.1=CONF:1198-5404)</li>
+<li class="li">This addr <strong class="ph b">MAY</strong> contain zero or one [0..1] postalCode, which <strong class="ph b">SHALL</strong> be selected from ValueSet PostalCodeValueSet 2.16.840.1.113883.3.88.12.80.2 DYNAMIC (CONF:5403, R2.1=CONF:1198-5403)</li>
+<li class="li">If country is US, this addr <strong class="ph b">SHALL</strong> contain exactly one [1..1] state, which <strong class="ph b">SHALL</strong> be selected from ValueSet StateValueSet 2.16.840.1.113883.3.88.12.80.1 DYNAMIC (CONF:5402)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">languageCommunication</strong></tt> such that it  (CONF:5406) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">languageCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Language 2.16.840.1.113883.1.11.11526</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5407, DSTU:806)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">modeCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> HL7 LanguageAbilityMode 2.16.840.1.113883.1.11.12249</tt><strong class="ph b"> STATIC</strong> 1 (CONF:5409, R2.1=CONF:1198-5409)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">proficiencyLevelCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> LanguageAbilityProficiency 2.16.840.1.113883.1.11.12199</tt><strong class="ph b"> DYNAMIC</strong> (CONF:9965, R2.1=CONF:1198-9965)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">preferenceInd</strong></tt> (CONF:5414)</li>
+</ol>
+</li>
+<li class="li">If sdtc:raceCode is present, then the patient <strong class="ph b">SHALL</strong> contain [1..1] raceCode (CONF:31347, R2.1=CONF:1198-31347)</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">providerOrganization</strong></tt> such that it  (CONF:5416, R2.1=CONF:1198-5416) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5417, R2.1=CONF:1198-5417)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5419, R2.1=CONF:1198-5419)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5420, R2.1=CONF:1198-5420)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5422, R2.1=CONF:1198-5422)</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:9996, R2.1=CONF:1198-16820)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">componentOf</strong></tt> such that it  (CONF:9955) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">encompassingEncounter</strong></tt> such that it  (CONF:9956) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:9959, R2.1=CONF:1198-9959)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:9958, R2.1=CONF:1198-9958)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:5444) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:5445, R2.1=CONF:1198-5445) <p class="p"><p class="lines"><em class="ph i">The content SHALL be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:16866).</em></p>
+</p>
+<p class="p"><p class="lines"><em class="ph i">The content SHALL be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:16866).</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedAuthor</strong></tt> such that it  (CONF:5448) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5449, R2.1=CONF:1198-5449)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:16787), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><strong class="ph b"> DYNAMIC</strong> (CONF:16788)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5452, R2.1=CONF:1198-5452)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5428, R2.1=CONF:1198-5428)</li>
+<li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedAuthoringDevice</strong></tt> such that it  <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">manufacturerModelName</strong></tt> (CONF:16784, R2.1=CONF:1198-16784)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">softwareName</strong></tt> (CONF:16785, R2.1=CONF:1198-16785)</li>
+</ol>
+</li>
+<li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:16789, R2.1=CONF:1198-16789)</li>
+</ol>
+</li>
+<li class="li">There <strong class="ph b">SHALL</strong> be exactly one assignedAuthor/assignedPerson or exactly one assignedAuthor/assignedAuthoringDevice (CONF:16790, R2.1=CONF:1198-16790)</li>
+<li class="li">If this assignedAuthor is an assignedPerson, the assignedAuthor <strong class="ph b">SHOULD</strong> contain zero to one [0..1] id 'such that it': <strong class="ph b">MAY</strong> contain zero or one [0..1] @nullFlavor="UNK" Unknown (CodeSystem: HL7NullFlavor 2.16.840.1.113883.5.1008), <strong class="ph b">SHALL</strong> contain exactly one [1..1] @root="2.16.840.1.113883.4.6" National Provider Identifier, and <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @extension (CONF:31135, CONF:31694, R2.1=CONF:1198-32882, R2.1=CONF:1198-32883, R2.1=CONF:1198-32884, R2.1=CONF:1198-32885)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">dataEnterer</strong></tt> such that it  (CONF:5441) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:5442) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5443, R2.1=CONF:1198-5443)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.101 NUCC Health Care Provider Taxonomy</tt>) (CONF:9944)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5460, R2.1=CONF:1198-5460)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5466, R2.1=CONF:1198-5466)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  (CONF:5469, R2.1=CONF:1198-5469) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5470, R2.1=CONF:1198-5470)</li>
+</ol>
+</li>
+<li class="li">id <strong class="ph b">SHOULD</strong> include zero or one [0..1] @root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16821, R2.1=CONF:1198-16821)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">custodian</strong></tt> such that it  (CONF:5519) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedCustodian</strong></tt> such that it  (CONF:5520, R2.1=CONF:1198-5520) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">representedCustodianOrganization</strong></tt> such that it  (CONF:5521, R2.1=CONF:1198-5521) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5522, R2.1=CONF:1198-5522)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5524, R2.1=CONF:1198-5524)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5525, R2.1=CONF:1198-5525)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5559, R2.1=CONF:1198-5559)</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> include zero or one [0..1] @root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16822, R2.1=CONF:1198-16822)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">informationRecipient</strong></tt> such that it  (CONF:5565) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">intendedRecipient</strong></tt> such that it  (CONF:5566) <ol class="ol" type="i"><li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">informationRecipient</strong></tt> such that it  (CONF:5568, R2.1=CONF:1198-5567) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5470, R2.1=CONF:1198-5568)</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">receivedOrganization</strong></tt> such that it  (CONF:5577, R2.1=CONF:1198-5577) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5578, R2.1=CONF:1198-5578)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">legalAuthenticator</strong></tt> such that it  (CONF:5579) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:5580, R2.1=CONF:1198-5580)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">signatureCode</strong></tt> (CONF:5583, R2.1=CONF:1198-5583)<tt class="ph tt"><strong class="ph b">/@code</strong>="S" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.89 Participationsignature</tt>) (CONF:5584, R2.1=CONF:1198-5584)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:5585, R2.1=CONF:1198-5585) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5586, R2.1=CONF:1198-5586)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><strong class="ph b"> DYNAMIC</strong> (CONF:17000, R2.1=CONF:1198-17000)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5589, R2.1=CONF:1198-5589)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5595, R2.1=CONF:1198-5595)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  (CONF:5597, R2.1=CONF:1198-5597) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5598, R2.1=CONF:1198-5598)</li>
+</ol>
+</li>
+<li class="li">The id <strong class="ph b">MAY</strong> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16823, R2.1=CONF:1198-16823)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">authenticator</strong></tt> such that it  (CONF:5607) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:5608, R2.1=CONF:1198-5608)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">signatureCode</strong></tt> (CONF:5610, R2.1=CONF:1198-5610)<tt class="ph tt"><strong class="ph b">/@code</strong>="S" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.89 Participationsignature</tt>) (CONF:5611, R2.1=CONF:1198-5611)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:5612, R2.1=CONF:1198-5612) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5613, R2.1=CONF:1198-5613)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:16825, R2.1=CONF:1198-16825), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><strong class="ph b"> DYNAMIC</strong> (CONF:16826, R2.1=CONF:1198-16826)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5616, R2.1=CONF:1198-5616)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5622, R2.1=CONF:1198-5622)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  (CONF:5624, R2.1=CONF:1198-5624) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5625, R2.1=CONF:1198-5625)</li>
+</ol>
+</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16824, R2.1=CONF:1198-16824)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">informant</strong></tt> such that it  (CONF:8001) <ol class="ol" type="a"><li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:9945, R2.1=CONF:1198-9945)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.101 NUCC Health Care Provider Taxonomy</tt>) (CONF:9947)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:8220)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  (CONF:8221, R2.1=CONF:1198-8221) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:8222, CONF:10420, R2.1=CONF:1198-8222)</li>
+</ol>
+</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:9946, R2.1=CONF:1198-9946)</li>
+</ol>
+</li>
+<li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">relatedEntity</strong></tt> such that it  <ol class="ol" type="i"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:8220)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">relatedPerson</strong></tt> such that it  (CONF:8221) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:8222, CONF:10420, R2.1=CONF:1198-8222)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">SHALL</strong> satisfy: contain exactly one [1..1] assignedEntity OR exactly one [1..1] relatedEntity (CONF:8002)</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:10003) <ol class="ol" type="a"><li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:10004, R2.1=CONF:1198-10004)</li>
+<li class="li">Such participants, if present, <strong class="ph b">SHALL</strong> have an associatedPerson or scopingOrganization element under participant/associatedEntity. (CONF:10006)</li>
+<li class="li">Unless otherwise specified by the document specific header constraints, when participant/@typeCode is IND, associatedEntity/@classCode <strong class="ph b">SHALL</strong> be selected from ValueSet INDRoleclassCodes 2.16.840.1.113883.11.20.9.33 STATIC 2011-09-30. (CONF:10007)</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">inFulfillmentOf</strong></tt> such that it  (CONF:9952) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">order</strong></tt> such that it  (CONF:9953, R2.1=CONF:1198-9953) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:9954, R2.1=CONF:1198-9954)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:14835) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:14836) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:14837, R2.1=CONF:1198-14837)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:14839) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong></tt> (CONF:14840, R2.1=CONF:1198-14840)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">functionCode</strong></tt> (CONF:16818), which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.88 ParticipationFunction</tt>) (CONF:16819)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:14841) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:14846, R2.1=CONF:1198-14846)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:14842), which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.101 NUCC Health Care Provider Taxonomy</tt>) (CONF:14843)</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:14847, R2.1=CONF:1198-14847)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li">effectiveTime <strong class="ph b">SHALL</strong> contain exactly one [1..1] low (CONF:14838, R2.1=CONF:1198-14838)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">authorization</strong></tt> such that it  (CONF:16792) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">consent</strong></tt> such that it  (CONF:16793, R2.1=CONF:1198-16793) <ol class="ol" type="i"><li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:16794, R2.1=CONF:1198-16794)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:16795, R2.1=CONF:1198-16795)<p class="p"><p class="lines"><em class="ph i">The type of consent (e.g., a consent to perform the related serviceEvent) is conveyed in consent/code.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:16797, R2.1=CONF:1198-16797)<tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:16798, R2.1=CONF:1198-16798)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:8486) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:8493) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (i., CONF:8487)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8494)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:8489) <p class="p"><p class="lines"><em class="ph i">The performer represents clinicians who actually and principally carry out the serviceEvent.  Typically, these are clinicians who have surgical privileges in their institutions such as Surgeons, Obstetrician/Gynecologists, and Family Practice Physicians.  The performer may also be Nonphysician Providers (NPP) who have surgical privileges. There may be more than one primary performer in the case of complicated surgeries.  There are occasionally co-surgeons.  Usually they will be billing separately and will each dictate their own notes.  An example may be spinal surgery , where a general surgeon and an orthopaedic surgeon both are present and billing off the same Current Procedural Terminology (CPT) codes.  Typically two Operative Notes are generated; however, each will list the other as a co-surgeon.</em></p>
+</p>
+<ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PPRF" </tt> (CONF:8495)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:10917) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8490, CONF:8491), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> ProviderType 2.16.840.1.113883.3.88.12.3221.4</tt><strong class="ph b"> DYNAMIC</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li">i. The value of Clinical Document /documentationOf/serviceEvent/code <strong class="ph b">SHALL</strong> be from ICD9 CM Procedures (CodeSystem 2.16.840.1.113883.6.104), CPT-4 (CodeSystem 2.16.840.1.113883.6.12), or values descending from 71388002 (Procedure) from the SNOMED CT (CodeSystem 2.16.840.1.113883.6.96) ValueSet Procedure 2.16.840.1.113883.3.88.12.80.28 DYNAMIC. (CONF:8487)</li>
+<li class="li">The serviceEvent/effectiveTime <strong class="ph b">SHALL</strong> be present with effectiveTime/low (CONF:8488)</li>
+<li class="li">If a width is not present, the serviceEvent/effectiveTime <strong class="ph b">SHALL</strong> include effectiveTime/high. (CONF:10058)</li>
+<li class="li">When only the date and the length of the procedure are known a width element <strong class="ph b">SHALL</strong> be present and the serviceEvent/effectiveTime/high <strong class="ph b">SHALL</strong> not be present. (CONF:10060)</li>
+<li class="li">Any assistants <strong class="ph b">SHALL</strong> be identified and <strong class="ph b">SHALL</strong> be identified as secondary performers (SPRF)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHALL</strong> be precise to the day (CONF:10136, CONF:10127)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHOULD</strong> be precise to the minute (CONF:10136, CONF:10128)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">MAY</strong> be precise to the second (CONF:10136, CONF:10129)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). If more precise than day, <strong class="ph b">SHOULD</strong> include time-zone offset (CONF:10136, CONF:10130)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9883)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../AnesthesiaSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.25]">Anesthesia Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.25</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9885)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ComplicationsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.37]">Complications Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.37</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9913)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../PostoperativeDiagnosisSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.35]">Postoperative Diagnosis Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.35</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9888)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../PreoperativeDiagnosisSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.34]">Preoperative Diagnosis Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.34</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9890)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureEstimatedBloodLossSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.18.2.9]">Procedure Estimated Blood Loss Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.18.2.9</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9892)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureFindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.28]">Procedure Findings Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.28</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9894)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureSpecimensTakenSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.31]">Procedure Specimens Taken Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.31</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9896)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureDescriptionSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.27]">Procedure Description Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.27</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9898)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureImplantsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.40]">Procedure Implants Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.40</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9900)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../OperativeNoteFluidSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.12]">Operative Note Fluid Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.7.12</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9902)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../OperativeNoteSurgicalProcedureSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.14]">Operative Note Surgical Procedure Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.7.14</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9904)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../PlanOfCareSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]">Plan Of Care Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.10</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9906)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../PlannedProcedureSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.30]">Planned Procedure Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.30</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9908)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureDispositionSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.18.2.12]">Procedure Disposition Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.18.2.12</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9910)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../ProcedureIndicationsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.29]">Procedure Indications Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.29</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9912)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../SurgicalDrainsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.13]">Surgical Drains Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.7.13</tt>)</li>
+</ol>
+</li>
+
+<li class="li">typeId <strong class="ph b">SHALL</strong> contain exactly one [1..1] @root="2.16.840.1.113883.1.3" (CONF:5250, R2.1=CONF:1198-5250)</li>
+
+<li class="li">typeId <strong class="ph b">SHALL</strong> contain exactly one [1..1] @extension="POCD_HD000040" (CONF:5251, R2.1=CONF:1198-5251)</li>
+
+<li class="li">id <strong class="ph b">SHALL</strong> be a globally unique identifier for the document (CONF:9991, R2.1=CONF:1198-9991)</li>
+
+<li class="li">code <strong class="ph b">SHALL</strong> specify the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note). (CONF:9992, R2.1=CONF:1198-9992)</li>
+
+<li class="li">If setId is present versionNumber <strong class="ph b">SHALL</strong> be present (CONF:6380, R2.1=CONF:1198-6380)</li>
+
+<li class="li">If versionNumber is present setId <strong class="ph b">SHALL</strong> be present (CONF:6387, R2.1=CONF:1198-6387)</li>
+
+</ol>
+
+<div class="section" id="classId__tableconformance"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col style="width:25%" /><col style="width:8.333333333333332%" /><col style="width:8.333333333333332%" /><col style="width:16.666666666666664%" /><col style="width:16.666666666666664%" /><col style="width:25%" /></colgroup><thead class="thead" style="text-align:left;"> <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d555892e2733">consol::OperativeNote</th>
+  </tr>
+  <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d555892e2738">cda::clinicaldocument[cda:templateId/@root = 2.16.840.1.113883.10.20.22.1.1]/</th>
+  </tr>
+ <tr class="row"><th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d555892e2743">XPath</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d555892e2745">Card.</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d555892e2747">Verb</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d555892e2749">Data Type</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d555892e2751">CONF#</th>
+<th class="entry cell-norowborder" style="text-align:left;vertical-align:top;" id="d555892e2753">Fixed Value</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">code</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">CE</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:17188</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> null</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">anesthesiaSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">AnesthesiaSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9883</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">complicationsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">ComplicationsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9885</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">documentationOf</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..*</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">DocumentationOf</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:8486</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">operativeNoteFluidSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">OperativeNoteFluidSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9900</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">operativeNoteSurgicalProcedureSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">OperativeNoteSurgicalProcedureSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9902</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">plannedProcedureSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">PlannedProcedureSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9906</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">planOfCareSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">PlanOfCareSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9904</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">postoperativeDiagnosisSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">PostoperativeDiagnosisSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9913</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">preoperativeDiagnosisSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">PreoperativeDiagnosisSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9888</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">procedureDescriptionSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">ProcedureDescriptionSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9896</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">procedureDispositionSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">ProcedureDispositionSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9908</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">procedureEstimatedBloodLossSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">ProcedureEstimatedBloodLossSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9890</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">procedureFindingsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">ProcedureFindingsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9892</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">procedureImplantsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">ProcedureImplantsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9898</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">procedureIndicationsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">ProcedureIndicationsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9910</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">procedureSpecimensTakenSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">ProcedureSpecimensTakenSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9894</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2743 ">surgicalDrainsSection</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2745 ">0..1</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2747 ">MAY</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2749 ">SurgicalDrainsSection</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2751 ">CONF:9912</td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d555892e2733 d555892e2738 d555892e2753 "> </td>
+</tr>
+ 
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="section" id="classId__contextTable"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col /><col /></colgroup><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry nocellnorowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d555892e3021">Contained By</th>
+<th class="entry cell-norowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d555892e3023">Contains</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../AdvanceDirectiveObservation2.html">Advance Directive Observation (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../AdvanceDirectiveOrganizer.html" title="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.108]">Advance Directive Organizer (V2)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../AnesthesiaSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.25]">Anesthesia Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../CodeObservations.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.13]">Code Observations</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ComplicationsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.37]">Complications Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ExternalDocumentReference.html">External Document Reference</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../FetusSubjectContext.html">Fetus Subject Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ImmunizationMedicationInformation.html">Immunization Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ImmunizationMedicationInformation2.html">Immunization Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../MedicationInformation.html">Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../MedicationInformation2.html">Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ObserverContext.html">Observer Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../OperativeNoteFluidSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.12]">Operative Note Fluid Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../OperativeNoteSurgicalProcedureSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.14]">Operative Note Surgical Procedure Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PhysicianReadingStudyPerformer2.html">Physician Reading Study Performer2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PhysicianofRecordParticipant.html">Physicianof Record Participant</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PhysicianofRecordParticipant2.html">Physicianof Record Participant2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PlanOfCareSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]">Plan Of Care Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PlannedProcedureSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.30]">Planned Procedure Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PolicyActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PostoperativeDiagnosisSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.35]">Postoperative Diagnosis Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PreconditionForSubstanceAdministration.html">Precondition For Substance Administration</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PreconditionForSubstanceAdministration2.html">Precondition For Substance Administration2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../PreoperativeDiagnosisSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.34]">Preoperative Diagnosis Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureActivityAct2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.12]">Procedure Activity Act2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureActivityObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.13]">Procedure Activity Observation2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureActivityProcedure2.html" title="[Procedure: templateId 2.16.840.1.113883.10.20.22.4.14]">Procedure Activity Procedure2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureContext.html" title="[Act: templateId 2.16.840.1.113883.10.20.6.2.5]">Procedure Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureDescriptionSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.27]">Procedure Description Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureDispositionSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.18.2.12]">Procedure Disposition Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureEstimatedBloodLossSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.18.2.9]">Procedure Estimated Blood Loss Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureFindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.28]">Procedure Findings Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureImplantsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.40]">Procedure Implants Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureIndicationsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.29]">Procedure Indications Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../ProcedureSpecimensTakenSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.31]">Procedure Specimens Taken Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../QuantityMeasurementObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.14]">Quantity Measurement Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../SOPInstanceObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.8]">SOP Instance Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../SubstanceAdministeredAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.118]">Substance Administered Act</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../SurgicalDrainsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.7.13]">Surgical Drains Section</a></td>
+</tr>
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d555892e3021 "> </td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d555892e3023 "><a class="xref" href="../TextObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.12]">Text Observation</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<pre class="pre codeblock language-xml" id="classId__example"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 infrastructure/cda/CDA_SDTC.xsd"&gt;
+  &lt;realmCode code="US"/&gt;
+  &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.7"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
+  &lt;id root="MDHT" extension="527704155"/&gt;
+  &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+  &lt;title&gt;org.openhealthtools.mdht.uml.cda.consol.impl. Operative Note Impl&lt;/title&gt;
+  &lt;effectiveTime/&gt;
+  &lt;confidentialityCode codeSystem="2.16.840.1.113883.5.25" codeSystemName="ConfidentialityCode"/&gt;
+  &lt;languageCode code="Code forlanguageCode"/&gt;
+  &lt;setId root="MDHT" extension="b4515277-c333-4dc5-8303-a5022012f5e9"/&gt;
+  &lt;versionNumber value="1"/&gt;
+  &lt;recordTarget&gt;
+    &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+    &lt;patientRole/&gt;
+  &lt;/recordTarget&gt;
+  &lt;author&gt;
+    &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor/&gt;
+  &lt;/author&gt;
+  &lt;custodian/&gt;
+  &lt;documentationOf&gt;
+    &lt;serviceEvent&gt;
+      &lt;code code="1801863420"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;performer typeCode="PPRF"/&gt;
+    &lt;/serviceEvent&gt;
+  &lt;/documentationOf&gt;
+  &lt;component&gt;
+    &lt;structuredBody&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.25"/&gt;
+          &lt;id root="MDHT" extension="1584145476"/&gt;
+          &lt;code code="59774-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
+          &lt;text&gt;sMpZw ADLsW OtjGoX TqmMlDrq WzLfP kfEdbi qbAQgu XmQUVKX JYkAHKMbo UVJSkJj JaOsY WCaQMTfxb iCtPQYl oGhQYu GUkbPdos zcPee gyZrkSaHz mSgHoe jgHubxmO JQmbNrivd qiXXVQjgw tsoCQgrg aOURxwe ptUlv eXsKsrGz ApeKxJqmy MzGJVh sShWexyi vQsRta hYMaBt fCVqNrH jjfXHe wnpUVgt MxQQD TAyFH WNPganDAf GuqLKNJ nkNiKHkR 
+xBpOWi MbePhP mpqIa MjVHuP XrXACnmY FvYwk zTKdQaENI rOfxzJ UclwIo NFjfu OzvgCV hYGOcD nbxyfsNjU BSvTWXIoh DBejF uWhhzq BYZYU IUjrQxaKA DdSmV wusQfw XQEvFrvGV TeDhNGK hYlUCWcaT iZZxgzsI cNvpKe BigRZBIl owmGh dHiRFrZ jaPcYo BKrPxh vEByiG ySlSL FifIhf qSbJUCB uDsynxrDE KtnnjwHJo IJJFamJWt 
+&lt;/text&gt;
+          &lt;confidentialityCode code="2071235949"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;procedure classCode="PROC"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+              &lt;id root="MDHT" extension="1874313332"/&gt;
+              &lt;code code="798598102"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;specimen/&gt;
+              &lt;performer/&gt;
+              &lt;entryRelationship typeCode="COMP" inversionInd="true"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;substanceAdministration classCode="SBADM"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+                  &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+                  &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+                &lt;/substanceAdministration&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/procedure&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+              &lt;id root="MDHT" extension="608462653"/&gt;
+              &lt;code code="360884634"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
+              &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+              &lt;consumable/&gt;
+              &lt;performer/&gt;
+              &lt;entryRelationship&gt;
+                &lt;supply classCode="SPLY" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.17"/&gt;
+                &lt;/supply&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.9"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;supply classCode="SPLY" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.18"/&gt;
+                &lt;/supply&gt;
+              &lt;/entryRelationship&gt;
+              &lt;precondition typeCode="PRCN"/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.37"/&gt;
+          &lt;id root="MDHT" extension="758676034"/&gt;
+          &lt;code code="55109-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Complications"/&gt;
+          &lt;title&gt;Complications&lt;/title&gt;
+          &lt;text&gt;QWVoDGe CKpyEZ HstiaqTt VYecRj fWlPewO YMWmrCz FwkMFNadL dDNPPOBio YDosSjxul cSWdEtO otzacWn PgSWeF SVXXfG fPQvAmr JdAjbr eHEAGn enluRQTIC UhzkMQ lRexS rMRaNWnXn DPuUlqOu avtSzX YzxTXe YLYKxms orDNW SuqMjNYq gIIgCryUK cpJXk PfOdHEv wURaAhRNR hFyCklg DNAVFHie 
+rySTcF xrbQKYSbN HRWNq TVuQmRovc oTrTEjz XbKkMp mCtUnja MvweGLrC mnTCWI HQylF oHVOGdA LfArsN KulXChu qkjEwBxd rAECz MQDYPlG QAfWdVtey TevSMxHEq dEadjIV NqEbJ ONEbrwHSN tQxhnYNdu KmRXFcj MZtoZczU updCcB RRtET JbEetK NvyiCgggR DCQRAl NPYIuTxYW fijvNsP ZImIldVL rlQNI WvprSVBrR FMqLUIqlm NUOilZR GFGlYR nJLDgNn nAHmsoOlg iGitaZw BTgwED dXCuEWy uDYQvaJ QpzNHL lMZBm TXMGWkTzd rvGlgNjt rOqetwC CTdOdCnQ ZsPRjN 
+IFOKYhB RyFMwUpJc pXGgQ CKrIMLWbj BeDjvf OvYNVDpR irBTKLZJn JhJGVqpAY QNXEqKYmq kBeoagnR OKQsBiWZA alkhCHe tKJmG UjwrW NvetCXaI 
+&lt;/text&gt;
+          &lt;confidentialityCode code="953691093"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+              &lt;id root="MDHT" extension="1188955108"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.31"/&gt;
+                  &lt;code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Age At Onset"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.5"/&gt;
+                  &lt;code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.6"/&gt;
+                  &lt;code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.35"/&gt;
+          &lt;id root="MDHT" extension="745195455"/&gt;
+          &lt;code code="10218-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Postoperative Diagnosis"/&gt;
+          &lt;title&gt;Postoperative Diagnosis&lt;/title&gt;
+          &lt;text&gt;eizeP anzqQo OaiyT tpVpG pRKBfw UMEep CkeKuK wNyhnU ZmsVJUo HKeCmeASK FrlqCf NjKkMQwq brSyTY ZdrQJ HztjZBAb LHQTb EKmaX RbMlZ rDhyrM aAzBgBO juzmwnih caOmozW ntHfme ZhKGk knXupxXJ pBCucjuK YGKkBppvj MohPIv XuZrkVvXP iHsFfeRV mlwnMWhBQ wpDdNSUnJ PQDUmL wFkcJq oXnnrp vPvLD 
+nHnvC dIbrqI YICMq MlnFnmd pdIMYBr EMSNOMQVw BPDIaPe iyxgeEPd VNhKKFR ZXpRJt ckaTD nhavYGiwW GqBCZj juzRu 
+WBEGzT rUnGSKtH oIEeaA SngcPLH jFTuuHGt YzRIvk SObAAiqa aEmJdvM MzxZgYhS IBmbzd VJxbeX LLTjVbNgc qwfjOtB gGizdpbvL QyzGlM RzXKMYd JcqknL tvkzeALCZ aepMEypIK XCyGIa iGjJFzz bjPIrDB baCGq 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1162955451"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.34"/&gt;
+          &lt;id root="MDHT" extension="803752742"/&gt;
+          &lt;code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Preoperative Diagnosis"/&gt;
+          &lt;title&gt;Preoperative Diagnosis&lt;/title&gt;
+          &lt;text&gt;Wvwnxpf RHQXZ KrsVDkl cJnxwMpZg OGaTnEL zdaYpmG uriiBAIec SjvzLt glPKh GMZFy KCzQRSRJf CoxFqP cVlRzGTsV YpuBqBQ WdusgbU JkNxT yVwcZ cCJwSB GCvLSV yetQe agxORx CKYgXsbiR CZlXBpNKf NXOAgSQL 
+MxBZaqk niGCENUEI PgqVWufS WlzAEOP bIIoJxdF blJboon ouuKwrv lAHui gLnZdi MxEAGxR mxnXBlKqw rOgODCgDm vgwLopraH fNArKhUEY EtirT TUoCZOe YxxSslig iysLt AzRdVyz DlhtBe HkanEsm TlWlJVgRh dIxZhnBMD DaRADmd FwoaauE Wbpbw oZOMQ yyUZy lhuSAADc oHUPdLH hdXidTEiR DOtyR akwNMoMeZ xPNLr aUgYIhTV 
+&lt;/text&gt;
+          &lt;confidentialityCode code="2102785612"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.65"/&gt;
+              &lt;id root="MDHT" extension="512907708"/&gt;
+              &lt;code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Preoperative Diagnosis"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.18.2.9"/&gt;
+          &lt;id root="MDHT" extension="1494982317"/&gt;
+          &lt;code code="59770-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure Estimated Blood Loss"/&gt;
+          &lt;title&gt;Procedure Estimated Blood Loss&lt;/title&gt;
+          &lt;text&gt;FdyATglCk aHHMWG LGTastmbH MVMTSgR mdVjmob tLAxFB aAcKiVgi dHlckbMBy OYhiom fITfp zDTBft 
+OwwPMErjK FPvkzmIKA LKcZJ dvZbbobzq uQQGpPRto enSIurp UamPa taXFEV nZKjGuJ KPfmqDnuI LoEWHW IQDLpAtbI aihMbwqk bBGoE guPyRGMj pkNGSUK ozezks TkfQUNds oahNW DPzXPFFHy VHaislFZY CBKJDgrEn QuLNEtUxJ ThKZtBaF QcFlvzMWr CDIdf cssJu ZwhYoHw 
+zmmvKi aXnQEh JFgji ApRmqeU ggFMnZmlL iyQOu QOmaMNs qDyPuQew iODMhz lTBbXxq NIKYaYmkN EahPIVk yhItf KSloMVa RBqePDz YUbxiZm VqEuBc NEKMl suhcATgMs bwuaBYN YOEyWpIU ppkVkUaJ kQRTxHx qHNDW toOtZ rZCdSxEX iKXUQg PBzYe iyODIIMA sGpfFVvyE HmIkxoGZe HJZigni fQmlwRtpF ZKStXQX KbAdXTjB kDypFrFvs QovlyoVv TpGMlPoOw crIlnbW EYEZq twcrVnWU CUefo iaPYMkHR SOJoJC SwAxze hAllAFC ChbgvSaD pEtwmMEe fJYFQV AYvZGYBJE oEUBp loDkVmG fCrphxzY zqWnoCf GoqWBOu JTvyzSok sCKGC htZgay 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1997706616"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.28"/&gt;
+          &lt;id root="MDHT" extension="1741264729"/&gt;
+          &lt;code code="59776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure Findings"/&gt;
+          &lt;title&gt;Procedure Findings&lt;/title&gt;
+          &lt;text&gt;OsEATR nvxyfUhUU MTIATt IgLUa GyifWgyF Kobyxc ptBNqa EkcHs JHdeHJ gLAqDVN ZBwISCwVY eydbIKBmR mqrNBD jKLBO oygIYmgp FkyVr tLrWJDqG RCpjQOgCq BgfUDFmf UfWExEba NOEhPHldG cBjQec DjHASXnxI AiGzzxW kAuDvJK ufLkWmi yCwgut jzCYXvj HcePXOlQ ENaWhsw srXJaQO FDbtej tFydCfDb WrYQfWtGh YKABwGRn jpKRWR SjqWdSjv xuVpXjAg xTpgZ VDgQnXuww ETJhzz IlPMfhq NuwBoSsZk NAkuTtcX cynzmmn 
+vmMPCiuj ZBRKczGz dEQZJAF tQOKn SVVvmeS XgUIQq vaNxuks Xbqjivyw tRaCIvUF afQep haTPm tYDEHA iAGLcBETw JIIDvFfy mtKgmrp kIeqtKAn PXPXqITrv 
+&lt;/text&gt;
+          &lt;confidentialityCode code="203692623"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+              &lt;id root="MDHT" extension="702209976"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.31"/&gt;
+                  &lt;code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Age At Onset"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.5"/&gt;
+                  &lt;code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.6"/&gt;
+                  &lt;code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.31"/&gt;
+          &lt;id root="MDHT" extension="49721380"/&gt;
+          &lt;code code="59773-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure Specimens Taken"/&gt;
+          &lt;title&gt;Procedure Specimens Taken&lt;/title&gt;
+          &lt;text&gt;KyixU sHguGf yXOltllJ lKhnT dInupCT jFnorlVf AzrPH LfjbO APQbnwonZ RhGqTi ShHefY eOUGd METRNFwE EMwJdNJw PkBJlj IVHsPWIl jGDNiqhbF GLpemi ZKFluZdQ nxYakZo XwQaOCcqz vlVvB FZCiL uKTsoEnAD utwFFYjo SPgeIrEPl SMSFHS UJRCf uPJtT xAMILstM BeWXMm OsqSZvX EGMNr YFPDo UtUiu XpyQv arpTK QjfXLFxhH aWMSf qNKUiti aHHYCxHZ bWrKJi PdCuh bBGJD 
+OGBcTL cyUVIpUII ChtasoW uFiMpkM RDHjAc xiQSi oQZVDvn ITBhSDMEq kGPsebpL MueRo DqsMkmT xxnVBTF ijOWuNF ysKRKjQBo kqdirz RtiyNBvQ BNtIqJB eOatLb wqGsP fuIHMJVi dbjqgy yeUcM sbeQQtX LndLX RafOou DWYAL XpEni lMLkbC YJDhxpJN cXZaNi aThdR yGQGDqYPg 
+xuuYlttQX xxXgn THXkfy qUhefRG iNjxWu NsdegHpLp ehdrGOLm AyAQK GbfeyG XimpNDxfr qnXIalgK YBcKKS jsQTSKWDZ YgKhYqO QKGZrsfEU uyhUqjqCa izyiUTd lZrbh qETMdCOt 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1130398837"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.27"/&gt;
+          &lt;id root="MDHT" extension="2131806444"/&gt;
+          &lt;code code="29554-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure Description"/&gt;
+          &lt;title&gt;Procedure Description&lt;/title&gt;
+          &lt;text&gt;UYVpGt NQzUAg vKvNZXLSZ lcYaVnQ mKDQBb vYxPXc SOqjDxq adkGAwdi ZpJIgIerA NjmlGv jYURPF ciRJmX KIUdBnxdW YHzKRCK jlwmCCp nABsH oIlnt oEyie hQqNYYk PuGWGig dMznQWne wKUzy OEJQMt IpXOWSuAZ wohZun AimkwNiI wrEiauKtP EmJvpnGP UFGHpj ssIvhxz ovYqpTJg YfmlU FGUWPvg GdLAI XSQImV DkrHxYtAs AaSdinN OQJjAoq wGvikvA BqVisx sDaLdo ERCKkGfm yxGgY CJmcQfQL TbEIbdl yavvgxC YMYhiP TdLMj 
+qNOQS OJXYpIUmT syPtbcXE xbtGWKv cvZWfi SUWJAkmW UOBtvuOM SLmVDKXX DcUyhlwff cPIaOHth GUjqUvU DLnQCJRF sSakq AyBLt IFGUoRlPX CxmKCmx YxhpZQ Yvgkj VFmzUKKV RBYIeTfw HgChsyhU IuzadDhO bPLGfYDO uJdpVbonZ ObLlx jWubhT itqmZdGeH IglgTISGc THiezES VEozCP TgfXG iCIxcfn VOCPfkHMl gwtkSs GnVAJEHZ jmpOWYYa nTREYZC LDcQauEI XdSPlVicm vaHHnhOvK NvvEqHN QOiObJe 
+&lt;/text&gt;
+          &lt;confidentialityCode code="144797491"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.40"/&gt;
+          &lt;id root="MDHT" extension="627454730"/&gt;
+          &lt;code code="59771-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure Implants"/&gt;
+          &lt;title&gt;Procedure Implants&lt;/title&gt;
+          &lt;text&gt;ABMnQkr zsmQR yMZTj YNLRfoA ClsBpATmj pdSBSWYby KCvoHb uqeefU kwBKHTCy KmOilzk jAgFrCJbJ WxgxoxDtH LzBEFVyyT LrfsNEZib akvOglB wTnnac hwvVLQwW UyAHdLjFu OLnVgHGnd tQLbT XTTXeM CcvsTWlo qnEYVeb BAYue vEgsHY UqdHHhO CguUAWJ sakce 
+lsMJguViv GiIaKeSMi HSUnE lOAqcE NoffowlkA eEqljilu sWQAkftpE lJLVcv GgoKVyc mjOVOegY tPWukv SpJcol DhATRhBDg mfxfqwX lwiOyL RENyIpYjW OxnreaNug ZYBHjherD EAUxjObE QSHFRoQSR ncujteq VRzrHmi ACvJwpTt 
+rlWlSbnHb PkxoQ vQWGUL iMHRlVC VLpFNsv fhGfLMmM CaNZcFjd WmHmkcVXc GhZoY ccZgEXzB CBhZrv BHAgc hGZEmWEX 
+dssqhRzqc xNTwZ BtVMuNdn Kezxm rLVgu rVFsuC xqfNAAx FJynyx mHLJZqb wsAVMnZ ZvMuZyy xGKQhBF sYYvzAB dMiwqi uSvRvvOWC DWxCevjN WlttfRp MHlUVInZf 
+&lt;/text&gt;
+          &lt;confidentialityCode code="956078142"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.7.12"/&gt;
+          &lt;id root="MDHT" extension="764120452"/&gt;
+          &lt;code code="10216-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Operative Note Fluids"/&gt;
+          &lt;title&gt;Operative Note Fluids&lt;/title&gt;
+          &lt;text&gt;XRTZySMHY CezuW GFdNb LKysnGP DfXAjTdY vUPyoL ednfIok uenkq ayfWPU nKlDZX AWFFyoYr tVIjp xZIiCL ZCKbqjAX LAJUait mBdlmfbBo iCZoa BgXUrIuCa WZmEc DuzUkY YIKKukT okJQhC RWmoao zxOILpc uqMqT oqNBLd DSEEWcys cErKJwn Yxwpb XDNetZa gaXVWkVeY HvyUd JyybNkHHF kNiTilDn JLXmQM EhKvWKTeM GVMGCWK AegkTw ptjfklWK WmcVVnbL IElQc FRqqDzs SNNEE mlLxqDlr CrSkLGr sjXWRhzue gQTbSA pyrslZL BEAnVma jvMdn JEctV NEBTN UhEscrWJ 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1381818554"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.7.14"/&gt;
+          &lt;id root="MDHT" extension="48197804"/&gt;
+          &lt;code code="10223-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Operative Note Surgical"/&gt;
+          &lt;title&gt;Operative Note Surgical&lt;/title&gt;
+          &lt;text&gt;QBwvhzGvn CdfocA svbpbu oZTMo dkxBUrijA qbBRUuLk bkpPJ HCVpdK eZEvYXM jAndTWEj THkIVZFF avWdhSRG nwtXS OPYtUiS 
+uDUDOc dPKqEvaK puXrOv pAlCNlqHT eGEFK mWMnft FuWbM sFWCK eiFqKEQKa XujTEcqj VqIqWV rNCgkBum 
+&lt;/text&gt;
+          &lt;confidentialityCode code="946668122"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.10"/&gt;
+          &lt;id root="MDHT" extension="33992272"/&gt;
+          &lt;code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Treatment plan"/&gt;
+          &lt;title&gt;Treatment plan&lt;/title&gt;
+          &lt;text&gt;UTBKuNV NHvunF qjZbISk THwNa rXLCOEqA fSFGYA yIyXS ZksgIp xZuGAHK VmBVfjk ruYApPux aceSfbx lqfAzqnML hUNVIbszi FCkjNDHj nKHtjipY AMSorXRjX ncaWakJ itlwTqzCK SAsiLo lpsAxN RnMIzY bvarmwWql Rlqwez qOiNUyv jyuEQyD BgkVttvu BXmbQ vYhyBd YdzlLpSDh OKibcaFJI CcVIkO DDacWE mTDhwRIOW cuRUFvks RZsBuy hTeIBZ lHboTRh ZCCRBP bsflWHHr JQZogY jCUkg DlaIURX GBvSoy jnqJk gnqkEniS aeWSE nyENuevD 
+HegMwBGw jIxsXuhdd taWLCKFu jzQuC OWSYUHTcJ pyahQcec dkTzKNg WjgcEc jgmDbT fUKMQJucF JnHsL wWaAPNLuX gfKbSo JPhScV StwFtu nepOUKXw SnFSAd uyYZUL CqwAF glRbPjTvB GUyth kNBNhoT BrreSbIKe baPccCMBK RWDTrv XxpewJZ fApQVeiEX lgkYhuHV NdLoExol DFHuqmd xCFTOn opCbl dkjYdhqLk mNcFE JMzyN gnwyqD zgYgz jDhhmG cEdtVEvK MDyAp DXNxYf eRFBSrQ 
+IyTROvR iIoeRf xgNUn gVPTFVaw APEihv lXTvCD sTfgfp mOJuGL txNXo UnfWW iDHaJQ IcWtU XCknOkxJF nthHgFo SfMkhwar LPHGEOYgl mDlYUYNvE LrIKEBIK qgBZvr VDJbu kFnNldb CvgETerG FYZzE tiJLSYT oPbDEukg wchqRcct GVmXqzhf qMJGV InxsJUmz tplQNQfhw xRGtI bRtKoalmY ksYinvUD VSlBTPegW WSUtR XRmxbC 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1380377906"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
+              &lt;id root="MDHT" extension="1034157006"/&gt;
+              &lt;code code="42782571"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;encounter classCode="ENC"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.40"/&gt;
+              &lt;id root="MDHT" extension="1037453104"/&gt;
+              &lt;code code="1659305661"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+            &lt;/encounter&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.44"/&gt;
+              &lt;id root="MDHT" extension="526378110"/&gt;
+              &lt;code code="1167913302"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;procedure classCode="PROC"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.41"/&gt;
+              &lt;id root="MDHT" extension="850233838"/&gt;
+              &lt;code code="1843775479"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/procedure&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
+              &lt;id root="MDHT" extension="2000804030"/&gt;
+              &lt;code code="1676009222"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
+              &lt;consumable/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;supply classCode="SPLY"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43"/&gt;
+              &lt;id root="MDHT" extension="1315940271"/&gt;
+              &lt;code code="588140148"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
+            &lt;/supply&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+              &lt;id root="MDHT" extension="1571484293"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.30"/&gt;
+          &lt;id root="MDHT" extension="817931585"/&gt;
+          &lt;code code="59772-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Planned Procedure"/&gt;
+          &lt;title&gt;Planned Procedure&lt;/title&gt;
+          &lt;text&gt;CDclIZUcy OfdjA IBOic LBQNCmOG JpHdZ fORrfSbQa Dyqgdn wbAGBt MUgifSx ibrJZd wYpEfgudK QbiAGvsdb qXOzl YBTareFmQ mdJPug NxOpNnxcW bbMYoRqTM nFEhhCO lMgCMRpW vGXPwU sdSiy ZzeYi wddXMKG ILERV yMTdMV Ulpoq iZoFx GbVRZr aJclP YeCyPO GLQQNtVL hXVBOe EihNsfw tNKUQYO RqoKDuG dLErVhbpX fLhRX tcRoGKrQu OjEBlNN zKrtvcC OTAvmgEV uCObeW uMGzMtxqC 
+&lt;/text&gt;
+          &lt;confidentialityCode code="187368012"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;procedure classCode="PROC"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.41"/&gt;
+              &lt;id root="MDHT" extension="1415497522"/&gt;
+              &lt;code code="13229850"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/procedure&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.18.2.12"/&gt;
+          &lt;id root="MDHT" extension="34433266"/&gt;
+          &lt;code code="59775-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure Disposition"/&gt;
+          &lt;title&gt;Procedure Disposition&lt;/title&gt;
+          &lt;text&gt;AMnkmC eGAaBSRSp GEStU zdDaYdlW naDfs SQnlX zdwcpGN PYcdsXVQl sgXbjeLC IFkZx ZZQGKrKJ RuKMn PoHJixmVO TmiauVj WcudpBK pwcRKaxjb AUVTcFa kyTbQ NSepr eOmGfLL lhBGKdYxv iuOvGcYgz yYXsQ QrQuQZId sEAZxqBUx MlfeaTIJ QfHqD OeaCD GWMWHmwV TVhLCpv uhuncWsP gFshwleO sEfYghmrT iEsto JUGuSg EdLVgBb iLXHdgigy BHXlIE enezrydxq 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1061004781"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.29"/&gt;
+          &lt;id root="MDHT" extension="807422930"/&gt;
+          &lt;code code="59768-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Procedure Indications"/&gt;
+          &lt;title&gt;Procedure Indications&lt;/title&gt;
+          &lt;text&gt;qFCrtBx OffyTZY zjBnJukMj gxkxp arqOVr AYJmXIQk xjjeS BGXIZPc YRkSPgxz PSCTBpt DzUFjh FaVEgAE OkmjRI rXpgemevP OarFja yCrPzxcC wzcmbcW lVKXtvsN REjIPJ vzZKNU TCFHP PvHSaG UePIqof yIjpjHr MbQUj ZtVfZPO wnBmf iBSEGimDG kemgZeErS yLSKvoin PNDBPly pblOpKe gsQII EDieL ekTSXSn LxkXn dozPTuJgL khLdPBHkN IsTBRXnYV oNTrjIAlG NlgEqVcT pdVKyKaID 
+WHYnTyUc euQqix Jimpz lRMBW LxEmLy fMXIAeT opBKp XwyjPmaM gXHSmjGh UUSSx szvTYzjoM KaninOmn TzvcPhR ebxUZIR XEefZk UQLNyA YQMzVJ uXSIfopVA FDYSb xjJyFCQl gntKJLY VUXFi kLJjYvE JxnYvGNa lkFKlUip bmOtpEIB yfOLpLyL oFXMfoRe zQyDx VPULxDh xMAeuCUb rotIOoCE XJsxaE nUFphOBcE PWcPjyGA ueVQr bjWtR SzJxRMUu CblHzskt tsaBLvk RURNFqc 
+fQDoIP bLMzaHrT eVcCv ZTYXtAidW puQLVnpW KZwhCmq yoAAFdAN ZiBSYcWQl pbUDmGq XTkjjks mLpTl XTJvz LEHhhjsV URILKo eCMiBf liVpKQN ANTbeZCq lhleiNFs dHzDBcR PDoLrN Uwuaer PYEPksWNy koUPjEF qkWsQvO PKtJV puRKjl UvyBqCP FCKaxs LmIOP BVyRZbzG fczNU zItAAYS EWlLZXT PPpwW smIPx MKbxliU 
+WPZrZCr vxVBLr KarnZEOvR BcKXT bEeShHC CeQYmXZuk XZjYRY LZljHUB VdpnzKD cBsFB xjSvm OUYQAj GbJGsjFmm ADiKgrk oZbCh mQvMXOcF KonPP DvkGrpLT fnctbPwKh CSoIkhr vOwKR kgHsDAe qbVtk EKeDOE uiawcVjaT kzayKEUv CxdvCExRn CjlJZLAzx LTWBW rRKDrmhF GcUxr ZdoDidKn FtvqOJ PuyozX dFXMyij NVSlAijZ cQfWmYCvx pgYUPH QAoqf VCycBo UpmmeAFMO VWoiIB OrSaoclU vqqWb ybhQJqxr aBLuFR OuyZK YjVGZJN tFASpXpH 
+&lt;/text&gt;
+          &lt;confidentialityCode code="845124212"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+              &lt;id root="MDHT" extension="827751029"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.7.13"/&gt;
+          &lt;id root="MDHT" extension="1598262862"/&gt;
+          &lt;code code="11537-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Surgical Drains"/&gt;
+          &lt;title&gt;Surgical Drains&lt;/title&gt;
+          &lt;text&gt;iFKhuVj abcemoD dtyTdM DFIisPF uKJxLq bfyzciA ytRPMQI zfdDu hchcTACv YsEamq clTRBbJ wrGBhv jerfVaTdM yQpPXzA QgtJlD XCKkrzLHI vJlROFEq eclAWjHtd aYgepnp 
+yohbpt AReceX gKDxinupu TtNmwLo jUnvRqsk eMxFpgp UXfwG fENpZEH JCPDMu DJzLQbrj yfkYTT Tbcupyqji RAwfn Nppse dDYfTFnea qBqVLg jsIMugBYu DJbCHTsN yslKdhB agpoTJ eSgFMLs MypXjNRR oXCelLy lTJqGde mFThBP pMQRkZz 
+VjjOtAWPw RJkMPGZRA xmDKiBdG mKYjOi kVERGS YIoiSFUa WtzBorNEL LGRhGHtdr xroeros PvovJyJ yvNgwQr cNDFg eIfvGFk tyqkk fBuGy jHCCoJm mHKvn CmGQJh GPXKW pqUzs GtSPHBr kyhgY bIZstb nPAXG HuwMdtYAD dhOxlE JNNUAyK 
+cwCvuOzGL lyfInymJ AfTQGMb eiEAegkEI Rokxg mTuRGt JSFsHYKbN seHHhwzB ChzaW kcezQiswF nKfdUxus ysYIoxL ijKxFB xbkjXRgJ jkxFymaXW XGwLJ JVGgGpduX PXcShb jHuDTq gVWvtnq iENaKHIeu LHAMNIECT zXcTNP YsLOMp HeTNdZD IUxZTZ deXko aCQvLXt hpOZrj sAUCAY dqJBDNg DQKWOoj kTfFDedgA 
+&lt;/text&gt;
+          &lt;confidentialityCode code="822426234"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+    &lt;/structuredBody&gt;
+  &lt;/component&gt;
+&lt;/ClinicalDocument&gt;</code></pre>
+<div class="section" id="classId__changes">
+</div>
+
+<p class="p"><span class="ph" id="classId__classformalname">Operative Note</span></p>
+
+<p class="p" id="classId__shortdesc">[ClinicalDocument: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.1.7</tt>]</p>
+
+</div>
+
+</body>
+</html>

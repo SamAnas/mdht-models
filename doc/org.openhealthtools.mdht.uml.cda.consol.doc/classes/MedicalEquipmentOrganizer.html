@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Medical Equipment Organizer" />
+<meta name="abstract" content="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.135]" />
+<meta name="description" content="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.135]" />
+<meta name="DC.Coverage" content="Organizer" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Medical Equipment Organizer</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Medical Equipment Organizer</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Organizer: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.135</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">
+This template represents a set of current or historical medical devices, supplies, aids and equipment used by the patient. Examples are hearing aids, orthotic devices, ostomy supplies, visual aids, diabetic supplies such as syringes and pumps, and wheelchairs.
+
+
+Devices that are applied during a procedure (e.g., cardiac pacemaker, gastrosomy tube, port catheter), whether permanent or temporary, are represented within the Procedure Activity Procedure (V2) template (templateId: 2.16.840.1.113883.10.20.22.4.14.2).
+</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1098-31022, CONF:1098-31023 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.135"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="CLUSTER" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31020)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31021)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1098-31024)
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1098-31025)<p class="p">This code can represent a category of devices. The code is strictly optional, and is not currently limited to any value set or code system. Implementers may use it if they wish to provide optional coded information about this grouping of medical equipment.</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:1098-31026), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Result Status 2.16.840.1.113883.11.20.9.39</tt><strong class="ph b"> STATIC</strong> 2014-09-01 (CONF:1098-31029)<p class="p">The organizer is a collection of statuses for contained entries. The organizer remains active until all contained entries are done.</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:1098-32136) <p class="p"><p class="lines"><em class="ph i">The effectiveTime can be used to show the time period over which the patient will be using the set of equipment. The organizer would probably not be used with devices applied in or on the patient.</em></p>
+</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1098-31027, CONF:1098-31862)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../NonMedicinalSupplyActivity2.html" title="[Supply: templateId 2.16.840.1.113883.10.20.22.4.50]">Non Medicinal Supply Activity2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.50:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1098-31887, CONF:1098-31888)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ProcedureActivityProcedure2.html" title="[Procedure: templateId 2.16.840.1.113883.10.20.22.4.14]">Procedure Activity Procedure2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.14:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">Either Non-Medicinal Supply Activity (V2) (templateId:2.16.840.1.113883.10.20.22.4.50:2014-06-09) OR Procedure Activity Procedure (V2) (templateId:2.16.840.1.113883.10.20.22.4.14:2014-06-09) <strong class="ph b">SHALL</strong> be present (CONF:1098-32380)</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Medical Equipment Organizer</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.135"/&gt;
+  &lt;id root="MDHT" extension="1737278994"/&gt;
+  &lt;code code="1091300339"/&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;component&gt;
+    &lt;supply classCode="SPLY"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
+      &lt;id root="MDHT" extension="1439337544"/&gt;
+      &lt;code code="1411303794"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime value="20170828"/&gt;
+      &lt;entryRelationship&gt;
+        &lt;act classCode="ACT" moodCode="INT"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+          &lt;id root="MDHT" extension="919811672"/&gt;
+          &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+        &lt;/act&gt;
+      &lt;/entryRelationship&gt;
+    &lt;/supply&gt;
+  &lt;/component&gt;
+  &lt;component&gt;
+    &lt;procedure classCode="PROC" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+      &lt;id root="MDHT" extension="1368183502"/&gt;
+      &lt;code code="161018038"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+      &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;specimen&gt;
+        &lt;specimenRole/&gt;
+      &lt;/specimen&gt;
+      &lt;performer&gt;
+        &lt;assignedEntity/&gt;
+      &lt;/performer&gt;
+      &lt;author&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+        &lt;time/&gt;
+        &lt;assignedAuthor/&gt;
+      &lt;/author&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+          &lt;id root="MDHT" extension="826632684"/&gt;
+          &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;substanceAdministration classCode="SBADM"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+          &lt;id root="MDHT" extension="2081811506"/&gt;
+          &lt;code code="1878997221"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime value="20170828"/&gt;
+          &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+          &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+          &lt;consumable/&gt;
+          &lt;author&gt;
+            &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+          &lt;/author&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.123"/&gt;
+              &lt;code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.118"/&gt;
+              &lt;code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/observation&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;supply classCode="SPLY" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.17"/&gt;
+            &lt;/supply&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;supply classCode="SPLY" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.18"/&gt;
+            &lt;/supply&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.9"/&gt;
+              &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/observation&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.147"/&gt;
+              &lt;code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entryRelationship&gt;
+          &lt;precondition typeCode="PRCN"/&gt;
+        &lt;/substanceAdministration&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;act classCode="ACT" moodCode="INT"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+          &lt;id root="MDHT" extension="1819684173"/&gt;
+          &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+        &lt;/act&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.9"/&gt;
+          &lt;id root="MDHT" extension="680718328"/&gt;
+          &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+          &lt;entryRelationship&gt;
+            &lt;procedure classCode="PROC" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+              &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+            &lt;/procedure&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+              &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.8"/&gt;
+              &lt;code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/observation&gt;
+          &lt;/entryRelationship&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+    &lt;/procedure&gt;
+  &lt;/component&gt;
+&lt;/organizer&gt;</code></pre>
+	</div>
+
+</body>
+</html>

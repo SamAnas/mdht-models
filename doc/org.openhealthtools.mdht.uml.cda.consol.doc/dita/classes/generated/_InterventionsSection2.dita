@@ -1,0 +1,1591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Interventions Section (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.21.2.3</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.21.2.3"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>
+This template represents Interventions. Interventions are actions taken to maximize the prospects of the goals of care for the patient, including the removal of barriers to success. Interventions can be planned, ordered, historical, etc.
+
+
+Interventions include actions that may be ongoing (e.g., maintenance medications that the patient is taking, or monitoring the patient's health status or the status of an intervention).
+
+
+Instructions are nested within interventions and may include self-care instructions. Instructions are information or directions to the patient and other providers including how to care for the individual's condition, what to do at home, when to call for help, any additional appointments, testing, and changes to the medication list or medication instructions, clinical guidelines and a summary of best practice.
+
+
+Instructions are information or directions to the patient. Use the Instructions Section when instructions are included as part of a document that is not a Care Plan. Use the Interventions Section, containing the Intervention Act containing the Instruction entry, when instructions are part of a structured care plan.
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-8680, CONF:1198-10461, CONF:1198-32559 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.21.2.3"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../InterventionsSection.dita">Interventions Section</xref> template (templateId: <tt>2.16.840.1.113883.10.20.21.2.3</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-15377)<tt><b>/@code</b>="62387-6" </tt><i>Interventions Provided</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-15378, CONF:1198-30864)
+</li>
+<li>
+If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-30996, CONF:1198-30997)<ol>
+<li>Conforms to <xref href="../InterventionAct.dita">Intervention Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.131:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-32402, CONF:1198-32403)<ol>
+<li>Conforms to <xref href="../HandoffCommunicationParticipants.dita">Handoff Communication Participants</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.141</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-32730, CONF:1198-32731)<ol>
+<li>Conforms to <xref href="../PlannedInterventionAct.dita">Planned Intervention Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.146:2015-08-01</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../InterventionsSection.dita">Interventions Section</xref> template (templateId: <tt>2.16.840.1.113883.10.20.21.2.3</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-15377)<tt><b>/@code</b>="62387-6" </tt><i>Interventions Provided</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-15378, CONF:1198-30864)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:8682, R2.1=CONF:1198-8682)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:8683, R2.1=CONF:1198-8683)
+</li>
+<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-30996, CONF:1198-30997)
+<ol>
+<li>Conforms to <xref href="../InterventionAct.dita">Intervention Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.131:2015-08-01</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-32402, CONF:1198-32403)
+<ol>
+<li>Conforms to <xref href="../HandoffCommunicationParticipants.dita">Handoff Communication Participants</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.141</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-32730, CONF:1198-32731)
+<ol>
+<li>Conforms to <xref href="../PlannedInterventionAct.dita">Planned Intervention Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.146:2015-08-01</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::InterventionsSection2</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.21.2.3]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1198-15378, CONF:1198-30864</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 62387-6</entry></row> 
+<row><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.141]</entry><entry>0..*</entry><entry>MAY</entry><entry>HandoffCommunicationParticipants</entry><entry>CONF:1198-32402, CONF:1198-32403</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.131]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>InterventionAct</entry><entry>CONF:1198-30996, CONF:1198-30997</entry><entry> </entry></row> 
+<row><entry>interventionsSection2</entry><entry>0..1</entry><entry>SHOULD</entry><entry>InterventionsSection2</entry><entry>CONF:1198-28763, CONF:1198-28764</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.146]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>PlannedInterventionAct</entry><entry>CONF:1198-32730, CONF:1198-32731</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/CarePlan.html">Care Plan (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ProgressNote2.html">Progress Note (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../HandoffCommunicationParticipants.dita">Handoff Communication Participants</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../InterventionAct.dita">Intervention Act (V2)</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PlannedInterventionAct.dita">Planned Intervention Act (V2)</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
+  <templateId root="2.16.840.1.113883.10.20.21.2.3" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.21.2.3"/>
+  <code code="62387-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+  <title>TEXT FOR TITLE</title>
+  <text>PGAsmW eBhuQuqW CaIMUsC fcsJkOWBG GJtfvmvIM TDfgsZ mThOoy ritNL hzmNL qDDGzexDy VRTpfErMv BvGCSG EiWYvVta MhwFMpug JbLPQf vdwNNe DBujlr GBXaQdyC pxLPe eRHfzC LwMQI IYjasALA 
+SCoOwZj wVZnatTwV ktwDawFjO qYnah WWKWJB YyhnnWqJi DxnuUja nfwviuQk wVvXCZY ooPJRpNxN jDsJFIVao FyNiCnZ MOZXTvU Cruvi zVmTt epkjwkW LfhldLjlH poAfxI hpaUq NAFzHrrVn pjRkBk QOfKMELf UOHWa iAXnpZXOi TWsdil trdRo qfqMV iERHpyE idqTSud vTTBBqfk WNgSOQcXS UQkWYlHy bkffPL DAvlT ucZYC PAoDpiDQx rMItLb gRawTd VDGFw WtSSPk jaczm KKenWd GxiBe ldIBSva fNsfjpco rcOnxS 
+</text>
+  <entry>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.131" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.131" extension="2015-08-01"/>
+      <code code="362956003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="procedure / intervention (navigational concept)"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <act classCode="ACT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.130"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <entryRelationship>
+            <encounter classCode="ENC">
+              <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="active"/>
+            </encounter>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+              <statusCode code="active"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS">
+              <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="active"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <procedure classCode="PROC">
+              <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+              <statusCode code="active"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </procedure>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY">
+              <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+              <statusCode code="active"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <participant>
+            <templateId root="2.16.840.1.113883.10.20.1.58"/>
+          </participant>
+          <participant/>
+          <reference typeCode="REFR"/>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.52" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.52" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+          <code code="736723892"/>
+          <text>Text Value</text>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <consumable/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship typeCode="COMP" inversionInd="true"/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <code code="173844637"/>
+          <text>Text Value</text>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <consumable/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.123"/>
+              <code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.118"/>
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.147"/>
+              <code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
+          <code code="491079341"/>
+          <text>Text Value</text>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
+          <code code="549295757"/>
+          <text>Text Value</text>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <procedure classCode="PROC" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+          <code code="1612009742"/>
+          <text>Text Value</text>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <specimen/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </procedure>
+      </entryRelationship>
+      <entryRelationship>
+        <encounter classCode="ENC" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.49" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
+          <code codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"/>
+          <text>Text Value</text>
+          <performer/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.80" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.80"/>
+              <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+            </act>
+          </entryRelationship>
+        </encounter>
+      </entryRelationship>
+      <entryRelationship>
+        <supply classCode="SPLY">
+          <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+          <code code="450256406"/>
+          <text>Text Value</text>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+        </supply>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+          <code code="432138007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="handoff communication (procedure)"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <participant typeCode="IRCP"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.146" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.146" extension="2015-08-01"/>
+          <code code="362956003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="procedure / intervention (navigational concept)"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.52" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.131" extension="2015-08-01"/>
+              <code code="362956003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="procedure / intervention (navigational concept)"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </procedure>
+          </entryRelationship>
+          <entryRelationship>
+            <encounter classCode="ENC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.49" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
+              <code codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"/>
+            </encounter>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY">
+              <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <encounter classCode="ENC">
+              <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="active"/>
+            </encounter>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS">
+              <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="active"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <procedure classCode="PROC">
+              <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+              <statusCode code="active"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </procedure>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+              <statusCode code="active"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY">
+              <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+              <statusCode code="active"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.130"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+              <code code="432138007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="handoff communication (procedure)"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.120"/>
+              <statusCode code="active"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <reference typeCode="REFR"/>
+        </act>
+      </entryRelationship>
+      <reference typeCode="REFR">
+        <externalDocument classCode="DOCCLIN" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.115"/>
+        </externalDocument>
+      </reference>
+    </act>
+  </entry>
+  <entry>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+      <code code="432138007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="handoff communication (procedure)"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <participant typeCode="IRCP">
+        <participantRole>
+          <code codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC Health Care Provider Taxonomy"/>
+        </participantRole>
+      </participant>
+    </act>
+  </entry>
+  <entry>
+    <act classCode="ACT">
+      <templateId root="2.16.840.1.113883.10.20.22.4.146" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.146" extension="2015-08-01"/>
+      <code code="362956003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="procedure / intervention (navigational concept)"/>
+      <text>Text Value</text>
+      <statusCode code="active"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <participant>
+            <templateId root="2.16.840.1.113883.10.20.1.58"/>
+          </participant>
+          <participant/>
+          <reference typeCode="REFR"/>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.52" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.52" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+          <code code="1493181640"/>
+          <text>Text Value</text>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <consumable/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship typeCode="COMP" inversionInd="true"/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <code code="554374169"/>
+          <text>Text Value</text>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <consumable/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.123"/>
+              <code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.118"/>
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.147"/>
+              <code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
+          <code code="432529902"/>
+          <text>Text Value</text>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.131" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.131" extension="2015-08-01"/>
+          <code code="362956003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="procedure / intervention (navigational concept)"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <act classCode="ACT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.130"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.52" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </procedure>
+          </entryRelationship>
+          <entryRelationship>
+            <encounter classCode="ENC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.49" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
+              <code codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"/>
+            </encounter>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY">
+              <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+              <code code="432138007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="handoff communication (procedure)"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.146" extension="2015-08-01"/>
+              <code code="362956003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="procedure / intervention (navigational concept)"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+          <reference typeCode="REFR"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
+          <code code="369898070"/>
+          <text>Text Value</text>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <procedure classCode="PROC" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+          <code code="246298418"/>
+          <text>Text Value</text>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <specimen/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </procedure>
+      </entryRelationship>
+      <entryRelationship>
+        <encounter classCode="ENC" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.49" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
+          <code codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"/>
+          <text>Text Value</text>
+          <performer/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.80" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.80"/>
+              <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+            </act>
+          </entryRelationship>
+        </encounter>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <supply classCode="SPLY">
+          <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+          <code code="1603983977"/>
+          <text>Text Value</text>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+        </supply>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+          <code code="599003307"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <encounter classCode="ENC">
+          <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </encounter>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS">
+          <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+          <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+              <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <procedure classCode="PROC">
+          <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+          <code code="2107294255"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+              <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+        </procedure>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+          <code code="1275391385"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/>
+          <consumable/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <entryRelationship>
+        <supply classCode="SPLY">
+          <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+          <code code="1062758030"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <product/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+              <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+        </supply>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.130"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <entryRelationship>
+            <encounter classCode="ENC">
+              <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="active"/>
+            </encounter>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+              <statusCode code="active"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS">
+              <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <statusCode code="active"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <procedure classCode="PROC">
+              <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+              <statusCode code="active"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </procedure>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY">
+              <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+              <statusCode code="active"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+              <statusCode code="active"/>
+            </act>
+          </entryRelationship>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+          <code code="432138007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="handoff communication (procedure)"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <participant typeCode="IRCP"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.120"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.120"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.120"/>
+          <code code="927794493"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <consumable/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <reference typeCode="REFR">
+        <externalDocument classCode="DOCCLIN" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.115"/>
+        </externalDocument>
+      </reference>
+    </act>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::InterventionsSection
+</p>
+<p id="InterventionsSection" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8680 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.21.2.3"
+</li><li>SHALL conform to CDA Section
+</li><li>Consol Interventions Section SHALL contain exactly one [1..1] code (CONF:15377)/@code="62387-6"  (CodeSystem: 2.16.840.1.113883.6.1 LOINC) (CONF:15378)
+</li><li>Consol Interventions Section SHALL contain exactly one [1..1] title (CONF:8682, R2.1=CONF:1198-8682)
+</li><li>Consol Interventions Section SHALL contain exactly one [1..1] text (CONF:8683, R2.1=CONF:1198-8683)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Interventions Section (V3)</ph></p>
+<p id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.21.2.3</tt>]</p>
+</body>
+</topic>

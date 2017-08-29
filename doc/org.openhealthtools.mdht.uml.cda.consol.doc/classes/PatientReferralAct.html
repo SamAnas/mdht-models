@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Patient Referral Act" />
+<meta name="abstract" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.140]" />
+<meta name="description" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.140]" />
+<meta name="DC.Coverage" content="Act" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Patient Referral Act</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Patient Referral Act</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Act: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.140</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">This template represents the type of referral (e.g., for dental care, to a specialist, for aging problems) and represents whether the referral is for full care or shared care. It may contain a reference to another act in the document instance representing the clinical reason for the referral (e.g., problem, concern, procedure).</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1098-30886, CONF:1098-30887 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.140"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="PCPR" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-30884)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Patient Referral Act moodCode 2.16.840.1.113883.11.20.9.66</tt><strong class="ph b"> STATIC</strong> 2014-09-01 (CONF:1098-30885)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1098-30888)<p class="p">In the case of a Consultation Note where this referral is being fulfilled by this consultation, this id would be referenced in the inFullfilmentOf/order/id of the Consultation Note.</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Referral Types 2.16.840.1.113883.11.20.9.56</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1098-30889)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:1098-30892)<tt class="ph tt"><strong class="ph b">/@code</strong>="active" </tt><em class="ph i">Active</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31598)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:1098-30893)<p class="p">The effectiveTime represents the time when the future referral is intended to take place.</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">priorityCode</strong></tt> (CONF:1098-32623)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1098-31612)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../AuthorParticipation.html">Author Participation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.119</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-31604) <p class="p"><p class="lines"><em class="ph i">The following entryRelationship represents whether the referral is for full or shared care.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="SUBJ" </tt> (CONF:1098-31613)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">observation</strong></tt> such that it  (CONF:1098-31605) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31606)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="RQO" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31607)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1098-31608)<tt class="ph tt"><strong class="ph b">/@code</strong>="ASSERTION" </tt><em class="ph i">assertion</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.4 HL7ActCode</tt>) (CONF:1098-31619, CONF:1098-31620)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:1098-31614)<tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31615)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">priorityCode</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Act Priority 2.16.840.1.113883.1.11.16866</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1098-32443)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> with <tt class="ph tt"><strong class="ph b">@xsi:type</strong>="CD"</tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Care Model 2.16.840.1.113883.11.20.9.61</tt><strong class="ph b"> STATIC</strong> 2014-06-19 (CONF:1098-31611)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-31635, CONF:1098-31636, CONF:1098-32634)<p class="p">The following entryRelationship represents a reference to another act in the document instance representing the clinical reason for the referral (e.g., problem, concern, procedure).</p>
+<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>RSON" </tt><em class="ph i">RSON</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../Indication2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.19]">Indication2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:1098-32635) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="REFT" </tt> (CONF:1098-32638)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">participantRole</strong></tt> such that it  (CONF:1098-32636) <ol class="ol" type="i"><li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1098-32637)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Patient Referral Act</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;act xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="PCPR"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.140"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.140"/&gt;
+  &lt;id root="MDHT" extension="349827583"/&gt;
+  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="active"/&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;priorityCode code="996226449"/&gt;
+  &lt;author&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="874463884"/&gt;
+      &lt;code code="81640416"/&gt;
+      &lt;assignedPerson/&gt;
+      &lt;representedOrganization/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+  &lt;participant typeCode="REFT"&gt;
+    &lt;participantRole&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC Health Care Provider Taxonomy"/&gt;
+    &lt;/participantRole&gt;
+  &lt;/participant&gt;
+  &lt;entryRelationship typeCode="SUBJ"&gt;
+    &lt;observation classCode="OBS" moodCode="RQO"&gt;
+      &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="assertion"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+      &lt;value xsi:type="CD" code="535366517"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+      &lt;id root="MDHT" extension="439522306"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;priorityCode code="2084362678"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+&lt;/act&gt;</code></pre>
+	</div>
+
+</body>
+</html>

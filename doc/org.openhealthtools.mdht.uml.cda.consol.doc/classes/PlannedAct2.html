@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Planned Act2" />
+<meta name="abstract" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.39]" />
+<meta name="description" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.39]" />
+<meta name="DC.Coverage" content="Act" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Planned Act2</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Planned Act2</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Act: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.39</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">This template represents planned acts that are not classified as an observation or a procedure according to the HL7 RIM. Examples of these acts are a dressing change, the teaching or feeding of a patient or the providing of comfort measures. 
+The priority of the activity to the patient and provider is communicated through Priority Preference. The effectiveTime indicates the time when the activity is intended to take place.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1098-30430, CONF:1098-30431, CONF:1098-32552 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.39"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2014-06-09"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../PlanOfCareActivityAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.39]">Plan Of Care Activity Act</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.39</tt>)</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Planned moodCode (Act/Encounter/Procedure) 2.16.840.1.113883.11.20.9.23</tt><strong class="ph b"> STATIC</strong> 2011-09-30 (CONF:1098-8539)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1098-31687)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:1098-30432)<tt class="ph tt"><strong class="ph b">/@code</strong>="active" </tt><em class="ph i">Active</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-32019)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:1098-30433)<p class="p">The effectiveTime in a planned act represents the time that the act should occur.</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:1098-30435)<ol class="ol" type="a"><li class="li"><p class="p">The clinician who is expected to carry out the act could be identified using act/performer.</p>
+</li>
+
+<li class="li">Conforms to Performer2 from CDA</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1098-32020)<ol class="ol" type="a"><li class="li"><p class="p">The author in a planned act represents the clinician who is requesting or planning the act.</p>
+</li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../AuthorParticipation.html">Author Participation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.119</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-31067, CONF:1098-31068, CONF:1098-31069)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>REFR" </tt><em class="ph i">REFR</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../PriorityPreference.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.143]">Priority Preference</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.143</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-32021, CONF:1098-32022, CONF:1098-32023)<ol class="ol" type="a"><li class="li"><p class="p">The following entryRelationship represents the indication for the act.</p>
+</li>
+
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>RSON" </tt><em class="ph i">RSON</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../Indication2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.19]">Indication2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-32024, CONF:1098-32025, CONF:1098-32026)<ol class="ol" type="a"><li class="li"><p class="p">The following entryRelationship captures any instructions associated with the planned act.</p>
+</li>
+
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>SUBJ" </tt><em class="ph i">SUBJ</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../Instruction2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.20]">Instruction2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">The code in a Planned Act <strong class="ph b">SHOULD</strong> be selected from LOINC (CodeSystem: 2.16.840.1.113883.6.1) or SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:1098-32030)</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Planned Act2</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;act xmlns="urn:hl7-org:v3" classCode="ACT"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
+  &lt;id root="MDHT" extension="2139210064"/&gt;
+  &lt;code code="872939090"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="active"/&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;performer/&gt;
+  &lt;author&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="789918154"/&gt;
+      &lt;code code="1375232920"/&gt;
+      &lt;assignedPerson/&gt;
+      &lt;representedOrganization/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+      &lt;id root="MDHT" extension="1657924291"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;act classCode="ACT" moodCode="INT"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+      &lt;id root="MDHT" extension="578309136"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+    &lt;/act&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+      &lt;id root="MDHT" extension="896123344"/&gt;
+      &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;author&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+        &lt;time/&gt;
+        &lt;assignedAuthor/&gt;
+      &lt;/author&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+&lt;/act&gt;</code></pre>
+	</div>
+
+</body>
+</html>

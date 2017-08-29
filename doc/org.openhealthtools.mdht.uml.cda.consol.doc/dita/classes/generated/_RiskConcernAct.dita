@@ -1,0 +1,2137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Risk Concern Act (V2) - conformance rules</title>
+<shortdesc id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.136</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Act</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.136"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>
+This template represents a risk concern.
+
+
+It is a wrapper for a single risk concern which may be derived from a variety of sources within an EHR (such as Problem List, Family History, Social History, Social Worker Note, etc.).
+
+
+A Risk Concern Act represents a health concern that is a risk. A risk is a clinical or socioeconomic condition that the patient does not currently have, but the probability of developing that condition rises to the level of concern such that an intervention and/or monitoring is needed.
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-32180, CONF:1198-32222, CONF:1198-32910 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.136"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-32220)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1198-32221)
+</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-32223, DSTU:1017)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-32305)<tt><b>/@code</b>="281694009" </tt><i>At risk for</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1198-32306, CONF:1198-32307)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-32225), which <b>SHALL</b> be selected from ValueSet<tt> ProblemAct statusCode 2.16.840.1.113883.11.20.9.19</tt><b> STATIC</b> 2014-03-24 (CONF:1198-32314)
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1198-32226)
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-32300)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32179, CONF:1198-32227, CONF:1198-32219)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ProblemObservation2.dita">Problem Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.4:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32181, CONF:1198-32228, CONF:1198-32229)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyObservation2.html">Allergy Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.7:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32182, CONF:1198-32230, CONF:1198-32231)<p>The following entryRelationship represents the relationship between two Health Concern Acts where there is a general relationship between the source and the target (Health Concern RELATES TO Health Concern). The Entry Reference template is used here because the target Health Concern Act will be defined elsewhere in the Health Concerns Section and thus a reference to that template is all that is required.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32183, CONF:1198-32232, CONF:1198-32233)<p>The following entryRelationship represents the relationship between two Health Concern Acts where the target is a component of the source (Health Concern HAS COMPONENT Health Concern). The Enry Reference template is used here because the target Health Concern Act will be defined elsewhere in the Health Concerns Section and thus a reference to that template is all that is required.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32184, CONF:1198-32234, CONF:1198-32235)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32185, CONF:1198-32236, CONF:1198-32237)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MentalStatusObservation2.dita">Mental Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32186, CONF:1198-32238, CONF:1198-32239)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../SelfCareActivities.dita">Self Care Activities</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.128</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32188, CONF:1198-32242, CONF:1198-32243)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MentalStatusObservation2.dita">Mental Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32189, CONF:1198-32244, CONF:1198-32245)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../SmokingStatusMeaningfulUse2.dita">Smoking Status Meaningful Use2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.78:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32190, CONF:1198-32246, CONF:1198-32247)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../EncounterDiagnosis2.dita">Encounter Diagnosis2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.80:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32191, CONF:1198-32248, CONF:1198-32249)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../FamilyHistoryOrganizer2.dita">Family History Organizer2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.45:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32192, CONF:1198-32250, CONF:1198-32251)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../FunctionalStatusObservation2.dita">Functional Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32193, CONF:1198-32252, CONF:1198-32253)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../HospitalAdmissionDiagnosis2.dita">Hospital Admission Diagnosis2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.34:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32194, CONF:1198-32254, CONF:1198-32255)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MentalStatusObservation2.dita">Mental Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32195, CONF:1198-32256, CONF:1198-32257)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NutritionAssessment.dita">Nutrition Assessment</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.138</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32196, CONF:1198-32258, CONF:1198-32259)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NutritionAssessment.dita">Nutrition Assessment</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.138</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32197, CONF:1198-32260, CONF:1198-32261)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PostprocedureDiagnosis2.dita">Postprocedure Diagnosis2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.51:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32198, CONF:1198-32262, CONF:1198-32263)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PregnancyObservation.dita">Pregnancy Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.15.3.8</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32199, CONF:1198-32264, CONF:1198-32265)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PreoperativeDiagnosis2.dita">Preoperative Diagnosis2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.65:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32200, CONF:1198-32266, CONF:1198-32267)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation2.html">Reaction Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32201, CONF:1198-32268, CONF:1198-32269)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ResultObservation2.dita">Result Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.2:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32202, CONF:1198-32270, CONF:1198-32271)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../SensoryStatus.dita">Sensory Status</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.127</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32203, CONF:1198-32272, CONF:1198-32273)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../SocialHistoryObservation2.dita">Social History Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.38:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32204, CONF:1198-32274, CONF:1198-32275)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SubstanceOrDeviceAllergyObservation2.html">Substance Or Device Allergy Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.24.3.90:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32205, CONF:1198-32276, CONF:1198-32277)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../TobaccoUse2.dita">Tobacco Use2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.85:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32206, CONF:1198-32278, CONF:1198-32279)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../VitalSignObservation2.dita">Vital Sign Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.27:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32207, CONF:1198-32280, CONF:1198-32281)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../LongitudinalCareWoundObservation.dita">Longitudinal Care Wound Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.114:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32208, CONF:1198-32282, CONF:1198-32283)<p>The following entryRelationship represents the relationship Health Concern HAS SUPPORT Observation.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>SPRT" </tt><i>SPRT</i></li>
+<li>Conforms to <xref href="../ProblemObservation2.dita">Problem Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.4:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32209, CONF:1198-32284, CONF:1198-32285)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32210, CONF:1198-32286, CONF:1198-32287)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../CulturalAndReligiousObservation.dita">Cultural And Religious Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.111</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32211, CONF:1198-32288, CONF:1198-32289)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../CharacteristicsOfHomeEnvironment.dita">Characteristics Of Home Environment</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.109</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32212, CONF:1198-32290, CONF:1198-32291)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NutritionalStatusObservation.dita">Nutritional Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.124</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32213, CONF:1198-32292, CONF:1198-32293)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ResultOrganizer2.dita">Result Organizer2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.1:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32214, CONF:1198-32294, CONF:1198-32295)<p>The following entryRelationship represents the priority that the patient puts on the health concern.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32215, CONF:1198-32296, CONF:1198-32297)<p>The following entryRelationship represents the priority that the provider puts on the health concern.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32216, CONF:1198-32298, CONF:1198-32299)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ProblemConcernAct2.dita">Problem Concern Act2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.3:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32217, CONF:1198-32301, CONF:1198-32302)<p>Where a Health Concern needs to reference another entry already described in the CDA document instance, rather than repeating the full content of the entry, the Entry Reference template may be used to reference this entry.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>reference</b></tt> such that it  (CONF:1198-32769) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="REFR" </tt> (CONF:1198-32770)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>externalDocument</b></tt>, where its type is <xref href="../ExternalDocumentReference.dita">External Document Reference</xref> (CONF:1198-32771)</li></ol> 
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-32220)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1198-32221)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-32223, DSTU:1017)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-32305)<tt><b>/@code</b>="281694009" </tt><i>At risk for</i> (CodeSystem:<tt> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1198-32306, CONF:1198-32307)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-32225), which <b>SHALL</b> be selected from ValueSet<tt> ProblemAct statusCode 2.16.840.1.113883.11.20.9.19</tt><b> STATIC</b> 2014-03-24 (CONF:1198-32314)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1198-32226)
+</li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-32300)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32181, CONF:1198-32228, CONF:1198-32229)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyObservation2.html">Allergy Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.7:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32182, CONF:1198-32230, CONF:1198-32231)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol><p>The following entryRelationship represents the relationship between two Health Concern Acts where there is a general relationship between the source and the target (Health Concern RELATES TO Health Concern). The Entry Reference template is used here because the target Health Concern Act will be defined elsewhere in the Health Concerns Section and thus a reference to that template is all that is required.</p></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32183, CONF:1198-32232, CONF:1198-32233)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol><p>The following entryRelationship represents the relationship between two Health Concern Acts where the target is a component of the source (Health Concern HAS COMPONENT Health Concern). The Enry Reference template is used here because the target Health Concern Act will be defined elsewhere in the Health Concerns Section and thus a reference to that template is all that is required.</p></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32184, CONF:1198-32234, CONF:1198-32235)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32185, CONF:1198-32236, CONF:1198-32237)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MentalStatusObservation2.dita">Mental Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32186, CONF:1198-32238, CONF:1198-32239)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../SelfCareActivities.dita">Self Care Activities</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.128</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32188, CONF:1198-32242, CONF:1198-32243)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MentalStatusObservation2.dita">Mental Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32189, CONF:1198-32244, CONF:1198-32245)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../SmokingStatusMeaningfulUse2.dita">Smoking Status Meaningful Use2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.78:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32190, CONF:1198-32246, CONF:1198-32247)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../EncounterDiagnosis2.dita">Encounter Diagnosis2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.80:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32191, CONF:1198-32248, CONF:1198-32249)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../FamilyHistoryOrganizer2.dita">Family History Organizer2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.45:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32192, CONF:1198-32250, CONF:1198-32251)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../FunctionalStatusObservation2.dita">Functional Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32193, CONF:1198-32252, CONF:1198-32253)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../HospitalAdmissionDiagnosis2.dita">Hospital Admission Diagnosis2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.34:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32194, CONF:1198-32254, CONF:1198-32255)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MentalStatusObservation2.dita">Mental Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32195, CONF:1198-32256, CONF:1198-32257)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NutritionAssessment.dita">Nutrition Assessment</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.138</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32196, CONF:1198-32258, CONF:1198-32259)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NutritionAssessment.dita">Nutrition Assessment</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.138</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32197, CONF:1198-32260, CONF:1198-32261)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PostprocedureDiagnosis2.dita">Postprocedure Diagnosis2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.51:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32198, CONF:1198-32262, CONF:1198-32263)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PregnancyObservation.dita">Pregnancy Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.15.3.8</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32199, CONF:1198-32264, CONF:1198-32265)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PreoperativeDiagnosis2.dita">Preoperative Diagnosis2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.65:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32200, CONF:1198-32266, CONF:1198-32267)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation2.html">Reaction Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32201, CONF:1198-32268, CONF:1198-32269)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ResultObservation2.dita">Result Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.2:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32202, CONF:1198-32270, CONF:1198-32271)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../SensoryStatus.dita">Sensory Status</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.127</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32203, CONF:1198-32272, CONF:1198-32273)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../SocialHistoryObservation2.dita">Social History Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.38:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32204, CONF:1198-32274, CONF:1198-32275)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SubstanceOrDeviceAllergyObservation2.html">Substance Or Device Allergy Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.24.3.90:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32205, CONF:1198-32276, CONF:1198-32277)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../TobaccoUse2.dita">Tobacco Use2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.85:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32206, CONF:1198-32278, CONF:1198-32279)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../VitalSignObservation2.dita">Vital Sign Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.27:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32207, CONF:1198-32280, CONF:1198-32281)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../LongitudinalCareWoundObservation.dita">Longitudinal Care Wound Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.114:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32209, CONF:1198-32284, CONF:1198-32285)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32210, CONF:1198-32286, CONF:1198-32287)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../CulturalAndReligiousObservation.dita">Cultural And Religious Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.111</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32211, CONF:1198-32288, CONF:1198-32289)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../CharacteristicsOfHomeEnvironment.dita">Characteristics Of Home Environment</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.109</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32212, CONF:1198-32290, CONF:1198-32291)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../NutritionalStatusObservation.dita">Nutritional Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.124</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32213, CONF:1198-32292, CONF:1198-32293)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ResultOrganizer2.dita">Result Organizer2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.1:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32214, CONF:1198-32294, CONF:1198-32295)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol><p>The following entryRelationship represents the priority that the patient puts on the health concern.</p></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32215, CONF:1198-32296, CONF:1198-32297)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol><p>The following entryRelationship represents the priority that the provider puts on the health concern.</p></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32216, CONF:1198-32298, CONF:1198-32299)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ProblemConcernAct2.dita">Problem Concern Act2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.3:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-32217, CONF:1198-32301, CONF:1198-32302)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol><p>Where a Health Concern needs to reference another entry already described in the CDA document instance, rather than repeating the full content of the entry, the Entry Reference template may be used to reference this entry.</p></li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>reference</b></tt> such that it  (CONF:1198-32769) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="REFR" </tt> (CONF:1198-32770)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>externalDocument</b></tt>, where its type is <xref href="../ExternalDocumentReference.dita">External Document Reference</xref> (CONF:1198-32771)</li></ol> 
+</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::RiskConcernAct</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.136]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActClassDocumentEntryAct</entry><entry>CONF:1198-32220</entry><entry> ACCM</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_DocumentActMood</entry><entry>CONF:1198-32221</entry><entry> APT</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1198-32305</entry><entry>SNOMEDCT 2.16.840.1.113883.6.96 281694009</entry></row> 
+<row><entry>effectiveTime</entry><entry>0..1</entry><entry>MAY</entry><entry>IVL_TS</entry><entry>CONF:1198-32226</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:1198-32223DSTU:1017</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1198-32225</entry><entry> </entry></row> 
+<row><entry>allergyObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>AllergyObservation2</entry><entry>CONF:1198-32181, CONF:1198-32228, CONF:1198-32229</entry><entry> </entry></row> 
+<row><entry>assessmentScaleObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>AssessmentScaleObservation</entry><entry>CONF:1198-32184, CONF:1198-32234, CONF:1198-32235</entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1198-32300</entry><entry> </entry></row> 
+<row><entry>caregiverCharacteristics</entry><entry>0..*</entry><entry>MAY</entry><entry>CaregiverCharacteristics</entry><entry>CONF:1198-32209, CONF:1198-32284, CONF:1198-32285</entry><entry> </entry></row> 
+<row><entry>characteristicsOfHomeEnvironment</entry><entry>0..*</entry><entry>MAY</entry><entry>CharacteristicsOfHomeEnvironment</entry><entry>CONF:1198-32211, CONF:1198-32288, CONF:1198-32289</entry><entry> </entry></row> 
+<row><entry>culturalAndReligiousObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>CulturalAndReligiousObservation</entry><entry>CONF:1198-32210, CONF:1198-32286, CONF:1198-32287</entry><entry> </entry></row> 
+<row><entry>encounterDiagnosis2</entry><entry>0..*</entry><entry>MAY</entry><entry>EncounterDiagnosis2</entry><entry>CONF:1198-32190, CONF:1198-32246, CONF:1198-32247</entry><entry> </entry></row> 
+<row><entry>entryReferenceHasComponent</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-32183, CONF:1198-32232, CONF:1198-32233</entry><entry> </entry></row> 
+<row><entry>entryReferenceHealthConcern</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-32217, CONF:1198-32301, CONF:1198-32302</entry><entry> </entry></row> 
+<row><entry>entryReferenceRelatesTo</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1198-32182, CONF:1198-32230, CONF:1198-32231</entry><entry> </entry></row> 
+<row><entry>familyHistoryOrganizer2</entry><entry>0..*</entry><entry>MAY</entry><entry>FamilyHistoryOrganizer2</entry><entry>CONF:1198-32191, CONF:1198-32248, CONF:1198-32249</entry><entry> </entry></row> 
+<row><entry>functionalStatusObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>FunctionalStatusObservation2</entry><entry>CONF:1198-32192, CONF:1198-32250, CONF:1198-32251</entry><entry> </entry></row> 
+<row><entry>hospitalAdmissionDiagnosis2</entry><entry>0..*</entry><entry>MAY</entry><entry>HospitalAdmissionDiagnosis2</entry><entry>CONF:1198-32193, CONF:1198-32252, CONF:1198-32253</entry><entry> </entry></row> 
+<row><entry>mentalStatusObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>MentalStatusObservation2</entry><entry>CONF:1198-32185, CONF:1198-32236, CONF:1198-32237</entry><entry> </entry></row> 
+<row><entry>mentalStatusObservation2B</entry><entry>0..*</entry><entry>MAY</entry><entry>MentalStatusObservation2</entry><entry>CONF:1198-32188, CONF:1198-32242, CONF:1198-32243</entry><entry> </entry></row> 
+<row><entry>mentalStatusObservation2C</entry><entry>0..*</entry><entry>MAY</entry><entry>MentalStatusObservation2</entry><entry>CONF:1198-32194, CONF:1198-32254, CONF:1198-32255</entry><entry> </entry></row> 
+<row><entry>nutritionalStatusObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>NutritionalStatusObservation</entry><entry>CONF:1198-32212, CONF:1198-32290, CONF:1198-32291</entry><entry> </entry></row> 
+<row><entry>nutritionAssessment</entry><entry>0..*</entry><entry>MAY</entry><entry>NutritionAssessment</entry><entry>CONF:1198-32195, CONF:1198-32256, CONF:1198-32257</entry><entry> </entry></row> 
+<row><entry>nutritionAssessmentB</entry><entry>0..*</entry><entry>MAY</entry><entry>NutritionAssessment</entry><entry>CONF:1198-32196, CONF:1198-32258, CONF:1198-32259</entry><entry> </entry></row> 
+<row><entry>postprocedureDiagnosis2</entry><entry>0..*</entry><entry>MAY</entry><entry>PostprocedureDiagnosis2</entry><entry>CONF:1198-32197, CONF:1198-32260, CONF:1198-32261</entry><entry> </entry></row> 
+<row><entry>pregnancyObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>PregnancyObservation</entry><entry>CONF:1198-32198, CONF:1198-32262, CONF:1198-32263</entry><entry> </entry></row> 
+<row><entry>preoperativeDiagnosis2</entry><entry>0..*</entry><entry>MAY</entry><entry>PreoperativeDiagnosis2</entry><entry>CONF:1198-32199, CONF:1198-32264, CONF:1198-32265</entry><entry> </entry></row> 
+<row><entry>priorityPreferencePatient</entry><entry>0..*</entry><entry>MAY</entry><entry>PriorityPreference</entry><entry>CONF:1198-32214, CONF:1198-32294, CONF:1198-32295</entry><entry> </entry></row> 
+<row><entry>priorityPreferenceProvider</entry><entry>0..*</entry><entry>MAY</entry><entry>PriorityPreference</entry><entry>CONF:1198-32215, CONF:1198-32296, CONF:1198-32297</entry><entry> </entry></row> 
+<row><entry>problemConcernAct2</entry><entry>0..*</entry><entry>MAY</entry><entry>ProblemConcernAct2</entry><entry>CONF:1198-32216, CONF:1198-32298, CONF:1198-32299</entry><entry> </entry></row> 
+<row><entry>problemObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>ProblemObservation2</entry><entry>CONF:1198-32179, CONF:1198-32227, CONF:1198-32219</entry><entry> </entry></row> 
+<row><entry>problemObservation2HasSupport</entry><entry>0..*</entry><entry>MAY</entry><entry>ProblemObservation2</entry><entry>CONF:1198-32208, CONF:1198-32282, CONF:1198-32283</entry><entry> </entry></row> 
+<row><entry>reactionObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>ReactionObservation2</entry><entry>CONF:1198-32200, CONF:1198-32266, CONF:1198-32267</entry><entry> </entry></row> 
+<row><entry>reference</entry><entry>0..*</entry><entry>MAY</entry><entry>Reference</entry><entry>CONF:1198-32769</entry><entry> </entry></row> 
+<row><entry>resultObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>ResultObservation2</entry><entry>CONF:1198-32201, CONF:1198-32268, CONF:1198-32269</entry><entry> </entry></row> 
+<row><entry>resultOrganizer2</entry><entry>0..*</entry><entry>MAY</entry><entry>ResultOrganizer2</entry><entry>CONF:1198-32213, CONF:1198-32292, CONF:1198-32293</entry><entry> </entry></row> 
+<row><entry>riskConcernAct</entry><entry>0..*</entry><entry>MAY</entry><entry>RiskConcernAct</entry><entry>CONF:1198-32308, CONF:1198-32309</entry><entry> </entry></row> 
+<row><entry>selfCareActivities</entry><entry>0..*</entry><entry>MAY</entry><entry>SelfCareActivities</entry><entry>CONF:1198-32186, CONF:1198-32238, CONF:1198-32239</entry><entry> </entry></row> 
+<row><entry>sensoryStatus</entry><entry>0..*</entry><entry>MAY</entry><entry>SensoryStatus</entry><entry>CONF:1198-32202, CONF:1198-32270, CONF:1198-32271</entry><entry> </entry></row> 
+<row><entry>smokingStatusMeaningfulUse2</entry><entry>0..*</entry><entry>MAY</entry><entry>SmokingStatusMeaningfulUse2</entry><entry>CONF:1198-32189, CONF:1198-32244, CONF:1198-32245</entry><entry> </entry></row> 
+<row><entry>socialHistoryObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>SocialHistoryObservation2</entry><entry>CONF:1198-32203, CONF:1198-32272, CONF:1198-32273</entry><entry> </entry></row> 
+<row><entry>substanceOrDeviceAllergyObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>SubstanceOrDeviceAllergyObservation2</entry><entry>CONF:1198-32204, CONF:1198-32274, CONF:1198-32275</entry><entry> </entry></row> 
+<row><entry>tobaccoUse2</entry><entry>0..*</entry><entry>MAY</entry><entry>TobaccoUse2</entry><entry>CONF:1198-32205, CONF:1198-32276, CONF:1198-32277</entry><entry> </entry></row> 
+<row><entry>vitalSignObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>VitalSignObservation2</entry><entry>CONF:1198-32206, CONF:1198-32278, CONF:1198-32279</entry><entry> </entry></row> 
+<row><entry>woundObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>LongitudinalCareWoundObservation</entry><entry>CONF:1198-32207, CONF:1198-32280, CONF:1198-32281</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../HealthConcernsSection.dita">Health Concerns Section (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyObservation2.html">Allergy Observation2</xref></entry></row><row><entry></entry><entry><xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref></entry></row><row><entry></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry></entry><entry><xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref></entry></row><row><entry></entry><entry><xref href="../CharacteristicsOfHomeEnvironment.dita">Characteristics Of Home Environment</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../CulturalAndReligiousObservation.dita">Cultural And Religious Observation</xref></entry></row><row><entry></entry><entry><xref href="../EncounterDiagnosis2.dita">Encounter Diagnosis (V3)</xref></entry></row><row><entry></entry><entry><xref href="../EntryReference.dita">Entry Reference</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FamilyHistoryOrganizer2.dita">Family History Organizer (V3)</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../FunctionalStatusObservation2.dita">Functional Status Observation2</xref></entry></row><row><entry></entry><entry><xref href="../HospitalAdmissionDiagnosis2.dita">Hospital Admission Diagnosis (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../LongitudinalCareWoundObservation.dita">Longitudinal Care Wound Observation (V2)</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MentalStatusObservation2.dita">Mental Status Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../NutritionAssessment.dita">Nutrition Assessment</xref></entry></row><row><entry></entry><entry><xref href="../NutritionalStatusObservation.dita">Nutritional Status Observation</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PostprocedureDiagnosis2.dita">Postprocedure Diagnosis (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../PregnancyObservation.dita">Pregnancy Observation</xref></entry></row><row><entry></entry><entry><xref href="../PreoperativeDiagnosis2.dita">Preoperative Diagnosis (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PriorityPreference.dita">Priority Preference</xref></entry></row><row><entry></entry><entry><xref href="../ProblemConcernAct2.dita">Problem Concern Act (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ProblemObservation2.dita">Problem Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation2.html">Reaction Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ResultObservation2.dita">Result Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ResultOrganizer2.dita">Result Organizer (V3)</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref href="../SelfCareActivities.dita">Self Care Activities</xref></entry></row><row><entry></entry><entry><xref href="../SensoryStatus.dita">Sensory Status</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SmokingStatusMeaningfulUse2.dita">Smoking Status Meaningful Use2</xref></entry></row><row><entry></entry><entry><xref href="../SocialHistoryObservation2.dita">Social History Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SubstanceOrDeviceAllergyObservation2.html">Substance Or Device Allergy Observation2</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row><row><entry></entry><entry><xref href="../TobaccoUse2.dita">Tobacco Use2</xref></entry></row><row><entry></entry><entry><xref href="../VitalSignObservation2.dita">Vital Sign Observation2</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.136" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.136" extension="2015-08-01"/>
+  <id root="MDHT" extension="1590390080"/>
+  <code code="281694009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="At risk for"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="1364792247"/>
+      <code code="6614672"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+      <id root="MDHT" extension="1604996265"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+          <id root="MDHT" extension="359919192"/>
+          <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <id root="MDHT" extension="1718488553"/>
+          <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+          <id root="MDHT" extension="193588996"/>
+          <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+          <id root="MDHT" extension="87213444"/>
+          <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.7" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.24.3.90"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.7"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.7" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.24.3.90"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.7"/>
+      <id root="MDHT" extension="414220543"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <participant>
+        <participantRole/>
+      </participant>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.28"/>
+          <id root="MDHT" extension="15258605"/>
+          <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+          <id root="MDHT" extension="1878605573"/>
+          <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <entryRelationship>
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </procedure>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+              <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+          <id root="MDHT" extension="1724856066"/>
+          <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.145"/>
+          <id root="MDHT" extension="791760228"/>
+          <code code="82606-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergy or intolerance criticality"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+      <id root="MDHT" extension="1260027692"/>
+      <code code="1533059730"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author/>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
+          <id root="MDHT" extension="686551670"/>
+          <code code="713456930"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <referenceRange>
+        <observationRange/>
+      </referenceRange>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <id root="MDHT" extension="476377188"/>
+      <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <author/>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <id root="MDHT" extension="22681542"/>
+          <code code="1880290521"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <referenceRange/>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <supply classCode="SPLY">
+          <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+          <id root="MDHT" extension="1110145722"/>
+          <code code="1159891214"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime value="20170828"/>
+        </supply>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+          <id root="MDHT" extension="1401223187"/>
+          <code code="704005924"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <participant typeCode="IND"/>
+        </observation>
+      </entryRelationship>
+      <referenceRange>
+        <observationRange/>
+      </referenceRange>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.128"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.128"/>
+      <id root="MDHT" extension="873863212"/>
+      <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <id root="MDHT" extension="735196245"/>
+      <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <author/>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <id root="MDHT" extension="194495728"/>
+          <code code="686961299"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <referenceRange/>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <supply classCode="SPLY">
+          <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+          <id root="MDHT" extension="2132457492"/>
+          <code code="472430232"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime value="20170828"/>
+        </supply>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+          <id root="MDHT" extension="421126434"/>
+          <code code="842970382"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <participant typeCode="IND"/>
+        </observation>
+      </entryRelationship>
+      <referenceRange>
+        <observationRange/>
+      </referenceRange>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+      <id root="MDHT" extension="1281199543"/>
+      <code code="72166-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Tobacco smoking status NHIS"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.80" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.80"/>
+      <id root="MDHT" extension="836352356"/>
+      <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <id root="MDHT" extension="18961039"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+              <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+              <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+              <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <organizer classCode="CLUSTER" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.45" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.45"/>
+      <id root="MDHT" extension="1317901723"/>
+      <code code="859007550"/>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <component>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.46" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.46"/>
+          <id root="MDHT" extension="1705906847"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </component>
+    </organizer>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+      <id root="MDHT" extension="1050938007"/>
+      <code code="54522-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <author/>
+      <entryRelationship>
+        <supply classCode="SPLY">
+          <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+          <id root="MDHT" extension="706057725"/>
+          <code code="44875782"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime value="20170828"/>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+        </supply>
+      </entryRelationship>
+      <referenceRange>
+        <observationRange/>
+      </referenceRange>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.34" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.34"/>
+      <id root="MDHT" extension="1644071532"/>
+      <code code="46241-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Admission diagnosis"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <id root="MDHT" extension="501748026"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+              <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+              <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+              <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <id root="MDHT" extension="558958345"/>
+      <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <author/>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <id root="MDHT" extension="1457278596"/>
+          <code code="1817634460"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <referenceRange/>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <supply classCode="SPLY">
+          <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+          <id root="MDHT" extension="401159550"/>
+          <code code="406585666"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime value="20170828"/>
+        </supply>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+          <id root="MDHT" extension="1602429653"/>
+          <code code="1278334155"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <participant typeCode="IND"/>
+        </observation>
+      </entryRelationship>
+      <referenceRange>
+        <observationRange/>
+      </referenceRange>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+      <id root="MDHT" extension="1919234439"/>
+      <code code="75303-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition assessment"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+      <id root="MDHT" extension="960222712"/>
+      <code code="75303-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition assessment"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.51" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.51"/>
+      <id root="MDHT" extension="1365979504"/>
+      <code code="59769-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Postprocedure Diagnosis"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <id root="MDHT" extension="1844535579"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+              <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+              <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+              <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.15.3.8"/>
+      <id root="MDHT" extension="1592663677"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.15.3.1"/>
+          <id root="MDHT" extension="570066791"/>
+          <code code="11778-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.65" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.65"/>
+      <id root="MDHT" extension="1381368016"/>
+      <code code="10219-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Preoperative Diagnosis"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <id root="MDHT" extension="845382422"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+              <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+              <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+              <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+      <id root="MDHT" extension="10468590"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <entryRelationship>
+        <procedure classCode="PROC" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+          <id root="MDHT" extension="2138574012"/>
+          <code code="325145182"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <specimen/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </procedure>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <id root="MDHT" extension="1445247617"/>
+          <code code="356932050"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime value="20170828"/>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <consumable/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.123"/>
+              <code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.118"/>
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.147"/>
+              <code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+          <id root="MDHT" extension="142472701"/>
+          <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <id root="MDHT" extension="1340769497"/>
+      <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+      <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <referenceRange>
+        <observationRange/>
+      </referenceRange>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.127"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.127"/>
+      <id root="MDHT" extension="587353559"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <id root="MDHT" extension="1043099402"/>
+          <code code="1540255484"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <referenceRange/>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+      <id root="MDHT" extension="47684637"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.24.3.90" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.24.3.90"/>
+      <templateId root="2.16.840.1.113883.10.20.24.3.90" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.24.3.90"/>
+      <id root="MDHT" extension="163195263"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <participant>
+        <participantRole/>
+      </participant>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+          <id root="MDHT" extension="1501974671"/>
+          <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <entryRelationship>
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </procedure>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+              <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+          <id root="MDHT" extension="39572511"/>
+          <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.145"/>
+          <id root="MDHT" extension="50584786"/>
+          <code code="82606-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergy or intolerance criticality"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+      <id root="MDHT" extension="19194612"/>
+      <code code="11367-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of tobacco use"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+      <id root="MDHT" extension="269177425"/>
+      <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+      <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+      <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <author/>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.114" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.114" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+      <id root="MDHT" extension="500034751"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="assertion"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.133"/>
+          <id root="MDHT" extension="1880171388"/>
+          <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.134"/>
+          <id root="MDHT" extension="186486023"/>
+          <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="assertion"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.77"/>
+          <id root="MDHT" extension="1919190173"/>
+          <code code="420905001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Highest Pressure Ulcer Stage"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.76" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.76"/>
+          <id root="MDHT" extension="1078028654"/>
+          <code code="2264892003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="number of pressure ulcers"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <entryRelationship typeCode="SUBJ"/>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+      <id root="MDHT" extension="659314274"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+          <id root="MDHT" extension="2140424562"/>
+          <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <id root="MDHT" extension="1574527424"/>
+          <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+          <id root="MDHT" extension="192370542"/>
+          <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+          <id root="MDHT" extension="499590967"/>
+          <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+      <id root="MDHT" extension="1381285581"/>
+      <code code="1883931025"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <participant typeCode="IND">
+        <time>
+          <low value="2017"/>
+          <high value="2017"/>
+        </time>
+        <participantRole classCode="CAREGIVER"/>
+      </participant>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.111"/>
+      <id root="MDHT" extension="1980896434"/>
+      <code code="75281-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Personal belief"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.109"/>
+      <id root="MDHT" extension="257613150"/>
+      <code code="75274-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Characteristics of residence"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.124"/>
+      <id root="MDHT" extension="2949487"/>
+      <code code="75305-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition status"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+          <id root="MDHT" extension="76723301"/>
+          <code code="75303-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition assessment"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <organizer moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.1" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+      <id root="MDHT" extension="194861648"/>
+      <code code="2076088147"/>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <component>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+          <id root="MDHT" extension="1542212230"/>
+          <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+          <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <referenceRange/>
+        </observation>
+      </component>
+    </organizer>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <id root="MDHT" extension="977075063"/>
+      <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <id root="MDHT" extension="415555073"/>
+      <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+      <id root="MDHT" extension="371463979"/>
+      <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <id root="MDHT" extension="1573780277"/>
+          <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+          <id root="MDHT" extension="593419427"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+              <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+              <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+              <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+              <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </act>
+  </entryRelationship>
+  <reference typeCode="REFR">
+    <externalDocument classCode="DOCCLIN" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.115"/>
+      <id root="MDHT" extension="539032943"/>
+      <code code="1712599297"/>
+      <text>Text Value</text>
+      <setId root="MDHT" extension="a711d777-df5d-4c70-ad90-ecd8d9f81042"/>
+      <versionNumber value="1"/>
+    </externalDocument>
+  </reference>
+</act>]]></codeblock>
+<section id="changes">
+</section>
+<p><ph id="classformalname">Risk Concern Act (V2)</ph></p>
+<p id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.136</tt>]</p>
+</body>
+</topic>

@@ -1,0 +1,1747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Continuity of Care Document (CCD) (V3)" />
+<meta name="abstract" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.2]" />
+<meta name="description" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.2]" />
+<meta name="DC.Coverage" content="ClinicalDocument" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Continuity of Care Document (CCD) (V3)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1">
+		<span class="ph">Continuity of Care Document (CCD) (V3)</span>
+	</h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[ClinicalDocument: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.1.2</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">
+This document type was originally based on the Continuity of Care Document (CCD) Release 1.1 which itself was derived from HITSP C32 and CCD Release 1.0.
+
+
+The Continuity of Care Document (CCD) represents a core data set of the most relevant administrative, demographic, and clinical information facts about a patient's healthcare, covering one or more healthcare encounters. It provides a means for one healthcare practitioner, system, or setting to aggregate all of the pertinent data about a patient and forward it to another to support the continuity of care.
+
+
+The primary use case for the CCD is to provide a snapshot in time containing the germane clinical, demographic, and administrative data for a specific patient. The key characteristic of a CCD is that the ServiceEvent is constrained to "PCPR". This means it does not function to report new ServiceEvents associated with performing care. It reports on care that has already been provided. The CCD provides a historical tally of the care over a range of time and is not a record of new services delivered.
+More specific use cases, such as a Discharge Summary, Transfer Summary, Referral Note, Consultation Note, or Progress Note, are available as alternative documents in this guide.
+</p>
+
+</div>
+
+
+		<div class="section"><h2 class="title sectiontitle"><span class="ph">Continuity of Care Document (CCD) (V3)</span> Header Constraints</h2>
+			
+		</div>
+
+
+
+		<div class="section"><h2 class="title sectiontitle">
+				<span class="ph">Continuity of Care Document (CCD) (V3)</span> Body Constraints	</h2>
+			
+				<div class="p">
+				<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-8450, CONF:1198-10038, CONF:1198-32516 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.1.2"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/USRealmHeader2.html">US Realm Header2</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1:2015-08-01</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-17180)<tt class="ph tt"><strong class="ph b">/@code</strong>="34133-9" </tt><em class="ph i">Summarization of Episode Note</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-17181, CONF:1198-32138)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1198-9442) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedAuthor</strong></tt> such that it  (CONF:1198-9443) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] assignedPerson and/or exactly one [1..1] representedOrganization (CONF:1198-8456)</li>
+<li class="li">If assignedAuthor has an associated representedOrganization with no assignedPerson or assignedAuthoringDevice, then the value for "ClinicalDocument/author/assignedAuthor/id/@NullFlavor" <strong class="ph b">SHALL</strong> be "NA" "Not applicable" 2.16.840.1.113883.5.1008 NullFlavor STATIC (CONF:1198-8457)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:1198-8452) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:1198-8480) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="PCPR" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-8453)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:1198-8481)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:1198-8482) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PRF" </tt> (CONF:1198-8458)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:1198-8459) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1198-30882, DSTU:1015)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt>, where its type is CDA Person (CONF:1198-32467)</li>
+<li class="li">If the assignedEntity is an assignedPerson, one id <strong class="ph b">SHOULD</strong> contain exactly one [1..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:1198-32466, CONF:1198-32484, DSTU:1015)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30661, CONF:1198-30662)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergiesSection2.html">Allergies Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.6.1:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30663, CONF:1198-30664)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../MedicationsSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.1.1]">Medications Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.1.1:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30665, CONF:1198-30666)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ProblemSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.5.1]">Problem Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.5.1:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30667, CONF:1198-30668)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ProceduresSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.7.1]">Procedures Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.7.1:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30669, CONF:1198-30670)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ResultsSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.3.1]">Results Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.3.1:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30671, CONF:1198-30672)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../AdvanceDirectivesSectionEntriesOptional2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.21]">Advance Directives Section Entries Optional2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.21:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30673, CONF:1198-30674)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../EncountersSectionEntriesOptional2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.22]">Encounters Section Entries Optional2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.22:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30675, CONF:1198-30676)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../FamilyHistorySection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.15]">Family History Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.15:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30677, CONF:1198-30678)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../FunctionalStatusSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.14]">Functional Status Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.14:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30679, CONF:1198-30680)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ImmunizationsSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.2.1]">Immunizations Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.2.1:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30681, CONF:1198-30682)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../MedicalEquipmentSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.23]">Medical Equipment Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.23:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30683, CONF:1198-30684)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PayersSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.18]">Payers Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.18:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30685, CONF:1198-30686)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlanOfTreatmentSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]">Plan Of Treatment Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.10:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30687, CONF:1198-30688)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../SocialHistorySection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.17]">Social History Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.17:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-30689, CONF:1198-30690)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../VitalSignsSection2.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.4.1]">Vital Signs Section2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.4.1:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-32143, CONF:1198-32144)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../MentalStatusSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.56]">Mental Status Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.56:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-32624, CONF:1198-32625)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../NutritionSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.57]">Nutrition Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.57</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+				
+				</div>
+
+		</div>
+
+
+
+		<div class="section"><h2 class="title sectiontitle"><span class="ph">Continuity of Care Document (CCD) (V3)</span> Example</h2>
+			
+			<div class="p">
+			<pre class="pre codeblock language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 infrastructure/cda/CDA_SDTC.xsd"&gt;
+  &lt;realmCode code="US"/&gt;
+  &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.2" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/&gt;
+  &lt;id root="MDHT" extension="437591020"/&gt;
+  &lt;code code="34133-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Summarization of Episode Note"/&gt;
+  &lt;title&gt;Summarization of Episode Note&lt;/title&gt;
+  &lt;effectiveTime/&gt;
+  &lt;confidentialityCode codeSystem="2.16.840.1.113883.5.25" codeSystemName="ConfidentialityCode"/&gt;
+  &lt;languageCode code="Code forlanguageCode"/&gt;
+  &lt;setId root="MDHT" extension="436865ed-5102-4b68-bce1-2a44dadfebf8"/&gt;
+  &lt;versionNumber value="1"/&gt;
+  &lt;recordTarget&gt;
+    &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+    &lt;patientRole/&gt;
+  &lt;/recordTarget&gt;
+  &lt;author&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="482981995"/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+  &lt;custodian/&gt;
+  &lt;documentationOf&gt;
+    &lt;serviceEvent classCode="PCPR"&gt;
+      &lt;performer typeCode="PRF"/&gt;
+    &lt;/serviceEvent&gt;
+  &lt;/documentationOf&gt;
+  &lt;component&gt;
+    &lt;structuredBody&gt;
+      &lt;component&gt;
+        &lt;section nullFlavor="NI"&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.6.1" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.6"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.6" extension="2015-08-01"/&gt;
+          &lt;id root="MDHT" extension="267508504"/&gt;
+          &lt;code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies, adverse reactions, alerts"/&gt;
+          &lt;title&gt;Allergies, adverse reactions, alerts&lt;/title&gt;
+          &lt;text&gt;oDQGc QUpipwd QoMDXht AJHPEY epreJaK jAvPw QrnsUstip GZNLB qDFsNcT qdrdfbZPQ YUjNeQS zNkUqLZ tHPvsL YInfephPG syarwRJA uqVyo QJuKKaH QVajsvP MyQbB WGEuy KTSZNyYnV HjSdalld pVfbQXpW lVsvkz cAzUV FKYscwL UxCCI DQdsXSQxa 
+vcpHhvVdz WcUxNuPQ SKraDuXOA JdZdbg EZsdQVrNB Hgqwkpu qqPZtlAt qwwwL TnklrgXlE ZGiTFqVer owgxcB ZauicXXnQ iRsGLAIkr qhvqPQt PCXZG XHPnL TJcQG PAqDhDO bDzvsf jGjaEIV OphUAXq FipyPMnDJ RarqF FdcagDNiU cWSDIYVa NdZJMZluy ODSeifu TDWSwOc fPvKX XhyXk VUlwSU LVpnVitR CLILBEcXu DXklmeN krMpvPkSF ZEMdLqIUL GSPyK fSUqA lTSTVQrU zrZPRDe jWxmqYBz 
+ECbpT CbXpm flpMCnt yYrnEc MGYBNN qVoGjSInh PPqXdrjH vtDSxP XmpSI gFVTrCO RLoUwlk JBLLd toGQzP uuFQmEF EqYvSV UkVpPYef DbAaOe gqasJfxAc WEQxWByZ nbJZIHBh MBWTegX oCbbpTBrs FccfCmuRn AKmiKg xhncf axWueJLL rlNNiO wtCAiVv bzikgD anPnKKGl vUivEi IivNilVmY lTLDtqY RCfeCA FKXYRE EjXZOXvHe wnWeeFEF doGDgZPiD ubJBlg lWDwGiy ZzPgEO vjsjxbmu JclnkWyta KLdvTFEoG ODFjIztb chKpiCwAo oSUohoV vORkEiyt ilKki OZOBPTI tEFLhkN JQSDZbW nYdym OtpBKC YZLxvdnw PUapGQ ufgCdiG LADOJUzMO 
+LDVSEm UIztjuxV NaodrWhxe ehletKwl mVcHDLui PWLiHm sDalQs dkvuF XfEQpzJ IedgcTm ubalNWpsY qkPZJZAS DnFOzHYab DcqHNbiy FbVHFQ eMRmWxdta tHlELC NjiyPU wyWZgYYdj cVMOLv QyUqzQ bOZMXrdS 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1198786475"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section nullFlavor="NI"&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.1.1" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.1"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.1" extension="2014-06-09"/&gt;
+          &lt;id root="MDHT" extension="1973686545"/&gt;
+          &lt;code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of medication use"/&gt;
+          &lt;title&gt;History of medication use&lt;/title&gt;
+          &lt;text&gt;heNPOzSq nKkqxadEI jkdlMRRVN aRJLrQ wPDZL sCjvbT iHeapaCtr KAmFB STGznyO iiyXEfO SEUeXG PDngvXQ 
+PemAsU bdnWov BpDhKO eKwYlOuSb cLGCBxlnR PqGohiZlZ ePWLXENYY UwZPB NhpIjuWSV NbHze aQqvEOrR EmIth HEMfs 
+Avadw exIJGF zHhOqwC mJrJtlhF jNginas gvEwl LuNTfvNc OcXBRsLF oKgbDrmL DaDcbpw pitjlzlM CKnQe FENfRP eWBCAU bfcbVdQS uwatPMP RhxBkfHy ikQkQ DKnjDWgIu KrMHLHr uibHC ETfILs hiJVkN gYurTrxGe IPhZVwZt oCsDgq hBWhEzoN XJItVBBsy QxpYb GMQNOg WIEkKsabm fJtzz ESUyAiZ HkbQA xnBlmEFZu bqRkgQ tkWHpCWp ODpaAYf OmZwIK XVVCLq vxOPosaQ GgImnrcB DfBrlhGr AUUKAeVIJ toxUrfxbr lHeShEzII MUIMt LrMbA 
+&lt;/text&gt;
+          &lt;confidentialityCode code="732313327"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section nullFlavor="NI"&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.5.1" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.5"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.5" extension="2015-08-01"/&gt;
+          &lt;id root="MDHT" extension="1601024693"/&gt;
+          &lt;code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem List"/&gt;
+          &lt;title&gt;Problem List&lt;/title&gt;
+          &lt;text&gt;yJnfTN Yfytx tqDdiDTx mXOYv ZCkqVLU sumeIBHy eDVPzN ijbkpnAt wwfnk OvtkfAFm jHjbcLFa TEFSzMHRY BNfTXByc fEKvS Itfckjbc bIaYSr VcNqtSPI bEzqxDH BqaLw 
+&lt;/text&gt;
+          &lt;confidentialityCode code="245096850"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.5" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.5"/&gt;
+              &lt;id root="MDHT" extension="693175706"/&gt;
+              &lt;code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section nullFlavor="NI"&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.7.1" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.7"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.7" extension="2014-06-09"/&gt;
+          &lt;id root="MDHT" extension="1820407720"/&gt;
+          &lt;code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Procedures"/&gt;
+          &lt;title&gt;History of Procedures&lt;/title&gt;
+          &lt;text&gt;NxcnOSWz KtUeSJSiQ LTsHs ZuyvxdwT cGpuT gCtNUdV tEtsW NUTtVSIwT pyKaBhz NHXVJN dOlwloe cEmiGAXs LaUZdO lNDEJcg BacVxXw zkIxFyf rzPgAuWk ZRMBqDi KVfEN lggBYzua XqRaMPv szCwwmbj sTScamCuH eSIAtf LyqYzg yhbjadW YxmCktuz HJNhf SOsuwG TCPiP ZKvuqNu weDDdvt etBvrMOsr tEWem DXuUMuOLn sWgPf cdpqkg ERKWES BbWDvVPM ZMgyp mtUhIrYUX gHcPJ pkLtxY ANirnqMxL 
+dKlIIQuJo orzSXx lORsIptT NAGsCMQaL VulqftE RzYgd sFyel jYLwyTxBp CLHCj LCILIa bCMGyQe eUPXQ MPbiYFCd MviEmD uIGrMHD JtjJdk qQfds frvcT oSAGqkzH CDhrTyjv WueaZ pAbZXJexd XyrQZvfq PPLFSNXJc QqnkjEv skIRcj QZNUxe QgLPJWs bbvNCvEF 
+UoQPsdpZP sBNrjuj cnnSD Vpexk uXfQE dNRZJEb lwQWmOeZQ ylHoh JDvCvy jHeHSqgp lxnSKPeN IDYyeL DUwkfCg WipsZwHag ggjPuJL ADOkm PMooes AWwvljrz FUqjbdUKf YpCITomQx XnZxeYxS rkuCZmJ FEeaCT Dpkuxj VNEwtovOF SPFEyhIGj toHCFz IozANFpDI rpnzGIvT cRdGaGcCA LbodlCN gSKDBDwZU hkZZLImW ZSAqCg vlXZRlZkD UTMdMIoU rvKrtezaG xOFRdnzc BSlqV sgpbsb WWJvSHnr OEtUYF UrftS GCfdAxg RpMXGHW wLKurubRn 
+AFDIotK zBXDawNA IkfjLBe AfPGv kVcBLr wEcmpIbhq zbhEOmh kpkSLkhk SRGUrtKLu uxYoz PBXtzZR ejhZfF LxvJiLl KNIxFZVaq gaBiejnCY DHTLaoJ rddRKOSOd qqaPXSLT 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1524808434"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.12"/&gt;
+              &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+            &lt;/act&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.13"/&gt;
+              &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+            &lt;/observation&gt;
+            &lt;procedure classCode="PROC" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+              &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+            &lt;/procedure&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section nullFlavor="NI"&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.3.1" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.3" extension="2015-08-01"/&gt;
+          &lt;id root="MDHT" extension="513841826"/&gt;
+          &lt;code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant diagnostic tests and/or laboratory data"/&gt;
+          &lt;title&gt;Relevant diagnostic tests and/or laboratory data&lt;/title&gt;
+          &lt;text&gt;nCZPRe qmfQiCmGD GvZwrcw BUsaXS aENYbML BywcTR RPiMT fZuZInl HhkmX ScqNjukeq BKftxPz GhtJZ GLjJWhZed LTHqR vJPZYuJ KqNEv DCrYH 
+Rymxir jLSvGJj UywHJdPkL NnhMTEo GWXpXHvVt ZTPXJy bxysqT hrbjtoCRk nOFLRWov kuywb kEzgqaK iKlFxGh UsHxDSP bqmRyzInC vrtvgKjfs aiCrFBbKo IXKxOU 
+WFuWH VuwcO sqJEQlgXc cnqeGdXzW yncOFzSx wGKUgRi LSkqW oUAhxTFmd czpqaChX uHoyD BLCsP yFdXjtRPd jLhospn YxOkTVHPQ rRTip HuGeZ JtLvYhA Osnnoo nsKpQ gyQegtpSV JyBxtN sGxisY aUlPH YxBim odnRiIfU FxVBKNyjW nxNHA NDORzBOL FJQnNkcIR YDGpfh yQLBj IOOog BBwcB TxxbfP 
+pQhzLQ JjTCYHquh UbJgKF ULmBS oGJoeq QtmshOL pKOEF UMuIdK pZUnTYUUY Kcrzejm GxWQtEcAE CnXHzsT wSYKYSvx FznvC gGJpeV pFdWJS hHfDC XUdZlyOi mWXqbmdti OIRpzH YeRzYNF HzBJfB shTfRdsZj jBtnIwWf SBcZRUNxw uLnZkpjxb KQwJd WPHbFg iUFHkPhK EyZYoCet fHjbAZ IlWAPp AgAdriDi OcfWilDpW PnRKk 
+&lt;/text&gt;
+          &lt;confidentialityCode code="811158827"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.21" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.21"/&gt;
+          &lt;id root="MDHT" extension="1812089823"/&gt;
+          &lt;code code="42348-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Advance Directives"/&gt;
+          &lt;title&gt;Advance Directives&lt;/title&gt;
+          &lt;text&gt;JxkqGI tBRUtEZ OdaJET QUbQKFDBI keGjeOsq VCkSkql qJeBxt AWNPcX mhWxAjfhU drfGI fFVct EMcFBR MDoTsNKmp xUmZjSzwd uilmyxKOx wCFQkS IjOGpS CNDLkxL BmbhDV mbMQNvPMO rjUWeXKWf bOlixv pBCMo EUlxCYdL zJmCUohN SALSG pkaIvB SrkCGNz bEOaW nnOIaXO EWevZX btIXv DsTFreZZ nZEdslPYa CKXKgeEzn ErszOTk lHtLHxbYI 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1637288840"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.108" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.108" extension="2015-08-01"/&gt;
+              &lt;id root="MDHT" extension="2039541404"/&gt;
+              &lt;code code="45473-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Advance directive - living will"/&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;component&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.48"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/component&gt;
+            &lt;/organizer&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.48"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.48"/&gt;
+              &lt;id root="MDHT" extension="66642008"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;participant&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.1.58"/&gt;
+              &lt;/participant&gt;
+              &lt;participant/&gt;
+              &lt;reference typeCode="REFR"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.22" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.22"/&gt;
+          &lt;id root="MDHT" extension="1308838648"/&gt;
+          &lt;code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Encounters"/&gt;
+          &lt;title&gt;Encounters&lt;/title&gt;
+          &lt;text&gt;IAGNm BkwvLbEEw oRadqZP mMsXypjiX qdRjpE STXgA lNtdX LCYtS ofcABio skzVPnS uPXzt FVTieA OcabUWPES UoVnOp PAzTd yBomEWmNw TdHRkm wyvCOhp bxSVm HxSWuZ MqsYpGdV DOdUc FJuKGyCfo EnabLK WwJKwfC KHYgFE ncdwtbElJ gUztXEkPR SdddgL HnghwgxT gAbfU bhDDsT IdrxpG xxWTNV LwpBbjg AcVwlGTv qJSrk dKYxRJe VXwoIbozB ZSzgXgY GXnURnFok OTtKbONsg PyimKRDS KDhMNM doVCAhP YfPsGHjVa nHTnZz uBZLxzUJG llyUG QFSPp EVUtVZcJ 
+xRQoS BugWXGpJa xNEqIszb vTJJc MCSctN MTfqj vnjMpnBK IhulRJrUh mfrlfkUx ZbJzgXGZG kqZgFQzDP UhCOZcg YbNbwf xlSqA LoUYFUFaR hWUElnwz fSIQLD rtyKMstl XMIIrYZDL WJnzKQmP rjoILw MAoldlfb vPixFx EwhxLzNR lumgdcmT thGfbu QwvaDggXd rffjb FMxXBZJ zyAKp jTSeaErg DCiorF uzloblh neTbWze FymrZKKJ voFVYDbEI sMZsI CeWzBe pNrVG oiYKmKntj lfyDPVdd SnbLNi vXorBJ busGnIv mGtJAvr 
+JFsdedwz HibJLwg Qhjgi JnCNWFcH MeOeBnwQ YiqxdW loLEOh TxpAuoYF cCaHCY iuQnpuC clFTlREB lSSBG vAmMMaNI TYbkUzaEa QbGIDY IwHnkdf GItZeh wHEHSNrr bTtYEjjwV jGVUUtwUR CVlHmz 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1773887881"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;encounter classCode="ENC" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.49" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.49"/&gt;
+              &lt;id root="MDHT" extension="1546082969"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;performer/&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.80" extension="2015-08-01"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.80"/&gt;
+                  &lt;code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/encounter&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.14" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.14"/&gt;
+          &lt;id root="MDHT" extension="2134121109"/&gt;
+          &lt;code code="47420-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status assessment"/&gt;
+          &lt;title&gt;Functional status assessment&lt;/title&gt;
+          &lt;text&gt;nrIuQTe VedlhB KigLSoLQt tySlAERIF caUFsmOxF gybAHsFKB tIlhu SLFwW XqafppVCh CbKvsTN sFGaM fZxXB ZLNGW QBrNdJq RbnVBdtu TkTpfkPHp KOiZwX VLAyGoi cbGRkf iMivaRv CJTEg otNLgKznt SEdUO IqJkDXG NwYdRWxRM EOzgHgGHi sLKOJm ryIoh PTbmLJqY BlPoFfK quiFFoPzC xpBKhj IfcstP MHgBLym yDDGHP aeGeHpG AMoVmoRn YJYWtH WKhjYEFas 
+LzZwXU pwuolaNgN HhhUYZF LNUijfiDj xYSkzh zAGmtwGp RNoCJvoc pcNoZ jbFFsWPGt TWrESw UAywikkCM OYVfAfS IgdIicG rDWXi fCmKX HNhLjr uMhExwQu zaleZse gNcbAq oSVToKU eCxOjTQ zbfsiR XLjFOjv sMOiU DCIHSkA RApOme wgMJHUguV KRLmX uqnEx kAyUFkP NUehPf ussnjHn eggTBQfW YCtWtU KXJJTb OOUGdrB yrqVK IwbXcGfSB Mzggq inJST qwvTxS SdzKCbzP 
+DbakKlj qpaIx kRVhwv vilaOQf DQBiAjey zfPFQosYe rCCieGS iyrzyEsP rBoQoXyq JOHkDcVf wFqanto DQKch NmNSHiT rtMStZWI XbXvRUN VTKkxYzK jGrQCCFes lkbReCPuB HBtFOnG yGvtcqi RESbcYOrq tXEgLG tGvAqa ualufJY YdHoOMMZ iSZON lESxy RPlSBJG mqWnABsp LhdSI zCluWo XmKCfvz BJnICE vUhXH aEqNx oXcHXnBG JUSLC VXUqaZp WloDalR ZxMeB wDmqkEWw JmwUmR OTyHual YzujsIxH htvwpp 
+ttTZPL UWnNlXFQ YZyrpnR vIzUj xEsxitO WFkSWtdUp nLxHKMP zQhtYO fTaOd fWLqdHaR WJerLi Lnzzz zaWZrV QuqNzGdu orDyTxFQl ugLrffEo mGxZO VUKFUas fYMFPQe VicBo qjdRKpJcx yvLjCuN jtueZ GeYSDSzT jMFXzhz htiTEG Drwdols PvHfGGoHr uuwxH FcYgWkAM hPBASdTD sKTEBfA YGxJiZcAg lEhReMMe YyFNgK SJPJh DzdPwM QXRFYPBbo 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1658355381"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.66" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.1"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.66"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.66" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.1"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.66"/&gt;
+              &lt;id root="MDHT" extension="787605970"/&gt;
+              &lt;code code="810294447"/&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;component&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.67"/&gt;
+                  &lt;code code="54522-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/component&gt;
+              &lt;component&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.128"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/component&gt;
+            &lt;/organizer&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.67"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.67"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.67"/&gt;
+              &lt;id root="MDHT" extension="374913572"/&gt;
+              &lt;code code="54522-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;author/&gt;
+              &lt;entryRelationship&gt;
+                &lt;supply classCode="SPLY"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
+                &lt;/supply&gt;
+              &lt;/entryRelationship&gt;
+              &lt;referenceRange/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.75"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.1"/&gt;
+              &lt;id root="MDHT" extension="308426041"/&gt;
+              &lt;code code="1061640420"/&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;component&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+                  &lt;code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/component&gt;
+            &lt;/organizer&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;id root="MDHT" extension="1929236710"/&gt;
+              &lt;code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author/&gt;
+              &lt;entryRelationship&gt;
+                &lt;supply classCode="SPLY"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
+                &lt;/supply&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.72"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;referenceRange/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;supply classCode="SPLY"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
+              &lt;id root="MDHT" extension="1446470798"/&gt;
+              &lt;code code="762249953"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/supply&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.76"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.76"/&gt;
+              &lt;id root="MDHT" extension="148837307"/&gt;
+              &lt;code code="2264892003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="number of pressure ulcers"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author/&gt;
+              &lt;entryRelationship typeCode="SUBJ"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.77"/&gt;
+              &lt;id root="MDHT" extension="22143589"/&gt;
+              &lt;code code="420905001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Highest Pressure Ulcer Stage"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.128"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.128"/&gt;
+              &lt;id root="MDHT" extension="862704236"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.127"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.127"/&gt;
+              &lt;id root="MDHT" extension="112363929"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section nullFlavor="NI"&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.2.1" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.2"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.2" extension="2015-08-01"/&gt;
+          &lt;id root="MDHT" extension="1429038846"/&gt;
+          &lt;code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
+          &lt;text&gt;YDcgPghI rsnDX ujnCiajk bABfSzjFI IWPRVy vYCqjhe CWebW rtEfarZ GZnma HZbik YGGAJc VCnqXRLq BqNHBwkRv mvbJdeyQ VdkcHNPq AOHJSB msiBK NGObyDH VozNdLG gheGeZ clpnSzMn hUPNT ZlQnf nnxjsj rYJIdjm PRmAOO dgqGJStP WhcLZ PpsCUfk hpEjUxN FyraEMPB LTEgnLsx iLpuumk fpFhuwxOL NPKjssS VUnQAUhs MtfbdWewk uoLsyOig dCFZWJU VwFDNpXP Ugtndp eTCNvA 
+vLbNac jIrmNYV EGntjKlw FQjeZCsg QZmwAbTB FKbMaOSL McFuI QJNpy pcCjEYb sJuRKTuq wdexZhZ skQqXkRV qvUdrbu lwPPgAH COUaV QEgxW PVhoxDN lrvpAHY DfjRGQU OTEcxl HzFUVi xblCBmo vqTzW AGZHNsgNc JRQVwzxI ArCyw lYNzur iMtKeCZeh KpbHAWv ddmipObW nDLIRcUd SvFwPzWv rcrWY MjqHgiIvd aqDsP Ypqveuck DekbkZRyz bmjVfx HytMjGq XmAzGAr GoYjCljv vyQNkFbQC jAXEzmiH yqBJDRp lAwvC dJtIuf HqGnq MLOChIE ohwKAEpk kSHaKC dPbbECdDS sXNlm OFwLXvf IDWIZbk 
+PWbJAf rNLYfo PkFmcnw XWRNT nrjfaFtbl nIebMHOe hozQjMX YhfHIAG TrJXIY UMQgDXB XFoVqWXMx yFdFHtxc 
+AAXZFHD DLNwx GsCZeW FKzrtcHv iHUvroVf kGCogjh QcWbHoHgA XuDsKUk ckvuC QKSsPayON vXCZuUval XyRLn QcmrKV tShidhCkQ 
+&lt;/text&gt;
+          &lt;confidentialityCode code="706195188"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.23" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.23"/&gt;
+          &lt;id root="MDHT" extension="1094588761"/&gt;
+          &lt;code code="46264-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medical Equipment"/&gt;
+          &lt;title&gt;Medical Equipment&lt;/title&gt;
+          &lt;text&gt;ZftNZ byIbfXw QoGODenL Ydjpayt JEBrnj Hnjwavg KqZOxGQy OYnjcmMoo vmxGxAB gFvDnc MDSeD bbPGT WqJVbk QWXiKNt oshARNerJ MzsYIfM WJozaPZM NQMyYoR xKCsaxr tZeFnHBj iteRoHS hsIYardo zsEdM GvnYcBDv fhzSryjs vBHOB jbQQtq KxKqKl mlHKK dkRqEcW SsIzium rsTELCL 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1320742284"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;supply classCode="SPLY"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
+              &lt;id root="MDHT" extension="1573721963"/&gt;
+              &lt;code code="1688285975"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/supply&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.135"/&gt;
+              &lt;id root="MDHT" extension="599301968"/&gt;
+              &lt;code code="245806196"/&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;component&gt;
+                &lt;supply classCode="SPLY"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
+                &lt;/supply&gt;
+              &lt;/component&gt;
+              &lt;component&gt;
+                &lt;procedure classCode="PROC" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+                  &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+                  &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                &lt;/procedure&gt;
+              &lt;/component&gt;
+            &lt;/organizer&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;procedure classCode="PROC" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+              &lt;id root="MDHT" extension="1615907933"/&gt;
+              &lt;code code="87496676"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;specimen/&gt;
+              &lt;performer/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;substanceAdministration classCode="SBADM"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+                  &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+                  &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+                &lt;/substanceAdministration&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.9"/&gt;
+                  &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/procedure&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.18" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.18"/&gt;
+          &lt;id root="MDHT" extension="1820139576"/&gt;
+          &lt;code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payers"/&gt;
+          &lt;title&gt;Payers&lt;/title&gt;
+          &lt;text&gt;xNtvGA aJsdp urDkebt kSZwrSdYN uOOIc LyosBSo QNtZQMwPp pIZOItMgO jVQDNP aFlVXzKEr TdFLLCw LRWNIT tpWRe sAtyUH aBRuFBTQ SBJDlgLZ dgzAIse QGigtd FEphU RGXlstC XNrqOqkaJ qKGMX NyPMDU pxNmag ToPYbgth miJKGm HuTcwU iLFeBg rFdaBV MxXYQiKnz AYWSmjEl jEFCZh fDSwrCSH djqtyZQhq MQtRsUEc 
+nwYCNa JwdqlULmq czxTylH NPSNqnjf aOYoRR GUkpgJ EywZvRfM vlYGTTyR mGhmUF kcQzduUbf YFbCZ KZNcmtJ HNERQwtDl KQzDFa feDyIs YmhyNGKN FgzLA CFUMOdc QXhFhvR CzJxsKMS WnIylR hSfqea aafkxsu GWLDy EalpIyniH XpZcs ZwyFVWap jttrKJCwE xerfk GEvKpNCWJ hzycTm qXPStmQ ZCZXM enxAX 
+gCZzJJPZi EyYmCIhIo AvHBwVS xxOFwR RExfuiSj btyAP yWKPvpsHG FiqjF IhumDvA ftVUW OBtDOqW Qxceqg puhJn DtEBYPdH VhdbHa 
+QMzoFCt aYimgd MuckbQv oExUYJB SOBHu LaYRxmUm jbdOdNKUd kvsdP RtNwG FdnavKrqa CvCqKzpNU iTnHsaI mViMSi gwWZIj iSMaY GbAKHT amQoO jOfxpdzpk xirMWZD GIRAiDB PhymeT 
+&lt;/text&gt;
+          &lt;confidentialityCode code="314762099"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.60" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.60"/&gt;
+              &lt;id root="MDHT" extension="5706801"/&gt;
+              &lt;code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;entryRelationship typeCode="COMP"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.61"/&gt;
+                  &lt;code codeSystemName=""/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.10" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.10"/&gt;
+          &lt;id root="MDHT" extension="317142163"/&gt;
+          &lt;code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Treatment plan"/&gt;
+          &lt;title&gt;Treatment plan&lt;/title&gt;
+          &lt;text&gt;nDRhDitG ANsZqBP JTfRfTx FZTqFmVVV mzsNX ewrESHz HKJlPan Eftbm sQPEVCbmy KXfcJU TcRmaCg XqybNW phYxtwb lnNIWP DrQNkZepu gUFxE jSnwdm uhruhN VNGBEphq bGMCEqu fazTcvEU HBxmL MorZy xieaVfua FmxtQe NlEKWzEdZ OABRDnb nWxxzZYtW 
+TxxmVg yIlZlJ nJjmHRcxJ IQvRuGcu HofwQPQbN riWZITv YNcrxDiPy xFeGiz crWxmleLQ gaORCARho yzYMOSn mXRElw dYRDX SzaEb inMEBKer BYmnxIA JnKys mDYQe lQhXzPrR 
+&lt;/text&gt;
+          &lt;confidentialityCode code="791285089"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.44"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.44"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.44"/&gt;
+              &lt;id root="MDHT" extension="1948766650"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;performer/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+                  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.129"/&gt;
+                  &lt;code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;encounter classCode="ENC"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.40"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.40"/&gt;
+              &lt;id root="MDHT" extension="797359441"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;performer/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+                  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/encounter&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
+              &lt;id root="MDHT" extension="1447651645"/&gt;
+              &lt;code code="1146765449"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;performer/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+                  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;procedure classCode="PROC"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.41"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.41"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.41"/&gt;
+              &lt;id root="MDHT" extension="313180219"/&gt;
+              &lt;code code="1729487069"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;performer/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+                  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.129"/&gt;
+                  &lt;code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/procedure&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
+              &lt;id root="MDHT" extension="1289423975"/&gt;
+              &lt;code code="1971233767"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime value="20170828"/&gt;
+              &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/&gt;
+              &lt;consumable/&gt;
+              &lt;performer/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+                  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;precondition typeCode="PRCN"/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;supply classCode="SPLY"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.43"/&gt;
+              &lt;id root="MDHT" extension="1112122070"/&gt;
+              &lt;code code="1610706410"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime value="20170828"/&gt;
+              &lt;product/&gt;
+              &lt;performer/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+                  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.129"/&gt;
+                  &lt;code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/supply&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+              &lt;id root="MDHT" extension="1833558232"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.141"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.141"/&gt;
+              &lt;id root="MDHT" extension="1501296393"/&gt;
+              &lt;code code="432138007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="handoff communication (procedure)"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;participant typeCode="IRCP"/&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.130"/&gt;
+              &lt;id root="MDHT" extension="1374503307"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;encounter classCode="ENC"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.40"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                &lt;/encounter&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;substanceAdministration classCode="SBADM"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                  &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+                  &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/&gt;
+                &lt;/substanceAdministration&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.44"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                  &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;procedure classCode="PROC"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.41"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                  &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                &lt;/procedure&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;supply classCode="SPLY"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.43"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                &lt;/supply&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
+                  &lt;statusCode code="active"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.120"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.120"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.120"/&gt;
+              &lt;id root="MDHT" extension="1714741759"/&gt;
+              &lt;code code="1603087188"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime value="20170828"/&gt;
+              &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;consumable/&gt;
+              &lt;performer/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+                  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="INT"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;precondition typeCode="PRCN"/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="GOL"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.121"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.121"/&gt;
+              &lt;id root="MDHT" extension="1766978999"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="active"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.122"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.122"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+                  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.122"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+              &lt;reference typeCode="REFR"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.17" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.17"/&gt;
+          &lt;id root="MDHT" extension="450508067"/&gt;
+          &lt;code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Social history"/&gt;
+          &lt;title&gt;Social history&lt;/title&gt;
+          &lt;text&gt;zYqIaeqjr JfUeUu VlFYTauA fwcUqfbu qNkMIEFa eaNpzmqy YViuP WNCrIO CPZQHOpJ AHUnExSQ gfezG DFwtn xugCAA CLATjXf JUeNtMuOo 
+HSGsmcs yFgtCI ESmEaTb iYpqgNyUw KoVUFjB RUjie sRqBanDh DZMTwc wFeBG WAqpwA ZFTWNzte opvzom HXlPpGK AALXWdnga pXMaIGW vUhkun sJAhHpcJ tHafJ cNPbDR XYwApn ZluxNQo dwPOiGLf BdypnK yHhbfs QwXUAz xGQta lDsjKb yPxNGB asNMBulOe FQDEjXGbW meIfy ORUyXXlZa UAnrDZj gNsOfYwcu cXACIVNR tjCCMD efkGpYt FKpScGqW wEVzPnNM PSYiAh xuarX pWIhtznI AFIlmpc IkXlb gztQYZ igWhPfZ 
+dwwpi nhkThJq KGmtlv ABsmzuXL ERNoVeU nplPVZh ecIWr XVMIhORs SaNNWrt pKuSdzqI LfApzNAi mWrPeotc dSWOkRo JbzGyXP JTInh bGScf Rwwjv hAVWPQ RbKGtOb ELJLbbyhH JZEjINBXU dkUQpIlEY XMTGjv Ufcrgt PANDpRNi GfWtjWOGe CkGmKBi czjxGV nzcNd ENLxoCqP AyXYyO KEcZwMS GqOFc yZGDNt mAWOV TNGwm KgxAk tleVKwv OATDKtHI 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1612098139"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.38"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.38"/&gt;
+              &lt;id root="MDHT" extension="1759803879"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.78"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.78"/&gt;
+              &lt;id root="MDHT" extension="185640407"/&gt;
+              &lt;code code="72166-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Tobacco smoking status NHIS"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.85"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.85"/&gt;
+              &lt;id root="MDHT" extension="1899876312"/&gt;
+              &lt;code code="11367-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of tobacco use"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.72"/&gt;
+              &lt;id root="MDHT" extension="1394382865"/&gt;
+              &lt;code code="236593548"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;participant typeCode="IND"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.111"/&gt;
+              &lt;id root="MDHT" extension="983758366"/&gt;
+              &lt;code code="75281-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Personal belief"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.109"/&gt;
+              &lt;id root="MDHT" extension="2026401530"/&gt;
+              &lt;code code="75274-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Characteristics of residence"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.200" extension="2016-06-01"/&gt;
+              &lt;id root="MDHT" extension="455219187"/&gt;
+              &lt;code code="76689-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Sex Assigned At Birth"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section nullFlavor="NI"&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.4.1" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.4"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.4" extension="2015-08-01"/&gt;
+          &lt;id root="MDHT" extension="2057301534"/&gt;
+          &lt;code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital Signs"/&gt;
+          &lt;title&gt;Vital Signs&lt;/title&gt;
+          &lt;text&gt;tkjWJit zgawRmgd NQYlzLO fOWXllZr oiufEhZX tVUbwr orPMqHQbn ARnKYLFYZ tKGSUHp rhPgcLDy DhUdSjZS IBASHP RfwnS sWqUPqHfG fXOLerNF UEHknSCJ lQPOGkF oUXcmqCEn tmsAKUZk NOQAkBj Ohwoax WHkYytdQ SIqRUv UflQI vRuWmx vFJZFvZeh iYEznAk CAZFEuIw rMviJM gVzAwwNxC 
+cxwckL USSsjT sQDhpRpVT CFxERlQYs esEkKN UyZaHT zDzvOId HaBxrtwX SIBCf dkFQD MOPPVhH dSuSPhlfK RRfYG JKDJJGAQH ZOYJyS MXPBtwh ejAjrjxg ffBYQZn ObfdS IZDGjVG XmAVMH meCjENDYh ZxDkSgX RDDms ZBCty 
+YaAOiA EzeeTZbo IyCLyyNqR GEloPDap nmsxQdgnn YGGboXQY VTDgTfZC DHBUQ CanmLufB dTlfGpL GkKXrx QWDQeP DJwiE GDIiGdb CrHbaoh pbztbPXh TfoKjw kVdnmIs ALHuKwBJ EemAjNVy RtodGE sGNivubXE BFFurIC YLpVMgx xCiGVobzV eIburCzLG TrcHFP nUvpUd ccpCPIkAz RfCVJlzV AYvJfj EUUoTRD tGxaUpcZ XYwJsjwAT eCIAwkNK UWtmuepF lntsZXesb oNLhNTpbT ZmhQrggS mEBfSUc cOTqNpg zgmcumw mSxek WGVExSky qqETWup XQPlPe WytHXgII xAOfQUIUC shqBIgRYs zsmXij ChpoAhq Kqhzoeig 
+pRdUmaLDo qxoaoRQ JvGjJv RhTuxmB uQKKs XPMEjbCp nRqZGwk BtiGKcpgQ sISXMkkfD LHMKlgGf XaulNKtT UrKFWNpk AKgSZ REffg ZWbPL CoEAS nNhjwxSbU xqGmrc wySsIegC BkkdqDqQS fJhSRDSZe tDIrX PpmiuVYW CsfrdcpY xJItkr bFLjdwgBv tznzsrv hAJEDq JEbqfDG MeQFmm AsxbAengi QrHAv Dtvanxfr tmetqIq blvMOFDG VceBO qRILbeQ lwoWQnTIA sDUhfLw hLxdgc OOgiaPF jASjNdf pMpXaVr USvNFXRyD vHQdKr nvKCWIDRt FEjvMhgul oicpJw qCgCAoSw QYlAB lpanJrAfM HDbcbL 
+&lt;/text&gt;
+          &lt;confidentialityCode code="376407477"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.56" extension="2015-08-01"/&gt;
+          &lt;id root="MDHT" extension="26502375"/&gt;
+          &lt;code code="10190-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Mental Status"/&gt;
+          &lt;title&gt;Mental Status&lt;/title&gt;
+          &lt;text&gt;zTiFlyb ExUGL boMcnk fctosIcbW veyCcKsU RZyEYIpf Vkzdtr GxOZWux JTnUvLEdc RgphP gGsAxOg wlljWKE 
+vvfStdd HArDtFkc DoGOXGRaT xArIa lhiUWl rsBDHMtBe TZOeKXDG IGlwc eDheIBju DknkkMH ReOoxZV MJYUp eRvTR lQKFeH rzwnIHz YRfTt ACOiMfYTy WmZwgP wAHTlBvj WGRJvuGG bXfJo cEWKe IwgJjkKei JGSufJ aMolUhN BqBdBJJ HmeaKA zMQEAMoD TSjbP OTXjGzM wevarNuUl hKeagmLyC EOQNfs yhStck CNQAVTe VkIVcgcri QoKsiY nYyWmBpg MjpspZCXZ yqEISCr 
+jLvMqZqH RJOEcvmS FrAhJIjQr ylohYeBZU YRxSNN BlqoJ iXCGqkETg ouAbnHhUD ROWewl GzMgBX kaLNfGReQ gEAFj JiVtbGzW ZKWMY ulGggK qJPiXq cVASvT 
+PYszGG dFmFtm vxXiN BFQiE gueVjJsfg jSmBnMki MuGJCrfk XsRVTkC qwNHKk bRkAxqmI gcYVcv eGBMY hWfmR RXRMITdkO qWjHRo ATrtiMi zpDhU pFQirK wpGhVqwCo LkRtS GWIvbm dVhKob UjemzGxz COoMw iGvnCv nkZLe uEGlvh KWmdefo LWcAQJZ pfQxff AghQfKwbR UiviFn iLfzOFVG VLJNaJc ywzmn NMHlJ tTbGhklh xNSwNVcW fNuDts sXYGRA QNnHXH uZlIT 
+&lt;/text&gt;
+          &lt;confidentialityCode code="488265859"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
+              &lt;id root="MDHT" extension="2080191916"/&gt;
+              &lt;code code="685484962"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author/&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.86"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;referenceRange/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.75" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.1"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.75"/&gt;
+              &lt;id root="MDHT" extension="702567290"/&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;component&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+                  &lt;code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/component&gt;
+            &lt;/organizer&gt;
+          &lt;/entry&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+              &lt;id root="MDHT" extension="1022553362"/&gt;
+              &lt;code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;author&gt;
+                &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+              &lt;/author&gt;
+              &lt;author/&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;supply classCode="SPLY"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
+                &lt;/supply&gt;
+              &lt;/entryRelationship&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.72"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+              &lt;referenceRange/&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.57"/&gt;
+          &lt;id root="MDHT" extension="277424435"/&gt;
+          &lt;code code="61144-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diet and nutrition"/&gt;
+          &lt;title&gt;Diet and nutrition&lt;/title&gt;
+          &lt;text&gt;WqcyhNSCU RBpdxLoy EBalN aXyLhwHUw ofUjbo EOFqz bfxqKPYkh ikoinhJD WvFbJu WZHCHkvnV AVlbXSeMX eedWz XNrcv MhCwz BeFdrKXb ijJTJfpA dlkbWlFFC mQYZpSNYv rcrgxXfBG PeUnoz EuBsljxa AFqcH cALnK HAgTMyo xorTKNodN vsOrqC pTMOlOr IhviXb JRckLUpO GfXzQ yDDydGZT KAqdyn pYxjJTQe wjsWcPDC jfSKoG kgVTLzzj xzrusVOIw OGysNB MdraPt XtdsLb nSuEOI BLazYSdQA fZHjB QIKCw oQpCx 
+xIGwNF jQCJQsrBL HHRyzVKEi TXvztbz lGvua AahrhV bAuKJFMZA uVnDZcqVU VpOtq WFXDRr IlNQhfo lUyfvw wMnCdW wnSnen DxSaEiOcb fIADWGW dleWJnJA klfJC MUmNkT mREeynyO hrndKE sfTPajTHK fyNPoxXa PsnbckCM vYlTEG hBovOrwI LYovzpU QLRRcgw qLbHCKd xRqBoFPsn tldCW VneUJ MfunLlNG UuOnP XfBscbCvd 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1084039773"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.124"/&gt;
+              &lt;id root="MDHT" extension="1334556401"/&gt;
+              &lt;code code="75305-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition status"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.138"/&gt;
+                  &lt;code code="75303-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition assessment"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/observation&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.15" extension="2015-08-01"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.2.15"/&gt;
+          &lt;id root="MDHT" extension="309324441"/&gt;
+          &lt;code code="10157-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Family History"/&gt;
+          &lt;title&gt;Family History&lt;/title&gt;
+          &lt;text&gt;ZQdPmglw kHAOnBsjh HuPfyfQpC vthsOAVLU GBZzD bmVyekpQ NgzoWnlEn DnAlchqxl XCRwx ybnXiAjp gNBbAzP VyooKVtZ LhBQvWC CdZKVCU UNoNulbmM gCeSJkI zcZGb 
+KfrphOO VcZZBfdk yPJjn ibYVM RhEgclWs vJHEL TLqRl OIliygwIU srZDjj vSvNQVnP GZEub yyDyovTt KjHEiC GYiIR uPbIGqOX XfWYRWVi BKbXC GsNun HYACvJP zLjXmz fVYQZugQ HRRlgQXU cgpoXt sdiEdYiPo ePiUxybTc nLVnfcT ipYAqAacP LhkGEne GGgzzm Rdbrqc AGRlE omGLCu NwQUTheU fXLXUQoj OpMAElg IBZRxiVG TYmZABLwW WoERbh OelfBGP Qybvm QCowzBcVM DmBAuXHnU DWuqNfD jRWIlXr iHcQHEso aNAhWRu YdtvVS IYoyWwXg lzIig gmbayI ADlhFZlX 
+sPVXQa REqAvf BXZeAN Ygmokiyi ZcwfLH jFcPa fByXQ RozvyQvlI ZyXqSnPK tlmyY JZUArS eqyaNsP mEgkYb CempYAFn qIeHCIk pcmaXkB BTCeJb jClhxe XDyYsg vLQnlxA xrUgsahAe FoWPvjqJ RtmUhitQ HytHfC rnzmApczv kZgVdF iKVcWofFG CDPhkwZe RsGOZiPHK TKfKqyN kVwZzJdlR kTRrGS QZkwiS WobXwgmCB PCMxao 
+PJCYuHl qSuYMVf ChbbtMy KTWzmKtPE MdcsZiwRm PxLBw jTFiQetE hOzOZQgh VFDVbkdvm bodyzt GvrYWSo sIcvk zUHfKalz bSrFRIXdk pfctDNXZ BoDlDTvz NEEvEHKTU nJSRzVvuc TNuopvw ChKzC qPlRfer sexAO EzwJlbN WgmFPLk wSGBX DauBypd SVvzQ sqWGlFfh YBftabqz uJnCraLW bAPrs zCUbc JCjqdxv ynJpBymH lPrFxQxA jCvfhEH aQNZHOF CYTWzt 
+&lt;/text&gt;
+          &lt;confidentialityCode code="2126276644"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.45" extension="2015-08-01"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.45"/&gt;
+              &lt;id root="MDHT" extension="397964636"/&gt;
+              &lt;code code="1767052922"/&gt;
+              &lt;statusCode code="completed"/&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;component&gt;
+                &lt;observation classCode="OBS" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.46" extension="2015-08-01"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.46"/&gt;
+                  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;statusCode code="completed"/&gt;
+                &lt;/observation&gt;
+              &lt;/component&gt;
+            &lt;/organizer&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+    &lt;/structuredBody&gt;
+  &lt;/component&gt;
+&lt;/ClinicalDocument&gt;</code></pre>
+			</div>
+
+		</div>
+	
+	</div>
+
+</body>
+</html>

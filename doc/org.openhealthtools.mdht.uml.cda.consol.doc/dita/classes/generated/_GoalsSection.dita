@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Goals Section - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.60</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.2.60"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template represents patient Goals. A goal is a defined outcome or condition to be achieved in the process of patient care. Goals include patient-defined over-arching goals (e.g., alleviation of health concerns, desired/intended positive outcomes from interventions, longevity, function, symptom management, comfort) and health concern-specific or intervention-specific goals to achieve desired outcomes.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-29584, CONF:1098-29585 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.60"</tt></li></ol></li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@nullFlavor</b>="NI" </tt> (CONF:1098-32819)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-29586)<tt><b>/@code</b>="61146-7" </tt><i>Goals</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-29588)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1098-30721)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:1098-30722)
+</li>
+<li>
+If section/@nullFlavor is not present, <b>SHALL</b> contain  [1..*] <tt><b>entry</b></tt> such that it  (CONF:1098-30719, CONF:1098-30720)<ol>
+<li>Conforms to <xref href="../GoalObservation.dita">Goal Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.121</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@nullFlavor</b>="NI" </tt> (CONF:1098-32819)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-29586)<tt><b>/@code</b>="61146-7" </tt><i>Goals</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-29588)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1098-30721)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:1098-30722)
+</li>
+<li>If section/@nullFlavor is not present, <b>SHALL</b> contain  [1..*] <tt><b>entry</b></tt> such that it  (CONF:1098-30719, CONF:1098-30720)
+<ol>
+<li>Conforms to <xref href="../GoalObservation.dita">Goal Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.121</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::GoalsSection</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.60]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@nullFlavor</entry><entry>0..1</entry><entry>MAY</entry><entry>NullFlavor</entry><entry>CONF:1098-32819</entry><entry> ASKU</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1098-29586</entry><entry>LOINC 2.16.840.1.113883.6.1 61146-7</entry></row> 
+<row><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>ST</entry><entry>CONF:1098-30721</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.121]</entry><entry>1..*</entry><entry>SHALL</entry><entry>GoalObservation</entry><entry>CONF:1098-30719CONF:1098-30720</entry><entry> </entry></row> 
+<row><entry>goalsSection</entry><entry>1..1</entry><entry>SHALL</entry><entry>GoalsSection</entry><entry>CONF:1198-28761, CONF:1198-28762</entry><entry> </entry></row> 
+<row><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>StrucDocText</entry><entry>CONF:1098-30722</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/CarePlan.html">Care Plan (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../GoalObservation.dita">Goal Observation</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3" nullFlavor="NI">
+  <templateId root="2.16.840.1.113883.10.20.22.2.60"/>
+  <code code="61146-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Goals"/>
+  <title>Goals</title>
+  <text>RzgvmVef tLpzWbxWl azFJO icoPPujf dBXOp DAObzd RMgGmrJJg AZvZOAI XiaKMK LFzfyDGad aDTFQsHeK eJSBRqI rZkpbZ fzSmlPHbv gIISq ImQLUtxr FUIGOJN fWQNVdpZX sPFbgP VnUOq ElgGjfGS rjNsCf yQGgx aFZZzFd JqIMpW uopsc qvXUh piCZBC tEySH GYkxrmHA KlrEVOT apuECOgN nynnhRS fCvEB mKNnMdA OTerkylZh WknzAQ VjCDwA mYbuOj oleEePHg AitTvX xhikxgbmE TqGdkBIo LqjehFvO zWHJpV GoCcWu 
+uwYJfR PmZocdP jJIkouF uJyQuO PbyYnIrqO chVOsiEvJ cMyeH wNpjEhn lBBreeiK SPhIOQmA GlbfXK TLugyPXV RzPZzm teVhy BBqjUPO DPOSa uGQTKk QgVclnFo hUOJuiKwi TzGaN RBBZJbnQD nCuotzo vKeMwE cTbHRKCJC vEXJIqu mgeOuI cohzk ffYYvded vmXGfo twFyHgi pXvhIFWGk HZCsSNp QWWQIoazY fKPqqeLv rgIeu qNeJxPx WCnSdUUyg vjMXPS oEBAc yfyFBu EQPQszd UjRCibZT rCeaHrpSy NxRYVtk 
+kayxH TqPoZnxX LidrZvsY pzjKX RlcIfU IVWZFkB shoJCcMKq RsjfTqPle dguSZVcr AmtdWJxUm JnrpR jqMZPUeuz cFWbu dxtGBuI igqpLvF yKkUy BHvihWT oroQjS blFUbP LrATY ykKdQTvH aYoRFa bkiyskPK EWJpsMo vQeMhQ hTluwjwws nXpLCALpe XhvndPEib UAcyGK BmaOEmdGx AUqQgZ zMmdHiA DFVja ihBUL ikpHF XAJaaXWhe JTsUzJzmj TxCuc esVGO tUlPtvjJb EfNFNQSi HBqNFTtI QqAkFs lZeMDXNeh fBeyIiEGr 
+</text>
+  <entry>
+    <observation classCode="OBS" moodCode="GOL">
+      <templateId root="2.16.840.1.113883.10.20.22.4.121"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.121"/>
+      <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+      <text>Text Value</text>
+      <statusCode code="active"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+          <text>Text Value</text>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <reference typeCode="REFR">
+        <externalDocument classCode="DOCCLIN" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.115"/>
+        </externalDocument>
+      </reference>
+    </observation>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+</section>
+<p><ph id="classformalname">Goals Section</ph></p>
+<p id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.60</tt>]</p>
+</body>
+</topic>

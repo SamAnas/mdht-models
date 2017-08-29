@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Longitudinal Care Wound Observation (V2) - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.114</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.114"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template represents acquired or surgical wounds and is not intended to encompass all wound types. The template applies to wounds such as pressure ulcers, surgical incisions, and deep tissue injury wounds. Information in this template may include information about the wound measurements characteristics.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-29473, CONF:1198-29474, CONF:1198-32913 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.114"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../ProblemObservation2.dita">Problem Observation2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.4:2015-08-01</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-31012)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1198-31013)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-29476)<tt><b>/@code</b>="ASSERTION" </tt><i>assertion</i> (CodeSystem:<tt> 2.16.840.1.113883.5.4 HL7ActCode</tt>) (CONF:1198-29477, CONF:1198-31010)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Wound Type 2.16.840.1.113883.1.11.20.2.6</tt><b> DYNAMIC</b> (CONF:1198-29485)
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>targetSiteCode</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Body Site 2.16.840.1.113883.3.88.12.3221.8.9</tt><b> DYNAMIC</b> (CONF:1198-29488)
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31542)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-29495, CONF:1198-29496, CONF:1198-29497)<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../WoundMeasurementObservation.dita">Wound Measurement Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.133</tt>)</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-29503, CONF:1198-29504, CONF:1198-29505)<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../WoundCharacteristic.dita">Wound Characteristic</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.134</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31890, CONF:1198-31891, CONF:1198-31892)<p>When the wound observed is a type of pressure ulcer, then this template SHOULD contain an entry for the Number of Pressure Ulcers.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../NumberOfPressureUlcersObservation2.dita">Number Of Pressure Ulcers Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.76:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31893, CONF:1198-31894, CONF:1198-31919)<p>When the wound observed is a type of pressure ulcer, then this template SHOULD contain an entry for the Highest Pressure Ulcer Stage.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../HighestPressureUlcerStage.dita">Highest Pressure Ulcer Stage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.77</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../ProblemObservation.dita">Problem Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.4</tt>)</li>
+<li><b>SHALL</b> conform to <xref href="../ProblemObservation2.dita">Problem Observation2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.4:2015-08-01</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-31012)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1198-31013)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@negationInd</b></tt> (CONF:1198-10139)
+<p>The negationInd is used to indicate the absence of the condition in observation/value. A negationInd of "true" coupled with an observation/value of SNOMED code 64572001 "Disease (disorder)" indicates that the patient has no known conditions.</p></li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9043, R2.1=CONF:1198-9043)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-29476)<tt><b>/@code</b>="ASSERTION" </tt><i>assertion</i> (CodeSystem:<tt> 2.16.840.1.113883.5.4 HL7ActCode</tt>) (CONF:1198-29477, CONF:1198-31010)
+</li>
+<li>contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-9049)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19112)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-9050)
+<p>If the problem is known to be resolved, but the date of resolution is not known, then the high element SHALL be present, and the nullFlavor attribute SHALL be set to 'UNK'. Therefore, the existence of an high element within a problem does indicate that the problem has been resolved.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Wound Type 2.16.840.1.113883.1.11.20.2.6</tt><b> DYNAMIC</b> (CONF:1198-29485)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>targetSiteCode</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Body Site 2.16.840.1.113883.3.88.12.3221.8.9</tt><b> DYNAMIC</b> (CONF:1198-29488)
+</li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b> (Age At Onset)</tt> such that it  (CONF:9059, CONF:9060, CONF:15590, R2.1=CONF:1198-9059, R2.1=CONF:1198-9060, R2.1=CONF:1198-15590)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../AgeObservation.dita">Age Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.31</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b> (Problem Status)</tt> such that it  (CONF:9063, CONF:9068, CONF:15591)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ProblemStatus.dita">Problem Status</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.6</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b> (Health Status)</tt> such that it  (CONF:9067, CONF:9064, CONF:15592)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../HealthStatusObservation.dita">Health Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.5</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31147)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-29951, CONF:1198-31531, CONF:1198-29952)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PrognosisObservation.dita">Prognosis Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.113</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31063, CONF:1198-31532, CONF:1198-31064)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-9063, CONF:1198-9068, CONF:1198-15591)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ProblemStatus.dita">Problem Status</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.6</tt>)</li></ol></li>
+<li>contain  [0..1] <tt><b>entryRelationship</b></tt> such that it 
+<ol>
+<li>Conforms to <xref href="../HealthStatusObservation.dita">Health Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.5</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31542)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-29495, CONF:1198-29496, CONF:1198-29497)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../WoundMeasurementObservation.dita">Wound Measurement Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.133</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-29503, CONF:1198-29504, CONF:1198-29505)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../WoundCharacteristic.dita">Wound Characteristic</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.134</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31890, CONF:1198-31891, CONF:1198-31892)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../NumberOfPressureUlcersObservation2.dita">Number Of Pressure Ulcers Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.76:2015-08-01</tt>)</li></ol><p>When the wound observed is a type of pressure ulcer, then this template SHOULD contain an entry for the Number of Pressure Ulcers.</p></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31893, CONF:1198-31894, CONF:1198-31919)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../HighestPressureUlcerStage.dita">Highest Pressure Ulcer Stage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.77</tt>)</li></ol><p>When the wound observed is a type of pressure ulcer, then this template SHOULD contain an entry for the Highest Pressure Ulcer Stage.</p></li>
+<li>The text, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:15587)</li>
+<li>reference, if present, <b>SHALL</b> contain exactly one [1..1] @value (CONF:15588)</li>
+<li>reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15589)</li>
+<li>The effectiveTime element , if present, <b>SHALL</b> contain exactly one [1..1] low (CONF:15603)</li>
+<li>effectiveTime, if present, <b>MAY</b> contain zero or one [0..1] high (CONF:15604)</li>
+<li>value <b>MAY</b> contain zero or one [0..1] @nullFlavor (CONF:10141)</li>
+<li>If the diagnosis is unknown or the SNOMED code is unknown, @nullFlavor <b>SHOULD</b> be 
+UNK.  If the code is something other than SNOMED, @nullFlavor <b>SHOULD</b> be OTH and the other code <b>SHOULD</b> be placed in the translation element (CONF:10142)</li>
+<li>entryRelationship with target entry Age Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:9069, R2.1=CONF:9069)</li>
+<li>value <b>MAY</b> contain zero or more [0..*] translation (CONF:16749, R2.1=CONF:1198-16749)</li>
+<li>translation, if present, <b>MAY</b> contain zero or one [0..1] @code (CodeSystem: ICD10CM 2.16.840.1.113883.6.90 STATIC) (CONF:16750, R2.1=CONF:1198-16750)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li>effectiveTime, if present, <b>SHALL</b> contain exactly one [1..1] low (CONF:1198-15603)</li>
+<li>effectiveTime, if present, <b>MAY</b> contain zero or one [0..1] high (CONF:1198-15604)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::LongitudinalCareWoundObservation</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.4]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActClassObservation</entry><entry>CONF:1198-31012</entry><entry> ALRT</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActMoodDocumentObservation</entry><entry>CONF:1198-31013</entry><entry> DEF</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1198-29476</entry><entry>HL7ActCode 2.16.840.1.113883.5.4 ASSERTION</entry></row> 
+<row><entry>value</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry></entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1198-31542</entry><entry> </entry></row> 
+<row><entry>highestPressureUlcerStage</entry><entry>0..1</entry><entry>MAY</entry><entry>HighestPressureUlcerStage</entry><entry>CONF:1198-31893, CONF:1198-31894, CONF:1198-31919</entry><entry> </entry></row> 
+<row><entry>LongitudinalCareWoundObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>LongitudinalCareWoundObservation</entry><entry>CONF:1198-31257, CONF:1198-31339, CONF:1198-31340</entry><entry> </entry></row> 
+<row><entry>numberOfPressureUlcersObservation2</entry><entry>0..*</entry><entry>MAY</entry><entry>NumberOfPressureUlcersObservation2</entry><entry>CONF:1198-31890, CONF:1198-31891, CONF:1198-31892</entry><entry> </entry></row> 
+<row><entry>targetSiteCode</entry><entry>0..1</entry><entry>SHOULD</entry><entry>CD</entry><entry></entry><entry> null</entry></row> 
+<row><entry>woundCharacteristics</entry><entry>0..*</entry><entry>SHOULD</entry><entry>WoundCharacteristic</entry><entry>CONF:1198-29503, CONF:1198-29504, CONF:1198-29505</entry><entry> </entry></row> 
+<row><entry>woundMeasurementObservation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>WoundMeasurementObservation</entry><entry>CONF:1198-29495, CONF:1198-29496, CONF:1198-29497</entry><entry> </entry></row> 
+<row><entry>woundObservation</entry><entry>0..*</entry><entry>MAY</entry><entry>LongitudinalCareWoundObservation</entry><entry>CONF:29905CONF:29906</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../HealthConcernAct.dita">Health Concern Act (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../PhysicalExamSection2.dita">Physical Exam Section (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../PhysicalFindingsOfSkinSection.dita">Physical Findings Of Skin Section</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry><xref href="../RiskConcernAct.dita">Risk Concern Act (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../HighestPressureUlcerStage.dita">Highest Pressure Ulcer Stage</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../NumberOfPressureUlcersObservation2.dita">Number of Pressure Ulcers Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row><row><entry></entry><entry><xref href="../WoundCharacteristic.dita">Wound Characteristic</xref></entry></row><row><entry></entry><entry><xref href="../WoundMeasurementObservation.dita">Wound Measurement Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.114" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.114" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+  <id root="MDHT" extension="923663712"/>
+  <code code="ASSERTION" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="assertion"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <value xsi:type="CD" code="506118057"/>
+  <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="704283582"/>
+      <code code="1983242968"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.133"/>
+      <id root="MDHT" extension="1387506286"/>
+      <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <value xsi:type="PQ"/>
+      <targetSiteCode code="980865615"/>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.134"/>
+      <id root="MDHT" extension="224656472"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="assertion"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <value xsi:type="CD" code="2089566339"/>
+      <targetSiteCode code="143775765"/>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.77"/>
+      <id root="MDHT" extension="4184700"/>
+      <code code="420905001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Highest Pressure Ulcer Stage"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <targetSiteCode code="2066019086"/>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.76" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.76"/>
+      <id root="MDHT" extension="2126951153"/>
+      <code code="2264892003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="number of pressure ulcers"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <targetSiteCode code="1131667438"/>
+      <entryRelationship typeCode="SUBJ">
+        <observation classCode="OBS" moodCode="EVN">
+          <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+</observation>]]></codeblock>
+<section id="changes">
+</section>
+<p><ph id="classformalname">Longitudinal Care Wound Observation (V2)</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.114</tt>]</p>
+</body>
+</topic>

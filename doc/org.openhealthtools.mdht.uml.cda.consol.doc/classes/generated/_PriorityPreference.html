@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Priority Preference - conformance rules" />
+<meta name="abstract" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.143]" />
+<meta name="description" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.143]" />
+<meta name="DC.Coverage" content="Observation" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css" />
+<title>Priority Preference - conformance rules</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+<h1 class="title topictitle1" id="ariaid-title1">Priority Preference - conformance rules</h1>
+
+
+
+<div class="body"><p class="shortdesc">[Observation: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.143</tt>]</p>
+
+<div class="section" id="classId__knownSubclasses">
+</div>
+
+<div class="section" id="classId__description">
+<p class="p">This template represents priority preferences chosen by a patient or a care provider. Priority preferences are choices made by care providers or patients or both relative to options for care or treatment (including scheduling, care experience, and meeting of personal health goals), the sharing and disclosure of health information, and the prioritization of concerns and problems.</p>
+
+</div>
+
+<ol class="ol" id="classId__conformance">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1098-30951, CONF:1098-30952 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.143"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-30949)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-30950)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1098-30953)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1098-30954)<tt class="ph tt"><strong class="ph b">/@code</strong>="225773000" </tt><em class="ph i">Preference</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1098-30955, CONF:1098-30956)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:1098-32327)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> with <tt class="ph tt"><strong class="ph b">@xsi:type</strong>="CD"</tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Priority Level 2.16.840.1.113883.11.20.9.60</tt><strong class="ph b"> STATIC</strong> 2014-06-11 (CONF:1098-30957)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1098-30958)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../AuthorParticipation.html">Author Participation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.119</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+<ol class="ol" id="classId__aggregate">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-30949)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-30950)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1098-30953)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1098-30954)<tt class="ph tt"><strong class="ph b">/@code</strong>="225773000" </tt><em class="ph i">Preference</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1098-30955, CONF:1098-30956)
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:1098-32327)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> with <tt class="ph tt"><strong class="ph b">@xsi:type</strong>="CD"</tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Priority Level 2.16.840.1.113883.11.20.9.60</tt><strong class="ph b"> STATIC</strong> 2014-06-11 (CONF:1098-30957)
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1098-30958)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../AuthorParticipation.html">Author Participation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.119</tt>)</li>
+</ol>
+</li>
+
+</ol>
+
+<div class="section" id="classId__tableconformance"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col style="width:25%" /><col style="width:8.333333333333332%" /><col style="width:8.333333333333332%" /><col style="width:16.666666666666664%" /><col style="width:16.666666666666664%" /><col style="width:25%" /></colgroup><thead class="thead" style="text-align:left;"> <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d668465e302">consol::PriorityPreference</th>
+  </tr>
+  <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d668465e307">cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.143]/</th>
+  </tr>
+ <tr class="row"><th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d668465e312">XPath</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d668465e314">Card.</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d668465e316">Verb</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d668465e318">Data Type</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d668465e320">CONF#</th>
+<th class="entry cell-norowborder" style="text-align:left;vertical-align:top;" id="d668465e322">Fixed Value</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">@classCode</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">ActClassObservation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1098-30949</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> ALRT</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">@moodCode</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">x_ActMoodDocumentObservation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1098-30950</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> DEF</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">code</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">CD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1098-30954</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 ">SNOMEDCT 2.16.840.1.113883.6.96 225773000</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">effectiveTime</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">IVL_TS</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1098-32327</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">id</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">1..*</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">II</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1098-30953</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">value</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">CD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">authorParticipation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">0..*</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">AuthorParticipation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1098-30958</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">priorityPreference</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">PriorityPreference</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1098-30785CONF:1098-30786CONF:1098-30787</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">PriorityPreference</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">0..*</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">PriorityPreference</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1098-31073CONF:1098-31074CONF:1098-31075</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">priorityPreferencePatient</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">0..*</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">PriorityPreference</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1198-32214, CONF:1198-32294, CONF:1198-32295</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e312 ">priorityPreferenceProvider</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e314 ">0..*</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e316 ">MAY</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e318 ">PriorityPreference</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e320 ">CONF:1198-32215, CONF:1198-32296, CONF:1198-32297</td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d668465e302 d668465e307 d668465e322 "> </td>
+</tr>
+ 
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="section" id="classId__contextTable"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col /><col /></colgroup><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry nocellnorowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d668465e490">Contained By</th>
+<th class="entry cell-norowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d668465e492">Contains</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../GoalObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.121]">Goal Observation</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../AdvanceDirectiveObservation2.html">Advance Directive Observation (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../HealthConcernAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.132]">Health Concern Act (V2)</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../AdvanceDirectiveOrganizer.html" title="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.108]">Advance Directive Organizer (V2)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../PlannedAct2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.39]">Planned Act2</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../AuthorParticipation.html">Author Participation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../PlannedEncounter2.html" title="[Encounter: templateId 2.16.840.1.113883.10.20.22.4.40]">Planned Encounter2</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../CodeObservations.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.13]">Code Observations</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../PlannedImmunizationActivity.html" title="[SubstanceAdministration: templateId 2.16.840.1.113883.10.20.22.4.120]">Planned Immunization Activity</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../ExternalDocumentReference.html">External Document Reference</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../PlannedMedicationActivity2.html" title="[SubstanceAdministration: templateId 2.16.840.1.113883.10.20.22.4.42]">Planned Medication Activity2</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../FetusSubjectContext.html">Fetus Subject Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../PlannedObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.44]">Planned Observation2</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../ImmunizationMedicationInformation.html">Immunization Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../PlannedProcedure2.html" title="[Procedure: templateId 2.16.840.1.113883.10.20.22.4.41]">Planned Procedure2</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../ImmunizationMedicationInformation2.html">Immunization Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../PlannedSupply2.html" title="[Supply: templateId 2.16.840.1.113883.10.20.22.4.43]">Planned Supply2</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../MedicationInformation.html">Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../ProblemConcernAct2.html">Problem Concern Act (V3)</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../MedicationInformation2.html">Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../ProblemObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.4]">Problem Observation (V3)</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../ObserverContext.html">Observer Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "><a class="xref" href="../RiskConcernAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.136]">Risk Concern Act (V2)</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../PhysicianReadingStudyPerformer2.html">Physician Reading Study Performer2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../PhysicianofRecordParticipant.html">Physicianof Record Participant</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../PhysicianofRecordParticipant2.html">Physicianof Record Participant2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../PolicyActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../PreconditionForSubstanceAdministration.html">Precondition For Substance Administration</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../PreconditionForSubstanceAdministration2.html">Precondition For Substance Administration2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../ProcedureActivityAct2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.12]">Procedure Activity Act2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../ProcedureActivityObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.13]">Procedure Activity Observation2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../ProcedureActivityProcedure2.html" title="[Procedure: templateId 2.16.840.1.113883.10.20.22.4.14]">Procedure Activity Procedure2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../ProcedureContext.html" title="[Act: templateId 2.16.840.1.113883.10.20.6.2.5]">Procedure Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../QuantityMeasurementObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.14]">Quantity Measurement Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../SOPInstanceObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.8]">SOP Instance Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../SubstanceAdministeredAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.118]">Substance Administered Act</a></td>
+</tr>
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d668465e490 "> </td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d668465e492 "><a class="xref" href="../TextObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.12]">Text Observation</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<pre class="pre codeblock language-xml" id="classId__example"><code>&lt;observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+  &lt;id root="MDHT" extension="1459845870"/&gt;
+  &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;value xsi:type="CD" code="1165947063"/&gt;
+  &lt;author&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="420992981"/&gt;
+      &lt;code code="1496561205"/&gt;
+      &lt;assignedPerson/&gt;
+      &lt;representedOrganization/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+&lt;/observation&gt;</code></pre>
+<div class="section" id="classId__changes">
+</div>
+
+<p class="p"><span class="ph" id="classId__classformalname">Priority Preference</span></p>
+
+<p class="p" id="classId__shortdesc">[Observation: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.143</tt>]</p>
+
+</div>
+
+</body>
+</html>

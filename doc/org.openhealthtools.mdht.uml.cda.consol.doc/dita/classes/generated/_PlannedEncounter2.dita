@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Planned Encounter2 - conformance rules</title>
+<shortdesc id="shortdesc">[Encounter: templateId <tt>2.16.840.1.113883.10.20.22.4.40</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Encounter</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.40"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template represents a planned or ordered encounter. The type of encounter (e.g., comprehensive outpatient visit) is represented. Clinicians participating in the encounter and the location of the planned encounter may be captured. The priority that the patient and providers place on the encounter may be represented.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-30437, CONF:1098-30438, CONF:1098-8567 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.40"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../PlanOfCareActivityEncounter.dita">Plan Of Care Activity Encounter</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.40</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Planned moodCode (Act/Encounter/Procedure) 2.16.840.1.113883.11.20.9.23</tt><b> STATIC</b> 2014-09-01 (CONF:1098-8565, DSTU:1047)
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Encounter Planned 2.16.840.1.113883.11.20.9.52</tt><b> DYNAMIC</b> (CONF:1098-31032)<p>Records the type of encounter ordered or recommended.</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-30439)<tt><b>/@code</b>="active" </tt><i>Active</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31880)
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1098-30440)
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>performer</b></tt> such that it  (CONF:1098-30442) <p><lines><i>Performers represent clinicians who are responsible for assessing and treating the patient.</i></lines></p><ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt>, where its type is CDA Assigned Entity (CONF:1098-31874)</li></ol> 
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-32045)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>participant</b></tt> such that it  (CONF:1098-30443, CONF:1098-31876)<ol><li><p>This location participation captures where the planned or ordered encounter may take place.</p></li>
+<li>Conforms to <xref href="../ServiceDeliveryLocation.dita">Service Delivery Location</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.32</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31033, CONF:1098-31034, CONF:1098-31035)<ol><li><p>The following entryRelationship represents the priority that a patient or a provider places on the encounter.</p></li>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31877, CONF:1098-31878, CONF:1098-31879)<ol><li><p>The following entryRelationship captures the reason for the planned or ordered encounter</p></li>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../Indication2.dita">Indication2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol>
+</li>
+<li>participant with target entry serviceDeliveryLocation if present, <b>SHALL</b> contain exactly one [1..1] @typeCode="LOC" Location (CodeSystem: HL7ActRelationshipType 2.16.840.1.113883.5.1002) (CONF:1098-31875)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../PlanOfCareActivityEncounter.dita">Plan Of Care Activity Encounter</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.40</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ENC" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8564, R2.0=CONF:1098-8564)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Planned moodCode (Act/Encounter/Procedure) 2.16.840.1.113883.11.20.9.23</tt><b> STATIC</b> 2014-09-01 (CONF:1098-8565, DSTU:1047)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8567, R2.0=CONF:1098-8567)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Encounter Planned 2.16.840.1.113883.11.20.9.52</tt><b> DYNAMIC</b> (CONF:1098-31032)
+<p>Records the type of encounter ordered or recommended.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-30439)<tt><b>/@code</b>="active" </tt><i>Active</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31880)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1098-30440)
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>performer</b></tt> such that it  (CONF:1098-30442) <p><lines><i>Performers represent clinicians who are responsible for assessing and treating the patient.</i></lines></p><ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt>, where its type is CDA Assigned Entity (CONF:1098-31874)</li></ol> 
+</li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-32045)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>participant</b></tt> such that it  (CONF:1098-30443, CONF:1098-31876)
+<ol>
+<li>Conforms to <xref href="../ServiceDeliveryLocation.dita">Service Delivery Location</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.32</tt>)</li></ol><ol><li><p>This location participation captures where the planned or ordered encounter may take place.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31033, CONF:1098-31034, CONF:1098-31035)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol><ol><li><p>The following entryRelationship represents the priority that a patient or a provider places on the encounter.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31877, CONF:1098-31878, CONF:1098-31879)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../Indication2.dita">Indication2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol><ol><li><p>The following entryRelationship captures the reason for the planned or ordered encounter</p></li></ol></li>
+<li>participant with target entry serviceDeliveryLocation if present, <b>SHALL</b> contain exactly one [1..1] @typeCode="LOC" Location (CodeSystem: HL7ActRelationshipType 2.16.840.1.113883.5.1002) (CONF:1098-31875)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::PlannedEncounter2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::encounter[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.40]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_DocumentEncounterMood</entry><entry>CONF:1098-8565DSTU:1047</entry><entry> APT</entry></row> 
+<row><entry>code</entry><entry>0..1</entry><entry>SHOULD</entry><entry>CD</entry><entry></entry><entry> null</entry></row> 
+<row><entry>effectiveTime</entry><entry>0..1</entry><entry>SHOULD</entry><entry>IVL_TS</entry><entry>CONF:1098-30440</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1098-30439</entry><entry>ActStatus 2.16.840.1.113883.5.14 active</entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1098-32045</entry><entry> </entry></row> 
+<row><entry>indication2</entry><entry>0..*</entry><entry>MAY</entry><entry>Indication2</entry><entry>CONF:1098-31877CONF:1098-31878CONF:1098-31879</entry><entry> </entry></row> 
+<row><entry>performer</entry><entry>0..*</entry><entry>MAY</entry><entry>Performer</entry><entry>CONF:1098-30442</entry><entry> </entry></row> 
+<row><entry>plannedEncounter2</entry><entry>0..*</entry><entry>MAY</entry><entry>PlannedEncounter2</entry><entry></entry><entry> </entry></row> 
+<row><entry>priorityPreference</entry><entry>0..1</entry><entry>MAY</entry><entry>PriorityPreference</entry><entry>CONF:1098-31033CONF:1098-31034CONF:1098-31035</entry><entry> </entry></row> 
+<row><entry>serviceDeliveryLocation</entry><entry>0..*</entry><entry>MAY</entry><entry>ServiceDeliveryLocation</entry><entry>CONF:1098-30443CONF:1098-31876</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../NutritionRecommendation.dita">Nutrition Recommendation</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../PlanOfTreatmentSection2.dita">Plan Of Treatment Section2</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../PlannedInterventionAct.dita">Planned Intervention Act (V2)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../Indication2.dita">Indication2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../PriorityPreference.dita">Priority Preference</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref href="../ServiceDeliveryLocation.dita">Service Delivery Location</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<encounter xmlns="urn:hl7-org:v3" classCode="ENC">
+  <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+  <id root="MDHT" extension="324001600"/>
+  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <text>Text Value</text>
+  <statusCode code="active"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <performer>
+    <assignedEntity/>
+  </performer>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="302215440"/>
+      <code code="1382675095"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <id root="MDHT" extension="1072348930"/>
+      <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+      <id root="MDHT" extension="1844524767"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </observation>
+  </entryRelationship>
+</encounter>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::PlanOfCareActivityEncounter
+</p>
+<p id="PlanOfCareActivityEncounter" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8566, CONF:10511 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.40"
+</li><li>SHALL conform to CDA Encounter
+</li><li>Consol Plan Of Care Activity Encounter SHALL contain exactly one [1..1] @classCode="ENC"  (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8564, R2.0=CONF:1098-8564)
+</li><li>Consol Plan Of Care Activity Encounter SHALL contain exactly one [1..1] @moodCode, which SHALL be selected from ValueSet Plan of Care moodCode (Act/Encounter/Procedure) 2.16.840.1.113883.11.20.9.23 STATIC (CONF:8565)
+</li><li>Consol Plan Of Care Activity Encounter SHALL contain at least one [1..*] id (CONF:8567, R2.0=CONF:1098-8567)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Planned Encounter2</ph></p>
+<p id="shortdesc">[Encounter: templateId <tt>2.16.840.1.113883.10.20.22.4.40</tt>]</p>
+</body>
+</topic>

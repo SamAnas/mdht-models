@@ -1,0 +1,2180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Discharge Summary (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[ClinicalDocument: templateId <tt>2.16.840.1.113883.10.20.22.1.8</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>ClinicalDocument</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.1.8"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>
+The Discharge Summary is a document which synopsizes a patient's admission to a hospital, LTPAC provider, or other setting. It provides information for the continuation of care following discharge. The Joint Commission requires the following information to be included in the Discharge Summary (http://www.jointcommission.org/):
+
+
+<ul>
+<li>The reason for hospitalization (the admission)</li>
+<li>The procedures performed, as applicable</li>
+<li>The care, treatment, and services provided</li>
+<li>The patient's condition and disposition at discharge</li>
+<li>Information provided to the patient and family</li>
+<li>Provisions for follow-up care</li>
+</ul>
+
+
+The best practice for a Discharge Summary is to include the discharge disposition in the display of the header.
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-8463, CONF:1198-10044, CONF:1198-32517 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.1.8"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/USRealmHeader2.html">US Realm Header2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.1.1:2015-08-01</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-17178), which <b>SHALL</b> be selected from ValueSet<tt> DischargeSummaryDocumentTypeCode 2.16.840.1.113883.11.20.4.1</tt><b> DYNAMIC</b> (CONF:1198-17179)<p>The Discharge Summary recommends use of a single document type code, 18842-5 "Discharge summary", with further specification provided by author or performer, setting, or specialty. When pre-coordinated codes are used, any coded values describing the author or performer of the service act or the practice setting must be consistent with the LOINC document type.</p>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>participant</b></tt> such that it  (CONF:1198-8467) <ol><li>When participant/@typeCode is IND, associatedEntity/@classCode <b>SHALL</b> be selected from ValueSet 2.16.840.1.113883.11.20.9.33 INDRoleclassCodes STATIC 2011-09-30 (CONF:1198-8469)</li></ol> 
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>componentOf</b></tt> such that it  (CONF:1198-8471) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>encompassingEncounter</b></tt> such that it  (CONF:1198-8472) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-32611, CONF:1198-8473, CONF:1198-8475)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>dischargeDispositionCode</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> NUBC UB-04 FL17-Patient Status 2.16.840.1.113883.3.88.12.80.33</tt><b> DYNAMIC</b> (CONF:1198-8476)<p><lines><i>The dischargeDispositionCode records the disposition of the patient at time of discharge. Access to the National Uniform Billing Committee (NUBC) code system requires a membership. The following conformance statement aligns with HITSP C80 requirements. 
+The dischargeDispositionCode, @displayName, or NUBC UB-04 Print Name, must be displayed when the document is rendered.</i></lines></p></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>encounterParticipant</b></tt> such that it  (CONF:1198-8478) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-32615) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>assignedPerson</b></tt>, where its type is CDA Person (CONF:1198-32621)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>representedOrganization</b></tt>, where its type is CDA Organization (CONF:1198-32622)</li></ol></li><li>If present, the encounterParticipant/assignedEntity element <b>SHALL</b> have at least one assignedPerson or representedOrganization element present</li></ol></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>responsibleParty</b></tt> such that it  (CONF:1198-8479) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-32613) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>assignedPerson</b></tt>, where its type is CDA Person (CONF:1198-32619)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>representedOrganization</b></tt>, where its type is CDA Organization (CONF:1198-32620)</li></ol></li><li>If present, the responsibleParty/assignedEntity element <b>SHALL</b> have at least one assignedPerson or representedOrganization element present</li></ol></li></ol></li></ol> 
+</li>
+<li>
+<b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30519, CONF:1198-30520)<ol>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergiesSectionEntriesOptional2.html">Allergies Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.6:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30521, CONF:1198-30522)<ol>
+<li>Conforms to <xref href="../HospitalCourseSection.dita">Hospital Course Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.5</tt>)</li></ol>
+</li>
+<li>
+<b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30523, CONF:1198-30524)<ol>
+<li>Conforms to <xref href="../DischargeDiagnosisSection2.dita">Discharge Diagnosis Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.24:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30525, CONF:1198-30526)<ol>
+<li>Conforms to <xref href="../DischargeMedicationsSectionEntriesOptional2.dita">Discharge Medications Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.11:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30527, CONF:1198-30528)<ol>
+<li>Conforms to <xref href="../PlanOfTreatmentSection2.dita">Plan Of Treatment Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.10:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30529, CONF:1198-30530)<ol>
+<li>Conforms to <xref href="../ChiefComplaintSection.dita">Chief Complaint Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.1.13.2.1</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30531, CONF:1198-30532)<ol>
+<li>Conforms to <xref href="../ChiefComplaintAndReasonForVisitSection.dita">Chief Complaint And Reason For Visit Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.13</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30533, CONF:1198-30534)<ol>
+<li>Conforms to <xref href="../NutritionSection.dita">Nutrition Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.57</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30535, CONF:1198-30536)<ol>
+<li>Conforms to <xref href="../FamilyHistorySection2.dita">Family History Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.15:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30537, CONF:1198-30538)<ol>
+<li>Conforms to <xref href="../FunctionalStatusSection2.dita">Functional Status Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.14:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30539, CONF:1198-30540)<ol>
+<li>Conforms to <xref href="../HistoryOfPastIllnessSection2.dita">History Of Past Illness Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.20:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30541, CONF:1198-30542)<ol>
+<li>Conforms to <xref href="../HistoryOfPresentIllnessSection.dita">History Of Present Illness Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.4</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30543, CONF:1198-30544)<ol>
+<li>Conforms to <xref href="../AdmissionDiagnosisSection2.dita">Admission Diagnosis Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.43:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30545, CONF:1198-30546)<ol>
+<li>Conforms to <xref href="../AdmissionMedicationsSectionEntriesOptional2.dita">Admission Medications Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.44:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30547, CONF:1198-30548)<ol>
+<li>Conforms to <xref href="../HospitalConsultationsSection.dita">Hospital Consultations Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.42</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30549, CONF:1198-30550)<ol>
+<li>Conforms to <xref href="../HospitalDischargeInstructionsSection.dita">Hospital Discharge Instructions Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.41</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30551, CONF:1198-30552)<ol>
+<li>Conforms to <xref href="../HospitalDischargePhysicalSection.dita">Hospital Discharge Physical Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.26</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30553, CONF:1198-30554)<ol>
+<li>Conforms to <xref href="../HospitalDischargeStudiesSummarySection.dita">Hospital Discharge Studies Summary Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.16</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30555, CONF:1198-30556)<ol>
+<li>Conforms to <xref href="../ImmunizationsSectionEntriesOptional2.dita">Immunizations Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.2:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30557, CONF:1198-30558)<ol>
+<li>Conforms to <xref href="../ProblemSectionEntriesOptional2.dita">Problem Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.5:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30559, CONF:1198-30560)<ol>
+<li>Conforms to <xref href="../ProceduresSectionEntriesOptional2.dita">Procedures Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.7:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30561, CONF:1198-30562)<ol>
+<li>Conforms to <xref href="../ReasonForVisitSection.dita">Reason For Visit Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.12</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30563, CONF:1198-30564)<ol>
+<li>Conforms to <xref href="../ReviewOfSystemsSection.dita">Review Of Systems Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.18</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30565, CONF:1198-30566)<ol>
+<li>Conforms to <xref href="../SocialHistorySection2.dita">Social History Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.17:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30567, CONF:1198-30568)<ol>
+<li>Conforms to <xref href="../VitalSignsSectionEntriesOptional2.dita">Vital Signs Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.4:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-31586, CONF:1198-31587)<ol>
+<li>Conforms to <xref href="../DischargeMedicationsSection2.dita">Discharge Medications Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.11.1:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-32790, CONF:1198-32791)<ol>
+<li>Conforms to <xref href="../DischargeDietSection.dita">Discharge Diet Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.33</tt>)</li></ol>
+</li>
+<li><b>SHALL NOT</b> contain a Chief Complaint and Reason for Visit Section (2.16.840.1.113883.10.20.22.2.13) when either a Chief Complaint Section (1.3.6.1.4.1.19376.1.5.3.1.1.13.2.1) or a Reason for Visit Section (2.16.840.1.113883.10.20.22.2.12) is present (CONF:1198-30569)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/GeneralHeaderConstraints.html">General Header Constraints</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.1.1</tt>)</li>
+<li><b>SHALL</b> conform to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/USRealmHeader2.html">US Realm Header2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.1.1:2015-08-01</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>realmCode</b></tt><tt><b>/@code</b>="US" </tt> (CONF:1198-16791)
+<p>realmCode</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>typeId</b></tt> (CONF:5361, R2.1=CONF:1198-5361)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>id</b></tt> (CONF:5363, R2.1=CONF:1198-5363)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-17178), which <b>SHALL</b> be selected from ValueSet<tt> DischargeSummaryDocumentTypeCode 2.16.840.1.113883.11.20.4.1</tt><b> DYNAMIC</b> (CONF:1198-17179)
+<p>The Discharge Summary recommends use of a single document type code, 18842-5 "Discharge summary", with further specification provided by author or performer, setting, or specialty. When pre-coordinated codes are used, any coded values describing the author or performer of the service act or the practice setting must be consistent with the LOINC document type.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1198-5254)
+<p>Note: The title can either be a locally defined name or the displayName corresponding to clinicalDocument/code</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:5256, R2.1=CONF:1198-5256) <p><lines><i>Signifies the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created. The time when the transform occurred is not currently represented in CDA</i></lines></p>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>confidentialityCode</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> HL7 BasicConfidentialityKind 2.16.840.1.113883.1.11.16926</tt><b> STATIC</b> 2010-04-21 (CONF:5259, R2.1=CONF:1198-5259)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>languageCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Language 2.16.840.1.113883.1.11.11526</tt><b> DYNAMIC</b> (CONF:5372, R2.1=CONF:1198-5372, DSTU:806)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>setId</b></tt> (CONF:5261, R2.1=CONF:1198-5261)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>versionNumber</b></tt> (CONF:5264, R2.1=CONF:1198-5264)
+</li>
+<li>contain exactly one [1..1] <tt><b>component</b></tt>, where its type is Component2
+<ol>
+<li>Conforms to Component2</li></ol></li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>recordTarget</b></tt> such that it  (CONF:1198-5266) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>patientRole</b></tt> such that it  (CONF:1198-5267) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5268, R2.1=CONF:1198-5268)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5271, R2.1=CONF:1198-5271)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5280, R2.1=CONF:1198-5280)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>providerOrganization</b></tt> such that it  (CONF:5416, R2.1=CONF:1198-5416) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5417, R2.1=CONF:1198-5417)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5419, R2.1=CONF:1198-5419)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5420, R2.1=CONF:1198-5420)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5422, R2.1=CONF:1198-5422)</li><li>The id <b>SHOULD</b> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:9996, R2.1=CONF:1198-16820)</li></ol></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>patient</b></tt> such that it  (CONF:1198-5283) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5284, CONF:10411, R2.1=CONF:1198-5284, DSTU:808)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>administrativeGenderCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Administrative Gender (HL7 V3) 2.16.840.1.113883.1.11.1</tt><b> DYNAMIC</b> (CONF:6394, R2.1=CONF:1198-6394)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>maritalStatusCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> HL7 Marital Status 2.16.840.1.113883.1.11.12212</tt><b> DYNAMIC</b> (CONF:5303, R2.1=CONF:1198-5303)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>religiousAffiliationCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> HL7 Religious Affiliation 2.16.840.1.113883.1.11.19185</tt><b> DYNAMIC</b> (CONF:5317, R2.1=CONF:1198-5317)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>sDTCRaceCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Race 2.16.840.1.113883.1.11.14914</tt><b> DYNAMIC</b> (CONF:7263, R2.1=CONF:1198-7263)<p><lines><i>Note: The sdtc:raceCode is only used to record additional values when the patient has indicated multiple races or additional race detail beyond the five categories required for Meaningful Use Stage 2. The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the additional raceCode elements.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>raceCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Race Category Excluding Nulls 2.16.840.1.113883.3.2074.1.1.3</tt><b> DYNAMIC</b> (CONF:1198-5322)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>ethnicGroupCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> EthnicityGroup 2.16.840.1.114222.4.11.837</tt><b> DYNAMIC</b> (CONF:1198-5323)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>birthTime</b></tt> (CONF:1198-5298)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>sDTCEthnicGroupCode</b> (ethnicGroupCode)</tt> (1198-32901), which <b>SHALL</b> be selected from ValueSet<tt> Detailed Ethnicity 2.16.840.1.114222.4.11.877</tt><b> STATIC</b></li><li><b>MAY</b> contain zero or more [0..*] <tt><b>guardian</b></tt> such that it  (CONF:1198-5325) <ol><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>addr</b></tt> (CONF:5359, CONF:10413, R2.1=CONF:1198-5359)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Personal And Legal Relationship Role Type 2.16.840.1.113883.11.20.12.1</tt><b> DYNAMIC</b> (CONF:1198-5326)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>telecom</b></tt> (CONF:1198-5382)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>guardianPerson</b></tt> such that it  (CONF:5385, R2.1=CONF:1198-5385) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5386, R2.1=CONF:1198-5386)</li><li>The content of name <b>SHALL</b> be a conformant US Realm Person Name (PTN.US.FIELDED) (2.16.840.1.113883.10.20.22.5.1.1) (CONF:10414, R2.1=CONF:1198-5386)</li></ol></li><li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>languageCommunication</b></tt> such that it  (CONF:1198-5406) <ol><li><b>MAY</b> contain zero or one [0..1] <tt><b>modeCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> HL7 LanguageAbilityMode 2.16.840.1.113883.1.11.12249</tt><b> STATIC</b> 1 (CONF:5409, R2.1=CONF:1198-5409)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>proficiencyLevelCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> LanguageAbilityProficiency 2.16.840.1.113883.1.11.12199</tt><b> DYNAMIC</b> (CONF:9965, R2.1=CONF:1198-9965)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>languageCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Language 2.16.840.1.113883.1.11.11526</tt><b> DYNAMIC</b> (CONF:1198-5407)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>preferenceInd</b></tt> (CONF:1198-5414)</li></ol></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>birthplace</b></tt> such that it  (CONF:1198-5395) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>place</b></tt> such that it  (CONF:1198-5396) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>addr</b></tt> (CONF:5397, R2.1=CONF:1198-5397)</li><li>If country is US, this addr <b>SHALL</b> contain exactly one [1..1] state, which <b>SHALL</b> be selected from ValueSet StateValueSet 2.16.840.1.113883.3.88.12.80.1 DYNAMIC (CONF:1198-5402). Note: A nullFlavor of 'UNK' may be used if the state is unknown. (CONF:1198-5402)</li></ol></li></ol></li></ol></li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>dataEnterer</b></tt> such that it  (CONF:1198-5441) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-5442) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5443, R2.1=CONF:1198-5443)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5460, R2.1=CONF:1198-5460)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5466, R2.1=CONF:1198-5466)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:1198-32173)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedPerson</b></tt> such that it  (CONF:5469, R2.1=CONF:1198-5469) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5470, R2.1=CONF:1198-5470)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>author</b></tt> such that it  (CONF:1198-5444) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>time</b></tt> (CONF:5445, R2.1=CONF:1198-5445) <p><lines><i>The content SHALL be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:16866).</i></lines></p><p><lines><i>The content SHALL be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:16866).</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedAuthor</b></tt> such that it  (CONF:1198-5448) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5449, R2.1=CONF:1198-5449)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5452, R2.1=CONF:1198-5452)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5428, R2.1=CONF:1198-5428)</li><li>contain zero or one [0..1] <tt><b>code</b></tt><ol><li>Since the assignedAuthor is an assignedPerson, the assignedAuthor <b>SHOULD</b> contain zero or one [0..1] code, and this code, if present, <b>SHALL</b> contain exactly one [1..1] @code, which <b>SHOULD</b> be selected from ValueSet Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066 DYNAMIC (CONF:1198-16788)</li></ol></li><li>contain zero or one [0..1] <tt><b>assignedAuthoringDevice</b></tt> such that it  <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>manufacturerModelName</b></tt> (CONF:16784, R2.1=CONF:1198-16784)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>softwareName</b></tt> (CONF:16785, R2.1=CONF:1198-16785)</li></ol></li><li>contain zero or one [0..1] <tt><b>assignedPerson</b></tt> such that it  <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:16789, R2.1=CONF:1198-16789)</li></ol></li><li>Since the assignedAuthor is an assignedPerson, the assignedAuthor <b>SHOULD</b> contain zero or one [0..1] code (CONF:1198-16787)</li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>custodian</b></tt> such that it  (CONF:1198-5519) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedCustodian</b></tt> such that it  (CONF:5520, R2.1=CONF:1198-5520) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>representedCustodianOrganization</b></tt> such that it  (CONF:5521, R2.1=CONF:1198-5521) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5522, R2.1=CONF:1198-5522)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>name</b></tt> (CONF:5524, R2.1=CONF:1198-5524)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>telecom</b></tt> (CONF:5525, R2.1=CONF:1198-5525)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>addr</b></tt> (CONF:5559, R2.1=CONF:1198-5559)</li><li>The id <b>SHOULD</b> include zero or one [0..1] @root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16822, R2.1=CONF:1198-16822)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>informationRecipient</b></tt> such that it  (CONF:1198-5565) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>intendedRecipient</b></tt> such that it  (CONF:1198-5566) <ol><li><b>MAY</b> contain zero or more [0..*] <tt><b>id</b></tt> (CONF:1198-32399)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>informationRecipient</b></tt> such that it  (CONF:5568, R2.1=CONF:1198-5567) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5470, R2.1=CONF:1198-5568)</li></ol></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>receivedOrganization</b></tt> such that it  (CONF:5577, R2.1=CONF:1198-5577) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>name</b></tt> (CONF:5578, R2.1=CONF:1198-5578)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>legalAuthenticator</b></tt> such that it  (CONF:1198-5579) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>time</b></tt> (CONF:5580, R2.1=CONF:1198-5580)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>signatureCode</b></tt> (CONF:5583, R2.1=CONF:1198-5583)<tt><b>/@code</b>="S" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.89 Participationsignature</tt>) (CONF:5584, R2.1=CONF:1198-5584)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>sDTCSignatureText</b></tt> (CONF:1198-30810)<p><lines><i>sdtc:signatureText
+The sdtc:signatureText extension provides a location in CDA for a textual or multimedia depiction of the signature by which the participant endorses and accepts responsibility for his or her participation in the Act as specified in the Participation.typeCode. Details of what goes in the field are described in the HL7 CDA Digital Signature Standard balloted in Fall of 2013.
+
+Note: The signature can be represented either inline or by reference according to the ED data type. Typical cases for CDA are:
+
+1) Electronic signature: this attribute can represent virtually any electronic signature scheme.
+
+2) Digital signature: this attribute can represent digital signatures by reference to a signature data block that is constructed in accordance to a digital signature standard, such as XML-DSIG, PKCS#7, PGP, etc.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:5585, R2.1=CONF:1198-5585) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5586, R2.1=CONF:1198-5586)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:17000, R2.1=CONF:1198-17000)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5589, R2.1=CONF:1198-5589)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5595, R2.1=CONF:1198-5595)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedPerson</b></tt> such that it  (CONF:5597, R2.1=CONF:1198-5597) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5598, R2.1=CONF:1198-5598)</li></ol></li><li>The id <b>MAY</b> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16823, R2.1=CONF:1198-16823)</li></ol></li><li>time content <b>SHALL</b> be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:1198-29402)</li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>authenticator</b></tt> such that it  (CONF:1198-5607) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>time</b></tt> (CONF:5608, R2.1=CONF:1198-5608)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>signatureCode</b></tt> (CONF:5610, R2.1=CONF:1198-5610)<tt><b>/@code</b>="S" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.89 Participationsignature</tt>) (CONF:5611, R2.1=CONF:1198-5611)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>sDTCSignatureText</b></tt> (CONF:1198-30811)<p><lines><i>The sdtc:signatureText extension provides a location in CDA for a textual or multimedia depiction of the signature by which the participant endorses and accepts responsibility for his or her participation in the Act as specified in the Participation.typeCode. Details of what goes in the field are described in the HL7 CDA Digital Signature Standard balloted in Fall of 2013.
+
+Note: The signature can be represented either inline or by reference according to the ED data type. Typical cases for CDA are:
+
+1) Electronic signature: this attribute can represent virtually any electronic signature scheme.
+
+2) Digital signature: this attribute can represent digital signatures by reference to a signature data block that is constructed in accordance to a digital signature standard, such as XML-DSIG, PKCS#7, PGP, etc.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:5612, R2.1=CONF:1198-5612) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5613, R2.1=CONF:1198-5613)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:16825, R2.1=CONF:1198-16825), which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:16826, R2.1=CONF:1198-16826)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5616, R2.1=CONF:1198-5616)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5622, R2.1=CONF:1198-5622)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedPerson</b></tt> such that it  (CONF:5624, R2.1=CONF:1198-5624) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5625, R2.1=CONF:1198-5625)</li></ol></li><li>The id <b>SHOULD</b> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16824, R2.1=CONF:1198-16824)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>informant</b></tt> such that it  (CONF:1198-8001, CONF:1198-31355) <ol><li>contain zero or one [0..1] <tt><b>assignedEntity</b></tt> such that it  <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9945, R2.1=CONF:1198-9945)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:1198-32174)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:1198-8220)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedPerson</b></tt> such that it  (CONF:8221, R2.1=CONF:1198-8221) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:8222, CONF:10420, R2.1=CONF:1198-8222)</li></ol></li></ol></li><li>contain zero or one [0..1] <tt><b>relatedEntity</b></tt> such that it  <ol><li>contain  [0..0] <tt><b>addr</b></tt></li><li>contain  [0..0] <tt><b>relatedPerson</b></tt>, where its type is CDA Person</li></ol></li><li><b>SHALL</b> satisfy: contain exactly one [1..1] assignedEntity OR exactly one [1..1] relatedEntity (CONF:1198-8002, CONF:1198-31356)</li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>inFulfillmentOf</b></tt> such that it  (CONF:1198-9952) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>order</b></tt> such that it  (CONF:9953, R2.1=CONF:1198-9953) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9954, R2.1=CONF:1198-9954)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>componentOf</b></tt> such that it  (CONF:1198-9955) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>encompassingEncounter</b></tt> such that it  (CONF:1198-9956) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9959, R2.1=CONF:1198-9959)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:9958, R2.1=CONF:1198-9958)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>participant</b></tt> such that it  (CONF:1198-10003) <ol><li><b>MAY</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:10004, R2.1=CONF:1198-10004)</li><li><b>SHALL</b> contain associatedEntity/associatedPerson AND/OR associatedEntity/scopingOrganization (CONF:1198-10006)</li><li>When participant/@typeCode is IND, associatedEntity/@classCode <b>SHOULD</b> be selected from ValueSet 2.16.840.1.113883.11.20.9.33 INDRoleclassCodes STATIC 2011-09-30 (CONF:1198-10007)</li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>documentationOf</b></tt> such that it  (CONF:1198-14835) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>serviceEvent</b></tt> such that it  (CONF:1198-14836) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:14837, R2.1=CONF:1198-14837)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>performer</b></tt> such that it  (CONF:1198-14839) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt> (CONF:14840, R2.1=CONF:1198-14840)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>functionCode</b></tt> (CONF:1198-16818), which <b>SHOULD</b> be selected from ValueSet<tt> ParticipationFunction 2.16.840.1.113883.1.11.10267</tt><b> STATIC</b> 2014-09-01 (CONF:1198-32889)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-14841) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14846, R2.1=CONF:1198-14846)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:1198-14842)</li></ol></li></ol></li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>authorization</b></tt> such that it  (CONF:1198-16792) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>consent</b></tt> such that it  (CONF:16793, R2.1=CONF:1198-16793) <ol><li><b>MAY</b> contain zero or more [0..*] <tt><b>id</b></tt> (CONF:16794, R2.1=CONF:1198-16794)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:16795, R2.1=CONF:1198-16795)<p><lines><i>The type of consent (e.g., a consent to perform the related serviceEvent) is conveyed in consent/code.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:16797, R2.1=CONF:1198-16797)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:16798, R2.1=CONF:1198-16798)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>participant</b></tt> such that it  (CONF:1198-8467) <ol><li>When participant/@typeCode is IND, associatedEntity/@classCode <b>SHALL</b> be selected from ValueSet 2.16.840.1.113883.11.20.9.33 INDRoleclassCodes STATIC 2011-09-30 (CONF:1198-8469)</li></ol> 
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>componentOf</b></tt> such that it  (CONF:1198-8471) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>encompassingEncounter</b></tt> such that it  (CONF:1198-8472) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-32611, CONF:1198-8473, CONF:1198-8475)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>dischargeDispositionCode</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> NUBC UB-04 FL17-Patient Status 2.16.840.1.113883.3.88.12.80.33</tt><b> DYNAMIC</b> (CONF:1198-8476)<p><lines><i>The dischargeDispositionCode records the disposition of the patient at time of discharge. Access to the National Uniform Billing Committee (NUBC) code system requires a membership. The following conformance statement aligns with HITSP C80 requirements. 
+The dischargeDispositionCode, @displayName, or NUBC UB-04 Print Name, must be displayed when the document is rendered.</i></lines></p></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>encounterParticipant</b></tt> such that it  (CONF:1198-8478) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-32615) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>assignedPerson</b></tt>, where its type is CDA Person (CONF:1198-32621)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>representedOrganization</b></tt>, where its type is CDA Organization (CONF:1198-32622)</li></ol></li><li>If present, the encounterParticipant/assignedEntity element <b>SHALL</b> have at least one assignedPerson or representedOrganization element present</li></ol></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>responsibleParty</b></tt> such that it  (CONF:1198-8479) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-32613) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>assignedPerson</b></tt>, where its type is CDA Person (CONF:1198-32619)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>representedOrganization</b></tt>, where its type is CDA Organization (CONF:1198-32620)</li></ol></li><li>If present, the responsibleParty/assignedEntity element <b>SHALL</b> have at least one assignedPerson or representedOrganization element present</li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30519, CONF:1198-30520)
+<ol>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergiesSectionEntriesOptional2.html">Allergies Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.6:2015-08-01</tt>)</li></ol></li>
+<li><b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30521, CONF:1198-30522)
+<ol>
+<li>Conforms to <xref href="../HospitalCourseSection.dita">Hospital Course Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.5</tt>)</li></ol></li>
+<li><b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30523, CONF:1198-30524)
+<ol>
+<li>Conforms to <xref href="../DischargeDiagnosisSection2.dita">Discharge Diagnosis Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.24:2015-08-01</tt>)</li></ol></li>
+<li><b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30527, CONF:1198-30528)
+<ol>
+<li>Conforms to <xref href="../PlanOfTreatmentSection2.dita">Plan Of Treatment Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.10:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30529, CONF:1198-30530)
+<ol>
+<li>Conforms to <xref href="../ChiefComplaintSection.dita">Chief Complaint Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.1.13.2.1</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30531, CONF:1198-30532)
+<ol>
+<li>Conforms to <xref href="../ChiefComplaintAndReasonForVisitSection.dita">Chief Complaint And Reason For Visit Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.13</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30533, CONF:1198-30534)
+<ol>
+<li>Conforms to <xref href="../NutritionSection.dita">Nutrition Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.57</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30535, CONF:1198-30536)
+<ol>
+<li>Conforms to <xref href="../FamilyHistorySection2.dita">Family History Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.15:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30537, CONF:1198-30538)
+<ol>
+<li>Conforms to <xref href="../FunctionalStatusSection2.dita">Functional Status Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.14:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30539, CONF:1198-30540)
+<ol>
+<li>Conforms to <xref href="../HistoryOfPastIllnessSection2.dita">History Of Past Illness Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.20:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30541, CONF:1198-30542)
+<ol>
+<li>Conforms to <xref href="../HistoryOfPresentIllnessSection.dita">History Of Present Illness Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.4</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30543, CONF:1198-30544)
+<ol>
+<li>Conforms to <xref href="../AdmissionDiagnosisSection2.dita">Admission Diagnosis Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.43:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30545, CONF:1198-30546)
+<ol>
+<li>Conforms to <xref href="../AdmissionMedicationsSectionEntriesOptional2.dita">Admission Medications Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.44:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30547, CONF:1198-30548)
+<ol>
+<li>Conforms to <xref href="../HospitalConsultationsSection.dita">Hospital Consultations Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.42</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30549, CONF:1198-30550)
+<ol>
+<li>Conforms to <xref href="../HospitalDischargeInstructionsSection.dita">Hospital Discharge Instructions Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.41</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30551, CONF:1198-30552)
+<ol>
+<li>Conforms to <xref href="../HospitalDischargePhysicalSection.dita">Hospital Discharge Physical Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.26</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30553, CONF:1198-30554)
+<ol>
+<li>Conforms to <xref href="../HospitalDischargeStudiesSummarySection.dita">Hospital Discharge Studies Summary Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.16</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30555, CONF:1198-30556)
+<ol>
+<li>Conforms to <xref href="../ImmunizationsSectionEntriesOptional2.dita">Immunizations Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.2:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30557, CONF:1198-30558)
+<ol>
+<li>Conforms to <xref href="../ProblemSectionEntriesOptional2.dita">Problem Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.5:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30559, CONF:1198-30560)
+<ol>
+<li>Conforms to <xref href="../ProceduresSectionEntriesOptional2.dita">Procedures Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.7:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30561, CONF:1198-30562)
+<ol>
+<li>Conforms to <xref href="../ReasonForVisitSection.dita">Reason For Visit Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.12</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30563, CONF:1198-30564)
+<ol>
+<li>Conforms to <xref href="../ReviewOfSystemsSection.dita">Review Of Systems Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.18</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30565, CONF:1198-30566)
+<ol>
+<li>Conforms to <xref href="../SocialHistorySection2.dita">Social History Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.17:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30567, CONF:1198-30568)
+<ol>
+<li>Conforms to <xref href="../VitalSignsSectionEntriesOptional2.dita">Vital Signs Section Entries Optional2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.4:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-31586, CONF:1198-31587)
+<ol>
+<li>Conforms to <xref href="../DischargeMedicationsSection2.dita">Discharge Medications Section2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.2.11.1:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-32790, CONF:1198-32791)
+<ol>
+<li>Conforms to <xref href="../DischargeDietSection.dita">Discharge Diet Section</xref> (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.33</tt>)</li></ol></li>
+<li>typeId <b>SHALL</b> contain exactly one [1..1] @root="2.16.840.1.113883.1.3" (CONF:5250, R2.1=CONF:1198-5250)</li>
+<li>typeId <b>SHALL</b> contain exactly one [1..1] @extension="POCD_HD000040" (CONF:5251, R2.1=CONF:1198-5251)</li>
+<li>id <b>SHALL</b> be a globally unique identifier for the document (CONF:9991, R2.1=CONF:1198-9991)</li>
+<li>code <b>SHALL</b> specify the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note). (CONF:9992, R2.1=CONF:1198-9992)</li>
+<li>If setId is present versionNumber <b>SHALL</b> be present (CONF:6380, R2.1=CONF:1198-6380)</li>
+<li>If versionNumber is present setId <b>SHALL</b> be present (CONF:6387, R2.1=CONF:1198-6387)</li>
+<li><b>SHALL NOT</b> contain a Chief Complaint and Reason for Visit Section (2.16.840.1.113883.10.20.22.2.13) when either a Chief Complaint Section (1.3.6.1.4.1.19376.1.5.3.1.1.13.2.1) or a Reason for Visit Section (2.16.840.1.113883.10.20.22.2.12) is present (CONF:1198-30569)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::DischargeSummary2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::clinicaldocument[cda:templateId/@root = 2.16.840.1.113883.10.20.22.1.1]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1198-17178</entry><entry> null</entry></row> 
+<row><entry>admissionDiagnosisSection2</entry><entry>0..1</entry><entry>MAY</entry><entry>AdmissionDiagnosisSection2</entry><entry>CONF:1198-30543, CONF:1198-30544</entry><entry> </entry></row> 
+<row><entry>admissionMedicationsSectionEntriesOptional2</entry><entry>0..1</entry><entry>MAY</entry><entry>AdmissionMedicationsSectionEntriesOptional2</entry><entry>CONF:1198-30545, CONF:1198-30546</entry><entry> </entry></row> 
+<row><entry>allergiesSectionEntriesOptional2</entry><entry>1..1</entry><entry>SHALL</entry><entry>AllergiesSectionEntriesOptional2</entry><entry>CONF:1198-30519, CONF:1198-30520</entry><entry> </entry></row> 
+<row><entry>chiefComplaintAndReasonForVisitSection</entry><entry>0..1</entry><entry>MAY</entry><entry>ChiefComplaintAndReasonForVisitSection</entry><entry>CONF:1198-30531, CONF:1198-30532</entry><entry> </entry></row> 
+<row><entry>chiefComplaintSection</entry><entry>0..1</entry><entry>MAY</entry><entry>ChiefComplaintSection</entry><entry>CONF:1198-30529, CONF:1198-30530</entry><entry> </entry></row> 
+<row><entry>componentOf</entry><entry>1..1</entry><entry>SHALL</entry><entry>ComponentOf</entry><entry>CONF:1198-8471</entry><entry> </entry></row> 
+<row><entry>dischargeDiagnosisSection2</entry><entry>1..1</entry><entry>SHALL</entry><entry>DischargeDiagnosisSection2</entry><entry>CONF:1198-30523, CONF:1198-30524</entry><entry> </entry></row> 
+<row><entry>dischargeDietSection</entry><entry>0..1</entry><entry>MAY</entry><entry>DischargeDietSection</entry><entry>CONF:1198-32790, CONF:1198-32791</entry><entry> </entry></row> 
+<row><entry>dischargeMedicationsSection2</entry><entry>0..1</entry><entry>MAY</entry><entry>DischargeMedicationsSection2</entry><entry>CONF:1198-31586, CONF:1198-31587</entry><entry> </entry></row> 
+<row><entry>dischargeMedicationsSectionEntriesOptional2</entry><entry>0..1</entry><entry>SHOULD</entry><entry>DischargeMedicationsSectionEntriesOptional2</entry><entry>CONF:1198-30525, CONF:1198-30526</entry><entry> </entry></row> 
+<row><entry>familyHistorySection2</entry><entry>0..1</entry><entry>MAY</entry><entry>FamilyHistorySection2</entry><entry>CONF:1198-30535, CONF:1198-30536</entry><entry> </entry></row> 
+<row><entry>functionalStatusSection2</entry><entry>0..1</entry><entry>MAY</entry><entry>FunctionalStatusSection2</entry><entry>CONF:1198-30537, CONF:1198-30538</entry><entry> </entry></row> 
+<row><entry>historyOfPastIllnessSection2</entry><entry>0..1</entry><entry>MAY</entry><entry>HistoryOfPastIllnessSection2</entry><entry>CONF:1198-30539, CONF:1198-30540</entry><entry> </entry></row> 
+<row><entry>historyOfPresentIllnessSection</entry><entry>0..1</entry><entry>MAY</entry><entry>HistoryOfPresentIllnessSection</entry><entry>CONF:1198-30541, CONF:1198-30542</entry><entry> </entry></row> 
+<row><entry>hospitalConsultationsSection</entry><entry>0..1</entry><entry>MAY</entry><entry>HospitalConsultationsSection</entry><entry>CONF:1198-30547, CONF:1198-30548</entry><entry> </entry></row> 
+<row><entry>hospitalCourseSection</entry><entry>1..1</entry><entry>SHALL</entry><entry>HospitalCourseSection</entry><entry>CONF:1198-30521, CONF:1198-30522</entry><entry> </entry></row> 
+<row><entry>hospitalDischargeInstructionsSection</entry><entry>0..1</entry><entry>MAY</entry><entry>HospitalDischargeInstructionsSection</entry><entry>CONF:1198-30549, CONF:1198-30550</entry><entry> </entry></row> 
+<row><entry>hospitalDischargePhysicalSection</entry><entry>0..1</entry><entry>MAY</entry><entry>HospitalDischargePhysicalSection</entry><entry>CONF:1198-30551, CONF:1198-30552</entry><entry> </entry></row> 
+<row><entry>hospitalDischargeStudiesSummarySection</entry><entry>0..1</entry><entry>MAY</entry><entry>HospitalDischargeStudiesSummarySection</entry><entry>CONF:1198-30553, CONF:1198-30554</entry><entry> </entry></row> 
+<row><entry>immunizationsSectionEntriesOptional2</entry><entry>0..1</entry><entry>MAY</entry><entry>ImmunizationsSectionEntriesOptional2</entry><entry>CONF:1198-30555, CONF:1198-30556</entry><entry> </entry></row> 
+<row><entry>nutritionSection</entry><entry>0..1</entry><entry>MAY</entry><entry>NutritionSection</entry><entry>CONF:1198-30533, CONF:1198-30534</entry><entry> </entry></row> 
+<row><entry>participant</entry><entry>0..*</entry><entry>MAY</entry><entry>Participant</entry><entry>CONF:1198-8467</entry><entry> </entry></row> 
+<row><entry>planOfTreatmentSection2</entry><entry>1..1</entry><entry>SHALL</entry><entry>PlanOfTreatmentSection2</entry><entry>CONF:1198-30527, CONF:1198-30528</entry><entry> </entry></row> 
+<row><entry>problemSectionEntriesOptional2</entry><entry>0..1</entry><entry>MAY</entry><entry>ProblemSectionEntriesOptional2</entry><entry>CONF:1198-30557, CONF:1198-30558</entry><entry> </entry></row> 
+<row><entry>proceduresSectionEntriesOptional2</entry><entry>0..1</entry><entry>MAY</entry><entry>ProceduresSectionEntriesOptional2</entry><entry>CONF:1198-30559, CONF:1198-30560</entry><entry> </entry></row> 
+<row><entry>reasonForVisitSection</entry><entry>0..1</entry><entry>MAY</entry><entry>ReasonForVisitSection</entry><entry>CONF:1198-30561, CONF:1198-30562</entry><entry> </entry></row> 
+<row><entry>reviewOfSystemsSection</entry><entry>0..1</entry><entry>MAY</entry><entry>ReviewOfSystemsSection</entry><entry>CONF:1198-30563, CONF:1198-30564</entry><entry> </entry></row> 
+<row><entry>socialHistorySection2</entry><entry>0..1</entry><entry>MAY</entry><entry>SocialHistorySection2</entry><entry>CONF:1198-30565, CONF:1198-30566</entry><entry> </entry></row> 
+<row><entry>vitalSignsSectionEntriesOptional2</entry><entry>0..1</entry><entry>MAY</entry><entry>VitalSignsSectionEntriesOptional2</entry><entry>CONF:1198-30567, CONF:1198-30568</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry></entry><entry><xref href="../AdmissionDiagnosisSection2.dita">Admission Diagnosis Section (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdmissionMedicationsSectionEntriesOptional2.dita">Admission Medications Section (entries optional) (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergiesSectionEntriesOptional2.html">Allergies and Intolerances Section (entries optional) (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ChiefComplaintAndReasonForVisitSection.dita">Chief Complaint And Reason For Visit Section</xref></entry></row><row><entry></entry><entry><xref href="../ChiefComplaintSection.dita">Chief Complaint Section</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../DischargeDiagnosisSection2.dita">Discharge Diagnosis (V3)</xref></entry></row><row><entry></entry><entry><xref href="../DischargeDietSection.dita">Discharge Diet Section</xref></entry></row><row><entry></entry><entry><xref href="../DischargeMedicationsSection2.dita">Discharge Medications Section (entries required) (V3)</xref></entry></row><row><entry></entry><entry><xref href="../DischargeMedicationsSectionEntriesOptional2.dita">Discharge Medications Section (entries optional) (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FamilyHistorySection2.dita">Family History Section (V3)</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../FunctionalStatusSection2.dita">Functional Status Section2</xref></entry></row><row><entry></entry><entry><xref href="../HistoryOfPastIllnessSection2.dita">History of Past Illness Section (V3)</xref></entry></row><row><entry></entry><entry><xref href="../HistoryOfPresentIllnessSection.dita">History Of Present Illness Section</xref></entry></row><row><entry></entry><entry><xref href="../HospitalConsultationsSection.dita">Hospital Consultations Section</xref></entry></row><row><entry></entry><entry><xref href="../HospitalCourseSection.dita">Hospital Course Section</xref></entry></row><row><entry></entry><entry><xref href="../HospitalDischargeInstructionsSection.dita">Hospital Discharge Instructions Section</xref></entry></row><row><entry></entry><entry><xref href="../HospitalDischargePhysicalSection.dita">Hospital Discharge Physical Section</xref></entry></row><row><entry></entry><entry><xref href="../HospitalDischargeStudiesSummarySection.dita">Hospital Discharge Studies Summary Section</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationsSectionEntriesOptional2.dita">Immunizations Section (entries optional) (V3)</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../NutritionSection.dita">Nutrition Section</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PlanOfTreatmentSection2.dita">Plan Of Treatment Section2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProblemSectionEntriesOptional2.dita">Problem Section (V3) (entries optional)</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../ProceduresSectionEntriesOptional2.dita">Procedures Section Entries Optional2</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../ReasonForVisitSection.dita">Reason For Visit Section</xref></entry></row><row><entry></entry><entry><xref href="../ReviewOfSystemsSection.dita">Review Of Systems Section</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SocialHistorySection2.dita">Social History Section (V3)</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row><row><entry></entry><entry><xref href="../VitalSignsSectionEntriesOptional2.dita">Vital Signs Section (entries optional) (V3)</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 infrastructure/cda/CDA_SDTC.xsd">
+  <realmCode code="US"/>
+  <typeId root="2.16.840.1.113883.1.3"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.8" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <id root="MDHT" extension="934125338"/>
+  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+  <title>org.openhealthtools.mdht.uml.cda.consol.impl. Discharge Summary2 Impl</title>
+  <effectiveTime/>
+  <confidentialityCode codeSystem="2.16.840.1.113883.5.25" codeSystemName="ConfidentialityCode"/>
+  <languageCode code="Code forlanguageCode"/>
+  <setId root="MDHT" extension="384da831-e9cf-4ad0-9e35-4af0ac546766"/>
+  <versionNumber value="1"/>
+  <recordTarget>
+    <typeId root="2.16.840.1.113883.1.3"/>
+    <patientRole/>
+  </recordTarget>
+  <author>
+    <typeId root="2.16.840.1.113883.1.3"/>
+    <time/>
+    <assignedAuthor/>
+  </author>
+  <custodian/>
+  <participant>
+    <associatedEntity/>
+  </participant>
+  <componentOf>
+    <encompassingEncounter>
+      <dischargeDispositionCode codeSystem="2.16.840.1.113883.6.301.5" codeSystemName="NUBC UB-04 FL17-Patient Status"/>
+      <responsibleParty/>
+      <encounterParticipant/>
+    </encompassingEncounter>
+  </componentOf>
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.6" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.6"/>
+          <id root="MDHT" extension="682390203"/>
+          <code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies, adverse reactions, alerts"/>
+          <title>Allergies, adverse reactions, alerts</title>
+          <text>WuXwkuDz AGyKIyui HDSvZus lsRfJkH kkypHbIhq lMGhvT dVSFdym fDznFlcX sEBRQVc sVUtzOpcV VSyaNOKAD tymLJkFn KcEXyzj NvKpeL memva IegERXanG mtfSeKi UNmFRTh itqIKYiid pYswz QpXcSM GCZJbDy qNhpUGB SFjrbZ rzExB njqgFbxo idQKm AqeVkMy QbBrYeN OKLiex bXNPvphm 
+BnGdANZEk RMMRKOgiz MIQtQOB ZhVzmaikj piqnlFh WRwxbUQd LQCdB XVOVQSpiP vQHOJCfC bkSAjaP zherwdO bMzeUUc CbOfSuL zMPdThoA Ssvwv hvlHcxQGN zMfZdzQs esENCYS uHUsQNo vSIhn EOmOWdxc sZZvxo mzqJChv QQFPhARQ QcLSifvBb 
+</text>
+          <confidentialityCode code="326789571"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.30" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.30"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.30" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.30"/>
+              <id root="MDHT" extension="723766833"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.7" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.24.3.90"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.7"/>
+                  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.5"/>
+          <id root="MDHT" extension="451764038"/>
+          <code code="8648-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital Course"/>
+          <title>Hospital Course</title>
+          <text>spmYiO lchfZbvd VKBXCqCh TthWLx nOhmLx nJwfYV tFtzcuPsg senLhXa JnhJC UPFMNQ JWXBrs meHKMy zvSpb ctwyi QPtMu LtkQhdh diBuUXI GFVvKNjxW vdYcYc EvrAXCj XgFFiC kDoCMLW DTwdly hvdZJMbOh yZihMP pijEFKVek LmrFzONl oxIoqtB pHKpZzSSA YEvTUL eUcUVS WNXbGNo inBlvzbib jJigVgdD FFdYVAXr oaktTjsd uzHqPZDxo ZSLsZy cqMODE gOrRY ixrYJE 
+yXoGoUs iSkmu BSmoiRv jYnpdLdC UaJVdY CfdYtqJf kuqQIDM txjGVJxcp qPDLuQwtO LyXJhebC OkAuCdBy RoOOkv xnVbaRGUH QrdgVTIUA jmXdmzLs bnJQXnXhf HoERT ANEBprts iKlIxfNN wdwVNn OhVHMTl Ietakg RCdvs RalJUsBf GZdFVinD fIZEFPe qKWvXF EzNvhE VrbnlogN donFZrEGN iKxFcc MnLdIykoc ZvBCoWTT HEnDYKw pgCmr OmXNxGx ojxsXxTFw LqiMTVtso HdjfxsSlM jBkRMK DZtQXuM KODEuH 
+</text>
+          <confidentialityCode code="1460126675"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.10" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.10"/>
+          <id root="MDHT" extension="663175998"/>
+          <code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Treatment plan"/>
+          <title>Treatment plan</title>
+          <text>DZsIqVWhd mBIzOr eRIRDe CPBLxuChO kZzycNn aydkw XlnrDGyD GAengmM BTpXtmy TjYwDOcxz OWHrqYxh RPHnaURH IcDRoJCN RntjBnZjB RUzAx iDeIgd bgWYcPDH GgJDM ZQkUCGfCi oFaiQ LOMQUTf zLbJCF OnroOvC xFYvxcX EKnjJA CgmxJ CGysHF MhoqzIuH 
+CLpYsCAR OboBoz JiOiWv ejvLoKFH hhUtYUt bDJPPDWoX kzlbvYF GCsXqoz GtINoPZVc YijUCt QUalY UsRPOJlW zWDlItOb hdVXb wCETPsXls oNcZybF vxJLjaK JNUoSwe KQpPr xIlnhbKSd OvrSCrx WsWkS wZSwwEMG meMpWdF oytDsDPXr YFBiyBx xGbJHcdz BFnlY sXAcFo xuWEi RrjVeLU CvPXf KHuhTPu jtNfC kHxZJG AZUAniS ojprhN sonelTJVa kAYfw WUvvBPy OazYntJ vRBegm SQBpLpAtN cYrluQ LlBGUiR CWwvjAT sRyxbz LUrhdYWRt hyaAWQ cHsZBRv nJDwoS 
+vyKerYcs ZiFFVco tQGBGvp OjELgrhZV tYERU JJtjDfq uWDGuwjHi FkFOc oTRjSsb goNcqaySz MAQaEi NKmwSfHKN pZyTIH sxhtZYW KpaQXt HwuTPkBr rabtB oCXMayhl goVlJvPe DryMWRl zSSGemmmx luOAe nUBLpwh PyCmFh IaCDpaKJ wgtwzBsHz ujujLEFT raIzENr dRVEHwxnD dIQBvr 
+</text>
+          <confidentialityCode code="259274022"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <observation classCode="OBS">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+              <id root="MDHT" extension="790968775"/>
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+                  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+                  <statusCode code="active"/>
+                </act>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry>
+            <encounter classCode="ENC">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+              <id root="MDHT" extension="1923188186"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </encounter>
+          </entry>
+          <entry>
+            <act classCode="ACT">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+              <id root="MDHT" extension="562129391"/>
+              <code code="1109992931"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry>
+            <procedure classCode="PROC">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+              <id root="MDHT" extension="26556722"/>
+              <code code="857590350"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+                  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+                  <statusCode code="active"/>
+                </act>
+              </entryRelationship>
+            </procedure>
+          </entry>
+          <entry>
+            <substanceAdministration classCode="SBADM">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+              <id root="MDHT" extension="196767145"/>
+              <code code="436396983"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime value="20170828"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/>
+              <consumable/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <precondition typeCode="PRCN"/>
+            </substanceAdministration>
+          </entry>
+          <entry>
+            <supply classCode="SPLY">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+              <id root="MDHT" extension="271676718"/>
+              <code code="2114514709"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime value="20170828"/>
+              <product/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+                  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+                  <statusCode code="active"/>
+                </act>
+              </entryRelationship>
+            </supply>
+          </entry>
+          <entry>
+            <act classCode="ACT" moodCode="INT">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <id root="MDHT" extension="37630846"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+            </act>
+          </entry>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.141"/>
+              <id root="MDHT" extension="321529073"/>
+              <code code="432138007" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="handoff communication (procedure)"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <participant typeCode="IRCP"/>
+            </act>
+          </entry>
+          <entry>
+            <act classCode="ACT">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.130"/>
+              <id root="MDHT" extension="1289911177"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <entryRelationship>
+                <encounter classCode="ENC">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.40" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.40"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="active"/>
+                </encounter>
+              </entryRelationship>
+              <entryRelationship>
+                <substanceAdministration classCode="SBADM">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.42"/>
+                  <statusCode code="active"/>
+                  <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                  <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/>
+                </substanceAdministration>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.44" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.44"/>
+                  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                  <statusCode code="active"/>
+                  <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <procedure classCode="PROC">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+                  <statusCode code="active"/>
+                  <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                </procedure>
+              </entryRelationship>
+              <entryRelationship>
+                <supply classCode="SPLY">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+                  <statusCode code="active"/>
+                </supply>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.39" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.39"/>
+                  <statusCode code="active"/>
+                </act>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry>
+            <substanceAdministration classCode="SBADM">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.120"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.120"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.120"/>
+              <id root="MDHT" extension="1395513372"/>
+              <code code="1324139632"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime value="20170828"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <consumable/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <precondition typeCode="PRCN"/>
+            </substanceAdministration>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="GOL">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.121"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.121"/>
+              <id root="MDHT" extension="1617472424"/>
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <text>Text Value</text>
+              <statusCode code="active"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <reference typeCode="REFR"/>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.13.2.1"/>
+          <id root="MDHT" extension="1403992939"/>
+          <code code="10154-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="CHIEF COMPLAINT"/>
+          <title>CHIEF COMPLAINT</title>
+          <text>pmtHofz hEwxgLf rqjasggF MsFIfAc xWEPqITI pZruu ehPOnBXlB WhXJo XsrJpCJr wPmioU FkPcTWyn iqTGiIMg esQEW UsIOp BoniVPAh skVpNF jgkRX TpDgpTC xOIcLNOQ ZuRNidu kTmGtbC PYRquk OBiolG oHGVOiP WahmtbuF fxXEzjrO jKIfda BmoiNQCGZ HBANG EKlsrQqNR JGIHCJ lIEOlI OllYiGYr 
+iogfQwRCZ WhSykSzi erqLMMTd JBfkCW GolNks ChTnuxLa nZzXjSq RJeizkTj XRVUjFC vqdDYL jYqjmZU WcFFMFy jUIAMTP WPbYST UIGWWia isFnlMjpl SOSJg jFtCMFb Kbnuz mjATNpSJ GoxXAgM pXuEGO hQxrVB vBsauhb aMtlXWon PwEPjV xgmHkw SMFnlh jjFoDgr udXrWrDCY mGccvqBn fZMAYNDQ ySEFh ZkQvqvBuQ RaHYtthYY zKOHUWUlU dRtYNNkYD ycCJMw kTtxg gHQdH qAFSIc ENYKzEDI lazUGQk PBBMci cofOX 
+</text>
+          <confidentialityCode code="1047173870"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.13"/>
+          <id root="MDHT" extension="699141198"/>
+          <code code="46239-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Chief Complaint and Reason for Visit"/>
+          <title>Chief Complaint and Reason for Visit</title>
+          <text>DxwbL lgGuy Kudwos IvMbTjL xEQYv QFQFiEdU jNFiYODqc ykyAAJxx LmQzOr DAIakPtLp vBqDmkW BtUHv oODUrHRTK TvZTnRZNG sAsdmFj ERTNBiR QCXkPWDuM nuVjcWZE CxTxJbl WfDAnsh ACMaPWeNs NXwzwfMd VDNsGtji tUXaV EhFROHE TdfcuUWD AbcQRYI ooOougjbE anqbe gstYBlo IduuOV oIEHkfye eptUlwJY ftftgS tFHJMY imrttDmV wlFqUzZi zPhBV ucnHTVt EZckptM NTTViEgXi 
+nxhCnPq JUSIdNX syVxKS CYpgwTRC CkorSgC TkAJUXL SzUcrJvTf RwjcMPtG ZSeTfKGG ojDNrfR uVuNnCbOM XUHfwDQ uwasZkf NsvLZy PYuecBge Xynnji qKRSMNwMH eDMLb DuSWpGSdV dgwxU AZNFOCDyx BilAxfgb cBuPqESQU CJjrGGlc OToSoWa wgAKpWt iIYPpuwpP oTZTzUSKz GiWkp lhtobVOm UciJzKHg iCSwvOKo FOsHGWTib sMSTye YrrFX fralHpx gGtpga qPKyZAO tjyBJU rvTWy CzwQiD ADIRWEDz byBKcuNg cTljYb crDxL CNxFSU xzhKKvX eUTZsQPk 
+baqvWCcjJ ulCGa SofsFHwaF sKbcaaCmG ayAFkttG NBDZdIMP vADExZ pHfWypza cyFsTWq ZErgcN PmtqdNLvh imVHvT nNhvuQ MliwOgqo IMcbdnIc kuaTgN iBtKdIyt pEQcFM ElxvbpNP WcRGCKvq xVqXh aVAtWBi rZURdXc hLkXWO nYkzcJLXq tZwsLteIH rCumx lSMwoP AyJzJK xomzlbWbp TFKhrbY AxqbfL bFtxuZZc rKOZxF qOlVS EcKlcqx iTAZFe dqesKh DQxZjyZ bUlncIva wlgFD CHKwJ 
+</text>
+          <confidentialityCode code="811087361"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.57"/>
+          <id root="MDHT" extension="1551697716"/>
+          <code code="61144-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diet and nutrition"/>
+          <title>Diet and nutrition</title>
+          <text>TzIcQiQkg NDTpQNu onFEJS CFkGX kwuXJRHF hsbEUSpq IQsTa XScEHF wJptzHViF yWugmMqf nwnTax McWPyxK zHjjt shaGwmyA kdDzpDdH eqwoKZxrk nPMOH skDhfSqg stwOcU AeCIeqZ jrOyn gIaco SejTlira vbmZJa RuxniFElY oCYrhEV MpwHFB cOToiuULr ULObC APfWOYKL FhDHb BfoLUq JzulTMF DkzBiap bZIEJIF yvsGY 
+KpSPP lPglRWxgB suQOiC zsjhmlA RAXfqPGd qiOXTnrY UYtzluPFd zzlRE GyUAwJ StGFufxxy tIqgwa iZiGyYlql XbSDYQ FQBeNJ xcwTo vXnkQpdkS Wxbbn ijYoe gTHBI xmhRctXFK KmWjcwcM HEoyswTv Nhemknjab nPmKR sffyDSx AsEdpn OlkQbyst byRQOnF cQNkTd qnEcZmon wzFFmxgp BcsIEEO zBjLFBC DDCBAR ATurN DjwzI BdXSSZuKt bPAJwE 
+FYoFcuU zBpoZLOnE nsnServ wUFsPrA ihdNb jsVxQUCHz SKMWo JNnqhfy EsQFsyKaP GvRgj oSazXk tjcQt GDmUkCuFE bShVf QgysD ZPhdxcce QNLImQxB rncQi yZrQNyK tHrETe vboNAioCx PJlpd kGHgXVzo teICm 
+</text>
+          <confidentialityCode code="308823919"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.124"/>
+              <id root="MDHT" extension="2068988082"/>
+              <code code="75305-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition status"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.138"/>
+                  <code code="75303-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Nutrition assessment"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.14"/>
+          <id root="MDHT" extension="581140085"/>
+          <code code="47420-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status assessment"/>
+          <title>Functional status assessment</title>
+          <text>xyhRsPvW nNICvI QyDSoL oPYzOdrOS lwyATW MHzNAdQq lizfAAk UlXPQA MCOjw fKKgYOxb QYzey UlgyZPwp akEoCM gUBbv pgrOl IJTHIMr IvbGxfD YZRTw FfTUdLMU iEimGXNIS cFciVzA WfbKxbb DREyuA JknSijrPF attDgTJ dMTbnmZ EAgowHJ Ceyytt PnuAQvmjM tLRLzhMh icolsgLw DvoLVldQw TndxMh VXNDJnOfe vsERIPWw QASmMzfC QaAYQ qPjvNJ UoairaLlx NBifID pLwpH clkFhTOY kqCyCvdK DSfEHmm qSfrApiBm rKQrlH oPjSq wozrpVNF 
+</text>
+          <confidentialityCode code="1234107516"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.66" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.66"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.66" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.66"/>
+              <id root="MDHT" extension="2084252759"/>
+              <code code="1929828788"/>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+                  <code code="54522-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </component>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.128"/>
+                  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.67" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+              <id root="MDHT" extension="416879424"/>
+              <code code="54522-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <author/>
+              <entryRelationship>
+                <supply classCode="SPLY">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+                </supply>
+              </entryRelationship>
+              <referenceRange/>
+            </observation>
+          </entry>
+          <entry>
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.75"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+              <id root="MDHT" extension="497336888"/>
+              <code code="881428928"/>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+                  <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+              <id root="MDHT" extension="360770239"/>
+              <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author/>
+              <entryRelationship>
+                <supply classCode="SPLY">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+                </supply>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <referenceRange/>
+            </observation>
+          </entry>
+          <entry>
+            <supply classCode="SPLY">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+              <id root="MDHT" extension="1504539078"/>
+              <code code="756055530"/>
+              <text>Text Value</text>
+              <effectiveTime value="20170828"/>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+            </supply>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.76"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.76"/>
+              <id root="MDHT" extension="912052739"/>
+              <code code="2264892003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="number of pressure ulcers"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author/>
+              <entryRelationship typeCode="SUBJ"/>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.77"/>
+              <id root="MDHT" extension="1118972762"/>
+              <code code="420905001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Highest Pressure Ulcer Stage"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.128"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.128"/>
+              <id root="MDHT" extension="739613146"/>
+              <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.127"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.127"/>
+              <id root="MDHT" extension="592523190"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.20" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.20"/>
+          <id root="MDHT" extension="1292071191"/>
+          <code code="11348-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF PAST ILLNESS"/>
+          <title>HISTORY OF PAST ILLNESS</title>
+          <text>iXdXu PIQAo KUtmJ DtiVJ rYniM zRcBU WZDIu qZYhKfxYI nzZVH keykx stSweXeQ fLHSiZ pMvqBz WscrV YsuqAr iMfWWP 
+xvRQBV ikOJvmX nMgNPxrGD QIGnNG UCFyyBNvP qjEtUynP yjOXe mZQWp TFqkoiVE kjBMmx BHBEXPk bkNwBOkx UrohFW gtyVCZlB TWCXx beIoePrP hSYdmP sVUiJRLC zbejtcpD UXWkij ktmyvvW TVVSxee gSLuQAh msPSwTV uPmhjPtL SrxxTwHn AKlDabi lixmBSiTL bUjks DmWeIVPpT NXsUmr eiCbltIYF ROMCd yedXc fvvRhDf Egeljf oZxelUP pQKpiToZS VaAiWR mkgQn XvcsUi taNXRIX 
+uDpisIEvn ZLqmjCa IIbXUTj BbPZEqN mptMtO jIZBFjVwI SVgXaHjfL fqzfdS pqTdwyymv EehHdRW PlAcCKZC BLDqtu BQBOEHxw bvFbMh HEYnirvup MgSLE XeyNMbeIp PzmLm KDiPL KNrAVXnxX TbcJs vUJIF PhOLZ vloWRgfqh dfBwFsLq ZxSjVee Jsyhy RDpObrS nySzcJ KTsoSj 
+</text>
+          <confidentialityCode code="394663660"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+              <id root="MDHT" extension="450760320"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+                  <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+                  <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+                  <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.4"/>
+          <id root="MDHT" extension="598964505"/>
+          <code code="10164-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HISTORY OF PRESENT ILLNESS"/>
+          <title>HISTORY OF PRESENT ILLNESS</title>
+          <text>ALDNZ FgieSWXiX dGPJG UIpWWMqO boqdebjj yjSZula FMHGyrT MpKlqhw jGYJxfI GwJagyDKu VVLFR hZDHM hkCJJda QtLGwwic xFLshRwL wFBCYnc SQFhN usegyn tTDqth nGyxSyN xiJLDM hJECO URYLynV gfSDOPWKU gShvi yoKOVx abxfE cmZiBPV sYuZIC 
+</text>
+          <confidentialityCode code="695382697"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.42"/>
+          <id root="MDHT" extension="1138337304"/>
+          <code code="18841-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+          <title>TEXT FOR TITLE</title>
+          <text>CELkDxt xfrRmpK Bwqlb VBSArkX CnLleD gtKXV vYVfQS EohzOS uxuCfe IfBhRevv ZvFGxpx dXtTUtkCL sCBCKw CZujupb dwaCPE LPOtInCE gBjjYBP eVIVUue IrlXz 
+ZZUoFwfid dJifxrw USZUpYJV QmZkzV mvlrzolr juiuYvDT MNvzynnE Auzygkl kBPnaXvCP trTjWI comgEs YRwaYfLK teFtwvnHD AXHzzt RQsKONJHV nCOFPcSpi jTEzMU CdXDMW wPFvptVhX AsYZUYbGW BiZtNgSy SVWgJVFV fyXhSKv bgUpCvuq qpokFjS ZQxDjy eMNlFVfJf HLyeJPs zjizUVR vnBeK tKBqfU tiWWpAps lnEGa QYbsF MQXwwaXxz VABNO oIayhCv VSleAuq hnMllz hQxjPECKn 
+ZckzBEnv rvzkcKvm lsjOsCpE YtjgQmuLD spaoCFZO qnnvpGRIG gSRjhp fFKNw iUpbhBywB jvuEoLyBF CySAIB vCXjd ssUItkd ssHpaUR xFBJpv nxAFt IujYSpxyo gQDVUx RlowaEM zQAqaDS fOXyPek pSsbKdtv YQtiCjJ FOPCjybV KXWJOYsd KRjTelbC yBetCEXu Ijnkv YEwxbIyHE nqYoJfoqg OzhLllnLs RoFTtUlV JIqCG MbJbyO MzUTgbFRA DoWYRoP RKAdnU NbImbJfV RXqvpgZ wyzBAyYoM JljaHh QLlUcBtj gyWTgC GtddMIiTp WzFcFrr VtQZLVe pBCkiDJH dDhbgeB VArbWYlr HTjJj TZuRo 
+GMJNI mkTrqMW SYoTJuMD LersFL fQnMfL rGSuI pekvHXr kPjvXnO LhvVLNcfr hjmzsxkEm kVWcNB kYwIXnt lgFHf mSfnpJp UbiNtp RrHHpKIX YiiFWNJ vvvlc MxvbC FaDPqmGE UimKlA qiJYxKv eBaHvx YBWXcGoQm lWoFzVT oUrCmBJ agCAW zeUTp VHwzh wTACzT dhlJbTFMy KgKYnfqFb gHHNeiQ TpINJ qNllX EilRNkCB AXcQA ZimMy MiqoAao vntjn oGEvz NkzeMAA amzBCrxD AORMs 
+</text>
+          <confidentialityCode code="891377484"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.41"/>
+          <id root="MDHT" extension="1409701036"/>
+          <code code="8653-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital Discharge Instructions"/>
+          <title>Hospital Discharge Instructions</title>
+          <text>KuTLlJWf NkdqW ErNZLq CmxDz cmdorziaz OfIOMzyM VYCCwoNiF EMJtgTt YFjYeBaMv QTXHCbBe BOLTvJLW UAbpyfkDc HwnQVdzPE NcwZTqeVI KmEdONT ExHMgsBwf MaIlhIVup YwVfPRhvQ FgdtaYk ByMMfs BtGundyIu MCKDaA VijZM ZlBWJIC LKIgpL iYqCRX ybjzfgwSe LGSOQhK Hikzz equHwdvJC NPiaCQZV 
+</text>
+          <confidentialityCode code="2089501867"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.26"/>
+          <id root="MDHT" extension="50444789"/>
+          <code code="10184-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital Discharge Physical"/>
+          <title>Hospital Discharge Physical</title>
+          <text>LKWyEvGTD fnqzCmdy DDqVRNsC xUMsKaJ mpXyko IEJJC GabzG SuZuWtla FYdJtoyUp acdpqCy ELMLmMMAg tRdXYS fFhkzTbax mPzLhZm bRODX EiPtQeJ cXEAYn aiPgsb orvhMOHBn eWCAUXYLA ADVYMq qDHsNRsAl DsCLDcvZT FDykYd IbCXoml ONLLkHg trizZhg CfNvchdwY xyTmfSZbA vSuyuvcb ZVQtT rKdncf UTtLe dwYTmj 
+KGPZcqEf RrmXWaFb HKZcdAt sUHkYKNoX LLfww LYknLgl thhuotkMw IMnED ngZiUu QngzXPv VxDCqbLh MyjaBgMY ouDBsZJtN FoxOw 
+XNOuUNASe JjdTkROg zFjvPlZU WujjpIHld UyZVR jIwzZ kPYuPaC nbTdHPpL OwbAWGxMj PKWwth qpTHqxUfA JQEDSdwbu DTtOzfLyV TSXwwIA 
+kgIdD vTQwrR xHtjzVAzv XTMjAyJbW ZTaSbX mSUqu tyUECz GsVHAZ qSGpFQ rJjcXN AnxPRdGw vAZGrN zaUPOxeKu wSPFwOpSm gvqGP RxkeI dTnEHFAP sSujMqR evjUjh JdCWnQuq ymZKaJlB fCYuTaqmX zxEiYZwyb fIDPPhi UpQwaoVc wmunkThy vAYwYD bEbphJpf 
+</text>
+          <confidentialityCode code="1200646640"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.16"/>
+          <id root="MDHT" extension="802975168"/>
+          <code code="11493-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital Discharge Studies Summary"/>
+          <title>Hospital Discharge Studies Summary</title>
+          <text>EdPzgmnWb imIhqu JadIdc tRqGe xBclfeTQ hPgInQN sGkvxHnD VBVKh zNbsQnU tJIsoH AciKtiXRX lansvTfaL 
+tBnQU CTZXUH ybOTODc UgbjkeAv rHUWW yNOiOcwe tApKxlQ mEkrP kuXEfJor CUjfTYQS lbwLUJoVU RmWMXuXvg QnwpCYbBE UMChrKsRn YeGSgAW ZbbmSN 
+</text>
+          <confidentialityCode code="81711934"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.2" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.2"/>
+          <id root="MDHT" extension="686944531"/>
+          <code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+          <title>TEXT FOR TITLE</title>
+          <text>VBLEt oeKcBO qRnARK UWywLU TrJJl BzBEwIOVA lFaOV dMURI MqFKk pbXaFak qiYztpFL HRuubUx DSMEDdkFQ RviOCUk nFpYRHDr rUGErCY uwsTbMND npqOAZg NClzUN yGAEOseNp QaAfu auaEJp ARfvYsjC QitmYvEKC SgeQMR rMWZu hFtChQYj Caibwlwtr jGxDs tzjEXr WMdEIJ ToxRBt LHusJg JvNtS mfCNkOr CfHOFi aSWSKqVM cAnKdhGDt RfHKdREt AJICBM tVOkAF AVSmNaBlh uWmtm FjMpoyC cSnwGpFB TQsOf KxOdK gsdZvBn ZTAWrgS nRSLRrNv qrIVCwq EIIPjG THYGGo 
+etWsBqM LDwgeP IwDimU qljqbJmq xvcMbo vEIhmIsi xjHbYrL WRGyjKaK XuGddwc ayjtGt CnCSctVt pPfdv pKKvJa ktIModIFp ZkaKFcGQE YjPxOctmu AQcSPEkq pOIxJcDWZ eoWVRNeki PhvJuCb gVeiamn OPrptjU SqIBSeW pyRjFXk hSvwyLX wqaNb TMfwwzZ 
+JAqJfRJRs HVPRgpQA JkGnBO uYJLQfgJ ILnURwkNE MhkDXm vRchlDed uPOEsDB XsUmVY aNvlssVdC kdgYVg EnecrjfMF swuwdeMOm DihOEC vscDuvg KTwaKO EIekkM yRyqgJDj koAIOU GjJkc uNRef wDjREvBfH jQkpkEjxA yQvoQ AjmczH XZxFLFS zuiRmpa CgebKknm CfyBk TMNaIH hqbRpD qZQCzMhZM njVFXQIxY MVwRoBK SlurD idPomrv OHflptfuv mxihye PTDjfKqWt 
+UrPfOM iFxRYeKcU QHPHOIK obCYRLm rmjkKh BObiic TSvjn mEwWlBNYc pyyPvJh TwcnquMY BFQjZzz jQfqNoWad fzqIfy DIrFdY ygZUcFWQp MUXQmOSN czeESH YkJSbtOx LwhVUT WvbtrtsEG IlzOdU aflGF mYsFHs 
+</text>
+          <confidentialityCode code="1379270770"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <substanceAdministration classCode="SBADM">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.52" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.52" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.52"/>
+              <id root="MDHT" extension="787705253"/>
+              <code code="775503145"/>
+              <text>Text Value</text>
+              <effectiveTime value="20170828"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <consumable/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship typeCode="COMP" inversionInd="true"/>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <supply classCode="SPLY" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+                </supply>
+              </entryRelationship>
+              <entryRelationship>
+                <supply classCode="SPLY" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+                </supply>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+                  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <precondition typeCode="PRCN"/>
+            </substanceAdministration>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.5" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.5"/>
+          <id root="MDHT" extension="1884219911"/>
+          <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem List"/>
+          <title>Problem List</title>
+          <text>uWeRNl FCNihrW jfVUNPZGG cAWpQRWB YcNvVy QpjhDDdg BLZts ybgaRx nRCdmd fMKSbfz bDgCfUB 
+</text>
+          <confidentialityCode code="48516771"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+              <id root="MDHT" extension="1625533982"/>
+              <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+                  <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.5" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+              <id root="MDHT" extension="1502722039"/>
+              <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.7" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.7"/>
+          <id root="MDHT" extension="706892872"/>
+          <code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Procedures"/>
+          <title>History of Procedures</title>
+          <text>zKUSwKmMx oWvZWpn VkaIUq xuKhDj iGMVwwe pamFzF jOxlkcFZI rdqprPbXz PneiS QxtFQ fEvbClhE bTvcaMG wAQwfFasH rJGDlryBp WwlQqG fIaBEX foSmFmCt SNwIRM EeUYIc iCNzI sEidlEwi EAwkHcnl LEeqLZhfA ZJUtSz qwEKnNzWj kQnjZqN grdcpmMoe tgZzwiIqH YpYZMoq XcmXkJtg 
+TNUiAYL cIlabg saDrk TNWYFajN jPfIAjtoE GFnnbp qaCAdgan LiXGefJsc FAlHjZ XhekoCFl Entys NMiVu OUsqffPAZ wdLqQlutQ IIcPdNk FCWHe GojWnyUjV EfNXYoGxj kqBKuO TYbVzA BuWZokbLc AfKWq uqcVu wZNqESW JILDB zMfvUkRC FyqQPdO wUDpng GdFlXHYqO GuRsHN tNNjAeHR lhIbpQVHb LhAHF WumXxdXL htfDSLn hpYORlKpC MaDsD jDRzWwnx ASOhNFjBN QOzCKH IJDfvzTm iTcDsxF QMlwJEOVg QStWN ODMRaVqnJ qgviobU 
+</text>
+          <confidentialityCode code="1034676469"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <procedure classCode="PROC" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+              <id root="MDHT" extension="1725423048"/>
+              <code code="483724843"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <languageCode code="Code forlanguageCode"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <specimen/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <substanceAdministration classCode="SBADM">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+                  <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                  <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                </substanceAdministration>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+                  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </procedure>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.13" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.13"/>
+              <id root="MDHT" extension="1959438235"/>
+              <code code="1899523709"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <languageCode code="Code forlanguageCode"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <substanceAdministration classCode="SBADM">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+                  <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                  <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                </substanceAdministration>
+              </entryRelationship>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+                  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </observation>
+          </entry>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.12" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.12"/>
+              <id root="MDHT" extension="632462321"/>
+              <code code="235109123"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <languageCode code="Code forlanguageCode"/>
+              <performer/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="INT">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </act>
+              </entryRelationship>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+              <entryRelationship>
+                <substanceAdministration classCode="SBADM">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+                  <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                  <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                </substanceAdministration>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.12"/>
+          <id root="MDHT" extension="473504130"/>
+          <code code="29299-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reason for Visit"/>
+          <title>Reason for Visit</title>
+          <text>BqOWuorEC xxFBoNi kyWKYCZsn GJobvB jHjBWtM NHIgmLiV eqEumICG QfyBVVTc daYnEiaSR MVFDtnK pawAgv biRPom 
+IMcESs zkNCGWmv HsoJPRh ZnnRrWiIG GLKUYkjA kdLQRrq tGJilkCqJ yTtJdy jUkxgwoJY PqgccJSP ntzPofQak YsDpFDu DGOuOlcvQ rpONxic OvoJr YWLVf quSLfnVR zYxXIBoyc hflPINED WvSrFD 
+tDJrAon BZeqH iWYkqd CRZcjOW VEXotJ UQOvAnJx wHlsuIjP EUwfH oQhHgDh lDRyffM QQzxTr EAspU OOvGy MgZaVuZ GFIMAWAS JenyNkMF AtsGad MlQxFcUdg JLFAbeA whJSUd SobOlgJq DUpIplY CBwOAC HEmlM uDXOCLb wRLNY RGxMzgkc JWahfDux tGgEywIK SXZfBV ywpduK yflqGZWcg czWUrVmck oCfvlgYeE ZpkRZUOO TzSRvHi oChZfD ORIDyAR jiFEpxrVX qTlrQHey GaafsZZG GesBi lJzrd ZOZeww ROBtPjmm 
+</text>
+          <confidentialityCode code="784469882"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.18"/>
+          <id root="MDHT" extension="237203496"/>
+          <code code="10187-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="REVIEW OF SYSTEMS"/>
+          <title>REVIEW OF SYSTEMS</title>
+          <text>vnNFnzk ffAkCt oCSukK fGJdBPW tTNQnsV rLNMhJka VpIYVD dVGFK WgMqka vPURhiURY socFhJ BVHqf CahkFCnhh JgwjaQG vCntSahK MsLVq NutxpZlV rVwHo xUGjmU xeVQoL OywsYSTUp dTmomfHcp iPAzOYYMV QOOjI sXtWvDp TRICFca KQNulkD iPMjM tBeaJuAB MnKMExYTf AMJBAC UqgPhQr qbyCVkQr fHfdTiZZx TkeIluw koLZVCCFm dBSYXNoqL 
+jWrBnu NUNRlOJOH tKiLUYY CQqjIfOf cHtTI fdPbvDYRp hdkIy xJdpxnpET gGMgEb XNVeztVzS AuYAwbgQz RKrMVa ABWuliISr JAIQwuHfR 
+erUAq svMiCWVTG LdSNZg wQikDJ JAlaMChrX PxxGibjl tcVoY CWYOZZw GwZusLUeT pxVlS FKSvULSdR BZTOEt eMASveM sYIZSWPk WqLpwQ TdrJbFm FlzfCL ipwSHojsP hMFGZzF BNFRJ 
+</text>
+          <confidentialityCode code="257054592"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.17" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.17"/>
+          <id root="MDHT" extension="871195537"/>
+          <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Social history"/>
+          <title>Social history</title>
+          <text>inodK ZBMTJsy mEQldnIzG rVfma XCzOHWmtI DSGXQDvc ScdbJK yQZzSGA wedNRTXf AdKvdzR KhZxK qUJDK BOyRVYU ZgFoFgAS JYhgNWv DoZgs PzVTvC cxwVhxo hkvTMalc vQSLtn kpVhvLp HhbYVMznn tfFIk rqKiqKQJ ZcqEUDYaB fmpAXNYvD JGZFbe 
+</text>
+          <confidentialityCode code="539819144"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+              <id root="MDHT" extension="682228384"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+              <id root="MDHT" extension="168979544"/>
+              <code code="72166-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Tobacco smoking status NHIS"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+              <id root="MDHT" extension="268720489"/>
+              <code code="11367-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of tobacco use"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <languageCode code="Code forlanguageCode"/>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+              <id root="MDHT" extension="725993346"/>
+              <code code="648262183"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <participant typeCode="IND"/>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.111"/>
+              <id root="MDHT" extension="1024459187"/>
+              <code code="75281-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Personal belief"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.109"/>
+              <id root="MDHT" extension="1695924119"/>
+              <code code="75274-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Characteristics of residence"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+            </observation>
+          </entry>
+          <entry>
+            <observation classCode="OBS" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.200" extension="2016-06-01"/>
+              <id root="MDHT" extension="320275481"/>
+              <code code="76689-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Sex Assigned At Birth"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+            </observation>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.4" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.4"/>
+          <id root="MDHT" extension="1666687877"/>
+          <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital Signs"/>
+          <title>Vital Signs</title>
+          <text>JyCAXOjwp SWlqDOjX hvHdxPOkX kaqeav Eoqgz knsbiXZC ayLvBTn SgjISA MSKWFnErK ZFNovYDY PtpXwr nTZVXqGo xNtjAiSm PxuBN wiXhPqNgm YrdWd lzYjmnYB yVcGabWe cEUCjNC YBhJcsUs FhZgwj 
+fNxUtwYt WuuRCNTkN kOHnsUMmy QVobbxM RnrmJsFab vkzhmMp FRqqFBy mIZkc LEWuPU FRgCvOTI GiiflUjtl aXPaBS EEtQJAK AsCscneG IwhtSUvc ZmLgzOf UeMkHS DZJDwXRkz SZXmcfi PjQQWo OFvPKhBS JzUhMXS VpzfN hhJghWe MYrreK nZMRiZA BnaWFvU YuVfSm JgeqK BfMHnXvp 
+</text>
+          <confidentialityCode code="129570524"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.26" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.26"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.26" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.26"/>
+              <id root="MDHT" extension="651037955"/>
+              <code code="46680005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Vital signs"/>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <author>
+                <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+              </author>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.27"/>
+                  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                  <statusCode code="completed"/>
+                  <interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.24" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.24"/>
+          <id root="MDHT" extension="896622030"/>
+          <code code="11535-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital Discharge Diagnosis"/>
+          <title>Hospital Discharge Diagnosis</title>
+          <text>pjPsqzmC SozRIIo kpTLjM JLBPXBuR oZnCtZkiA kYtcmW RbTrhWVzN WWWhIeem hCMlUusq VVDhzs LihdNRH rHCwOTb tcOXC JCSGdxhW ZHMmndKph mgZsczJ JhBGcw uBzlnTb rtVZysBbo ycyukpVGU XBcIXzL TjGssqimV iGelqg ktqOwJ XAYVlqlq NXgvpMt kcAbj vjFdVfeXm jbXVBgzH NZhfNtQel ZmpsxDX rrQOpRKwY feOLDZkUt bSGrbAE DDrFK VjgwKtv ZjLLdE vazre jvHlbNbhe zHvwdR XtKerFScM CikudJmB UUatC iYKmUh Jrrrl DqJQlCIB todijr 
+CkppB FIFeNfcOw aBZMgAH YiAWbf pYIbD JkXhp cKKAZG gGsHgKprp geLlIh VwCGAvq oFNOvUkM nTpAJXK jsJGW TRKKjZvl byonM zYPNo tUfbNjR TwoUVtGWT 
+</text>
+          <confidentialityCode code="223691745"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.33" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.33"/>
+              <id root="MDHT" extension="917298949"/>
+              <code code="11535-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital Discharge Diagnosis"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.11" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.11"/>
+          <id root="MDHT" extension="279998181"/>
+          <code code="10183-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HOSPITAL DISCHARGE MEDICATIONS"/>
+          <title>HOSPITAL DISCHARGE MEDICATIONS</title>
+          <text>ijjRPkxkB qBFMON EGEIG ZlhuvCOMv devmA UpSmlonoP GMgiIUWv MKRKNbu iYndKfWmt cYdkaFzYM STdZTHQ QExVLa EmfGWYGt PbFowfHW YbsIxu bqtWc OitTCLtX iHQomzw oogLtZRYs uSFqwAMA fTeowjhZz xqsqHjJ yWgHZheJy wnKzQ wnLbA QMqizR eNcJJNpL ewHpJn KCGZIP BrVHN Mhhofh jAVvakgr RFJHsLbMJ rkoHEI bDkmnyuhe pLprCWc nmGnNjyyc VFPusrozd pXdrVR DftDE 
+DmcYVd IZLnE HYMZfhxbH DPlgVo UOpJyrZVQ cbymt fumPkS fGyTT zpeQdt ZvSGtF lMuOHig 
+MxPEQEQQX wElcG zFTbludcU EloVJm wffkD HXQqbm PVCoX dKSqdP cdYZpFX VWzgdL kYjlp lYlhpaPC DmSbLvb lsNfeqiJJ VqPvaoPz ghuZn PtYqZ fpnOMcC zvORVLef APBil CTlKiko jqPxjfBs 
+DbZUWWO cnGKWA pjPTY ipVjdtdmk LuhETtEu lEDPKmui sQAJAyFF QchtrAwsb IxztHo DTgMTsNs ogFyVuPU DxgkFZHK PEetziXxQ HzQjwAiPF hzdIG PQwIXH sAVgzNbs IKTYu ozhmtu SxHpT TYuriHo bUMLx UOdtrWsDk hGFTsrz 
+</text>
+          <confidentialityCode code="1891433010"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.35" extension="2016-03-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.35"/>
+              <id root="MDHT" extension="362551095"/>
+              <code code="10183-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Discharge Medication"/>
+              <text>Text Value</text>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <entryRelationship>
+                <substanceAdministration classCode="SBADM">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+                  <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                  <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                </substanceAdministration>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.15" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.15"/>
+          <id root="MDHT" extension="1682384517"/>
+          <code code="10157-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Family History"/>
+          <title>Family History</title>
+          <text>oujfQDa UaknAoIy PYVZrmXLl VrdgmHpmd Ahvpd LOoSGu URfUPsoZS pmadHFyeb mPuFg Tjqogf daSKXPkQ zYltXX GQzIsyEml lUhSSiD ShPWjDj 
+vnbqll BoJNRxAw slHmALF JsDOmIa LCiQQW LoHSxB zICfttCID tETkDSPS TFbJnekH RSthNhvO CmKqVSna gmMafpJV vsCWR amIDB jiGLb efXuJEkX MNFIrYvGi yhJUi xYAVCX aJasY RUIuXGO voYFYkeG IMGYP OLcTvycy qsrRyhv cKkUDQZG XigcIOqT cyqvxVkbr mADlbVCJ EJltUM FxBNdDir hhJCxMIt XeGjLOXW dlAMm bosie QaJCSkc DNHeYU TcupUfzE HWXHUAMxV unRMlf SywoO GtFjG akgfY FEDJFp UEOKNj kIWSm foeSA IKPcZ qAGKmyP cLxGdPeHn dCFjPe LInqHPQG kteIa tdSQtaLP PQJUHaKqU 
+KczboQJwZ uTMxFCx YsVbGbb QuiVaEnkF MdUSxO pOcIi iqqiqwxNm BAWHCZ doFNXk dntwCneIC ukCqCR ZJuOIJH ADBhykuL tzpFYSGLc OdMIjYGi bPbaIvAyV jEcQnxfYv vPpHbC VTLXpJx RvBNAUvL lVgShocs BXFgEqrg VweraZiX iSMQKwfWt iHGAy uZQyfW TRMyBg oFxgARSx JzZbY NXqXjpuZe awAkN FETZHxsWR iSvJK FmkoEdX SWXrq baCccLmJ 
+jHaPSaDG NRRII FUvvGJOIX RCqbNE ueItOMxyy vqCbsc lzGEQ QFbwjZsJ eEQKG UZVCEnn qLCzzlfMU MBgfTeV OBVnpEEf KWENVmE btiHB XfOJrMU EEAlByfmO owSeH lSTrTMdNP mMtrL NebqdQ nkNQYGtW rNcdnikQ ouERARJB ZKxgVH pmcixtDeZ AeGYN aovFIi CqaiRH XZiDWFAk HhXXuke 
+</text>
+          <confidentialityCode code="559223209"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <organizer classCode="CLUSTER" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.45" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.45"/>
+              <id root="MDHT" extension="1186229394"/>
+              <code code="2030664054"/>
+              <statusCode code="completed"/>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <component>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.46" extension="2015-08-01"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.46"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </component>
+            </organizer>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.43" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.43"/>
+          <id root="MDHT" extension="281462628"/>
+          <code code="46241-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HOSPITAL ADMISSION DX"/>
+          <title>HOSPITAL ADMISSION DX</title>
+          <text>niUwWO szecj NPeEkqlO bSWfHuEW HUqKBXKC ZxFtZfn qTSUwI WdwEvWyro QEckAnEQb DLrmzCa JMvafY HOVAoZ YMINti WGeqL 
+</text>
+          <confidentialityCode code="691611318"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.34" extension="2015-08-01"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.34"/>
+              <id root="MDHT" extension="318898157"/>
+              <code code="46241-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Admission diagnosis"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <entryRelationship>
+                <observation classCode="OBS" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+                  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <statusCode code="completed"/>
+                </observation>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.44" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.44"/>
+          <id root="MDHT" extension="1200123123"/>
+          <code code="42346-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="MEDICATIONS ON ADMISSION"/>
+          <title>MEDICATIONS ON ADMISSION</title>
+          <text>XWVagS WGcPEETJ AKbsjWmn GYCvXlv iorjd snRwkY uoQviE bnXIAJiEk kaqKSX mowDhgrW yFHVh CiLrZIC XodWWs FZZaO 
+ZsDoNL KALiPUF NjMaMiG FIBLa JnqPJZW VPsxvulSb QQGkuV xBZTF kxgFR prHqJQI JAkRl ARBsyA gQQjDuD KxwdQX wtTBOOb OCEoAJ SAOMFZprP KDkOWiT KYqOwlKwY OEYxq sJsFss EsjLZbsW mDkkq iHsWBU pbSWeZYBR dJhtgiFL oAVmTzofr slEvxlt tyCOM FVVKpU WOLrM pLWSBK 
+</text>
+          <confidentialityCode code="1808321559"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.36" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.36"/>
+              <id root="MDHT" extension="324863257"/>
+              <code code="42346-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medications on Admission"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <entryRelationship>
+                <substanceAdministration classCode="SBADM">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+                  <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+                  <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                  <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+                  <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+                </substanceAdministration>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+      <component>
+        <section nullFlavor="NI">
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.11.1" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.11"/>
+          <templateId root="2.16.840.1.113883.10.20.22.2.11" extension="2015-08-01"/>
+          <id root="MDHT" extension="1972232110"/>
+          <code code="10183-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="HOSPITAL DISCHARGE MEDICATIONS"/>
+          <title>HOSPITAL DISCHARGE MEDICATIONS</title>
+          <text>MUUQLJC PykxICiZ DWUTHfg gQpPdCqXw PiTjPfs XECIHLj aQJAbYcB CSTvrH LUfrvadh mRhfAjK lQNSFBW TUZsJaoP LhxXM xnRYIygvW XXXta HvDrtYN vlGPu zNZxK PQrAtkh LjVheYH zeaYE gbjAoigV TvtXwLvSW NQNoudXr tmBPcEYmI sBbSlDO twqrxDYnw fCkfNBNnM QLOyjavV fGmmpqHN TvHmswdoA kEtgbxfRi ewsdKmWu JcOPYe QqaPRxymu xmgXQ PgnKoNuLh 
+QpeGrWM HIIQbbNu mrcxJcKg NyGYpQIzj Zuzqmor CuhYnIk UWxHGfSac DzzOltWDi xeEUOU pVftYdPT XkkMzRyD GyRdYnhDm nOLym OCfspnr CUygNXE eevJkVT GjKQdSD yNMfih pBhrAVH yIDjesCE rUqrtBs zxoUDtEqS ImJFki tmRxJLYO Zzsokvhpp GBzeFXR XoiUfAR LqOVYbjM zIIDPAx QNOGxMx bxpGD ZWIXhBD uhGZI jrGHw QhsiT saWDyWRV YxkHhTWgu UUdABoxJP HwtspzBH lNuipnQBw ScSyOSix faqazYSRv pIupuQ qCnGow RgweHXy vUBCeNYy NvwVHl qJtsIYhce vdurt wYLJIO nINVeBEy QJEakH ItefFd qSKZsBmeN oxUZERZik 
+</text>
+          <confidentialityCode code="1027933576"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.33"/>
+          <id root="MDHT" extension="151039246"/>
+          <code code="42344-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Discharge Diet"/>
+          <title>Discharge Diet</title>
+          <text>RKvsLFnuf dbtKiWwK VpIUWukM rneJOSAsu fqLuz XTGdzLMxz YjLrpG sJjgzqePc WCHieGt klSzPX nfNYTy eQkpGGvv hssQxL xxfnhKb PNXkN jiLWyJ eviDkgRHF bwwEDfO yoBssm GxTdJbHwj AqnAj ySkGZV BpNQUsZ UhGcMk hwrHot QoprxXwbC TGlyQN KouETG DxXqXdfWX CTcnVa hYucoVv KKzhWLlD wkOFnPE 
+QmCsgKh zpHIzFY FcFqbzsXk psKnreqK gUTlcNq LFCHKUmyy RzftMzd yLaXpgJUg QNnslQAsk mNDXgtJng KgdTW whngtNWm PRZklLDI mtvHz RqaqEQn KHnrWyTC RXQOrgtb dPHNxIdAL roAreHnu KaUhpnlH cUtxz PpDdSQt 
+</text>
+          <confidentialityCode code="1957920025"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::DischargeSummary
+</p>
+<p id="DischargeSummary" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8375, CONF:10043 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.1.8"
+</li><li>Consol Discharge Summary SHALL NOT include a Chief Complaint and Reason for Visit Section with either a Chief Complaint Section or a Reason for Visit Section (CONF:10055)
+</li><li>SHALL conform to General Header Constraints template (templateId: 2.16.840.1.113883.10.20.22.1.1)
+</li><li>Consol Discharge Summary SHALL contain exactly one [1..1] code (CONF:17178), which SHALL be selected from ValueSet DischargeSummaryDocumentTypeCode 2.16.840.1.113883.11.20.4.1 DYNAMIC (CONF:17179)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:10111) Conforms to Hospital Admission Medications Section Entries Optional (templateId: 2.16.840.1.113883.10.20.22.2.44)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9928) Conforms to Hospital Admission Diagnosis Section (templateId: 2.16.840.1.113883.10.20.22.2.43)
+</li><li>Consol Discharge Summary SHALL contain  [1..1] component such that it  (CONF:9546) Conforms to Hospital Discharge Diagnosis Section (templateId: 2.16.840.1.113883.10.20.22.2.24)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9558) Conforms to Discharge Diet Section (templateId: 1.3.6.1.4.1.19376.1.5.3.1.3.33)
+</li><li>Consol Discharge Summary SHALL contain  [1..1] component such that it  (CONF:9548) Conforms to Hospital Discharge Medications Section Entries Optional (templateId: 2.16.840.1.113883.10.20.22.2.11)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9562) Conforms to Functional Status Section (templateId: 2.16.840.1.113883.10.20.22.2.14)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9566) Conforms to History Of Present Illness Section (templateId: 1.3.6.1.4.1.19376.1.5.3.1.3.4)
+</li><li>Consol Discharge Summary SHALL contain  [1..1] component such that it  (CONF:9544) Conforms to Hospital Course Section (templateId: 1.3.6.1.4.1.19376.1.5.3.1.3.5)
+</li><li>Consol Discharge Summary SHALL contain  [1..1] component such that it  (CONF:9550) Conforms to Plan Of Care Section (templateId: 2.16.840.1.113883.10.20.22.2.10)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9564) Conforms to History Of Past Illness Section (templateId: 2.16.840.1.113883.10.20.22.2.20)
+</li><li>Consol Discharge Summary SHALL contain exactly one [1..1] componentOf, where its type is Component Of (CONF:9539)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9556) Conforms to Chief Complaint And Reason For Visit Section (templateId: 2.16.840.1.113883.10.20.22.2.13)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9554) Conforms to Chief Complaint Section (templateId: 1.3.6.1.4.1.19376.1.5.3.1.1.13.2.1)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9560) Conforms to Family History Section (templateId: 2.16.840.1.113883.10.20.22.2.15)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9924) Conforms to Hospital Consultations Section (templateId: 2.16.840.1.113883.10.20.22.2.42)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9926) Conforms to Hospital Discharge Instructions Section (templateId: 2.16.840.1.113883.10.20.22.2.41)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9568) Conforms to Hospital Discharge Physical Section (templateId: 1.3.6.1.4.1.19376.1.5.3.1.3.26)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9570) Conforms to Hospital Discharge Studies Summary Section (templateId: 2.16.840.1.113883.10.20.22.2.16)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9572) Conforms to Immunizations Section Entries Optional (templateId: 2.16.840.1.113883.10.20.22.2.2)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9574) Conforms to Problem Section Entries Optional (templateId: 2.16.840.1.113883.10.20.22.2.5)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9576) Conforms to Procedures Section Entries Optional (templateId: 2.16.840.1.113883.10.20.22.2.7)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9578) Conforms to Reason For Visit Section (templateId: 2.16.840.1.113883.10.20.22.2.12)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9580) Conforms to Review Of Systems Section (templateId: 1.3.6.1.4.1.19376.1.5.3.1.3.18)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9582) Conforms to Social History Section (templateId: 2.16.840.1.113883.10.20.22.2.17)
+</li><li>Consol Discharge Summary SHALL contain  [1..1] component such that it  (CONF:9542) Conforms to Allergies Section Entries Optional (templateId: 2.16.840.1.113883.10.20.22.2.6)
+</li><li>Consol Discharge Summary MAY contain  [0..1] component such that it  (CONF:9584) Conforms to Vital Signs Section Entries Optional (templateId: 2.16.840.1.113883.10.20.22.2.4)
+</li><li>Consol Component Of SHALL contain exactly one [1..1] encompassingEncounter, where its type is Encompassing Encounter3 (CONF:8472)
+</li><li>Consol Encompassing Encounter3 This encompassingEncounter SHALL contain exactly one [1..1] effectiveTime/low (CONF:8473)
+</li><li>Consol Encompassing Encounter3 This encompassingEncounter SHALL contain exactly one [1..1] effectiveTime/high (CONF:8475)
+</li><li>Consol Encompassing Encounter3 dischargeDispositionCode SHOULD be selected from ValueSet NUBC UB-04 FL17-Patient Status 2.16.840.1.113883.3.88.12.80.33 (code system 2.16.840.1.113883.6.301.5) DYNAMIC (CONF:8476)
+</li><li>Consol Encompassing Encounter3 dischargeDispositionCode, if access to NUBC is unavailable, MAY be selected from CodeSystem 2.16.840.1.113883.12.112 HL7 Discharge Disposition (CONF:8476)
+</li><li>Consol Encompassing Encounter3 SHALL contain exactly one [1..1] dischargeDispositionCode (CONF:8476)
+</li><li>Consol Encompassing Encounter3 SHALL contain exactly one [1..1] effectiveTime (CONF:8473, CONF:8475)
+</li><li>Consol Encompassing Encounter3 MAY contain zero or one [0..1] responsibleParty, where its type is Responsible Party (CONF:8479)
+</li><li>Consol Encompassing Encounter3 MAY contain zero or one [0..1] encounterParticipant, where its type is Encounter Participant (CONF:8478)
+</li><li>Consol Responsible Party The responsibleParty element, if present, SHALL contain an assignedEntity element which SHALL contain an assignedPerson element, a representedOrganization element, or both. (CONF:8479)
+</li><li>SHALL conform to CDA Responsible Party
+</li><li>Consol Responsible Party SHALL contain at least one [1..*] assignedEntity, where its type is CDA Assigned Entity (CONF:8479)
+</li><li>Consol Encounter Participant The encounterParticipant element, if present, SHALL contain an assignedEntity element which SHALL contain an assignedPerson element, a representedOrganization element, or both. (CONF:8478)
+</li><li>Consol Encounter Participant SHALL contain at least one [1..*] assignedEntity, where its type is CDA Assigned Entity (CONF:8478)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Discharge Summary (V3)</ph></p>
+<p id="shortdesc">[ClinicalDocument: templateId <tt>2.16.840.1.113883.10.20.22.1.8</tt>]</p>
+</body>
+</topic>

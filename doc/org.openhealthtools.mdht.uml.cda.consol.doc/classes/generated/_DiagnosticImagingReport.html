@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Diagnostic Imaging Report - conformance rules" />
+<meta name="abstract" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.5]" />
+<meta name="description" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.5]" />
+<meta name="DC.Coverage" content="ClinicalDocument" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css" />
+<title>Diagnostic Imaging Report - conformance rules</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+<h1 class="title topictitle1" id="ariaid-title1">Diagnostic Imaging Report - conformance rules</h1>
+
+
+
+<div class="body"><p class="shortdesc">[ClinicalDocument: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.1.5</tt>]</p>
+
+<div class="section" id="classId__knownSubclasses">
+</div>
+
+<div class="section" id="classId__description">
+<p class="p">A Diagnostic Imaging Report (DIR) is a document that contains a consulting specialist's interpretation of image data.  It conveys the interpretation to the referring (ordering) physician and becomes part of the patient's medical record.  It is for use in Radiology, Endoscopy, Cardiology, and other imaging specialties.</p>
+
+</div>
+
+<ol class="ol" id="classId__conformance">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:8404, CONF:10042 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.1.5"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/GeneralHeaderConstraints.html">General Header Constraints</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:14833), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> DIRDocumentTypeCodes 2.16.840.1.113883.11.20.9.32</tt><strong class="ph b"> DYNAMIC</strong> (CONF:14834)<p class="p">Given that DIR documents may be transformed from established collections of imaging reports already stored with their own type codes, there is no static set of Document Type codes. The set of LOINC codes listed in the DIR LOINC Document Type Codes table may be extended by additions to LOINC and supplemented by local codes as translations.
+The DIR document recommends use of a single document type code, 18748-4 "Diagnostic Imaging Report", with further specification provided by author or performer, setting, or specialty. Some of these codes in the DIR LOINC Document Type Codes table are pre-coordinated with either the imaging modality, body part examined, or specific imaging method such as the view.  Use of these codes is not recommended, as this duplicates information potentially present with the header. When pre-coordinated codes are used, any coded values describing the author or performer of the service act or the practice setting must be consistent with the LOINC document type. This table is drawn from LOINC Version 2.36, June 30, 2011, and consists of codes whose scale is DOC and that refer to reports for diagnostic imaging procedures.</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5363)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [0..0] <tt class="ph tt"><strong class="ph b">informant</strong></tt> such that it  (CONF:8410)<ol class="ol" type="a">
+<li class="li">Conforms to Informant12 from CDA</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">informationRecipient</strong></tt> such that it  (CONF:8411)<ol class="ol" type="a"><li class="li"><p class="p">The physician requesting the imaging procedure (ClincalDocument/participant[@typeCode=REF]/associatedEntity), if present, SHOULD also be recorded as an informationRecipient, unless in the local setting another physician (such as the attending physician for an inpatient) is known to be the appropriate recipient of the report.</p>
+</li>
+<li class="li"><p class="p">When no referring physician is present, as in the case of self-referred screening examinations allowed by law, the intendedRecipient MAY be absent. The intendedRecipient MAY also be the health chart of the patient, in which case the receivedOrganization SHALL be the scoping organization of that chart.</p>
+</li>
+
+<li class="li">Conforms to Information Recipient from CDA</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:8414) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">associatedEntity</strong></tt> such that it  (CONF:8415) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">associatedPerson</strong></tt> such that it  (CONF:8415) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:9406)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">inFulfillmentOf</strong></tt> such that it  <p class="p"><p class="lines"><em class="ph i">An inFulfillmentOf element represents the Placer Order that is either a group of orders (modeled as PlacerGroup in the Placer Order RMIM of the Orders and Observations domain) or a single order item (modeled as ObservationRequest in the same RMIM).  This optionality reflects two major approaches to the grouping of procedures as implemented in the installed base of imaging information systems.  These approaches differ in their handling of grouped procedures and how they are mapped to identifiers in the Digital Imaging and Communications in Medicine (DICOM) image and structured reporting data.  The example of a CT examination covering chest, abdomen, and pelvis will be used in the discussion below.<br />
+In the IHE Scheduled Workflow model, the Chest CT, Abdomen CT, and Pelvis CT each represent a Requested Procedure, and all three procedures are grouped under a single Filler Order.  The Filler Order number maps directly to the DICOM Accession Number in the DICOM imaging and report data.<br />
+A widely deployed alternative approach maps the requested procedure identifiers directly to the DICOM Accession Number.  The Requested Procedure ID in such implementations may or may not be different from the Accession Number, but is of little identifying importance because there is only one Requested Procedure per Accession Number.  There is no identifier that formally connects the requested procedures ordered in this group.<br />
+In both cases, inFulfillmentOf/order/id is mapped to the DICOM Accession Number in the imaging data.</em></p>
+</p>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:8416) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:8431) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="ACT" </tt><em class="ph i">Act</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8430)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8419)<p class="p"><p class="lines"><em class="ph i">The value of serviceEvent/code SHALL NOT conflict with the ClininicalDocument/code. When transforming from DICOM SR documents that do not contain a procedure code, an appropriate nullFlavor SHALL be used on serviceEvent/code.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8418)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt>, where its type is <a class="xref" href="../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a> (CONF:8422)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">relatedDocument</strong></tt> such that it  (CONF:8432) <p class="p"><p class="lines"><em class="ph i">When a Diagnostic Imaging Report has been transformed from a DICOM SR document, relatedDocument/@typeCode SHALL be XFRM, and relatedDocument/parentDocument/id SHALL contain the SOP Instance UID of the original DICOM SR document.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li">The relatedDocument/id/@root attribute <strong class="ph b">SHALL</strong> be a syntactically correct OID, and <strong class="ph b">SHALL NOT</strong> be a UUID. (CONF:10030)</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">componentOf</strong></tt> such that it  (CONF:8434) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">encompassingEncounter</strong></tt> such that it  (CONF:8449) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8437)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8435)<p class="p"><p class="lines"><em class="ph i">In the case of transformed DICOM SR documents, an appropriate null flavor MAY be used if the id is unavailable.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">encounterParticipant</strong></tt>, where its type is <a class="xref" href="../PhysicianofRecordParticipant.html">Physicianof Record Participant</a> (CONF:8448)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">responsibleParty</strong></tt> such that it  (CONF:8438) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:9407) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] assignedPerson OR contain zero or one [0..1] representedOrganization (CONF:8439)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHALL</strong> be precise to the day (CONF:10133, CONF:10127)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHOULD</strong> be precise to the minute (CONF:10133, CONF:10128)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">MAY</strong> be precise to the second (CONF:10133, CONF:10129)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). If more precise than day, <strong class="ph b">SHOULD</strong> include time-zone offset (CONF:10133, CONF:10130)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9484)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../FindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.2]">Findings Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.1.2</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:15141)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../DICOMObjectCatalogSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.1]">DICOM Object Catalog Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.1.1</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">This code <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @code="18748-4" Diagnostic Imaging Report (CodeSystem: LOINC2.16.840.1.113883.6.1) (CONF:8409)</li>
+
+<li class="li">The DICOM Object Catalog section (templateId 2.16.840.1.113883.10.20.6.1.1), if present, <strong class="ph b">SHALL</strong> be the first section in the document Body</li>
+
+<li class="li">With the exception of the DICOM Object Catalog (templateId 2.16.840.1.113883.10.20.6.1.1), all sections within the Diagnostic Imaging Report content <strong class="ph b">SHOULD</strong> contain a title element (CONF:9409)</li>
+
+<li class="li">The section/code <strong class="ph b">SHOULD</strong> be selected from LOINC or DICOM for sections not listed in the DIR Section Type Codes table (CONF:9410)</li>
+
+<li class="li">All sections defined in the DIR Section Type Codes table <strong class="ph b">SHALL</strong> be top-level sections (CONF:9411)</li>
+
+<li class="li">A section element <strong class="ph b">SHALL</strong> have a code element which <strong class="ph b">SHALL</strong> contain a LOINC code or DCM code for sections which have no LOINC equivalent. This only applies to sections described inthe DIR Section Type Codes table (CONF:9412)</li>
+
+<li class="li">Apart from the DICOM Object Catalog (templateId 2.16.840.1.113883.10.20.6.1.1), all other instances of section <strong class="ph b">SHALL</strong> contain at least one text element or one or more component elements (CONF:9413)</li>
+
+<li class="li">All text or component elements <strong class="ph b">SHALL</strong> contain content. text elements <strong class="ph b">SHALL</strong> contain PCDATA or child elements, and component elements <strong class="ph b">SHALL</strong> contain child elements (CONF:9414)</li>
+
+<li class="li">The text elements (and their children) <strong class="ph b">MAY</strong> contain Web Access to DICOM Persistent Object (WADO) references to DICOM objects by including a linkHtml element where @href is a valid WADO URL and the text content of linkHtml is the visible text of the hyperlink</li>
+
+<li class="li">If clinical statements are present, the section/text <strong class="ph b">SHALL</strong> represent faithfully all such statements and <strong class="ph b">MAY</strong> contain additional text</li>
+
+</ol>
+
+<ol class="ol" id="classId__aggregate">
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/GeneralHeaderConstraints.html">General Header Constraints</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1</tt>)</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">realmCode</strong></tt><tt class="ph tt"><strong class="ph b">/@code</strong>="US" </tt> (CONF:16791)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">typeId</strong></tt> (CONF:5361, R2.1=CONF:1198-5361)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5363)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:14833), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> DIRDocumentTypeCodes 2.16.840.1.113883.11.20.9.32</tt><strong class="ph b"> DYNAMIC</strong> (CONF:14834)
+<p class="p">Given that DIR documents may be transformed from established collections of imaging reports already stored with their own type codes, there is no static set of Document Type codes. The set of LOINC codes listed in the DIR LOINC Document Type Codes table may be extended by additions to LOINC and supplemented by local codes as translations.
+The DIR document recommends use of a single document type code, 18748-4 "Diagnostic Imaging Report", with further specification provided by author or performer, setting, or specialty. Some of these codes in the DIR LOINC Document Type Codes table are pre-coordinated with either the imaging modality, body part examined, or specific imaging method such as the view.  Use of these codes is not recommended, as this duplicates information potentially present with the header. When pre-coordinated codes are used, any coded values describing the author or performer of the service act or the practice setting must be consistent with the LOINC document type. This table is drawn from LOINC Version 2.36, June 30, 2011, and consists of codes whose scale is DOC and that refer to reports for diagnostic imaging procedures.</p>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">title</strong></tt> (CONF:5254)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:5256, R2.1=CONF:1198-5256) <p class="p"><p class="lines"><em class="ph i">Signifies the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created. The time when the transform occurred is not currently represented in CDA</em></p>
+</p>
+
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">confidentialityCode</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> HL7 BasicConfidentialityKind 2.16.840.1.113883.1.11.16926</tt><strong class="ph b"> STATIC</strong> 2010-04-21 (CONF:5259, R2.1=CONF:1198-5259)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">languageCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Language 2.16.840.1.113883.1.11.11526</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5372, R2.1=CONF:1198-5372, DSTU:806)
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">setId</strong></tt> (CONF:5261, R2.1=CONF:1198-5261)
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">versionNumber</strong></tt> (CONF:5264, R2.1=CONF:1198-5264)
+</li>
+
+<li class="li">contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt>, where its type is Component2
+<ol class="ol" type="a">
+<li class="li">Conforms to Component2</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">recordTarget</strong></tt> such that it  (CONF:5266) <p class="p"><p class="lines"><em class="ph i">The recordTarget records the patient whose health information is described by the clinical document; it must contain at least one patientRole element.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">patientRole</strong></tt> such that it  (CONF:5268) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5268, R2.1=CONF:1198-5268)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5271, R2.1=CONF:1198-5271)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5280, R2.1=CONF:1198-5280)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">patient</strong></tt> such that it  (CONF:1198-5283) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5284, CONF:10411, R2.1=CONF:1198-5284, DSTU:808)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">administrativeGenderCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Administrative Gender (HL7 V3) 2.16.840.1.113883.1.11.1</tt><strong class="ph b"> DYNAMIC</strong> (CONF:6394, R2.1=CONF:1198-6394)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">birthTime</strong></tt> (CONF:5298)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">maritalStatusCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> HL7 Marital Status 2.16.840.1.113883.1.11.12212</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5303, R2.1=CONF:1198-5303)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">religiousAffiliationCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> HL7 Religious Affiliation 2.16.840.1.113883.1.11.19185</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5317, R2.1=CONF:1198-5317)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">raceCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Race 2.16.840.1.113883.1.11.14914</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5322)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">sDTCRaceCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Race 2.16.840.1.113883.1.11.14914</tt><strong class="ph b"> DYNAMIC</strong> (CONF:7263, R2.1=CONF:1198-7263)<p class="p"><p class="lines"><em class="ph i">Note: The sdtc:raceCode is only used to record additional values when the patient has indicated multiple races or additional race detail beyond the five categories required for Meaningful Use Stage 2. The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the additional raceCode elements.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">ethnicGroupCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Ethnicity Value Set 2.16.840.1.114222.4.11.837</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5323)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">guardian</strong></tt> such that it  (CONF:5325) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:5326)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5359, CONF:10413, R2.1=CONF:1198-5359)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt></li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">guardianPerson</strong></tt> such that it  (CONF:5385, R2.1=CONF:1198-5385) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5386, R2.1=CONF:1198-5386)</li>
+<li class="li">The content of name <strong class="ph b">SHALL</strong> be a conformant US Realm Person Name (PTN.US.FIELDED) (2.16.840.1.113883.10.20.22.5.1.1) (CONF:10414, R2.1=CONF:1198-5386)</li>
+</ol>
+</li>
+<li class="li">The guardian code, if present, <strong class="ph b">SHALL</strong> be selected from ValueSet PersonalRelationshipRoleType 2.16.840.1.113883.1.11.19563 DYNAMIC or ValueSet Responsible Party 2.16.840.1.113883.1.11.19830 DYNAMIC (CONF:5326)</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">birthplace</strong></tt> such that it  (CONF:5395) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">place</strong></tt> such that it  (CONF:5396) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5397, R2.1=CONF:1198-5397)</li>
+<li class="li">This addr <strong class="ph b">SHOULD</strong> contain zero or one [0..1] country, which <strong class="ph b">SHALL</strong> be selected from ValueSet Country 2.16.840.1.113883.3.88.12.80.63 DYNAMIC (CONF:1198-5404, R2.1=CONF:1198-5404)</li>
+<li class="li">This addr <strong class="ph b">MAY</strong> contain zero or one [0..1] postalCode, which <strong class="ph b">SHALL</strong> be selected from ValueSet PostalCodeValueSet 2.16.840.1.113883.3.88.12.80.2 DYNAMIC (CONF:5403, R2.1=CONF:1198-5403)</li>
+<li class="li">If country is US, this addr <strong class="ph b">SHALL</strong> contain exactly one [1..1] state, which <strong class="ph b">SHALL</strong> be selected from ValueSet StateValueSet 2.16.840.1.113883.3.88.12.80.1 DYNAMIC (CONF:5402)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">languageCommunication</strong></tt> such that it  (CONF:5406) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">languageCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Language 2.16.840.1.113883.1.11.11526</tt><strong class="ph b"> DYNAMIC</strong> (CONF:5407, DSTU:806)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">modeCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> HL7 LanguageAbilityMode 2.16.840.1.113883.1.11.12249</tt><strong class="ph b"> STATIC</strong> 1 (CONF:5409, R2.1=CONF:1198-5409)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">proficiencyLevelCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> LanguageAbilityProficiency 2.16.840.1.113883.1.11.12199</tt><strong class="ph b"> DYNAMIC</strong> (CONF:9965, R2.1=CONF:1198-9965)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">preferenceInd</strong></tt> (CONF:5414)</li>
+</ol>
+</li>
+<li class="li">If sdtc:raceCode is present, then the patient <strong class="ph b">SHALL</strong> contain [1..1] raceCode (CONF:31347, R2.1=CONF:1198-31347)</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">providerOrganization</strong></tt> such that it  (CONF:5416, R2.1=CONF:1198-5416) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5417, R2.1=CONF:1198-5417)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5419, R2.1=CONF:1198-5419)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5420, R2.1=CONF:1198-5420)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5422, R2.1=CONF:1198-5422)</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:9996, R2.1=CONF:1198-16820)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">componentOf</strong></tt> such that it  (CONF:9955) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">encompassingEncounter</strong></tt> such that it  (CONF:9956) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:9959, R2.1=CONF:1198-9959)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:9958, R2.1=CONF:1198-9958)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:5444) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:5445, R2.1=CONF:1198-5445) <p class="p"><p class="lines"><em class="ph i">The content SHALL be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:16866).</em></p>
+</p>
+<p class="p"><p class="lines"><em class="ph i">The content SHALL be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:16866).</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedAuthor</strong></tt> such that it  (CONF:5448) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5449, R2.1=CONF:1198-5449)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:16787), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><strong class="ph b"> DYNAMIC</strong> (CONF:16788)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5452, R2.1=CONF:1198-5452)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5428, R2.1=CONF:1198-5428)</li>
+<li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedAuthoringDevice</strong></tt> such that it  <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">manufacturerModelName</strong></tt> (CONF:16784, R2.1=CONF:1198-16784)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">softwareName</strong></tt> (CONF:16785, R2.1=CONF:1198-16785)</li>
+</ol>
+</li>
+<li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:16789, R2.1=CONF:1198-16789)</li>
+</ol>
+</li>
+<li class="li">There <strong class="ph b">SHALL</strong> be exactly one assignedAuthor/assignedPerson or exactly one assignedAuthor/assignedAuthoringDevice (CONF:16790, R2.1=CONF:1198-16790)</li>
+<li class="li">If this assignedAuthor is an assignedPerson, the assignedAuthor <strong class="ph b">SHOULD</strong> contain zero to one [0..1] id 'such that it': <strong class="ph b">MAY</strong> contain zero or one [0..1] @nullFlavor="UNK" Unknown (CodeSystem: HL7NullFlavor 2.16.840.1.113883.5.1008), <strong class="ph b">SHALL</strong> contain exactly one [1..1] @root="2.16.840.1.113883.4.6" National Provider Identifier, and <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @extension (CONF:31135, CONF:31694, R2.1=CONF:1198-32882, R2.1=CONF:1198-32883, R2.1=CONF:1198-32884, R2.1=CONF:1198-32885)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">dataEnterer</strong></tt> such that it  (CONF:5441) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:5442) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5443, R2.1=CONF:1198-5443)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.101 NUCC Health Care Provider Taxonomy</tt>) (CONF:9944)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5460, R2.1=CONF:1198-5460)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5466, R2.1=CONF:1198-5466)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  (CONF:5469, R2.1=CONF:1198-5469) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5470, R2.1=CONF:1198-5470)</li>
+</ol>
+</li>
+<li class="li">id <strong class="ph b">SHOULD</strong> include zero or one [0..1] @root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16821, R2.1=CONF:1198-16821)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">custodian</strong></tt> such that it  (CONF:5519) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedCustodian</strong></tt> such that it  (CONF:5520, R2.1=CONF:1198-5520) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">representedCustodianOrganization</strong></tt> such that it  (CONF:5521, R2.1=CONF:1198-5521) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5522, R2.1=CONF:1198-5522)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5524, R2.1=CONF:1198-5524)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5525, R2.1=CONF:1198-5525)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5559, R2.1=CONF:1198-5559)</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> include zero or one [0..1] @root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16822, R2.1=CONF:1198-16822)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">informationRecipient</strong></tt> such that it  (CONF:5565) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">intendedRecipient</strong></tt> such that it  (CONF:5566) <ol class="ol" type="i"><li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">informationRecipient</strong></tt> such that it  (CONF:5568, R2.1=CONF:1198-5567) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5470, R2.1=CONF:1198-5568)</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">receivedOrganization</strong></tt> such that it  (CONF:5577, R2.1=CONF:1198-5577) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5578, R2.1=CONF:1198-5578)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">legalAuthenticator</strong></tt> such that it  (CONF:5579) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:5580, R2.1=CONF:1198-5580)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">signatureCode</strong></tt> (CONF:5583, R2.1=CONF:1198-5583)<tt class="ph tt"><strong class="ph b">/@code</strong>="S" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.89 Participationsignature</tt>) (CONF:5584, R2.1=CONF:1198-5584)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:5585, R2.1=CONF:1198-5585) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5586, R2.1=CONF:1198-5586)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><strong class="ph b"> DYNAMIC</strong> (CONF:17000, R2.1=CONF:1198-17000)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5589, R2.1=CONF:1198-5589)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5595, R2.1=CONF:1198-5595)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  (CONF:5597, R2.1=CONF:1198-5597) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5598, R2.1=CONF:1198-5598)</li>
+</ol>
+</li>
+<li class="li">The id <strong class="ph b">MAY</strong> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16823, R2.1=CONF:1198-16823)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">authenticator</strong></tt> such that it  (CONF:5607) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:5608, R2.1=CONF:1198-5608)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">signatureCode</strong></tt> (CONF:5610, R2.1=CONF:1198-5610)<tt class="ph tt"><strong class="ph b">/@code</strong>="S" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.89 Participationsignature</tt>) (CONF:5611, R2.1=CONF:1198-5611)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:5612, R2.1=CONF:1198-5612) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5613, R2.1=CONF:1198-5613)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:16825, R2.1=CONF:1198-16825), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><strong class="ph b"> DYNAMIC</strong> (CONF:16826, R2.1=CONF:1198-16826)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:5616, R2.1=CONF:1198-5616)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:5622, R2.1=CONF:1198-5622)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  (CONF:5624, R2.1=CONF:1198-5624) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:5625, R2.1=CONF:1198-5625)</li>
+</ol>
+</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16824, R2.1=CONF:1198-16824)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">informant</strong></tt> such that it  (CONF:8001) <ol class="ol" type="a"><li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:9945, R2.1=CONF:1198-9945)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.101 NUCC Health Care Provider Taxonomy</tt>) (CONF:9947)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:8220)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedPerson</strong></tt> such that it  (CONF:8221, R2.1=CONF:1198-8221) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:8222, CONF:10420, R2.1=CONF:1198-8222)</li>
+</ol>
+</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:9946, R2.1=CONF:1198-9946)</li>
+</ol>
+</li>
+<li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">relatedEntity</strong></tt> such that it  <ol class="ol" type="i"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:8220)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">relatedPerson</strong></tt> such that it  (CONF:8221) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:8222, CONF:10420, R2.1=CONF:1198-8222)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li"><strong class="ph b">SHALL</strong> satisfy: contain exactly one [1..1] assignedEntity OR exactly one [1..1] relatedEntity (CONF:8002)</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:10003) <ol class="ol" type="a"><li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:10004, R2.1=CONF:1198-10004)</li>
+<li class="li">Such participants, if present, <strong class="ph b">SHALL</strong> have an associatedPerson or scopingOrganization element under participant/associatedEntity. (CONF:10006)</li>
+<li class="li">Unless otherwise specified by the document specific header constraints, when participant/@typeCode is IND, associatedEntity/@classCode <strong class="ph b">SHALL</strong> be selected from ValueSet INDRoleclassCodes 2.16.840.1.113883.11.20.9.33 STATIC 2011-09-30. (CONF:10007)</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">inFulfillmentOf</strong></tt> such that it  (CONF:9952) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">order</strong></tt> such that it  (CONF:9953, R2.1=CONF:1198-9953) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:9954, R2.1=CONF:1198-9954)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:14835) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:14836) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:14837, R2.1=CONF:1198-14837)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:14839) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong></tt> (CONF:14840, R2.1=CONF:1198-14840)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">functionCode</strong></tt> (CONF:16818), which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.88 ParticipationFunction</tt>) (CONF:16819)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:14841) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:14846, R2.1=CONF:1198-14846)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:14842), which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.101 NUCC Health Care Provider Taxonomy</tt>) (CONF:14843)</li>
+<li class="li">The id <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:14847, R2.1=CONF:1198-14847)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li">effectiveTime <strong class="ph b">SHALL</strong> contain exactly one [1..1] low (CONF:14838, R2.1=CONF:1198-14838)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">authorization</strong></tt> such that it  (CONF:16792) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">consent</strong></tt> such that it  (CONF:16793, R2.1=CONF:1198-16793) <ol class="ol" type="i"><li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:16794, R2.1=CONF:1198-16794)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:16795, R2.1=CONF:1198-16795)<p class="p"><p class="lines"><em class="ph i">The type of consent (e.g., a consent to perform the related serviceEvent) is conveyed in consent/code.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:16797, R2.1=CONF:1198-16797)<tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:16798, R2.1=CONF:1198-16798)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:8414) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">associatedEntity</strong></tt> such that it  (CONF:8415) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">associatedPerson</strong></tt> such that it  (CONF:8415) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:9406)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">inFulfillmentOf</strong></tt> such that it  <p class="p"><p class="lines"><em class="ph i">An inFulfillmentOf element represents the Placer Order that is either a group of orders (modeled as PlacerGroup in the Placer Order RMIM of the Orders and Observations domain) or a single order item (modeled as ObservationRequest in the same RMIM).  This optionality reflects two major approaches to the grouping of procedures as implemented in the installed base of imaging information systems.  These approaches differ in their handling of grouped procedures and how they are mapped to identifiers in the Digital Imaging and Communications in Medicine (DICOM) image and structured reporting data.  The example of a CT examination covering chest, abdomen, and pelvis will be used in the discussion below.<br />
+In the IHE Scheduled Workflow model, the Chest CT, Abdomen CT, and Pelvis CT each represent a Requested Procedure, and all three procedures are grouped under a single Filler Order.  The Filler Order number maps directly to the DICOM Accession Number in the DICOM imaging and report data.<br />
+A widely deployed alternative approach maps the requested procedure identifiers directly to the DICOM Accession Number.  The Requested Procedure ID in such implementations may or may not be different from the Accession Number, but is of little identifying importance because there is only one Requested Procedure per Accession Number.  There is no identifier that formally connects the requested procedures ordered in this group.<br />
+In both cases, inFulfillmentOf/order/id is mapped to the DICOM Accession Number in the imaging data.</em></p>
+</p>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:8416) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:8431) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="ACT" </tt><em class="ph i">Act</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8430)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8419)<p class="p"><p class="lines"><em class="ph i">The value of serviceEvent/code SHALL NOT conflict with the ClininicalDocument/code. When transforming from DICOM SR documents that do not contain a procedure code, an appropriate nullFlavor SHALL be used on serviceEvent/code.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8418)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt>, where its type is <a class="xref" href="../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a> (CONF:8422)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">relatedDocument</strong></tt> such that it  (CONF:8432) <p class="p"><p class="lines"><em class="ph i">When a Diagnostic Imaging Report has been transformed from a DICOM SR document, relatedDocument/@typeCode SHALL be XFRM, and relatedDocument/parentDocument/id SHALL contain the SOP Instance UID of the original DICOM SR document.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li">The relatedDocument/id/@root attribute <strong class="ph b">SHALL</strong> be a syntactically correct OID, and <strong class="ph b">SHALL NOT</strong> be a UUID. (CONF:10030)</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">componentOf</strong></tt> such that it  (CONF:8434) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">encompassingEncounter</strong></tt> such that it  (CONF:8449) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8437)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8435)<p class="p"><p class="lines"><em class="ph i">In the case of transformed DICOM SR documents, an appropriate null flavor MAY be used if the id is unavailable.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">encounterParticipant</strong></tt>, where its type is <a class="xref" href="../PhysicianofRecordParticipant.html">Physicianof Record Participant</a> (CONF:8448)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">responsibleParty</strong></tt> such that it  (CONF:8438) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:9407) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] assignedPerson OR contain zero or one [0..1] representedOrganization (CONF:8439)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHALL</strong> be precise to the day (CONF:10133, CONF:10127)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHOULD</strong> be precise to the minute (CONF:10133, CONF:10128)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">MAY</strong> be precise to the second (CONF:10133, CONF:10129)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). If more precise than day, <strong class="ph b">SHOULD</strong> include time-zone offset (CONF:10133, CONF:10130)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9484)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../FindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.2]">Findings Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.1.2</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:15141)
+<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="../DICOMObjectCatalogSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.1]">DICOM Object Catalog Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.1.1</tt>)</li>
+</ol>
+</li>
+
+<li class="li">typeId <strong class="ph b">SHALL</strong> contain exactly one [1..1] @root="2.16.840.1.113883.1.3" (CONF:5250, R2.1=CONF:1198-5250)</li>
+
+<li class="li">typeId <strong class="ph b">SHALL</strong> contain exactly one [1..1] @extension="POCD_HD000040" (CONF:5251, R2.1=CONF:1198-5251)</li>
+
+<li class="li">id <strong class="ph b">SHALL</strong> be a globally unique identifier for the document (CONF:9991, R2.1=CONF:1198-9991)</li>
+
+<li class="li">code <strong class="ph b">SHALL</strong> specify the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note). (CONF:9992, R2.1=CONF:1198-9992)</li>
+
+<li class="li">If setId is present versionNumber <strong class="ph b">SHALL</strong> be present (CONF:6380, R2.1=CONF:1198-6380)</li>
+
+<li class="li">If versionNumber is present setId <strong class="ph b">SHALL</strong> be present (CONF:6387, R2.1=CONF:1198-6387)</li>
+
+<li class="li">This code <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @code="18748-4" Diagnostic Imaging Report (CodeSystem: LOINC2.16.840.1.113883.6.1) (CONF:8409)</li>
+
+<li class="li">The DICOM Object Catalog section (templateId 2.16.840.1.113883.10.20.6.1.1), if present, <strong class="ph b">SHALL</strong> be the first section in the document Body</li>
+
+<li class="li">With the exception of the DICOM Object Catalog (templateId 2.16.840.1.113883.10.20.6.1.1), all sections within the Diagnostic Imaging Report content <strong class="ph b">SHOULD</strong> contain a title element (CONF:9409)</li>
+
+<li class="li">The section/code <strong class="ph b">SHOULD</strong> be selected from LOINC or DICOM for sections not listed in the DIR Section Type Codes table (CONF:9410)</li>
+
+<li class="li">All sections defined in the DIR Section Type Codes table <strong class="ph b">SHALL</strong> be top-level sections (CONF:9411)</li>
+
+<li class="li">A section element <strong class="ph b">SHALL</strong> have a code element which <strong class="ph b">SHALL</strong> contain a LOINC code or DCM code for sections which have no LOINC equivalent. This only applies to sections described inthe DIR Section Type Codes table (CONF:9412)</li>
+
+<li class="li">Apart from the DICOM Object Catalog (templateId 2.16.840.1.113883.10.20.6.1.1), all other instances of section <strong class="ph b">SHALL</strong> contain at least one text element or one or more component elements (CONF:9413)</li>
+
+<li class="li">All text or component elements <strong class="ph b">SHALL</strong> contain content. text elements <strong class="ph b">SHALL</strong> contain PCDATA or child elements, and component elements <strong class="ph b">SHALL</strong> contain child elements (CONF:9414)</li>
+
+<li class="li">The text elements (and their children) <strong class="ph b">MAY</strong> contain Web Access to DICOM Persistent Object (WADO) references to DICOM objects by including a linkHtml element where @href is a valid WADO URL and the text content of linkHtml is the visible text of the hyperlink</li>
+
+<li class="li">If clinical statements are present, the section/text <strong class="ph b">SHALL</strong> represent faithfully all such statements and <strong class="ph b">MAY</strong> contain additional text</li>
+
+</ol>
+
+<div class="section" id="classId__tableconformance"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col style="width:25%" /><col style="width:8.333333333333332%" /><col style="width:8.333333333333332%" /><col style="width:16.666666666666664%" /><col style="width:16.666666666666664%" /><col style="width:25%" /></colgroup><thead class="thead" style="text-align:left;"> <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d278781e2376">consol::DiagnosticImagingReport</th>
+  </tr>
+  <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d278781e2381">cda::clinicaldocument[cda:templateId/@root = 2.16.840.1.113883.10.20.22.1.1]/</th>
+  </tr>
+ <tr class="row"><th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d278781e2386">XPath</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d278781e2388">Card.</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d278781e2390">Verb</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d278781e2392">Data Type</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d278781e2394">CONF#</th>
+<th class="entry cell-norowborder" style="text-align:left;vertical-align:top;" id="d278781e2396">Fixed Value</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">code</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">CE</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:14834</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> null</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">id</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">II</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:5363</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">componentOf</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">ComponentOf</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:8434</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">dICOMObjectCatalogSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">DICOMObjectCatalogSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:15141</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">documentationOf</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">DocumentationOf</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:8416</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">findingsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">FindingsSection</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:9484</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">informant</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">0..0</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">Informant12</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:8410</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">informationRecipient</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">0..*</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">InformationRecipient</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:8411</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">inFulfillmentOf</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">InFulfillmentOf</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">participant1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">Participant</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:8414</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2386 ">relatedDocument</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2388 ">0..1</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2390 ">MAY</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2392 ">RelatedDocument</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2394 ">CONF:8432</td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d278781e2376 d278781e2381 d278781e2396 "> </td>
+</tr>
+ 
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="section" id="classId__contextTable"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col /><col /></colgroup><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry nocellnorowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d278781e2564">Contained By</th>
+<th class="entry cell-norowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d278781e2566">Contains</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../AdvanceDirectiveObservation2.html">Advance Directive Observation (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../AdvanceDirectiveOrganizer.html" title="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.108]">Advance Directive Organizer (V2)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../CodeObservations.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.13]">Code Observations</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../DICOMObjectCatalogSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.1]">DICOM Object Catalog Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../ExternalDocumentReference.html">External Document Reference</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../FetusSubjectContext.html">Fetus Subject Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../FindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.2]">Findings Section</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../ImmunizationMedicationInformation.html">Immunization Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../ImmunizationMedicationInformation2.html">Immunization Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../MedicationInformation.html">Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../MedicationInformation2.html">Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../ObserverContext.html">Observer Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../PhysicianReadingStudyPerformer2.html">Physician Reading Study Performer2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../PhysicianofRecordParticipant.html">Physicianof Record Participant</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../PhysicianofRecordParticipant2.html">Physicianof Record Participant2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../PolicyActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../PreconditionForSubstanceAdministration.html">Precondition For Substance Administration</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../PreconditionForSubstanceAdministration2.html">Precondition For Substance Administration2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../ProcedureActivityAct2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.12]">Procedure Activity Act2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../ProcedureActivityObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.13]">Procedure Activity Observation2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../ProcedureActivityProcedure2.html" title="[Procedure: templateId 2.16.840.1.113883.10.20.22.4.14]">Procedure Activity Procedure2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../ProcedureContext.html" title="[Act: templateId 2.16.840.1.113883.10.20.6.2.5]">Procedure Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../QuantityMeasurementObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.14]">Quantity Measurement Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../SOPInstanceObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.8]">SOP Instance Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../SubstanceAdministeredAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.118]">Substance Administered Act</a></td>
+</tr>
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d278781e2564 "> </td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d278781e2566 "><a class="xref" href="../TextObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.12]">Text Observation</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<pre class="pre codeblock language-xml" id="classId__example"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 infrastructure/cda/CDA_SDTC.xsd"&gt;
+  &lt;realmCode code="US"/&gt;
+  &lt;realmCode code="US"/&gt;
+  &lt;realmCode code="US"/&gt;
+  &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.5"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.5"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.5"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
+  &lt;id root="MDHT" extension="1767709759"/&gt;
+  &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+  &lt;title&gt;org.openhealthtools.mdht.uml.cda.consol.impl. Diagnostic Imaging Report Impl&lt;/title&gt;
+  &lt;effectiveTime/&gt;
+  &lt;confidentialityCode codeSystem="2.16.840.1.113883.5.25" codeSystemName="ConfidentialityCode"/&gt;
+  &lt;languageCode code="Code forlanguageCode"/&gt;
+  &lt;setId root="MDHT" extension="cb0f5595-d814-4f9f-9ec0-f9a45663bc08"/&gt;
+  &lt;versionNumber value="1"/&gt;
+  &lt;recordTarget&gt;
+    &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+    &lt;patientRole/&gt;
+  &lt;/recordTarget&gt;
+  &lt;author&gt;
+    &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor/&gt;
+  &lt;/author&gt;
+  &lt;informant/&gt;
+  &lt;custodian/&gt;
+  &lt;informationRecipient/&gt;
+  &lt;participant&gt;
+    &lt;associatedEntity&gt;
+      &lt;associatedPerson/&gt;
+    &lt;/associatedEntity&gt;
+  &lt;/participant&gt;
+  &lt;inFulfillmentOf&gt;
+    &lt;order/&gt;
+  &lt;/inFulfillmentOf&gt;
+  &lt;documentationOf&gt;
+    &lt;serviceEvent classCode="ACT"&gt;
+      &lt;id root="MDHT" extension="291623143"/&gt;
+      &lt;code code="1692548177"/&gt;
+      &lt;performer typeCode="PRF"&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.6.2.1"/&gt;
+      &lt;/performer&gt;
+    &lt;/serviceEvent&gt;
+  &lt;/documentationOf&gt;
+  &lt;relatedDocument&gt;
+    &lt;parentDocument/&gt;
+  &lt;/relatedDocument&gt;
+  &lt;componentOf&gt;
+    &lt;encompassingEncounter&gt;
+      &lt;id root="MDHT" extension="501247370"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;responsibleParty/&gt;
+      &lt;encounterParticipant typeCode="ATND"&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.6.2.2"/&gt;
+      &lt;/encounterParticipant&gt;
+    &lt;/encompassingEncounter&gt;
+  &lt;/componentOf&gt;
+  &lt;component&gt;
+    &lt;structuredBody&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.6.1.2"/&gt;
+          &lt;id root="MDHT" extension="295744451"/&gt;
+          &lt;code code="356105881"/&gt;
+          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
+          &lt;text&gt;RkVQKQ YpupeMY SwbwCFSjx urzXe QVDYRw msjqwFZSn kVFLsFInA tWNAdQEJ OUqUS KpUPHDgG aLUkA FgQZd NUZGXsf KGkzE Lzycmq TYfKnJwD GYQQJk CbxEuK foSyW YWntDrN oJSbDv GtTpy dcmwsNrIY yBzjzMHv VVdRlXsq ZxuPxUEj UgcaJx zNgPu JWtEogzLP BQNnO YGJKopmY NjYqBiEGt rxvpyZL zrUvBl xTDRXgyn NdwflUN CbcecQ ILUzHBik VCdPBH AzShnB POYXfmv LVUsEPi dNAIDZsI HaADjV GptFx tQwyPFr RZXtuNw rvzHji FPkQTcKR 
+kSepqwNs oEvARZBz QXVDDFJ LtZDcqhf brDQlZO DNpssp RZuPAqt RnsBt wcEeoG miXSeL ROWcIg FvdOFPGkm FlWTQ ToanItAj wdSLmcA bDSwh klpOqJZ okFKWlK OsHHYOX urJvhtAjs Cexxc lsjghA RaYpp AiOnKkFHi gMmtR EUxjdx VRfGHwx HONeyxuf RObOZVIwJ brhgNDvr ssUdbwoWS gxQouw kNBgy QgmuQ sTpiWhh EudEJTf SzcQCEml Nvxlu XLQvcoav ZCJcx OtifC seRNxG tWZRr wTuJa LqHwYUS BfAkZyqxS 
+KYbGfg MHbmSQjXk tZhjminc pPbXlFik WGUEW wSehV TcpjNles AeYMSQXPJ OtJLspUEC OvqCOS ZSZDNlj jyLCpumb RaYHz GgkCkPES vtgLHo UPeXtB eaoYoTR SWPosJ mofopBndd nIgddEHPQ tPWAFWb uNOEHJniL fqGPh DGjtXQP xCaMs oyMye rQpNmtgu RwLZDVdWQ WCNSpV hKEWRVbs bfreVj EZWBVo lRivn XfgTPD mVdkn 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1366459920"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+      &lt;component&gt;
+        &lt;section&gt;
+          &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.6.1.1"/&gt;
+          &lt;id root="MDHT" extension="7107956"/&gt;
+          &lt;code code="121181" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DCM" displayName="Dicom Object Catalog"/&gt;
+          &lt;title&gt;Dicom Object Catalog&lt;/title&gt;
+          &lt;text&gt;nzdDNtM nJUeRRs gdgdJwIL THnLItJ BcCBrF szphp kcaCrItxI QSCsczzu AYXfGKbc fWruuIQt aZAXZlso eILdY nCaKYCVIA AEODB hDIXd nHAYhG PMePz oCPRU LKLAi WUJJW dfrHR WYmhLH fXSQREGtm HEqcRyiWh zxqHWYX WGmCjeKQ oexbKH ZDKIGg mDvyWxLQ DVqfeOR TIXaDYuh rGkgCIvqG XqKoVo gMQsoHZ vQErB weCdRAKg 
+eWIhzX FFkAuucA YvWGyU awvRM lhVtTZFow emRyKktKH TEWdpma XibDFi IbSMQuUE xlFxZ LeqkBwrXd wvMTI oiQHHtA EfHuN xogSNy CNINnNrH WmmsU bfbSm rNvEhTdH UfJfYdmjT JlKkxvNY DBPPwPC HVdSleds oerFHQD hNGrU MTDHGnwN fPgmw JsTYvQGf SEcoLifT CxTCrEtBe fzOPEATI zrXoi rzasB iXglTJKz OstHeBbO 
+&lt;/text&gt;
+          &lt;confidentialityCode code="699718959"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
+          &lt;entry&gt;
+            &lt;act classCode="ACT" moodCode="EVN"&gt;
+              &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.6.2.6"/&gt;
+              &lt;id root="MDHT" extension="1948069038"/&gt;
+              &lt;code code="113014" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DCM"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
+              &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
+              &lt;entryRelationship&gt;
+                &lt;act classCode="ACT" moodCode="EVN"&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.22.4.63"/&gt;
+                  &lt;code code="113015" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DCM"/&gt;
+                &lt;/act&gt;
+              &lt;/entryRelationship&gt;
+            &lt;/act&gt;
+          &lt;/entry&gt;
+        &lt;/section&gt;
+      &lt;/component&gt;
+    &lt;/structuredBody&gt;
+  &lt;/component&gt;
+&lt;/ClinicalDocument&gt;</code></pre>
+<div class="section" id="classId__changes">
+</div>
+
+<p class="p"><span class="ph" id="classId__classformalname">Diagnostic Imaging Report</span></p>
+
+<p class="p" id="classId__shortdesc">[ClinicalDocument: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.1.5</tt>]</p>
+
+</div>
+
+</body>
+</html>

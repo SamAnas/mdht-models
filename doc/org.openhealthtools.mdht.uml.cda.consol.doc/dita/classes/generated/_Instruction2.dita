@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Instruction2 - conformance rules</title>
+<shortdesc id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.20</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Act</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.20"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>The Instruction template can be used in several ways, such as to record patient instructions within a Medication Activity or to record fill instructions within a supply order. The template's moodCode can only be INT. If an instruction was already be given, the Procedure Activity Act template (instead of this template) should be used to represent the already occurred instruction. The act/code defines the type of instruction. Though not defined in this template, a Vaccine Information Statement (VIS) document could be referenced through act/reference/externalDocument, and patient awareness of the instructions can be represented with the generic participant and the participant/awarenessCode.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-7393, CONF:1098-10503, CONF:1098-32598 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.20"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../Instructions.dita">Instructions</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.20</tt>)</li>
+<li>
+contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../Instructions.dita">Instructions</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.20</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7391, R2.0=CONF:1098-7391)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="INT" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:7392, R2.0=CONF:1098-7392)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> PatientEducation 2.16.840.1.113883.11.20.9.34</tt><b> DYNAMIC</b> (CONF:7394, R2.0=CONF:1098-7394)
+</li>
+<li>contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt><tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:7396, R2.0=CONF:1098-7396, R2.0=CONF:1098-19106)
+</li>
+<li>This text, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:15577)</li>
+<li>reference <b>SHOULD</b> contain exactly one [1..1] @value (CONF:15578)</li>
+<li>reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15579)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::Instruction2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.20]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>instruction2</entry><entry>1..*</entry><entry>SHALL</entry><entry>Instruction2</entry><entry>CONF:1098-10116CONF:1098-31398</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../ImmunizationActivity2.dita">Immunization Activity (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../InstructionsSection2.dita">Instructions Section2</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../InterventionAct.dita">Intervention Act (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref href="../MedicationActivity2.dita">Medication Activity2</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry><xref href="../MedicationSupplyOrder2.dita">Medication Supply Order2</xref></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry><xref href="../NonMedicinalSupplyActivity2.dita">Non Medicinal Supply Activity2</xref></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry><xref href="../PlanOfTreatmentSection2.dita">Plan Of Treatment Section2</xref></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry><xref href="../PlannedAct2.dita">Planned Act2</xref></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry><xref href="../PlannedImmunizationActivity.dita">Planned Immunization Activity</xref></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry><xref href="../PlannedInterventionAct.dita">Planned Intervention Act (V2)</xref></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry><xref href="../PlannedMedicationActivity2.dita">Planned Medication Activity2</xref></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry><xref href="../PlannedObservation2.dita">Planned Observation2</xref></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry><xref href="../PlannedProcedure2.dita">Planned Procedure2</xref></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry><xref href="../PlannedSupply2.dita">Planned Supply2</xref></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="INT">
+  <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+</act>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::Instructions
+</p>
+<p id="Instructions" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:7393, CONF:10503 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.20"
+</li><li>Consol Instructions This text, if present, SHOULD contain zero or one [0..1] reference (CONF:15577)
+</li><li>Consol Instructions reference SHOULD contain exactly one [1..1] @value (CONF:15578)
+</li><li>Consol Instructions reference/@value SHALL begin with a '#' and SHALL point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15579)
+</li><li>SHALL conform to CDA Act
+</li><li>Consol Instructions SHALL contain exactly one [1..1] @classCode="ACT" Act (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:7391, R2.0=CONF:1098-7391)
+</li><li>Consol Instructions SHALL contain exactly one [1..1] @moodCode="INT"  (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:7392, R2.0=CONF:1098-7392)
+</li><li>Consol Instructions SHALL contain exactly one [1..1] code, which SHOULD be selected from ValueSet PatientEducation 2.16.840.1.113883.11.20.9.34 DYNAMIC (CONF:7394, R2.0=CONF:1098-7394)
+</li><li>Consol Instructions SHOULD contain zero or one [0..1] text (CONF:7395)
+</li><li>Consol Instructions SHALL contain exactly one [1..1] statusCode/@code="completed" Completed (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:7396, R2.0=CONF:1098-7396, R2.0=CONF:1098-19106)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Instruction2</ph></p>
+<p id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.20</tt>]</p>
+</body>
+</topic>

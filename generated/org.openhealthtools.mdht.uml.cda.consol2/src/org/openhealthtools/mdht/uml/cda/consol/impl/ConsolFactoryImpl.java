@@ -703,6 +703,16 @@ public class ConsolFactoryImpl extends EFactoryImpl implements ConsolFactory {
 				return createPreconditionForSubstanceAdministration2();
 			case ConsolPackage.PHYSICIAN_READING_STUDY_PERFORMER2:
 				return createPhysicianReadingStudyPerformer2();
+			case ConsolPackage.ADVANCE_DIRECTIVES_SECTION_ENTRIES_OPTIONAL3:
+				return createAdvanceDirectivesSectionEntriesOptional3();
+			case ConsolPackage.ADVANCE_DIRECTIVE_ORGANIZER2:
+				return createAdvanceDirectiveOrganizer2();
+			case ConsolPackage.ADVANCE_DIRECTIVE_OBSERVATION3:
+				return createAdvanceDirectiveObservation3();
+			case ConsolPackage.ADVANCE_DIRECTIVES_SECTION3:
+				return createAdvanceDirectivesSection3();
+			case ConsolPackage.ADVANCE_CARE_PLANNING_INTERVENTION:
+				return createAdvanceCarePlanningIntervention();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -3952,6 +3962,56 @@ public class ConsolFactoryImpl extends EFactoryImpl implements ConsolFactory {
 	public PhysicianReadingStudyPerformer2 createPhysicianReadingStudyPerformer2() {
 		PhysicianReadingStudyPerformer2Impl physicianReadingStudyPerformer2 = new PhysicianReadingStudyPerformer2Impl();
 		return physicianReadingStudyPerformer2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AdvanceDirectivesSectionEntriesOptional3 createAdvanceDirectivesSectionEntriesOptional3() {
+		AdvanceDirectivesSectionEntriesOptional3Impl advanceDirectivesSectionEntriesOptional3 = new AdvanceDirectivesSectionEntriesOptional3Impl();
+		return advanceDirectivesSectionEntriesOptional3;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AdvanceDirectiveOrganizer2 createAdvanceDirectiveOrganizer2() {
+		AdvanceDirectiveOrganizer2Impl advanceDirectiveOrganizer2 = new AdvanceDirectiveOrganizer2Impl();
+		return advanceDirectiveOrganizer2;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AdvanceDirectiveObservation3 createAdvanceDirectiveObservation3() {
+		AdvanceDirectiveObservation3Impl advanceDirectiveObservation3 = new AdvanceDirectiveObservation3Impl();
+		return advanceDirectiveObservation3;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AdvanceDirectivesSection3 createAdvanceDirectivesSection3() {
+		AdvanceDirectivesSection3Impl advanceDirectivesSection3 = new AdvanceDirectivesSection3Impl();
+		return advanceDirectivesSection3;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AdvanceCarePlanningIntervention createAdvanceCarePlanningIntervention() {
+		AdvanceCarePlanningInterventionImpl advanceCarePlanningIntervention = new AdvanceCarePlanningInterventionImpl();
+		return advanceCarePlanningIntervention;
 	}
 
 	/**

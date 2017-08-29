@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xml:lang="en-us" lang="en-us">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="copyright" content="(C) Copyright 2005"/>
-<meta name="DC.rights.owner" content="(C) Copyright 2005"/>
-<meta name="DC.Type" content="topic"/>
-<meta name="DC.Title" content="Family History Organizer"/>
-<meta name="abstract" content="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.45]"/>
-<meta name="description" content="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.45]"/>
-<meta name="DC.Coverage" content="Organizer"/>
-<meta name="DC.Format" content="XHTML"/>
-<meta name="DC.Identifier" content="classId"/>
-<meta name="DC.Language" content="en-us"/>
-<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Family History Organizer" />
+<meta name="abstract" content="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.45]" />
+<meta name="description" content="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.45]" />
+<meta name="DC.Coverage" content="Organizer" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
 <title>Family History Organizer</title>
 </head>
 <body id="classId">
@@ -22,8 +22,7 @@
 	<p><b>Non-Normative Content</b> The Normative content for these specifications
 	may be found on the HL7, IHE, and HITSP web sites.</p>
 </div>
-
-	<h1 class="title topictitle1"><span class="ph">Family History Organizer</span></h1>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Family History Organizer</span></h1>
 
 	
 	
@@ -31,55 +30,55 @@
 
 		
 		<div class="section">
-<div class="p"><p class="lines"><em class="ph i">The Family History Oranizer associates a set of observations with a family member. For example, the Family History Organizer can group a set of observations about the patient's father.</em></p>
-</div>
+<p class="p">The Family History Oranizer associates a set of observations with a family member. For example, the Family History Organizer can group a set of observations about the patient's father.</p>
 
 </div>
 
 		
 
 		<ol class="ol">
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] templateId ( CONF:10497 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.45"</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:10497 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.45"</tt></li>
 </ol>
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="CLUSTER" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8600)
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="CLUSTER" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8600, R2.1=CONF:1198-8600)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8601)
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8601, R2.1=CONF:1198-8601)
 </li>
 
-<li class="li">Contains exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (R2.1=CONF:1198-8602)<tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:8602, R2.1=CONF:1198-19099)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:8607, CONF:16888)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="FamilyHistoryObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.46]">Family History Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.46</tt>)</li>
-</ol>
-</li>
-
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">subject</strong></tt> (CONF:8609) <ol class="ol" type="a"><li class="li"> This subject <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">relatedSubject</strong></tt> (CONF:15244) <ol class="ol" type="i"><li class="li"> This relatedSubject <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="PRS" </tt> (CONF:15245)</li>
-<li class="li"> This relatedSubject <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:15246), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> <a class="xref" href="../terminology/FamilyHistoryRelatedSubjectCode.html">FamilyHistoryRelatedSubjectCode</a> 2.16.840.1.113883.1.11.19579</tt><strong class="ph b"> DYNAMIC</strong> (CONF:15247)</li>
-<li class="li"> This relatedSubject <strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">subject</strong></tt> (CONF:15248) <ol class="ol"><li class="li"> This subject <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">administrativeGenderCode</strong></tt> (CONF:15974), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> <a class="xref" href="../terminology/AdministrativeGenderHL7V3.html">Administrative Gender (HL7 V3)</a> 2.16.840.1.113883.1.11.1</tt><strong class="ph b"> DYNAMIC</strong> (CONF:15975)</li>
-<li class="li"> This subject <strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">birthTime</strong></tt> (CONF:15976)</li>
-<li class="li"> This subject <strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">sDTCDeceasedInd</strong></tt> (CONF:15981)<div class="p"><p class="lines"><em class="ph i">The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the deceasedInd element.</em></p>
-</div>
-</li>
-<li class="li"> This subject <strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">sDTCDeceasedTime</strong></tt> (CONF:15982)<div class="p"><p class="lines"><em class="ph i">The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the deceasedTime element.</em></p>
-</div>
-</li>
-<li class="li"> This subject <strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">sDTCId</strong></tt> (CONF:15249)<div class="p"><p class="lines"><em class="ph i">The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary<br/>
-extension to CDA R2 for the use of the id element.</em></p>
-</div>
-</li>
-<li class="li"> This subject age of a relative at the time of a family history observation <strong class="ph b">SHOULD</strong> be inferred by comparing RelatedSubject/subject/birthTime with Observation/effectiveTime (CONF:15983)</li>
-<li class="li"> This subject age of a relative at the time of death <strong class="ph b">MAY</strong> be inferred by comparing RelatedSubject/subject/birthTime with RelatedSubject/subject/sdwg:deceasedTime (CONF:8632)</li>
-</ol>
- </li>
-</ol>
- </li>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..*] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:8607, CONF:16888)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../FamilyHistoryObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.46]">Family History Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.46</tt>)</li>
 </ol>
 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">subject</strong></tt> such that it  (CONF:8609, R2.1=CONF:1198-8609) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">relatedSubject</strong></tt> such that it  (CONF:15244, R2.1=CONF:1198-15244) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="PRS" </tt> (CONF:15245, R2.1=CONF:1198-15245)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:15246, R2.1=CONF:1198-15246), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Family Member Value Set 2.16.840.1.113883.1.11.19579</tt><strong class="ph b"> DYNAMIC</strong> (CONF:15247, R2.1=CONF:1198-15247)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">subject</strong></tt> such that it  (CONF:15248, R2.1=CONF:1198-15248) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">administrativeGenderCode</strong></tt> (CONF:15974, R2.1=CONF:1198-15974), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Administrative Gender (HL7 V3) 2.16.840.1.113883.1.11.1</tt><strong class="ph b"> DYNAMIC</strong> (CONF:15975, R2.1=CONF:1198-15975)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">birthTime</strong></tt> (CONF:15976, R2.1=CONF:1198-15976)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">sDTCDeceasedInd</strong></tt> (CONF:15981, R2.1=CONF:1198-15981)<p class="p"><p class="lines"><em class="ph i">The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the deceasedInd element.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">sDTCDeceasedTime</strong></tt> (CONF:15982, R2.1=CONF:1198-15982)<p class="p"><p class="lines"><em class="ph i">The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the deceasedTime element.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">sDTCId</strong></tt> (CONF:15249, R2.1=CONF:1198-15249)<p class="p"><p class="lines"><em class="ph i">The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the id element.</em></p>
+</p>
+</li>
+<li class="li">age of a relative at the time of a family history observation <strong class="ph b">SHOULD</strong> be inferred by comparing RelatedSubject/subject/birthTime with Observation/effectiveTime (CONF:15983, R2.1=CONF:1198-15983)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
 </li>
 
 </ol>
@@ -92,14 +91,9 @@ extension to CDA R2 for the use of the id element.</em></p>
 			<strong class="ph b"><span class="ph">Family History Organizer</span> example</strong>
 		</p>
 		
-		<pre class="pre codeblock">&lt;organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN"&gt;
+		<pre class="pre codeblock language-xml"><code>&lt;organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN"&gt;
   &lt;templateId root="2.16.840.1.113883.10.20.22.4.45"/&gt;
-  &lt;id root="MDHT" extension="1581537261"/&gt;
   &lt;statusCode code="completed"/&gt;
-  &lt;effectiveTime&gt;
-    &lt;low value="2014"/&gt;
-    &lt;high value="2014"/&gt;
-  &lt;/effectiveTime&gt;
   &lt;subject&gt;
     &lt;relatedSubject classCode="PRS"&gt;
       &lt;code codeSystem="2.16.840.1.113883.5.111" codeSystemName="RoleCode"/&gt;
@@ -111,43 +105,29 @@ extension to CDA R2 for the use of the id element.</em></p>
   &lt;component&gt;
     &lt;observation classCode="OBS" moodCode="EVN"&gt;
       &lt;templateId root="2.16.840.1.113883.10.20.22.4.46"/&gt;
-      &lt;id root="MDHT" extension="641791722"/&gt;
       &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
       &lt;statusCode code="completed"/&gt;
-      &lt;effectiveTime&gt;
-        &lt;low value="2014"/&gt;
-        &lt;high value="2014"/&gt;
-      &lt;/effectiveTime&gt;
       &lt;entryRelationship&gt;
         &lt;observation classCode="OBS" moodCode="EVN"&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.4.31"/&gt;
-          &lt;id root="MDHT" extension="592940954"/&gt;
           &lt;code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Age At Onset"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
           &lt;statusCode code="completed"/&gt;
-          &lt;effectiveTime&gt;
-            &lt;low value="2014"/&gt;
-            &lt;high value="2014"/&gt;
-          &lt;/effectiveTime&gt;
         &lt;/observation&gt;
       &lt;/entryRelationship&gt;
       &lt;entryRelationship&gt;
         &lt;observation classCode="OBS" moodCode="EVN"&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.4.47"/&gt;
-          &lt;id root="MDHT" extension="407050694"/&gt;
           &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
           &lt;statusCode code="completed"/&gt;
-          &lt;effectiveTime&gt;
-            &lt;low value="2014"/&gt;
-            &lt;high value="2014"/&gt;
-          &lt;/effectiveTime&gt;
         &lt;/observation&gt;
       &lt;/entryRelationship&gt;
     &lt;/observation&gt;
   &lt;/component&gt;
-&lt;/organizer&gt;</pre>
-
+&lt;/organizer&gt;</code></pre>
 	</div>
-
 
 </body>
 </html>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Social History Section (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.17</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.2.17"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This section contains social history data that influence a patient's physical, psychological or emotional health (e.g., smoking status, pregnancy). Demographic data, such as marital status, race, ethnicity, and religious affiliation, is captured in the header.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-7936, CONF:1198-10449, CONF:1198-32494 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.17"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../SocialHistorySection.dita">Social History Section</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.17</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-14819)<tt><b>/@code</b>="29762-2" </tt><i>Social History</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-14820, CONF:1198-30814)
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-7953, CONF:1198-14821)<ol>
+<li>Conforms to <xref href="../SocialHistoryObservation2.dita">Social History Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.38:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-14823, CONF:1198-14824)<ol>
+<li>Conforms to <xref href="../SmokingStatusMeaningfulUse2.dita">Smoking Status Meaningful Use2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.78:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-16816, CONF:1198-16817)<ol>
+<li>Conforms to <xref href="../TobaccoUse2.dita">Tobacco Use2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.85:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-28361, CONF:1198-28362)<ol>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-28366, CONF:1198-28367)<ol>
+<li>Conforms to <xref href="../CulturalAndReligiousObservation.dita">Cultural And Religious Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.111</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-28825, CONF:1198-28826)<ol>
+<li>Conforms to <xref href="../CharacteristicsOfHomeEnvironment.dita">Characteristics Of Home Environment</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.109</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-NEW)<ol>
+<li>Conforms to <xref href="../BirthSexObservation.dita">Birth Sex Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.200:2016-06-01</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../SocialHistorySection.dita">Social History Section</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.17</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-14819)<tt><b>/@code</b>="29762-2" </tt><i>Social History</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-14820, CONF:1198-30814)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7938, R2.1=CONF:1198-7938)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7939, R2.1=CONF:1198-7939)
+</li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:9132, R2.1=CONF:1198-9132, CONF:14822, R2.1=CONF:1198-14822)
+<ol>
+<li>Conforms to <xref href="../PregnancyObservation.dita">Pregnancy Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.15.3.8</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-7953, CONF:1198-14821)
+<ol>
+<li>Conforms to <xref href="../SocialHistoryObservation2.dita">Social History Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.38:2015-08-01</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-14823, CONF:1198-14824)
+<ol>
+<li>Conforms to <xref href="../SmokingStatusMeaningfulUse2.dita">Smoking Status Meaningful Use2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.78:2014-06-09</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-16816, CONF:1198-16817)
+<ol>
+<li>Conforms to <xref href="../TobaccoUse2.dita">Tobacco Use2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.85:2014-06-09</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-28361, CONF:1198-28362)
+<ol>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-28366, CONF:1198-28367)
+<ol>
+<li>Conforms to <xref href="../CulturalAndReligiousObservation.dita">Cultural And Religious Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.111</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-28825, CONF:1198-28826)
+<ol>
+<li>Conforms to <xref href="../CharacteristicsOfHomeEnvironment.dita">Characteristics Of Home Environment</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.109</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-NEW)
+<ol>
+<li>Conforms to <xref href="../BirthSexObservation.dita">Birth Sex Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.200:2016-06-01</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::SocialHistorySection2</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.17]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1198-14820, CONF:1198-30814</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 29762-2</entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.200]</entry><entry>0..*</entry><entry>MAY</entry><entry>BirthSexObservation</entry><entry>CONF:1198-NEW</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.72]</entry><entry>0..*</entry><entry>MAY</entry><entry>CaregiverCharacteristics</entry><entry>CONF:1198-28361, CONF:1198-28362</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.109]</entry><entry>0..*</entry><entry>MAY</entry><entry>CharacteristicsOfHomeEnvironment</entry><entry>CONF:1198-28825, CONF:1198-28826</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.111]</entry><entry>0..*</entry><entry>MAY</entry><entry>CulturalAndReligiousObservation</entry><entry>CONF:1198-28366, CONF:1198-28367</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.78]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>SmokingStatusMeaningfulUse2</entry><entry>CONF:1198-14823, CONF:1198-14824</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.38]</entry><entry>0..*</entry><entry>MAY</entry><entry>SocialHistoryObservation2</entry><entry>CONF:1198-7953, CONF:1198-14821</entry><entry> </entry></row> 
+<row><entry>socialHistorySection2</entry><entry>0..1</entry><entry>MAY</entry><entry>SocialHistorySection2</entry><entry>CONF:1198-29094, CONF:1198-29095</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.85]</entry><entry>0..*</entry><entry>MAY</entry><entry>TobaccoUse2</entry><entry>CONF:1198-16816, CONF:1198-16817</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ConsultationNote2.html">Consultation Note (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ContinuityOfCareDocument2.html">Continuity of Care Document (CCD) (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/DischargeSummary2.html">Discharge Summary (V3)</xref></entry><entry><xref href="../BirthSexObservation.dita">Birth Sex Observation</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/HistoryAndPhysicalNote2.html">History and Physical (V3)</xref></entry><entry><xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ProcedureNote2.html">Procedure Note (V3)</xref></entry><entry><xref href="../CharacteristicsOfHomeEnvironment.dita">Characteristics Of Home Environment</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReferralNote.html">Referral Note (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/TransferSummary.html">Transfer Summary (V2)</xref></entry><entry><xref href="../CulturalAndReligiousObservation.dita">Cultural And Religious Observation</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SmokingStatusMeaningfulUse2.dita">Smoking Status Meaningful Use2</xref></entry></row><row><entry></entry><entry><xref href="../SocialHistoryObservation2.dita">Social History Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row><row><entry></entry><entry><xref href="../TobaccoUse2.dita">Tobacco Use2</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
+  <templateId root="2.16.840.1.113883.10.20.22.2.17" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.2.17"/>
+  <code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Social history"/>
+  <title>Social history</title>
+  <text>xZnhVGa oqMFlH MfgDWISMq jiFedfu bzhVAZMl VdIJMLLbO RSQxs sgAHoGR gEuqsxs wzDRg pRhIscOb OuTiMHWL AFYOiUtR eAFOrgAOy srkbU pwhkf rizzNZQJ XuPIu dxQxXxy bqNwBKkF TgbhHrZQ AtpUdamII SAPtK rTaIAg VNIfjo GsXjWmg vPwKZO NAFugtctH qQgsu BWTXOAFSx YSGwWX ZXBwHf HwRBo xWGCeQyAG qFUiJP eCpVAl JZRKl kigEe xrUaIjB uolOG edyKEtPZt yhwBMjo SWUExkkz WjJKS 
+XBWyOc KmLRpC HBKRxQAP gbdryh LtkGPfZsC bXpPiUBip NNjFJEcKu Idxox ODDmZhmog rgkVcBLm OgEkpV JIzNHWwCW PmjzHY KOSkFbW zRekx pngummJ gapESHaz 
+WwwTwmvP wtkCp jxXmJsBG wTQpQX WARYec whYkbFYAU mJVGDN vGwCuTrcY vgxvFUNoW SLEXme bJIog HlFCDsn Oabxj iPLWCMu qlrCFwXK CrHUi mqpNn CyIozpQfn lfBumsXv zRXNjdoIk mvdOm znZAWuQEt NxWSmmQR rarwSa EPrzGYBo PxGaTsK QtHRRjMl aWCbbXG XnpMU zgUeCZ WONGeoN 
+</text>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.38" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.38"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entry>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.78" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.78"/>
+      <code code="72166-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Tobacco smoking status NHIS"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entry>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.85" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.85"/>
+      <code code="11367-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of tobacco use"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entry>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+      <code code="253179459"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <participant typeCode="IND">
+        <time>
+          <low value="2017"/>
+          <high value="2017"/>
+        </time>
+        <participantRole classCode="CAREGIVER"/>
+      </participant>
+    </observation>
+  </entry>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.111"/>
+      <code code="75281-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Personal belief"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </observation>
+  </entry>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.109"/>
+      <code code="75274-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Characteristics of residence"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </observation>
+  </entry>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.200" extension="2016-06-01"/>
+      <code code="76689-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Sex Assigned At Birth"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </observation>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::SocialHistorySection
+</p>
+<p id="SocialHistorySection" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:7936, CONF:10449 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.2.17"
+</li><li>SHALL conform to CDA Section
+</li><li>Consol Social History Section SHALL contain exactly one [1..1] code (CONF:14819)/@code="29762-2" Social history (CodeSystem: 2.16.840.1.113883.6.1 LOINC) (CONF:14820)
+</li><li>Consol Social History Section SHALL contain exactly one [1..1] title (CONF:7938, R2.1=CONF:1198-7938)
+</li><li>Consol Social History Section SHALL contain exactly one [1..1] text (CONF:7939, R2.1=CONF:1198-7939)
+</li><li>Consol Social History Section If section/@nullFlavor is not present, MAY contain  [0..*] entry such that it  (CONF:7953, CONF:7954) Conforms to Social History Observation (templateId: 2.16.840.1.113883.10.20.22.4.38)
+</li><li>Consol Social History Section If section/@nullFlavor is not present, MAY contain  [0..*] entry such that it  (CONF:9132, R2.1=CONF:1198-9132, CONF:14822, R2.1=CONF:1198-14822) Conforms to Pregnancy Observation (templateId: 2.16.840.1.113883.10.20.15.3.8)
+</li><li>Consol Social History Section If section/@nullFlavor is not present, SHOULD contain  [0..*] entry such that it  (CONF:14823, CONF:14824) Conforms to Smoking Status Observation (templateId: 2.16.840.1.113883.10.20.22.4.78)
+</li><li>Consol Social History Section If section/@nullFlavor is not present, MAY contain  [0..*] entry such that it  (CONF:16816, CONF:16817) Conforms to Tobacco Use (templateId: 2.16.840.1.113883.10.20.22.4.85)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Social History Section (V3)</ph></p>
+<p id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.17</tt>]</p>
+</body>
+</topic>

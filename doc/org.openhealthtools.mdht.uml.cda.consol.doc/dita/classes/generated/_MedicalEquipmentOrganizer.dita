@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Medical Equipment Organizer - conformance rules</title>
+<shortdesc id="shortdesc">[Organizer: templateId <tt>2.16.840.1.113883.10.20.22.4.135</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Organizer</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.135"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>
+This template represents a set of current or historical medical devices, supplies, aids and equipment used by the patient. Examples are hearing aids, orthotic devices, ostomy supplies, visual aids, diabetic supplies such as syringes and pumps, and wheelchairs.
+
+
+Devices that are applied during a procedure (e.g., cardiac pacemaker, gastrosomy tube, port catheter), whether permanent or temporary, are represented within the Procedure Activity Procedure (V2) template (templateId: 2.16.840.1.113883.10.20.22.4.14.2).
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-31022, CONF:1098-31023 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.135"</tt></li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31020)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31021)
+</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-31024)
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:1098-31025)<p>This code can represent a category of devices. The code is strictly optional, and is not currently limited to any value set or code system. Implementers may use it if they wish to provide optional coded information about this grouping of medical equipment.</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-31026), which <b>SHALL</b> be selected from ValueSet<tt> Result Status 2.16.840.1.113883.11.20.9.39</tt><b> STATIC</b> 2014-09-01 (CONF:1098-31029)<p>The organizer is a collection of statuses for contained entries. The organizer remains active until all contained entries are done.</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1098-32136) <p><lines><i>The effectiveTime can be used to show the time period over which the patient will be using the set of equipment. The organizer would probably not be used with devices applied in or on the patient.</i></lines></p>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>component</b></tt> such that it  (CONF:1098-31027, CONF:1098-31862)<ol>
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity2.dita">Non Medicinal Supply Activity2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>component</b></tt> such that it  (CONF:1098-31887, CONF:1098-31888)<ol>
+<li>Conforms to <xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.14:2014-06-09</tt>)</li></ol>
+</li>
+<li>Either Non-Medicinal Supply Activity (V2) (templateId:2.16.840.1.113883.10.20.22.4.50:2014-06-09) OR Procedure Activity Procedure (V2) (templateId:2.16.840.1.113883.10.20.22.4.14:2014-06-09) <b>SHALL</b> be present (CONF:1098-32380)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31020)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31021)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-31024)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:1098-31025)
+<p>This code can represent a category of devices. The code is strictly optional, and is not currently limited to any value set or code system. Implementers may use it if they wish to provide optional coded information about this grouping of medical equipment.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-31026), which <b>SHALL</b> be selected from ValueSet<tt> Result Status 2.16.840.1.113883.11.20.9.39</tt><b> STATIC</b> 2014-09-01 (CONF:1098-31029)
+<p>The organizer is a collection of statuses for contained entries. The organizer remains active until all contained entries are done.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1098-32136) <p><lines><i>The effectiveTime can be used to show the time period over which the patient will be using the set of equipment. The organizer would probably not be used with devices applied in or on the patient.</i></lines></p>
+</li>
+<li><b>MAY</b> contain  [0..*] <tt><b>component</b></tt> such that it  (CONF:1098-31027, CONF:1098-31862)
+<ol>
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity2.dita">Non Medicinal Supply Activity2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>component</b></tt> such that it  (CONF:1098-31887, CONF:1098-31888)
+<ol>
+<li>Conforms to <xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.14:2014-06-09</tt>)</li></ol></li>
+<li>Either Non-Medicinal Supply Activity (V2) (templateId:2.16.840.1.113883.10.20.22.4.50:2014-06-09) OR Procedure Activity Procedure (V2) (templateId:2.16.840.1.113883.10.20.22.4.14:2014-06-09) <b>SHALL</b> be present (CONF:1098-32380)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::MedicalEquipmentOrganizer</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.135]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActClassDocumentEntryOrganizer</entry><entry>CONF:1098-31020</entry><entry> BATTERY</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActMood</entry><entry>CONF:1098-31021</entry><entry> APT</entry></row> 
+<row><entry>code</entry><entry>0..1</entry><entry>MAY</entry><entry>CD</entry><entry>CONF:1098-31025</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:1098-31024</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1098-31026</entry><entry> </entry></row> 
+<row><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_TS</entry><entry>CONF:1098-32136</entry><entry> </entry></row> 
+<row><entry>medicalEquipmentOrganizer</entry><entry>0..*</entry><entry>MAY</entry><entry>MedicalEquipmentOrganizer</entry><entry>CONF:1098-7948CONF:1098-30351</entry><entry> </entry></row> 
+<row><entry>nonMedicinalSupplyActivity2</entry><entry>0..*</entry><entry>MAY</entry><entry>NonMedicinalSupplyActivity2</entry><entry>CONF:1098-31027CONF:1098-31862</entry><entry> </entry></row> 
+<row><entry>procedureActivityProcedure2</entry><entry>0..*</entry><entry>MAY</entry><entry>ProcedureActivityProcedure2</entry><entry>CONF:1098-31887CONF:1098-31888</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../MedicalEquipmentSection2.dita">Medical Equipment Section2</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../NonMedicinalSupplyActivity2.dita">Non Medicinal Supply Activity2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.135"/>
+  <id root="MDHT" extension="1737278994"/>
+  <code code="1091300339"/>
+  <statusCode code="completed"/>
+  <component>
+    <supply classCode="SPLY">
+      <templateId root="2.16.840.1.113883.10.20.22.4.50" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+      <id root="MDHT" extension="1439337544"/>
+      <code code="1411303794"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime value="20170828"/>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+          <id root="MDHT" extension="919811672"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </act>
+      </entryRelationship>
+    </supply>
+  </component>
+  <component>
+    <procedure classCode="PROC" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+      <id root="MDHT" extension="1368183502"/>
+      <code code="161018038"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <specimen>
+        <specimenRole/>
+      </specimen>
+      <performer>
+        <assignedEntity/>
+      </performer>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+          <id root="MDHT" extension="826632684"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <id root="MDHT" extension="2081811506"/>
+          <code code="1878997221"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime value="20170828"/>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <consumable/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.123"/>
+              <code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.118"/>
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.147"/>
+              <code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+          <id root="MDHT" extension="1819684173"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+          <id root="MDHT" extension="680718328"/>
+          <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <entryRelationship>
+            <procedure classCode="PROC" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+              <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+            </procedure>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+              <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </observation>
+      </entryRelationship>
+    </procedure>
+  </component>
+</organizer>]]></codeblock>
+<section id="changes">
+</section>
+<p><ph id="classformalname">Medical Equipment Organizer</ph></p>
+<p id="shortdesc">[Organizer: templateId <tt>2.16.840.1.113883.10.20.22.4.135</tt>]</p>
+</body>
+</topic>

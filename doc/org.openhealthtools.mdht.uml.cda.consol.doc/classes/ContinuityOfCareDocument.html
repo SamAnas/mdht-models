@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xml:lang="en-us" lang="en-us">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="copyright" content="(C) Copyright 2005"/>
-<meta name="DC.rights.owner" content="(C) Copyright 2005"/>
-<meta name="DC.Type" content="topic"/>
-<meta name="DC.Title" content="Continuity Of Care Document"/>
-<meta name="abstract" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.2]"/>
-<meta name="description" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.2]"/>
-<meta name="DC.Coverage" content="ClinicalDocument"/>
-<meta name="DC.Format" content="XHTML"/>
-<meta name="DC.Identifier" content="classId"/>
-<meta name="DC.Language" content="en-us"/>
-<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Continuity Of Care Document" />
+<meta name="abstract" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.2]" />
+<meta name="description" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.2]" />
+<meta name="DC.Coverage" content="ClinicalDocument" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
 <title>Continuity Of Care Document</title>
 </head>
 <body id="classId">
@@ -22,8 +22,7 @@
 	<p><b>Non-Normative Content</b> The Normative content for these specifications
 	may be found on the HL7, IHE, and HITSP web sites.</p>
 </div>
-
-	<h1 class="title topictitle1">
+	<h1 class="title topictitle1" id="ariaid-title1">
 		<span class="ph">Continuity Of Care Document</span>
 	</h1>
 
@@ -33,10 +32,9 @@
 
 		
 		<div class="section">
-<div class="p"><p class="lines"><em class="ph i">This section, Continuity of Care Document (CCD) Release 1.1, describes CDA constraints  in accordance with Stage 1 Meaningful Use. The CCD requirements in this guide supersede CCD Release 1; in the near future, this guide could supersede HITSP C32 .<br/>
-<br/>
-The CCD is a core data set of the most relevant administrative, demographic, and clinical information facts about a patient's healthcare, covering one or more healthcare encounters. It provides a means for one healthcare practitioner, system, or setting to aggregate all of the pertinent data about a patient and forward it to another practitioner, system, or setting to support the continuity of care. The primary use case for the CCD is to provide a snapshot in time containing the pertinent clinical, demographic, and administrative data for a specific patient . More specific use cases, such as a Discharge Summary or Progress Note, are available as alternative documents in this guide.</em></p>
-</div>
+<p class="p">This section, Continuity of Care Document (CCD) Release 1.1, describes CDA constraints  in accordance with Stage 1 Meaningful Use. The CCD requirements in this guide supersede CCD Release 1; in the near future, this guide could supersede HITSP C32 .
+
+The CCD is a core data set of the most relevant administrative, demographic, and clinical information facts about a patient's healthcare, covering one or more healthcare encounters. It provides a means for one healthcare practitioner, system, or setting to aggregate all of the pertinent data about a patient and forward it to another practitioner, system, or setting to support the continuity of care. The primary use case for the CCD is to provide a snapshot in time containing the pertinent clinical, demographic, and administrative data for a specific patient . More specific use cases, such as a Discharge Summary or Progress Note, are available as alternative documents in this guide.</p>
 
 </div>
 
@@ -52,130 +50,149 @@ The CCD is a core data set of the most relevant administrative, demographic, and
 			
 				<div class="p">
 				<ol class="ol">
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] templateId ( CONF:8450, CONF:10038 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.1.2"</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:8450, CONF:10038 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.1.2"</tt></li>
 </ol>
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="GeneralHeaderConstraints.html" title="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.1]">General Header Constraints</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1</tt>)</li>
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/GeneralHeaderConstraints.html">General Header Constraints</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1</tt>)</li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:17180)<tt class="ph tt"><strong class="ph b">/@code</strong>="34133-9" </tt><em class="ph i">Summarization of Episode Note</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:17181)
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:17180)<tt class="ph tt"><strong class="ph b">/@code</strong>="34133-9" </tt><em class="ph i">Summarization of Episode Note</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:17181)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">languageCode</strong></tt> (CONF-5)
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">languageCode</strong></tt> (CONF-5)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> (CONF:8452) <ol class="ol" type="a"><li class="li"> This documentationOf <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> (CONF:8480) <ol class="ol" type="i"><li class="li"> This serviceEvent <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="PCPR" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8453)</li>
-<li class="li"> This serviceEvent <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> with @xsi:type="<a class="xref" href="generated/../EffectiveTime.html">Effective Time</a>" (CONF:8481)</li>
-<li class="li"> This serviceEvent <strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt> (CONF:8482) <ol class="ol"><li class="li"> Such performers <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PRF" </tt> (CONF:8458)</li>
-<li class="li"> Such performers <strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> (CONF:8459) <ol class="ol" type="a"><li class="li"> This assignedEntity <strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">MAY</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.101 NUCC Health Care Provider Taxonomy</tt>) (CONF:8461)</li>
-<li class="li"> This assignedEntity <strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:10027)</li>
-<li class="li"> This assignedEntity <strong class="ph b">SHOULD</strong> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:10027)</li>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:8452) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:8480) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="PCPR" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8453)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8481)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:8482) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PRF" </tt> (CONF:8458)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:8459) <ol class="ol" type="a"><li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">MAY</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.101 NUCC Health Care Provider Taxonomy</tt>) (CONF:8461)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:10027)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:10027)</li>
 </ol>
- </li>
+</li>
 </ol>
- </li>
+</li>
 </ol>
- </li>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:9442) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedAuthor</strong></tt> such that it  (CONF:9443) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] assignedPerson or exactly one [1..1] representedOrganization. (CONF:8456)</li>
+<li class="li">If assignedAuthor has an associated representedOrganization with no assignedPerson or assignedAuthoringDevice, then the value for "ClinicalDocument/author/assignedAuthor/id/@NullFlavor" <strong class="ph b">SHALL</strong> be "NA" "Not applicable" 2.16.840.1.113883.5.1008 NullFlavor STATIC. (CONF:8457)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9445)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergiesSection.html">Allergies Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.6.1</tt>)</li>
 </ol>
 
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> (CONF:9442) <ol class="ol" type="a"><li class="li"> Such authors <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedAuthor</strong></tt> (CONF:9443) <ol class="ol" type="i"><li class="li"> This assignedAuthor <strong class="ph b">SHALL</strong> contain exactly one [1..1] assignedPerson or exactly one [1..1] representedOrganization. (CONF:8456)</li>
-<li class="li"> This assignedAuthor If assignedAuthor has an associated representedOrganization with no assignedPerson or assignedAuthoringDevice, then the value for "ClinicalDocument/author/assignedAuthor/id/@NullFlavor" <strong class="ph b">SHALL</strong> be "NA" "Not applicable" 2.16.840.1.113883.5.1008 NullFlavor STATIC. (CONF:8457)</li>
-</ol>
- </li>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9447)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../MedicationsSection.html">Medications Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.1.1</tt>)</li>
 </ol>
 
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9445)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="AllergiesSection.html">Allergies Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.6.1</tt>)</li>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9449)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ProblemSection.html">Problem Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.5.1</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9447)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="MedicationsSection.html">Medications Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.1.1</tt>)</li>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9451)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ProceduresSection.html">Procedures Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.7.1</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9449)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="ProblemSection.html">Problem Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.5.1</tt>)</li>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9453)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ResultsSection.html">Results Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.3.1</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9451)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="ProceduresSection.html">Procedures Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.7.1</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9455)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../AdvanceDirectivesSection.html">Advance Directives Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.21.1</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9453)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="ResultsSection.html">Results Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.3.1</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9457)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../EncountersSection.html">Encounters Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.22.1</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9455)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="AdvanceDirectivesSection.html">Advance Directives Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.21.1</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9459)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../FamilyHistorySection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.15]">Family History Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.15</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9457)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="EncountersSection.html">Encounters Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.22.1</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9461)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../FunctionalStatusSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.14]">Functional Status Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.14</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9459)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="FamilyHistorySection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.15]">Family History Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.15</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9463)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../ImmunizationsSectionEntriesOptional.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.2]">Immunizations Section Entries Optional</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.2</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9461)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="FunctionalStatusSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.14]">Functional Status Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.14</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9466)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../MedicalEquipmentSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.23]">Medical Equipment Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.23</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9463)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="generated/../ImmunizationsSectionEntriesOptional.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.2]">Immunizations Section Entries Optional</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.2</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9468)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PayersSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.18]">Payers Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.18</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9466)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="MedicalEquipmentSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.23]">Medical Equipment Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.23</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9470)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlanOfCareSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]">Plan Of Care Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.10</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9468)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="PayersSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.18]">Payers Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.18</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9472)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../SocialHistorySection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.17]">Social History Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.17</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9470)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="PlanOfCareSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]">Plan Of Care Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.10</tt>)</li>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9474)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../VitalSignsSectionEntriesOptional.html">Vital Signs Section Entries Optional</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.4</tt>)</li>
 </ol>
-</li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9472)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="SocialHistorySection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.17]">Social History Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.17</tt>)</li>
-</ol>
-</li>
-
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9474)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="generated/../VitalSignsSectionEntriesOptional.html">Vital Signs Section Entries Optional</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.4</tt>)</li>
-</ol>
 </li>
 
 </ol>
@@ -190,19 +207,19 @@ The CCD is a core data set of the most relevant administrative, demographic, and
 		<div class="section"><h2 class="title sectiontitle"><span class="ph">Continuity Of Care Document</span> Example</h2>
 			
 			<div class="p">
-			<pre class="pre codeblock">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd"&gt;
+			<pre class="pre codeblock language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 infrastructure/cda/CDA_SDTC.xsd"&gt;
   &lt;realmCode code="US"/&gt;
   &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
   &lt;templateId root="2.16.840.1.113883.10.20.22.1.2"/&gt;
   &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
-  &lt;id root="MDHT" extension="120823016"/&gt;
+  &lt;id root="MDHT" extension="136933349"/&gt;
   &lt;code code="34133-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Summarization of Episode Note"/&gt;
-  &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
+  &lt;title&gt;Summarization of Episode Note&lt;/title&gt;
   &lt;effectiveTime/&gt;
   &lt;confidentialityCode codeSystem="2.16.840.1.113883.5.25" codeSystemName="ConfidentialityCode"/&gt;
   &lt;languageCode code="Code forlanguageCode"/&gt;
-  &lt;setId root="MDHT" extension="37a08127-0b09-4e2a-8e0b-0e22f3696b66"/&gt;
+  &lt;setId root="MDHT" extension="bcc64570-1aea-4287-8f4c-e79ce5fa031c"/&gt;
   &lt;versionNumber value="1"/&gt;
   &lt;recordTarget&gt;
     &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
@@ -211,7 +228,7 @@ The CCD is a core data set of the most relevant administrative, demographic, and
   &lt;author&gt;
     &lt;time/&gt;
     &lt;assignedAuthor&gt;
-      &lt;id root="MDHT" extension="1427374696"/&gt;
+      &lt;id root="MDHT" extension="743700602"/&gt;
     &lt;/assignedAuthor&gt;
   &lt;/author&gt;
   &lt;custodian/&gt;
@@ -227,25 +244,29 @@ The CCD is a core data set of the most relevant administrative, demographic, and
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.6.1"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.6"/&gt;
-          &lt;id root="MDHT" extension="912595478"/&gt;
+          &lt;id root="MDHT" extension="1692342236"/&gt;
           &lt;code code="48765-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Allergies, adverse reactions, alerts"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="236476964"/&gt;
+          &lt;title&gt;Allergies, adverse reactions, alerts&lt;/title&gt;
+          &lt;text&gt;ayPejs XRSmuTktT yzhfb beqeBeqzo SyFMqIs WCsxmRx nkWbnchg jxpxkRL dNCZhQdC PNENPAziz zqxgwt fagWSFgl InHsXjz zYSAWVFPp lloiLP ubgbJSic kEHax hTVVmce WyspJtvqi ihEOLiT JcFyWGZ ElhxaP BDiFkLJq lwTSvtnf SYGOEl uVRwtVV djzNopqKh KGKED AoqEhuF rTDjj VtjJcK GHcZX aTfbq GFTsB avgHYP jJBmt EoTsLYCi IFxDrrjsU tLudWZJb PvmxauAh yfWzpnY vwrdmvXZx bkEdJl sZaTlz PPOufl VgvFQK jOjFZNSha dJtQF xXZGLtjR ljBPrgVJa 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1419727149"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;act classCode="ACT" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.30"/&gt;
-              &lt;id root="MDHT" extension="14698395"/&gt;
+              &lt;id root="MDHT" extension="1791853133"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;entryRelationship&gt;
                 &lt;observation classCode="OBS" moodCode="EVN"&gt;
                   &lt;templateId root="2.16.840.1.113883.10.20.22.4.7"/&gt;
-                  &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/&gt;
+                  &lt;templateId root="2.16.840.1.113883.10.20.24.3.90"/&gt;
+                  &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
                   &lt;statusCode code="completed"/&gt;
                 &lt;/observation&gt;
               &lt;/entryRelationship&gt;
@@ -258,20 +279,29 @@ The CCD is a core data set of the most relevant administrative, demographic, and
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.1.1"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.1"/&gt;
-          &lt;id root="MDHT" extension="1772983545"/&gt;
+          &lt;id root="MDHT" extension="256463905"/&gt;
           &lt;code code="10160-0" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of medication use"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1669997298"/&gt;
+          &lt;title&gt;History of medication use&lt;/title&gt;
+          &lt;text&gt;lbyrZv jVADDYSMs YdqSyovAE eHULTWu jUEUr DAJFkrPWY UCFLpA yVjZyuCYO kukaCMEyX NzKCy RmSUp NxIjvENG oUiKlsgb yKqvTstE cxoxgy ILVbeeDG krpfE 
+GRrIKdpf qOpxGQ cSbidonNq ULQAgMe aMzMTMpo uFRkC ibGDcq wlVRY dYSsnxW vmJLff rLUgWsoeJ DNqVvq UJSrXTiYq CElDTYrBp MUcTyXbDG zTVVnaCvk UvSrNmQ cPZwOJznO tEEHwWrv EtUGlXqC nLillm vJacMJsfS fTjnu HiCSecIKp wUBfX LtnQNRs PcAaGeUIG AnnwfKpuD rseqKH RpfeJS YFjshK bfziIu sIZjdkI oQQeS jKXTL MJzxyMp FEakvZu AJiKjcHE VUgsljo vVZGrWsx CKMueCM AxnWT lOhrB BVsDD OHEZl TMozKeGI lzCIbfdR ArNhkgP COmQAFBof 
+wkvMxo mqVUn onEkIXgK ZKIoa IVXWnZcs RSVHONoRf tYGUklxn vAowWhbSm BsTgvp VcByB qqqJchmko BOcdreql sKSpjlh BJwCF nPpjDAP iFeewCise iQPRaOs kMMDaat DBFOjUGBR DjNdv apkCyBg KfDCft TkDVhM fAWQEgEA mwZPVBX RQWtFTpqQ eabcE jXwgHVPOW gTlVxhFk PrRPK YXluIQ mqdBDj uKWhdYExg BVoxTNZ fhWSmC WbiON pAzmQZbrq ghYmd 
+MZtrKh xpDcB lxsjyTm mKSixPLr ABMTP UmzcjCOY YflGT XLlrL MDVcGF CdQTvX LQABHO YTHCFA wkEZMw tbydNZlM mITFR XzGwUJ DuNYext JhfvHJhc fZdssn jDhubOs 
+&lt;/text&gt;
+          &lt;confidentialityCode code="2062234985"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;substanceAdministration classCode="SBADM"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
-              &lt;id root="MDHT" extension="141496575"/&gt;
-              &lt;code code="84707764"/&gt;
-              &lt;effectiveTime value="20140803"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+              &lt;id root="MDHT" extension="517678383"/&gt;
+              &lt;code code="975902570"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
               &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
               &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
               &lt;consumable/&gt;
               &lt;performer/&gt;
               &lt;entryRelationship&gt;
@@ -304,7 +334,7 @@ The CCD is a core data set of the most relevant administrative, demographic, and
                   &lt;templateId root="2.16.840.1.113883.10.20.22.4.18"/&gt;
                 &lt;/supply&gt;
               &lt;/entryRelationship&gt;
-              &lt;precondition/&gt;
+              &lt;precondition typeCode="PRCN"/&gt;
             &lt;/substanceAdministration&gt;
           &lt;/entry&gt;
         &lt;/section&gt;
@@ -314,20 +344,24 @@ The CCD is a core data set of the most relevant administrative, demographic, and
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.5.1"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.5"/&gt;
-          &lt;id root="MDHT" extension="1661856261"/&gt;
+          &lt;id root="MDHT" extension="1053367320"/&gt;
           &lt;code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem List"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="952228206"/&gt;
+          &lt;title&gt;Problem List&lt;/title&gt;
+          &lt;text&gt;Efvbj gXnxBJDhm wjVHIpa BiROjyax lcXhd YTydr uQLQjJs ljZKFNL vCtlC IYwDhYn HKINzl DwmrzMLv yXneu MhsgYR HDOvITghV DQxviCSh mHgSsN pZcfNcB ZqwHy EtOaXe CTBRuBK ZtqtGC MFhFV NPBuwPK DaNjRqp BuPid ZfRAN EwyXdmbYW kgaIScAG dFuiagxC YdBfTMoql GOKHs ybfKF ANXSAgqsO LEepUd ufavhrbM HzYTHh ZeRKVjXGZ BCwzrAQc qScMmCBm dtfWtps lfaGtIf ZMiIYt SZDRM wgZxn vFmhvD 
+kwyUL yKXBTwDj fMEXIip zfUdKdTcb bXyRNvz XhOAeAouJ xduhBndOy ThEWZERGH xZUIy kxEdfxK UWTYD kyEMmtH 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1963994911"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;act classCode="ACT" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.3"/&gt;
-              &lt;id root="MDHT" extension="380779777"/&gt;
+              &lt;id root="MDHT" extension="256308017"/&gt;
               &lt;code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;entryRelationship&gt;
@@ -346,20 +380,23 @@ The CCD is a core data set of the most relevant administrative, demographic, and
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.7.1"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.7"/&gt;
-          &lt;id root="MDHT" extension="164171022"/&gt;
+          &lt;id root="MDHT" extension="682889640"/&gt;
           &lt;code code="47519-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="History of Procedures"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="968849465"/&gt;
+          &lt;title&gt;History of Procedures&lt;/title&gt;
+          &lt;text&gt;OELpR grUiO PCXuENLko yjjyzX uWArPXD RilvrLsF TxHCXeMWp LfZCIS wCxyO kDllcxUn ZlzoOACJ soNpO SRBMeiD omNstGO ffLcCiUT aruvUenpz WRygWieD aLJtHpUt 
+&lt;/text&gt;
+          &lt;confidentialityCode code="770628882"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;procedure classCode="PROC"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
-              &lt;id root="MDHT" extension="215868581"/&gt;
-              &lt;code code="1591931460"/&gt;
+              &lt;id root="MDHT" extension="1412411325"/&gt;
+              &lt;code code="1441626404"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
@@ -379,6 +416,7 @@ The CCD is a core data set of the most relevant administrative, demographic, and
                   &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
                   &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
                   &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
                 &lt;/substanceAdministration&gt;
               &lt;/entryRelationship&gt;
               &lt;entryRelationship&gt;
@@ -394,11 +432,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.13"/&gt;
-              &lt;id root="MDHT" extension="1061942551"/&gt;
-              &lt;code code="1468017421"/&gt;
+              &lt;id root="MDHT" extension="818789988"/&gt;
+              &lt;code code="214649305"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
@@ -424,6 +463,7 @@ The CCD is a core data set of the most relevant administrative, demographic, and
                   &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
                   &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
                   &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
                 &lt;/substanceAdministration&gt;
               &lt;/entryRelationship&gt;
             &lt;/observation&gt;
@@ -432,11 +472,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;act classCode="ACT"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.12"/&gt;
-              &lt;id root="MDHT" extension="30624437"/&gt;
-              &lt;code code="475177496"/&gt;
+              &lt;id root="MDHT" extension="1451099827"/&gt;
+              &lt;code code="1393453850"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
@@ -461,6 +502,7 @@ The CCD is a core data set of the most relevant administrative, demographic, and
                   &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
                   &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
                   &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+                  &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
                 &lt;/substanceAdministration&gt;
               &lt;/entryRelationship&gt;
             &lt;/act&gt;
@@ -472,21 +514,24 @@ The CCD is a core data set of the most relevant administrative, demographic, and
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.3.1"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.3"/&gt;
-          &lt;id root="MDHT" extension="604062975"/&gt;
+          &lt;id root="MDHT" extension="1969081869"/&gt;
           &lt;code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Relevant diagnostic tests and/or laboratory data"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1477736125"/&gt;
+          &lt;title&gt;Relevant diagnostic tests and/or laboratory data&lt;/title&gt;
+          &lt;text&gt;ZhRBgz SFyJhT VOOOm lYteTIPJ jLRnreSs TRwXaF gSmPbVj oeEcu BBMwYOVvu ydosg zUuMaQDm QsNsmi 
+CsYAqla HQkCpGQQ GoOBrL QIWkVPfMF wENvK jPvScmr aSuwNNl HztEWiU WHQgXI DGUqT twfPORR pRtzKzHM HIPCgb GRsmms awpJoBkJ eoqRb LCvRaULa KMjZRTT QzYeFY MPcgNCzvX wCOcXzWs MWiTtfD 
+&lt;/text&gt;
+          &lt;confidentialityCode code="833720372"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;organizer moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.1"/&gt;
-              &lt;id root="MDHT" extension="208230476"/&gt;
-              &lt;code code="2080416867"/&gt;
+              &lt;id root="MDHT" extension="2043642600"/&gt;
+              &lt;code code="1499708422"/&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;component&gt;
                 &lt;observation classCode="OBS" moodCode="EVN"&gt;
@@ -502,21 +547,27 @@ The CCD is a core data set of the most relevant administrative, demographic, and
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.21.1"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.21"/&gt;
-          &lt;id root="MDHT" extension="1123186549"/&gt;
+          &lt;id root="MDHT" extension="900754850"/&gt;
           &lt;code code="42348-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Advance Directives"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="830153754"/&gt;
+          &lt;title&gt;Advance Directives&lt;/title&gt;
+          &lt;text&gt;hmLchc BEtIXo frJhGew TptzHbh zydDBFZ vbwepfG eqLjW rxnwQ pIXonqnw ruadUiWp dnlfR HHXgvEScT pUoYtUGQ gXKmAyF KRiNDlxWD VOnkA GAwUqjKQU QjaYL woBIOA xYihYtzBK klraSqtD tVETe 
+AxsGDH Ibieu kwQLvgEVG evRwGrAH tRMGYoR gyCBwN MvSmCl zehJG GSOdvojh LBlzYps OJXYvp cTgocLK qUCpc lUCPS UOsgFHWMQ RMGXeskH NGtgGU rwhLImUVM gwezn qINZscM MXROuW QOTmcwtP yLFmsnaPo PoMRyDU JTvwmeyZx ulSgtgE cxVwDST IeHbkv UOFMbY lATORVJoo PFIIr HTYym vbthx DApTFQ PWLmVPdGW VptSwEebK WJshijAp gVuyr DbYlc thZOHK URntU KLwEnY pgyDE ALqZqpuqI tCxWgkPQM 
+OGVgSdug ZHqbAXRO gmFqT htGjMMM EUhHavEB FOHeKDUR wnhBF WgsZWwbF xdUNcDoOC LfgjTdF lToHmrH tubxPtoh UpSqM pMvkzp PgTbtIO AesbEBJOM nOpFaMiH 
+jBWjlgw MzaPCl VUlxT mxCdq IzQyLEQe ihtEFlxeU XrkWjoJaI olKgxNvHF JuAvkD oraHdfZS LKdBD ckSsb oaqUn SPeeNgT 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1567350669"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.48"/&gt;
-              &lt;id root="MDHT" extension="2014458330"/&gt;
+              &lt;id root="MDHT" extension="391162571"/&gt;
               &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;participant typeCode="VRF"/&gt;
@@ -531,20 +582,25 @@ The CCD is a core data set of the most relevant administrative, demographic, and
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.22.1"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.22"/&gt;
-          &lt;id root="MDHT" extension="53021280"/&gt;
+          &lt;id root="MDHT" extension="1643200913"/&gt;
           &lt;code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Encounters"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1809191758"/&gt;
+          &lt;title&gt;Encounters&lt;/title&gt;
+          &lt;text&gt;BQVBnNfwO fDyQi HdthiCbA wZMGZvqg WuvULsCeB DzWJReqhy dOUtyUPgb maVvAE DXlrgVD yNlLdCDcV OMMgPrB xDhVvYd AOwmV lpdXr fFYmIX OpXXZ cIhTMbzRT FvfSUaA JnMEocyN yOKam fHwskarB ClmDz qIQGcTZ fVIDIPzR oHRblCC CknPBF dBxiYFc ornlUVqxl diBztPm MfkDLYg wOwYaSx FEmOQX dcnWRGgRV xStYPTp HAxQnU kVKkEhaJQ IiMLSwAX HlDGqBgI ReypXCSTR OpTkv HhdXLZXx biOjG AmuQWmL lwIQlyI 
+uFuMyJQ nSrSavmeW hJxnKRxL StHaFenGU AUyFwD qVpZSDjo DGAniD Gshjr WEmFZ qxSuvGqm SkOGDdrD ANDyJ LgmdPyo uAXVrOEUA ygHwadM uPCDh jlUFJcRF qvNDnEHg MIwHtN vgeVNeNcV COimJy hoiFUvzxB BXBYcYPgG XOKgPJNnY SMQiMBKf JsYlYH AeqqaRFd PXSUcXiLV zGtHB CYUMaXa obwwSIZ tvomsnFcm NqXduYE yCIVeYOFe JFeiynSQ ZNFcFe DZhKko cKIFcIzyg fyqYgs YPsAsjOvj kFNgEHvY OpwKm TgPrZ ukzxHnLWg CAxWz VPJdVAM ESyvTsH 
+QYAbRC ILDDA qrdPBPuJ CPFPwW IgFTvIpb CwEAqsm sJxyCwy IsYEdV xXsEHG cePFG CWadF lwNSGQuwu dWpgvsG ViuGQx XDYyeXBMw OWjoOMcgn bSxwXjzcj JKBbK ukHEt GzxEP FiErd duFdHIDE uuNpMd drafIdLmG GGCxFY bYwGUb qmiIUTHS XrJhsQT OlIhs zVWub tFVHWrNix rtBvY FMNqIMr FhrrobHi OsdunPCJW OYxTKQbh iIHBw xLYEeOoS dEHVAQt QnrWvdEFC gbyJkYL HBcdIeSvW urkAKX VBnczRaE 
+&lt;/text&gt;
+          &lt;confidentialityCode code="100908643"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;encounter classCode="ENC" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.49"/&gt;
-              &lt;id root="MDHT" extension="1940981506"/&gt;
+              &lt;id root="MDHT" extension="1704337204"/&gt;
               &lt;code codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;performer/&gt;
               &lt;entryRelationship&gt;
@@ -560,7 +616,6 @@ The CCD is a core data set of the most relevant administrative, demographic, and
                   &lt;code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/&gt;
                 &lt;/act&gt;
               &lt;/entryRelationship&gt;
-              &lt;sdtc:dischargeDispositionCode codeSystem="2.16.840.1.113883.12.112" codeSystemName="HL7DischargeDisposition"/&gt;
             &lt;/encounter&gt;
           &lt;/entry&gt;
         &lt;/section&gt;
@@ -569,21 +624,25 @@ The CCD is a core data set of the most relevant administrative, demographic, and
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.15"/&gt;
-          &lt;id root="MDHT" extension="1377014683"/&gt;
+          &lt;id root="MDHT" extension="524879915"/&gt;
           &lt;code code="10157-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Family History"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1253685628"/&gt;
+          &lt;title&gt;Family History&lt;/title&gt;
+          &lt;text&gt;RWNWOqlf GlgpZ zwWUyRXV JTzHYUon uxTAGfCIn akbPvu TQPqhay vblEF JzWCIPZSe EqtSHOE EpTHkNKf rukXbvLr VwysmU 
+FlgwK fPkQxolp IwZzh wUOElxoO UwlAyob fTOHunpRl orUUjhqU iYoKEqOM chHBFUJbV rhQFEo Tizqf csKZZHBb ggINW MyUbZfDe aEgneVu EshZAcuVs nXebFL YtZCEa LwheIn TuYtdwg wksyUTa YSgPxZtQi ttQMha MAgBx HupfrsW UfazO xByPpj WMwylZu TJMIT ILGlBuW MgSKRFjV HELYP 
+EsWovoVth cKZOdz NQoHH guhIGp GfHNbYebI aumzxV pIVShn Tebap dCnvjmeS vbVzG huBYnNDL YWnJYYxG GifvQcnt fxhBfgsUK ItKsD wANepEyZo mnWlDhsk MEuiQLWf HVDtfW SNlPhYnYy aqWYP LukTZfHx Rhtsf MSvwYAU ClQeDn LoyfWhmng DTrAB vLVSi NleAOp djkyYT rXolChyf UttmH 
+&lt;/text&gt;
+          &lt;confidentialityCode code="779894177"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.45"/&gt;
-              &lt;id root="MDHT" extension="1760955267"/&gt;
-              &lt;code code="877899249"/&gt;
+              &lt;id root="MDHT" extension="1288755734"/&gt;
+              &lt;code code="978216913"/&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;subject/&gt;
               &lt;component&gt;
@@ -601,22 +660,25 @@ The CCD is a core data set of the most relevant administrative, demographic, and
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.14"/&gt;
-          &lt;id root="MDHT" extension="251018984"/&gt;
+          &lt;id root="MDHT" extension="1400278145"/&gt;
           &lt;code code="47420-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status assessment"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="967243658"/&gt;
+          &lt;title&gt;Functional status assessment&lt;/title&gt;
+          &lt;text&gt;ooniqHHuj zgNPXw hqvYFeCGL WFjwJAx DteUbnTh eANsDNDQX Inhhn ylJXx NJaauOxg vwJlFG GSSmz NYaUDpVbu yIwQEOMDL tjWIbiVVG rcASwMNu YqgXM YpQqkfe uTxWp LwLVWbA ZoluPp BoWwYKKD PnWNGL MBcCqdn vRsqoSV 
+jAXDdKio vaNOYsvS eBPogvF EhpQB ajLmyLz vZrYo eZSrH pVXpW hCIoq QVNoWlqGD VPNcIbLOO qfWuR SfJVknWO MhGXpWPY mRNXdbpTE pbccPUe bHIzBOK AVIteK lGLCbNQMz AJdQeQ Ujchz RmjbZdFBp jCNwWS UBDNwsP XwLjXPd cSDcXao nGohW pmGTn UWTOZrPkn MgOUcqKP pkXYs zGCsmwnC GBmyQPTuq grWxg GbWRTipB oWVWD rLaOvVb ueoIebMR 
+&lt;/text&gt;
+          &lt;confidentialityCode code="789344438"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.66"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.1"/&gt;
-              &lt;id root="MDHT" extension="2046371307"/&gt;
-              &lt;code code="1006163239"/&gt;
+              &lt;id root="MDHT" extension="503126035"/&gt;
+              &lt;code code="1847441436"/&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;component&gt;
                 &lt;observation classCode="OBS" moodCode="EVN"&gt;
@@ -633,12 +695,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.75"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.1"/&gt;
-              &lt;id root="MDHT" extension="1579541226"/&gt;
-              &lt;code code="1153428144"/&gt;
+              &lt;id root="MDHT" extension="511416573"/&gt;
+              &lt;code code="1957482948"/&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;component&gt;
                 &lt;observation classCode="OBS" moodCode="EVN"&gt;
@@ -655,12 +717,15 @@ The CCD is a core data set of the most relevant administrative, demographic, and
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.67"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
-              &lt;id root="MDHT" extension="416702434"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.67"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;id root="MDHT" extension="415046823"/&gt;
               &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;author/&gt;
@@ -689,12 +754,15 @@ The CCD is a core data set of the most relevant administrative, demographic, and
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
-              &lt;id root="MDHT" extension="1624816440"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+              &lt;id root="MDHT" extension="1377474161"/&gt;
               &lt;code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;author/&gt;
@@ -723,12 +791,13 @@ The CCD is a core data set of the most relevant administrative, demographic, and
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.68"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
-              &lt;id root="MDHT" extension="1221029827"/&gt;
+              &lt;id root="MDHT" extension="2070942421"/&gt;
               &lt;code code="248536006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="finding of functional performance and activity"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;entryRelationship&gt;
@@ -755,12 +824,13 @@ The CCD is a core data set of the most relevant administrative, demographic, and
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.73"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
-              &lt;id root="MDHT" extension="758669152"/&gt;
+              &lt;id root="MDHT" extension="1828580462"/&gt;
               &lt;code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;entryRelationship&gt;
@@ -786,12 +856,13 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.72"/&gt;
-              &lt;id root="MDHT" extension="231771343"/&gt;
-              &lt;code code="890049375"/&gt;
+              &lt;id root="MDHT" extension="2071964711"/&gt;
+              &lt;code code="1224603429"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;participant typeCode="IND"/&gt;
@@ -801,12 +872,14 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
-              &lt;id root="MDHT" extension="686110762"/&gt;
-              &lt;code code="34448613"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
+              &lt;id root="MDHT" extension="1263220749"/&gt;
+              &lt;code code="1715524940"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;author/&gt;
@@ -823,20 +896,23 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;supply classCode="SPLY"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
-              &lt;id root="MDHT" extension="688497740"/&gt;
-              &lt;code code="1967058040"/&gt;
-              &lt;effectiveTime value="20140803"/&gt;
+              &lt;id root="MDHT" extension="773597617"/&gt;
+              &lt;code code="1432757631"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
             &lt;/supply&gt;
           &lt;/entry&gt;
           &lt;entry&gt;
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.70"/&gt;
-              &lt;id root="MDHT" extension="1670579779"/&gt;
+              &lt;id root="MDHT" extension="270594538"/&gt;
               &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
@@ -849,12 +925,14 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.76"/&gt;
-              &lt;id root="MDHT" extension="1791597081"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.76"/&gt;
+              &lt;id root="MDHT" extension="989568710"/&gt;
               &lt;code code="2264892003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="number of pressure ulcers"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;author/&gt;
@@ -865,11 +943,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.77"/&gt;
-              &lt;id root="MDHT" extension="2015518286"/&gt;
+              &lt;id root="MDHT" extension="2034020124"/&gt;
               &lt;code code="420905001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Highest Pressure Ulcer Stage"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
             &lt;/observation&gt;
@@ -880,19 +959,27 @@ The CCD is a core data set of the most relevant administrative, demographic, and
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.2"/&gt;
-          &lt;id root="MDHT" extension="505908652"/&gt;
+          &lt;id root="MDHT" extension="1476595356"/&gt;
           &lt;code code="11369-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
           &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1391769825"/&gt;
+          &lt;text&gt;BjlaYFg vShmnXvS viWNuBrMG wgfxk lHVIlv sYIjc rpetY eVGfJDGqo GJqtSxcN qsBHOFjBr dibpCoiGr bXnhbJ UQbUnHcl wieWD fdUOBov nWbFbCq hBHBVfq HDTPlI SNacQlOIP fgAxF ULlGfpJ QCflSMnSA VypODmoHF hjAYyxoP IdZBX nIjkHAYT gwBAQTey OKJLMxk EidJxgbE Zaitb 
+boUlRBoU pxtItLBhC cCzKX siOhFtu tJbmhwVJg cJPBm NTKgnwFt lzodz XgAlXeeu SMgnwByc ERJPEM eiXDcVD pYzzKXsRu geZIWwy PpiciibhT sGqAjsos 
+liiCYyt kCeOIvTJ WLjIT qasymq iFwlp MLiMK TNxHuq SEzjmNLT WIqbe PGtav FJMUeApC OmDgs ZUlGel hupnSMDue aTCBHnvX mhUVOiI ElHxtDkV mdqcJzzC 
+yMKIaxUN lrvkaCerJ dPZhlfl ZYHVagoi EuokaIlv PyTzZwX lfcRrzNPj TJarjpdnj hZMzpnwUV mxJfsrRa 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1374218824"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;substanceAdministration classCode="SBADM"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.52"/&gt;
-              &lt;id root="MDHT" extension="1851732087"/&gt;
-              &lt;code code="1848232450"/&gt;
-              &lt;effectiveTime value="20140803"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.52"/&gt;
+              &lt;id root="MDHT" extension="338226039"/&gt;
+              &lt;code code="2110342275"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
               &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
               &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
               &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
               &lt;consumable/&gt;
@@ -934,7 +1021,7 @@ The CCD is a core data set of the most relevant administrative, demographic, and
                   &lt;templateId root="2.16.840.1.113883.10.20.22.4.17"/&gt;
                 &lt;/supply&gt;
               &lt;/entryRelationship&gt;
-              &lt;precondition/&gt;
+              &lt;precondition typeCode="PRCN"/&gt;
             &lt;/substanceAdministration&gt;
           &lt;/entry&gt;
         &lt;/section&gt;
@@ -943,18 +1030,24 @@ The CCD is a core data set of the most relevant administrative, demographic, and
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.23"/&gt;
-          &lt;id root="MDHT" extension="1886099447"/&gt;
+          &lt;id root="MDHT" extension="592316568"/&gt;
           &lt;code code="46264-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medical Equipment"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1280767517"/&gt;
+          &lt;title&gt;Medical Equipment&lt;/title&gt;
+          &lt;text&gt;PIivklYG kdDae xiVFXOxC ogQgyLR APjuJui lOLLJizP eLCam DMYgNAkwS bWJyyGH CpXIpMi vGkwWYd wbtUsr zUwSw kACeHjn nyieqEC vCAlcNpb shLYBLx qlUTowWS uvqtRieYh mcrxwEqd CBFQg AcPSMrw EGvwZbxr TJqWLlcF brMgIr WEOXCfO jTEWiM WWWMJ VTOdoFWyy hazsMx LVMeJJKs PyGsKpblp rPxOx UwERbukz qIFQjNR RAalLYanx lqaUN YryXKz gXbxGUU LZVQLY RTslz PmElnYw 
+UzNvLRQD wmkCpRp efIeyrx tJHXXKVde rFAzZ SDHeNq IddAkMCto OOwbs EWDzKIdNd seuFAj gCwkYwGKq UqHtOCOl QkXiO lPfpn dqcgR AMirjffze CrSvE JWMHpY TpYAG AXNqRh VqetXxSY irgLCcv skdll xNkHGwkD GDgckIq 
+xIzWEs pmNkGEY FiqyUpDYl XuXepiWxx ENVfgbH VQBWCpfdJ IjZkja NMWknY RezRBPNiq mnSYIj FKTmdbHmY 
+fXBbcci GfbCuJO vzIMRjn IvElMj QMQpdVWOB TvBqiQzu LDFlLdm sPwORfFa pcpuxlFV UAvoqFsW ArDBhNAw plTeB pOXIOtl WqHjpMs LRQGKs LHwLv Dicslc kMBpAmQQ YuCwhTxK MIqoXE sHJqIQ RiGFpTpq kqXKBlaL mGqNWWnPM lbFfhSyy WlyyWG YNnHAObJ YLdMN wLVsJAj MxZKMyYh sLPXy xVvazBev mDADHoZBP TDWfhth asbpoT 
+&lt;/text&gt;
+          &lt;confidentialityCode code="298058798"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;supply classCode="SPLY"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
-              &lt;id root="MDHT" extension="1562345859"/&gt;
-              &lt;code code="676186207"/&gt;
-              &lt;effectiveTime value="20140803"/&gt;
+              &lt;id root="MDHT" extension="133437912"/&gt;
+              &lt;code code="1798047869"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
             &lt;/supply&gt;
           &lt;/entry&gt;
         &lt;/section&gt;
@@ -963,21 +1056,26 @@ The CCD is a core data set of the most relevant administrative, demographic, and
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.18"/&gt;
-          &lt;id root="MDHT" extension="1599133673"/&gt;
+          &lt;id root="MDHT" extension="1396785129"/&gt;
           &lt;code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payers"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1161596454"/&gt;
+          &lt;title&gt;Payers&lt;/title&gt;
+          &lt;text&gt;MSgXOTwWB sxLyTbHk UpencmBb oCWLx zYMHSwZ SJnySPlg INdQQ jXjrPN sSTkQOc XWdXLUbg OMhCOs KKWzr KyjME PwElg RgpnrOF cnhxuBmD JTjpVO BakyXfhRB CZxVMus KednQya QVBuDm ihbdo zPlnLBmBl TBsyyJT xcKZVCr WVQsIEn iwCjwzszk OEGLp CHFxpUwgv tthhrrys TzeINJ CNeTpNxb hxxwPJOS WuOXAn kItptkSeI cOEkoyfj QNDJBVSsi lFQEyDc rWsHX qqRcKsl gUOYc GQcRuEaDc gZXMPkhtH mXKwhC zdMjHKygO xUmPD 
+aaEwHaJ rfrKxXs EIpas dIAMAHkB qpjmjGyrq QiPPDrNdH PlOEjTNj PhCKMyLs wlTduB BYaBgA QYQNbMy jYNUgyqI unBWT Xckie wJhkP RmVGw HgJrfxLcs GluDHef JxpUYl GrqyY bcuopxBy erGhY aQkJvuTFX pUbBzeSAw ZtfSOmGzl OdHMYjz MKkOJjH kQwXHBi JTObsC nJylNl plJKS zIUTCstpm GAfdI CRnHuX xjsJQc mOgfvb QwWTflxpb 
+xHCkb ONKYl ZXvuWydXX YbOoUzVCl mCWsifX EWDMvsz SVpcrTYl rNxixLTs oqRMGGw FNSpo vcGbRtAZ MYZzMA PUjZkHVVU bgpBRAhzC jtyCv sYUNwQqKM BFsZQmmR lHLslCFy JuFPTKZB vrfFdUVLA cIgLOOx mEVhjon SawFD FfNNAj rYolxOZn ZXfNGj HaXqx tkAOZtTFe LEiLpg mhkPxQJCQ sXCKZm YctIYh BYvxT PFxAueg QtiPmr KEZWgux eEOuWxZe ZInVfuaR PixvDv CDPlULyT OGYmu 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1759262359"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;act classCode="ACT" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.60"/&gt;
-              &lt;id root="MDHT" extension="1818232291"/&gt;
+              &lt;id root="MDHT" extension="31198501"/&gt;
               &lt;code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;entryRelationship&gt;
@@ -995,20 +1093,25 @@ The CCD is a core data set of the most relevant administrative, demographic, and
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.10"/&gt;
-          &lt;id root="MDHT" extension="857397020"/&gt;
+          &lt;id root="MDHT" extension="217607436"/&gt;
           &lt;code code="18776-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Treatment plan"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1374241464"/&gt;
+          &lt;title&gt;Treatment plan&lt;/title&gt;
+          &lt;text&gt;RZtNq XoDBypG TEXlTxE goGRUMr gFyOx dDnoJo gYURPlUJe tmmwDQ zcnMoADVI jcTsF eAGdOyPGH IhJnlj LThHZ cYYMxvsRs TUaHw oMEcgkjSr RiMPWtIG ijBINvfQG tAgwqGiYE qPwxxUnH 
+bVpLWKqR HPSKY dZcqm uRYvmYca EaAkZI APhytcyy tZboe jiPIDfp gJBgllg sMaBOC WaHJy jHCkPizFW sLGxqByDm hwkpAEKZf JelxnrxbN ScMOlVTh kywWI GysBM GyrRKD sbDjwR wQyYEjAon zvEACVaH NvcpWazVR rxuFJfbf SUmcEhuEQ LquNaDnK hgOgYt reUewOvR MsCXWnzit BgpmBp yQloY gaxjLu 
+AhgSqxc vZFtFNNNN IvekBQhR eJZpmN VtlkcA SzBkXMyDd VhQbw rDgpmBGz FMYHTdfXn CBVRUHXv cTjcf TUPkPTGw JGeVQt IwGquFTXK 
+&lt;/text&gt;
+          &lt;confidentialityCode code="2028715111"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;act classCode="ACT"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.39"/&gt;
-              &lt;id root="MDHT" extension="1211603521"/&gt;
-              &lt;code code="1021251647"/&gt;
+              &lt;id root="MDHT" extension="1724291558"/&gt;
+              &lt;code code="97601150"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
             &lt;/act&gt;
@@ -1017,11 +1120,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;encounter classCode="ENC"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.40"/&gt;
-              &lt;id root="MDHT" extension="651837411"/&gt;
-              &lt;code code="398861605"/&gt;
+              &lt;id root="MDHT" extension="412427297"/&gt;
+              &lt;code code="1295415246"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
             &lt;/encounter&gt;
           &lt;/entry&gt;
@@ -1029,11 +1133,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.44"/&gt;
-              &lt;id root="MDHT" extension="1659502335"/&gt;
-              &lt;code code="196838457"/&gt;
+              &lt;id root="MDHT" extension="1251300950"/&gt;
+              &lt;code code="108286237"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
             &lt;/observation&gt;
@@ -1042,11 +1147,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;procedure classCode="PROC"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.41"/&gt;
-              &lt;id root="MDHT" extension="1741901427"/&gt;
-              &lt;code code="615464720"/&gt;
+              &lt;id root="MDHT" extension="616401604"/&gt;
+              &lt;code code="1285102926"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
             &lt;/procedure&gt;
@@ -1055,9 +1161,10 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;substanceAdministration classCode="SBADM"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
-              &lt;id root="MDHT" extension="750273376"/&gt;
-              &lt;code code="1506864305"/&gt;
-              &lt;effectiveTime value="20140803"/&gt;
+              &lt;id root="MDHT" extension="932101520"/&gt;
+              &lt;code code="153245586"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
               &lt;consumable/&gt;
             &lt;/substanceAdministration&gt;
           &lt;/entry&gt;
@@ -1065,21 +1172,23 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;supply classCode="SPLY"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.43"/&gt;
-              &lt;id root="MDHT" extension="1059765503"/&gt;
-              &lt;code code="2050388528"/&gt;
-              &lt;effectiveTime value="20140803"/&gt;
+              &lt;id root="MDHT" extension="1274433678"/&gt;
+              &lt;code code="1535834778"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
+              &lt;effectiveTime value="20170828"/&gt;
             &lt;/supply&gt;
           &lt;/entry&gt;
           &lt;entry&gt;
             &lt;act classCode="ACT" moodCode="INT"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
-              &lt;id root="MDHT" extension="1631415374"/&gt;
+              &lt;id root="MDHT" extension="1036639893"/&gt;
               &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
             &lt;/act&gt;
@@ -1090,21 +1199,27 @@ The CCD is a core data set of the most relevant administrative, demographic, and
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.17"/&gt;
-          &lt;id root="MDHT" extension="997378811"/&gt;
+          &lt;id root="MDHT" extension="1897857527"/&gt;
           &lt;code code="29762-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Social history"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="2073948271"/&gt;
+          &lt;title&gt;Social history&lt;/title&gt;
+          &lt;text&gt;YZJStTWQn FiCbg ftGXQWbj tWrrkyh VfORuzY pPjeaUVi kTMTPr gpJzjaV fOWOo oqRHVpDW WqJkVD ByOVXrxc qBqFalSm GVoWXs VXFYSLB roQRaM olPYZUS CqCbG VmcnWD kqNLDIm dmlsUXJax dUAJkvT aTzvYq eFqfXYplh mOLoRFqp RvbZzwf BGMkBZBcH qbLrJGJSD WuEpF eKFtKOLjo YdXUbPYjF gSGWgGvjJ qLdXYw dmjnjAx LXOiMWK WeuwGa eKqXLHdi eiDjLgra qEHjVPAa niYNsmIo 
+XWUSe bDsfxa sXHOPzZZa zNPKnMQ rPZjfMZzj mOpcR jLUwTLOwH BYdtmGt SjGttzDi CJyRZqUR UFVoavh gDCSE LKhGUMz PAbCb vDLocYdn DnnnBkrOa qbXjGqgzq LLithuc BckVfGMn meDTkVos ZQGax sjrrAdh JgwTur GlVwxN PZRTUmwkQ NWUAuv BLDiescWt Lmadp THGYe JSGulA RWWFcGN iTXnMIPdZ PqkiHJiqA GZeDsS LEtgH 
+RLHiF eKNiYuu ZGtkGhmD mnuipEJO BHdNSBrF jtCxVxEXU jQmSgA ofioGsz lXBDm DrWcAYkJO peHnKUvU dCfMzgriM iVvPcrdJ cdcKz XcCIkKM dJPbndDoa RatekAU kuLVsEiw wAtYJTG AAEVgs BAulrDSO seVpoLy xBYZorYu WTWxlhSfM VgTlng jTzXblKFD SLgmESsBM VZmAdrxBF XoSbXA 
+YeJLFUWo VUhJvDU sOhETE BpcxfUV aealJE ddMYDs mBQAaF mbdlnwLQH NrDTEk GjFkwm swgeHorV aczhhHPEw RyyekJI AvTxsH TnAXxv bBjnAYHzK yAbAfk Axdxt JZuqBfbpG KEDfsA ULEeoun nqGjEUhJ TQEbbz KQRmWzaS jASngDz ZwgxbBj yGJVAou VmMvjnGGh nfCHXqvi gHlRzmHH 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1547208549"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.38"/&gt;
-              &lt;id root="MDHT" extension="210156023"/&gt;
+              &lt;id root="MDHT" extension="1248209442"/&gt;
               &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
             &lt;/observation&gt;
@@ -1113,12 +1228,13 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.15.3.8"/&gt;
-              &lt;id root="MDHT" extension="2053991243"/&gt;
+              &lt;id root="MDHT" extension="1040172600"/&gt;
               &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;entryRelationship&gt;
@@ -1134,14 +1250,9 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.78"/&gt;
-              &lt;templateId root="2.16.840.1.113883.10.20.22.4.85"/&gt;
-              &lt;id root="MDHT" extension="702825675"/&gt;
-              &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+              &lt;id root="MDHT" extension="1004847682"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
-              &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
-              &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
             &lt;/observation&gt;
           &lt;/entry&gt;
@@ -1149,12 +1260,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
             &lt;observation classCode="OBS" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.85"/&gt;
-              &lt;id root="MDHT" extension="1773831800"/&gt;
-              &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+              &lt;id root="MDHT" extension="1703145767"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;languageCode code="Code forlanguageCode"/&gt;
             &lt;/observation&gt;
@@ -1165,21 +1276,26 @@ The CCD is a core data set of the most relevant administrative, demographic, and
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.22.2.4"/&gt;
-          &lt;id root="MDHT" extension="1106155193"/&gt;
+          &lt;id root="MDHT" extension="565061618"/&gt;
           &lt;code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Vital Signs"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="1820773641"/&gt;
+          &lt;title&gt;Vital Signs&lt;/title&gt;
+          &lt;text&gt;xuZXi BssbkO vcGLNdhfW ZIDxa VReuDAZ XLfKoU kEGlvQu hdxYACekJ DgRoGUG hlHFCz zwMAvvu oCblTIe vHAdpf OswPCq HCtUtKe FQyKbn avRfyIRUN ovzzOMLuf WoxoCjvTj yfIes XKYpeO KpeWs SQSUZrV PgzXJYhJB oazNvMoOq AWcGQ HcYuTk DSLEWKKs IbmELWjL LfXBh yNGhH kdpXLi IrjovtFAY juVOf cQvTJ tOSkYrF AJpGlUFA MXHopNhDF PaDdtZfz KDxrx ewJbZF wZDno gURDOdHAB eiqzSItM zGZgxiqxa duLZq KFjgrtWbA 
+ykkgrKhB UVUrzMQSx zgdmJ TCWOkJQ ynbClKO YJuWJ aCQSKcf cbrtyhHW pKtqlokyo AYIfstjn quSQzCyNf HuyIwaSmf pzjNNct wdFEto qztEdAxnr jfuQZvNT WnAZA AeisP hAfxUe LsxhGzujN pKsFCTZgG AOZYGDKUq NjusyAK HGCPZW evnmbYEFj sKaPM qnUrDml RcPGp asJEdie eGAElnzn LBDAaaF QAFbRsL CmIWQv TuoFaWvNx EocxRvD XrGUwmFFc IUCWHhQcP wPXmGLT pFjAmPDhp VSJtUS RFfYrBmR 
+KdMnwZec ZaqMCM oWpNJPi zieJSJu rmjOdbSEH Mbopp vDBLWXdXy xFPDZ icoJUm hWhXiM RYOXW JpRySJdks aQCvotAaK NduIxv JsrNCqEZ nItthdv mlTUelD cGjWxn kRhENQZv tAhXEpxo ezsolS adZPB xZSQwHT fMWUfWnW 
+WbYRsPOXz YVBXSK CNuIlw bUfsfwQP PZvbgEii OsIlHi dQhXqwe ureog afvNetwYR ChXnp PUZJzY JucHRPmG oWvDdb EjOcJih EqSnQ FgflmnAf IREBI JrtIxK HHQSqF WzBvrU DMCXSGMDN mJoOc AWAmjHt mkxUt xfbjIGJfj BUukox QRYJMub MxyNfPF eEaKD lCgUccsv EXYcerENV SFIaNT KbzpPUQvI mcThHkFV gQmrqb TGcDVt jvEHnHdC PklKT LTUgDzEN JoLDgB LStgKKh UpHwszNK 
+&lt;/text&gt;
+          &lt;confidentialityCode code="871004850"/&gt;
           &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;organizer classCode="CLUSTER" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.22.4.26"/&gt;
-              &lt;id root="MDHT" extension="1986051714"/&gt;
+              &lt;id root="MDHT" extension="1892169115"/&gt;
               &lt;code code="46680005" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Vital signs"/&gt;
               &lt;statusCode code="completed"/&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
               &lt;component&gt;
                 &lt;observation classCode="OBS" moodCode="EVN"&gt;
@@ -1194,14 +1310,12 @@ The CCD is a core data set of the most relevant administrative, demographic, and
       &lt;/component&gt;
     &lt;/structuredBody&gt;
   &lt;/component&gt;
-&lt;/ClinicalDocument&gt;</pre>
-
+&lt;/ClinicalDocument&gt;</code></pre>
 			</div>
 
 		</div>
 	
 	</div>
-
 
 </body>
 </html>

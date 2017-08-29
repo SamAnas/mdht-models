@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Payers Section (V3)" />
+<meta name="abstract" content="[Section: templateId 2.16.840.1.113883.10.20.22.2.18]" />
+<meta name="description" content="[Section: templateId 2.16.840.1.113883.10.20.22.2.18]" />
+<meta name="DC.Coverage" content="Section" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Payers Section (V3)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1">
+		<span class="ph">Payers Section (V3)</span>
+	</h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Section: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.2.18</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">
+The Payers Section contains data on the patient's payers, whether "third party" insurance, self-pay, other payer or guarantor, or some combination of payers, and is used to define which entity is the responsible fiduciary for the financial aspects of a patient's care.
+
+
+Each unique instance of a payer and all the pertinent data needed to contact, bill to, and collect from that payer should be included. Authorization information that can be used to define pertinent referral, authorization tracking number, procedure, therapy, intervention, device, or similar authorizations for the patient or provider, or both should be included. At a minimum, the patient's pertinent current payment sources should be listed.
+
+
+The sources of payment are represented as a Coverage Activity, which identifies all of the insurance policies or government or other programs that cover some or all of the patient's healthcare expenses. The policies or programs are sequenced by preference. The Coverage Activity has a sequence number that represents the preference order. Each policy or program identifies the covered party with respect to the payer, so that the identifiers can be recorded.
+</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-7924, CONF:1198-10434, CONF:1198-32597 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.2.18"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../PayersSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.18]">Payers Section</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.18</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-15395)<tt class="ph tt"><strong class="ph b">/@code</strong>="48768-6" </tt><em class="ph i">Payers</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-15396, CONF:1198-32149)
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1198-7959, CONF:1198-15501)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../CoverageActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.60]">Coverage Activity2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.60:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+	</div>
+
+</body>
+</html>

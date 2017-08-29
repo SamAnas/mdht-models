@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/temp/classes?><?workdir-uri file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/temp/classes/?><?path2project ../?><?path2project-uri ../?><?doctype-public -//OASIS//DTD DITA Topic//EN?><?doctype-system topic.dtd?><topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" id="classId" xml:lang="en-us" ditaarch:DITAArchVersion="1.3" domains="(topic abbrev-d)                            a(props deliveryTarget)                            (topic equation-d)                            (topic hazard-d)                            (topic hi-d)                            (topic indexing-d)                            (topic markup-d)                            (topic mathml-d)                            (topic pr-d)                            (topic relmgmt-d)                            (topic sw-d)                            (topic svg-d)                            (topic ui-d)                            (topic ut-d)                            (topic markup-d xml-d)   " class="- topic/topic " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/ProblemConcernAct.dita" xtrc="topic:1;3:38">
+	<title class="- topic/title " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/ProblemConcernAct.dita" xtrc="title:1;4:9"><ph class="- topic/ph " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="ph:1;171:29">Problem Concern</ph></title>
+	<shortdesc class="- topic/shortdesc " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="shortdesc:1;5:27">[Act: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:1;5:48">2.16.840.1.113883.10.20.22.4.3</tt>]</shortdesc>
+	<prolog class="- topic/prolog " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="prolog:1;6:21">
+<metadata class="- topic/metadata " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="metadata:1;7:11"><category class="- topic/category " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="category:1;7:21">Act</category></metadata>
+<resourceid id="d221e24" ux-source-priority="topic-and-map" class="- topic/resourceid " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="resourceid:1;8:50"/>
+</prolog>
+	<body class="- topic/body " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/ProblemConcernAct.dita" xtrc="body:1;8:8">
+		
+		<section class="- topic/section " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="section:2;14:27">
+<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="p:2;15:4">This template reflects an ongoing concern on behalf of the provider that placed the concern on a patient's problem list. So long as the underlying condition is of concern to the provider (i.e., as long as the condition, whether active or resolved, is of ongoing concern and interest to the provider), the statusCode is "active". Only when the underlying condition is no longer of concern is the statusCode set to "completed". The effectiveTime reflects the time that the underlying condition was felt to be a concern; it may or may not correspond to the effectiveTime of the condition (e.g., even five years later, the clinician may remain concerned about a prior heart attack).
+The statusCode of the Problem Concern Act is the definitive indication of the status of the concern, whereas the effectiveTime of the nested Problem Observation is the definitive indication of whether or not the underlying condition is resolved.
+The effectiveTime/low of the Problem Concern Act asserts when the concern became active. This equates to the time the concern was authored in the patient's chart. The effectiveTime/high asserts when the concern was completed (e.g., when the clinician deemed there is no longer any need to track the underlying condition).
+A Problem Concern Act can contain many Problem Observations (templateId 2.16.840.1.113883.10.20.22.4.4.2). Each Problem Observation is a discrete observation of a condition, and therefore will have a statusCode of "completed". The many Problem Observations nested under a Problem Concern Act reflect the change in the clinical understanding of a condition over time. For instance, a Concern may initially contain a Problem Observation of "chest pain":
+ - Problem Concern 1
+???? --- Problem Observation: Chest Pain 
+Later, a new Problem Observation of "esophagitis" will be added, reflecting a better understanding of the nature of the chest pain. The later problem observation will have a more recent author time stamp. 
+ - Problem Concern 1
+???? --- Problem Observation (author/time Jan 3, 2012): Chest Pain 
+???? --- Problem Observation (author/time Jan 6, 2012): Esophagitis
+Many systems display the nested Problem Observation with the most recent author time stamp, and provide a mechanism for viewing prior observations.</p>
+</section>
+		
+
+		<ol audience="standards" class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="ol:1;27:22">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:1;28:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:1;28:8">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:2;28:49"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:2;28:52">templateId</b></tt> ( CONF:16772, CONF:16773, CONF:1198-32509 ) such that it <ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="ol:2;28:133"><li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:2;28:137"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:3;28:140">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:3;28:181"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:4;28:184">@root</b>="2.16.840.1.113883.10.20.22.4.3"</tt></li></ol></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:3;29:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:5;29:8">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:4;29:49"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:6;29:52">@classCode</b>="ACT" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="i:1;29:81">Act</i> (CodeSystem:<tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:5;29:105"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:9024, R2.1=CONF:1198-9024)
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:4;31:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:7;31:8">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:6;31:49"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:8;31:52">@moodCode</b>="EVN" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="i:2;31:80">Event</i> (CodeSystem:<tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:7;31:106"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:9025, R2.1=CONF:1198-9025)
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:5;33:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:9;34:4">SHALL</b> contain at least one [1..*] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:8;34:46"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:10;34:49">id</b></tt> (CONF:9026, R2.1=CONF:1198-9026)
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:6;36:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:11;37:4">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:9;37:45"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:12;37:48">code</b></tt> (CONF:9027)<tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:10;37:77"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:13;37:80">/@code</b>="CONC" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="i:3;37:106">Concern</i> (CodeSystem:<tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:11;37:134"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:9440)
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:7;39:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:14;40:4">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:12;40:45"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:15;40:48">statusCode</b> (Concern Status)</tt>, which <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:16;40:95">SHALL</b> be selected from ValueSet<tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:13;40:134"> ProblemActStatusCode 2.16.840.1.113883.11.20.9.19</tt><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:17;40:192"> STATIC</b> 2011-09-09 (CONF:9029)<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="p:3;40:229">
+The statusCode associated with any concern must be one of the following values:
+
+
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:18;44:4">active</b>: A concern that is still being tracked.
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:19;45:4">suspended</b>: A concern that is active, but which may be set aside. For example, this value might be used to suspend concern
+about a patient problem after some period of remission, but before assumption that the concern has been resolved.
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:20;47:4">aborted</b>: A concern that is no longer actively being tracked, but for reasons other than because the problem was resolved.
+This value might be used to mark a concern as being aborted after a patient leaves care against medical advice.
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:21;49:4">completed</b>:
+The problem, allergy or medical state has been resolved and the concern no longer needs to be tracked except for
+historical purposes.
+</p>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:8;54:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:22;55:4">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:14;55:45"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:23;55:48">effectiveTime</b> (Concern Date)</tt> (CONF:9030, R2.1=CONF:1198-9030)<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="p:4;55:121">The effectiveTime element records the starting and ending times during which the concern was active on the Problem List.</p>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:9;57:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:24;58:4">SHALL</b> contain  [1..*] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:15;58:34"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:25;58:37">entryRelationship</b></tt> such that it  (CONF:15980)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="ol:3;58:94">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:10;59:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:16;59:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:26;59:21">@typeCode="</b>SUBJ" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="i:4;59:50">SUBJ</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:11;60:5">Conforms to <xref href="generated/../ProblemObservation.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="xref:2;60:57" type="topic"><?ditaot usertext?>Problem Observation<?ditaot genshortdesc?><desc class="- topic/desc ">[Observation: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemObservation.dita" xtrc="tt:1;5:56">2.16.840.1.113883.10.20.22.4.4</tt>]</desc></xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="tt:17;60:101">2.16.840.1.113883.10.20.22.4.4</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:12;62:5">effectiveTime <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:27;62:22">SHALL</b> contain exactly one [1..1] low (CONF:9032)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="li:13;63:5">effectiveTime <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="b:28;63:22">SHOULD</b> contain zero or one [0..1] high (CONF:9033)</li>
+</ol>
+		
+		<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/ProblemConcernAct.dita" xtrc="p:1;20:6">
+		</p>
+		<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/ProblemConcernAct.dita" xtrc="p:2;22:6">
+			<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/ProblemConcernAct.dita" xtrc="b:1;23:7"><ph class="- topic/ph " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="ph:1;171:29">Problem Concern</ph> example</b>
+		</p>		
+		<codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " outputclass="language-xml" xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_ProblemConcernAct.dita" xtrc="codeblock:1;107:52">&lt;act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.3"/&gt;
+  &lt;id root="MDHT" extension="297226920"/&gt;
+  &lt;code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+      &lt;id root="MDHT" extension="317775222"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.31"/&gt;
+          &lt;id root="MDHT" extension="1113040392"/&gt;
+          &lt;code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Age At Onset"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.5"/&gt;
+          &lt;id root="MDHT" extension="1610258545"/&gt;
+          &lt;code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.6"/&gt;
+          &lt;id root="MDHT" extension="153554316"/&gt;
+          &lt;code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+&lt;/act&gt;</codeblock>
+	</body>
+</topic>

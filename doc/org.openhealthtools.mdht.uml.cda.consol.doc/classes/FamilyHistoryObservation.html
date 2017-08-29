@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xml:lang="en-us" lang="en-us">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="copyright" content="(C) Copyright 2005"/>
-<meta name="DC.rights.owner" content="(C) Copyright 2005"/>
-<meta name="DC.Type" content="topic"/>
-<meta name="DC.Title" content="Family History Observation"/>
-<meta name="abstract" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.46]"/>
-<meta name="description" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.46]"/>
-<meta name="DC.Coverage" content="Observation"/>
-<meta name="DC.Format" content="XHTML"/>
-<meta name="DC.Identifier" content="classId"/>
-<meta name="DC.Language" content="en-us"/>
-<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Family History Observation" />
+<meta name="abstract" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.46]" />
+<meta name="description" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.46]" />
+<meta name="DC.Coverage" content="Observation" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
 <title>Family History Observation</title>
 </head>
 <body id="classId">
@@ -22,8 +22,7 @@
 	<p><b>Non-Normative Content</b> The Normative content for these specifications
 	may be found on the HL7, IHE, and HITSP web sites.</p>
 </div>
-
-	<h1 class="title topictitle1"><span class="ph">Family History Observation</span></h1>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Family History Observation</span></h1>
 
 	
 	
@@ -31,56 +30,62 @@
 
 		
 		<div class="section">
-<div class="p"><p class="lines"><em class="ph i">Family History Observations related to a particular family member are contained within a Family History Organizer. The effectiveTime in the Family History Observation is the biologically or clinically relevant time of the observation. The biologically or clinically relevant time is the time at which the observation holds (is effective) for the family member (the subject of the observation).</em></p>
-</div>
+<p class="p">Family History Observations related to a particular family member are contained within a Family History Organizer. The effectiveTime in the Family History Observation is the biologically or clinically relevant time of the observation. The biologically or clinically relevant time is the time at which the observation holds (is effective) for the family member (the subject of the observation).</p>
 
 </div>
 
 		
 
 		<ol class="ol">
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] templateId ( CONF:10496 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.46"</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:10496 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.46"</tt></li>
 </ol>
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8586)
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8586, R2.1=CONF:1198-8586)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8587)
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8587, R2.1=CONF:1198-8587)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8592)
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8592, R2.1=CONF:1198-8592)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> <a class="xref" href="../terminology/ProblemType.html">Problem Type</a> 2.16.840.1.113883.3.88.12.3221.7.2</tt><strong class="ph b"> STATIC</strong> 2008-12-18 (CONF:8589)
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Problem Type 2.16.840.1.113883.3.88.12.3221.7.2</tt><strong class="ph b"> STATIC</strong> 2008-12-18 (CONF:8589)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt><tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:8590)
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (R2.1=CONF:1198-8590)<tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:8590, R2.1=CONF:1198-19098)
 </li>
 
-<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8593)
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8593, R2.1=CONF:1198-8593)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> with @xsi:type="CD", which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> <a class="xref" href="../terminology/Problem.html">Problem</a> 2.16.840.1.113883.3.88.12.3221.7.4</tt><strong class="ph b"> DYNAMIC</strong> (CONF:8591)
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> with <tt class="ph tt"><strong class="ph b">@xsi:type</strong>="CD"</tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Problem 2.16.840.1.113883.3.88.12.3221.7.4</tt><strong class="ph b"> DYNAMIC</strong> (CONF:8591, CONF:1198-8591)
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> (CONF:8675, CONF:8676, CONF:15526)
-<ol class="ol" type="a">
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:8675, CONF:8676, CONF:15526, R2.1=CONF:1198-8675, R2.1=CONF:1198-8676, R2.1=CONF:1198-15526)<ol class="ol" type="a">
 <li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>SUBJ" </tt><em class="ph i">SUBJ</em></li>
 
-<li class="li">Contains exactly one [1..1] <a class="xref" href="AgeObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.31]">Age Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.31</tt>)</li>
+<li class="li">Conforms to <a class="xref" href="generated/../AgeObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.31]">Age Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.31</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> (CONF:8678, CONF:8679, CONF:15527)
-<ol class="ol" type="a">
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:8678, CONF:8679, CONF:15527, R2.1=CONF:1198-8678, R2.1=CONF:1198-8679, R2.1=CONF:1198-15527)<ol class="ol" type="a">
 <li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>CAUS" </tt><em class="ph i">CAUS</em></li>
 
-<li class="li">Contains exactly one [1..1] <a class="xref" href="FamilyHistoryDeathObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.47]">Family History Death Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.47</tt>)</li>
+<li class="li">Conforms to <a class="xref" href="generated/../FamilyHistoryDeathObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.47]">Family History Death Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.47</tt>)</li>
 </ol>
+
 </li>
 
-<li class="li">entryRelationship with target entry Age Observation <strong class="ph b">SHALL</strong> contain exactly one [1..1] @inversionInd="true" True (CONF:8677)</li>
+<li class="li">entryRelationship with target entry Age Observation <strong class="ph b">SHALL</strong> contain exactly one [1..1] @inversionInd="true" True (CONF:8677, R2.1=CONF:1198-8677)</li>
 
 </ol>
 
@@ -92,43 +97,44 @@
 			<strong class="ph b"><span class="ph">Family History Observation</span> example</strong>
 		</p>
 		
-		<pre class="pre codeblock">&lt;observation xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN"&gt;
+		<pre class="pre codeblock language-xml"><code>&lt;observation xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN"&gt;
   &lt;templateId root="2.16.840.1.113883.10.20.22.4.46"/&gt;
-  &lt;id root="MDHT" extension="1637014326"/&gt;
+  &lt;id root="MDHT" extension="176783270"/&gt;
   &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
   &lt;statusCode code="completed"/&gt;
   &lt;effectiveTime&gt;
-    &lt;low value="2014"/&gt;
-    &lt;high value="2014"/&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
   &lt;/effectiveTime&gt;
   &lt;entryRelationship&gt;
     &lt;observation classCode="OBS" moodCode="EVN"&gt;
       &lt;templateId root="2.16.840.1.113883.10.20.22.4.31"/&gt;
-      &lt;id root="MDHT" extension="709780696"/&gt;
+      &lt;id root="MDHT" extension="440425949"/&gt;
       &lt;code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Age At Onset"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
       &lt;statusCode code="completed"/&gt;
       &lt;effectiveTime&gt;
-        &lt;low value="2014"/&gt;
-        &lt;high value="2014"/&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
       &lt;/effectiveTime&gt;
     &lt;/observation&gt;
   &lt;/entryRelationship&gt;
   &lt;entryRelationship&gt;
     &lt;observation classCode="OBS" moodCode="EVN"&gt;
       &lt;templateId root="2.16.840.1.113883.10.20.22.4.47"/&gt;
-      &lt;id root="MDHT" extension="624338580"/&gt;
+      &lt;id root="MDHT" extension="544875036"/&gt;
       &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
       &lt;statusCode code="completed"/&gt;
       &lt;effectiveTime&gt;
-        &lt;low value="2014"/&gt;
-        &lt;high value="2014"/&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
       &lt;/effectiveTime&gt;
     &lt;/observation&gt;
   &lt;/entryRelationship&gt;
-&lt;/observation&gt;</pre>
-
+&lt;/observation&gt;</code></pre>
 	</div>
-
 
 </body>
 </html>

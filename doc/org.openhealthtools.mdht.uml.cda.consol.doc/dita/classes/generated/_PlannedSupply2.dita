@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Planned Supply2 - conformance rules</title>
+<shortdesc id="shortdesc">[Supply: templateId <tt>2.16.840.1.113883.10.20.22.4.43</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Supply</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.43"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template represents both medicinal and non-medicinal supplies ordered, requested, or intended for the patient (e.g., medication prescription, order for wheelchair). The importance of the supply order or request to the patient and provider may be indicated in the Priority Preference. 
+The effective time indicates the time when the supply is intended to take place and author time indicates when the documentation of the plan occurred. The Planned Supply template may also indicate the potential insurance coverage for the procedure. 
+Depending on the type of supply, the product or participant will be either a Medication Information product (medication), an Immunization Medication Information product (immunization), or a Product Instance participant (device/equipment).</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-30463, CONF:1098-30464, CONF:1098-32556 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.43"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../PlanOfCareActivitySupply.dita">Plan Of Care Activity Supply</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.43</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Planned moodCode (SubstanceAdministration/Supply) 2.16.840.1.113883.11.20.9.24</tt><b> STATIC</b> 2011-09-30 (CONF:1098-8578)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-30458)<tt><b>/@code</b>="active" </tt><i>Active</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-32047)
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1098-30459)<p>The effectiveTime in a planned supply represents the time that the supply should occur.</p>
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>repeatNumber</b></tt> (CONF:1098-32063)<p>In a Planned Supply, repeatNumber indicates the number of times the supply event can occur. For example, if a medication is filled at a pharmacy and the prescription may be refilled 3 more times, the supply RepeatNumber equals 4.</p>
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>quantity</b></tt> (CONF:1098-32064)
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>product</b></tt> such that it  (CONF:1098-32049, CONF:1098-32051) <p><lines><i>This product represents medication that is ordered, requested or intended for the patient or this product represents immunization medication that is ordered, requested or intended for the patient.</i></lines></p><ol><li><b>MAY</b> contain exactly one [1..1] <tt><b>manufacturedProduct</b></tt> such that it  <ol><li><b>SHALL</b> contain exactly one [1..1] Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.23:2014-06-09) or <b>SHALL</b> contain exactly one [1..1] Immunization Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.54:2014-06-09) (CONF:1098-32050, CONF:1098-32052)</li></ol></li></ol> 
+</li>
+<li>
+<b>SHOULD</b> contain  [0..1] <tt><b>product</b></tt> such that it  (CONF:1098-32325)<p>A product is recommended or even required under certain implementations. This IG makes product as recommended (SHOULD).</p><ol>
+<li>Conforms to Product from CDA</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>performer</b></tt> such that it  (CONF:1098-32048)<ol><li><p>The clinician who is expected to perform the supply could be identified using supply/performer.</p></li>
+<li>Conforms to Performer2 from CDA</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..1] <tt><b>author</b></tt> such that it  (CONF:1098-31129)<ol><li><p>The author in a supply represents the clinician who is requesting or planning the supply.</p></li>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>participant</b></tt> such that it  (CONF:1098-32094, CONF:1098-32095)<ol><li><p>This participant represents a device that is ordered, requested or intended for the patient.</p></li>
+<li>Conforms to <xref href="../ProductInstance.dita">Product Instance</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.37</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31110, CONF:1098-31111, CONF:1098-31112)<ol><li><p>The following entryRelationship represents the priority that a patient or a provider places on the supply.</p></li>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32054, CONF:1098-32055, CONF:1098-32056)<ol><li><p>The following entryRelationship represents the indication for the supply.</p></li>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../Indication2.dita">Indication2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32057, CONF:1098-32058, CONF:1098-32059)<ol><li><p>The following entryRelationship captures any instructions associated with the planned supply.</p></li>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../Instruction2.dita">Instruction2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32060, CONF:1098-32061, CONF:1098-32062)<ol><li><p>The following entryRelationship represents the insurance coverage the patient may have for the supply.</p></li>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../PlannedCoverage.dita">Planned Coverage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.129</tt>)</li></ol>
+</li>
+<li>If the product is Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.23:2014-06-09) then the product <b>SHALL NOT</b> be Immunization Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.54:2014-06-09) and the participant <b>SHALL NOT</b> be Product Instance.  If the product is Immunization Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.54:2014-06-09) then the product <b>SHALL NOT</b> be Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.23:2014-06-09) and the participant <b>SHALL NOT</b> be Product Instance.  If the participant is Product Instance then the product <b>SHALL NOT</b> be Medication Information (V2) and the product <b>SHALL NOT</b> be Immunization Medication Information (V2). (CONF:1098-32092, CONF:1098-32093, CONF:1098-32096)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../PlanOfCareActivitySupply.dita">Plan Of Care Activity Supply</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.43</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="SPLY" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8577, R2.0=CONF:1098-8577)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Planned moodCode (SubstanceAdministration/Supply) 2.16.840.1.113883.11.20.9.24</tt><b> STATIC</b> 2011-09-30 (CONF:1098-8578)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8580, R2.0=CONF:1098-8580)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-30458)<tt><b>/@code</b>="active" </tt><i>Active</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-32047)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1098-30459)
+<p>The effectiveTime in a planned supply represents the time that the supply should occur.</p></li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>repeatNumber</b></tt> (CONF:1098-32063)
+<p>In a Planned Supply, repeatNumber indicates the number of times the supply event can occur. For example, if a medication is filled at a pharmacy and the prescription may be refilled 3 more times, the supply RepeatNumber equals 4.</p></li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>quantity</b></tt> (CONF:1098-32064)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>product</b></tt> such that it  (CONF:1098-32049, CONF:1098-32051) <p><lines><i>This product represents medication that is ordered, requested or intended for the patient or this product represents immunization medication that is ordered, requested or intended for the patient.</i></lines></p><ol><li><b>MAY</b> contain exactly one [1..1] <tt><b>manufacturedProduct</b></tt> such that it  <ol><li><b>SHALL</b> contain exactly one [1..1] Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.23:2014-06-09) or <b>SHALL</b> contain exactly one [1..1] Immunization Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.54:2014-06-09) (CONF:1098-32050, CONF:1098-32052)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain  [0..*] <tt><b>performer</b></tt> such that it  (CONF:1098-32048)
+<ol>
+<li>Conforms to Performer2 from CDA</li></ol><ol><li><p>The clinician who is expected to perform the supply could be identified using supply/performer.</p></li></ol></li>
+<li><b>SHOULD</b> contain  [0..1] <tt><b>author</b></tt> such that it  (CONF:1098-31129)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol><ol><li><p>The author in a supply represents the clinician who is requesting or planning the supply.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>participant</b></tt> such that it  (CONF:1098-32094, CONF:1098-32095)
+<ol>
+<li>Conforms to <xref href="../ProductInstance.dita">Product Instance</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.37</tt>)</li></ol><ol><li><p>This participant represents a device that is ordered, requested or intended for the patient.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31110, CONF:1098-31111, CONF:1098-31112)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol><ol><li><p>The following entryRelationship represents the priority that a patient or a provider places on the supply.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32054, CONF:1098-32055, CONF:1098-32056)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../Indication2.dita">Indication2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol><ol><li><p>The following entryRelationship represents the indication for the supply.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32057, CONF:1098-32058, CONF:1098-32059)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../Instruction2.dita">Instruction2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li></ol><ol><li><p>The following entryRelationship captures any instructions associated with the planned supply.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32060, CONF:1098-32061, CONF:1098-32062)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../PlannedCoverage.dita">Planned Coverage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.129</tt>)</li></ol><ol><li><p>The following entryRelationship represents the insurance coverage the patient may have for the supply.</p></li></ol></li>
+<li>If the product is Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.23:2014-06-09) then the product <b>SHALL NOT</b> be Immunization Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.54:2014-06-09) and the participant <b>SHALL NOT</b> be Product Instance.  If the product is Immunization Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.54:2014-06-09) then the product <b>SHALL NOT</b> be Medication Information (V2) (identifier: urn:hl7ii:2.16.840.1.113883.10.20.22.4.23:2014-06-09) and the participant <b>SHALL NOT</b> be Product Instance.  If the participant is Product Instance then the product <b>SHALL NOT</b> be Medication Information (V2) and the product <b>SHALL NOT</b> be Immunization Medication Information (V2). (CONF:1098-32092, CONF:1098-32093, CONF:1098-32096)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::PlannedSupply2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::supply[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.43]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_DocumentSubstanceMood</entry><entry>CONF:1098-8578</entry><entry> EVN</entry></row> 
+<row><entry>effectiveTime</entry><entry>0..1</entry><entry>SHOULD</entry><entry>SXCM_TS</entry><entry>CONF:1098-30459</entry><entry> </entry></row> 
+<row><entry>quantity</entry><entry>0..1</entry><entry>MAY</entry><entry>PQ</entry><entry>CONF:1098-32064</entry><entry> </entry></row> 
+<row><entry>repeatNumber</entry><entry>0..1</entry><entry>MAY</entry><entry>IVL_INT</entry><entry>CONF:1098-32063</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1098-30458</entry><entry>ActStatus 2.16.840.1.113883.5.14 active</entry></row> 
+<row><entry>authorParticipation</entry><entry>0..1</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1098-31129</entry><entry> </entry></row> 
+<row><entry>indication2</entry><entry>0..*</entry><entry>MAY</entry><entry>Indication2</entry><entry>CONF:1098-32054CONF:1098-32055CONF:1098-32056</entry><entry> </entry></row> 
+<row><entry>instruction2</entry><entry>0..*</entry><entry>MAY</entry><entry>Instruction2</entry><entry>CONF:1098-32057CONF:1098-32058CONF:1098-32059</entry><entry> </entry></row> 
+<row><entry>performer</entry><entry>0..*</entry><entry>MAY</entry><entry>Performer2</entry><entry>CONF:1098-32048</entry><entry> </entry></row> 
+<row><entry>plannedCoverage</entry><entry>0..*</entry><entry>MAY</entry><entry>PlannedCoverage</entry><entry>CONF:1098-32060CONF:1098-32061CONF:1098-32062</entry><entry> </entry></row> 
+<row><entry>plannedSupply2</entry><entry>0..*</entry><entry>MAY</entry><entry>PlannedSupply2</entry><entry></entry><entry> </entry></row> 
+<row><entry>PriorityPreference</entry><entry>0..*</entry><entry>MAY</entry><entry>PriorityPreference</entry><entry>CONF:1098-31110CONF:1098-31111CONF:1098-31112</entry><entry> </entry></row> 
+<row><entry>product</entry><entry>0..1</entry><entry>MAY</entry><entry>Product</entry><entry>CONF:1098-32049CONF:1098-32051</entry><entry> </entry></row> 
+<row><entry>productInstance</entry><entry>0..1</entry><entry>MAY</entry><entry>ProductInstance</entry><entry>CONF:1098-32094CONF:1098-32095</entry><entry> </entry></row> 
+<row><entry>productRecommended</entry><entry>0..1</entry><entry>SHOULD</entry><entry>Product</entry><entry>CONF:1098-32325</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../NutritionRecommendation.dita">Nutrition Recommendation</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../PlanOfTreatmentSection2.dita">Plan Of Treatment Section2</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../PlannedInterventionAct.dita">Planned Intervention Act (V2)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../Indication2.dita">Indication2</xref></entry></row><row><entry></entry><entry><xref href="../Instruction2.dita">Instruction2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PlannedCoverage.dita">Planned Coverage</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../PriorityPreference.dita">Priority Preference</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../ProductInstance.dita">Product Instance</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<supply xmlns="urn:hl7-org:v3" classCode="SPLY">
+  <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.43" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.43"/>
+  <id root="MDHT" extension="2023270677"/>
+  <text>Text Value</text>
+  <statusCode code="active"/>
+  <effectiveTime value="20170828"/>
+  <repeatNumber value="1"/>
+  <quantity/>
+  <product/>
+  <performer/>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="1035975900"/>
+      <code code="869213415"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <id root="MDHT" extension="1865619606"/>
+      <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <repeatNumber value="1"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+      <id root="MDHT" extension="1964085485"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <repeatNumber value="1"/>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="INT">
+      <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+      <id root="MDHT" extension="2027250603"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="INT">
+      <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+      <id root="MDHT" extension="448177223"/>
+      <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+      <text>Text Value</text>
+      <statusCode code="active"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship typeCode="COMP">
+        <act classCode="ACT" moodCode="INT">
+          <code codeSystem="2.16.840.1.113883.3.221.5" codeSystemName="Source of Payment Typology (PHDSC)"/>
+          <statusCode code="active"/>
+        </act>
+      </entryRelationship>
+    </act>
+  </entryRelationship>
+</supply>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::PlanOfCareActivitySupply
+</p>
+<p id="PlanOfCareActivitySupply" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8579, CONF:10515 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.43"
+</li><li>SHALL conform to CDA Supply
+</li><li>Consol Plan Of Care Activity Supply SHALL contain exactly one [1..1] @classCode="SPLY"  (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8577, R2.0=CONF:1098-8577)
+</li><li>Consol Plan Of Care Activity Supply SHALL contain exactly one [1..1] @moodCode, which SHALL be selected from ValueSet Planned moodCode (SubstanceAdministration/Supply) 2.16.840.1.113883.11.20.9.24 STATIC (CONF:8578)
+</li><li>Consol Plan Of Care Activity Supply SHALL contain at least one [1..*] id (CONF:8580, R2.0=CONF:1098-8580)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Planned Supply2</ph></p>
+<p id="shortdesc">[Supply: templateId <tt>2.16.840.1.113883.10.20.22.4.43</tt>]</p>
+</body>
+</topic>

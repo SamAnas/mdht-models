@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Admission Medication2" />
+<meta name="abstract" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.36]" />
+<meta name="description" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.36]" />
+<meta name="DC.Coverage" content="Act" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Admission Medication2</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Admission Medication2</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Act: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.36</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">This template represents the medications taken by the patient prior to and at the time of admission.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1098-16758, CONF:1098-16759, CONF:1098-32524 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.36"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2014-06-09"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../AdmissionMedication.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.36]">Admission Medication</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.36</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1098-15518)<tt class="ph tt"><strong class="ph b">/@code</strong>="42346-7" </tt><em class="ph i">Medications on Admission</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-15519, CONF:1098-32152)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-7701, CONF:1098-7702, CONF:1098-15520)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>SUBJ" </tt><em class="ph i">SUBJ</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../MedicationActivity2.html" title="[SubstanceAdministration: templateId 2.16.840.1.113883.10.20.22.4.16]">Medication Activity2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.16:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Admission Medication2</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.36" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.36"/&gt;
+  &lt;code code="42346-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Medications on Admission"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;entryRelationship&gt;
+    &lt;substanceAdministration classCode="SBADM"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+      &lt;code code="958519717"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+      &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+      &lt;consumable&gt;
+        &lt;manufacturedProduct classCode="MANU"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.23"/&gt;
+        &lt;/manufacturedProduct&gt;
+      &lt;/consumable&gt;
+      &lt;author&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+        &lt;time/&gt;
+        &lt;assignedAuthor/&gt;
+      &lt;/author&gt;
+      &lt;entryRelationship&gt;
+        &lt;act classCode="ACT" moodCode="INT"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.123"/&gt;
+          &lt;code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;participant typeCode="RESP"/&gt;
+        &lt;/act&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;act classCode="ACT" moodCode="INT"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+          &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+        &lt;/act&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;act classCode="ACT" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.118"/&gt;
+          &lt;code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+        &lt;/act&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+          &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;supply classCode="SPLY" moodCode="INT"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.17"/&gt;
+          &lt;code code="2045514669"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+        &lt;/supply&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;supply classCode="SPLY" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.18"/&gt;
+          &lt;code code="2027090527"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;entryRelationship&gt;
+            &lt;supply classCode="SPLY" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.17"/&gt;
+            &lt;/supply&gt;
+          &lt;/entryRelationship&gt;
+        &lt;/supply&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.9"/&gt;
+          &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;entryRelationship&gt;
+            &lt;procedure classCode="PROC" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+              &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+            &lt;/procedure&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+              &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.8"/&gt;
+              &lt;code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/observation&gt;
+          &lt;/entryRelationship&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;substanceAdministration classCode="SBADM"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.147"/&gt;
+          &lt;code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/&gt;
+          &lt;consumable/&gt;
+        &lt;/substanceAdministration&gt;
+      &lt;/entryRelationship&gt;
+      &lt;precondition typeCode="PRCN"&gt;
+        &lt;criterion&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.25" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.25"/&gt;
+          &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+        &lt;/criterion&gt;
+      &lt;/precondition&gt;
+    &lt;/substanceAdministration&gt;
+  &lt;/entryRelationship&gt;
+&lt;/act&gt;</code></pre>
+	</div>
+
+</body>
+</html>

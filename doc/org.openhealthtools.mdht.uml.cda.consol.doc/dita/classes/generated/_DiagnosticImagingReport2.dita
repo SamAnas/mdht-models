@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Diagnostic Imaging Report (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[ClinicalDocument: templateId <tt>2.16.840.1.113883.10.20.22.1.5</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>ClinicalDocument</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.1.5"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>A Diagnostic Imaging Report (DIR) is a document that contains a consulting specialist's interpretation of image data. It conveys the interpretation to the referring (ordering) physician and becomes part of the patient's medical record. It is for use in Radiology, Endoscopy, Cardiology, and other imaging specialties.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-8404, CONF:1198-10042, CONF:1198-32515 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.1.5"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/USRealmHeader2.html">US Realm Header2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.1.1:2015-08-01</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>id</b></tt> (CONF:1198-30932)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-14833), which <b>SHOULD</b> be selected from ValueSet<tt> LOINC Imaging Document Codes 1.3.6.1.4.1.12009.10.2.5</tt><b> DYNAMIC</b> (CONF:1198-14834)<p>Preferred code is 18748-4 LOINC Diagnostic Imaging Report</p>
+</li>
+<li>
+<b>SHALL</b> contain  [0..0] <tt><b>informant</b></tt> such that it  (CONF:1198-8410)<ol>
+<li>Conforms to Informant12 from CDA</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>informationRecipient</b></tt> such that it  (CONF:1198-8411)<p>informationRecipient</p><ol>
+<li>Conforms to Information Recipient from CDA</li></ol>
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>participant</b></tt> such that it  (CONF:1198-8414) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>associatedEntity</b></tt> such that it  (CONF:1198-31198) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>associatedPerson</b></tt> such that it  (CONF:1198-31199) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>name</b></tt> (CONF:1198-31200)</li></ol></li></ol></li></ol> 
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>inFulfillmentOf</b></tt> such that it  (CONF:1198-30936) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>order</b></tt> such that it  (CONF:1198-30937) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-30938)<p><lines><i>Note: DICOM Accession Number in the DICOM imaging and report data</i></lines></p></li></ol></li></ol> 
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>documentationOf</b></tt> such that it  (CONF:1198-8416) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>serviceEvent</b></tt> such that it  (CONF:1198-8431) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-8430)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>id</b></tt> (CONF:1198-8418)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-8419)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>performer</b></tt>, where its type is <xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref> (CONF:1198-8422)</li><li>The value of serviceEvent/code <b>SHALL NOT</b> conflict with the ClininicalDocument/code. When transforming from DICOM SR documents that do not contain a procedure code, an appropriate nullFlavor <b>SHALL</b> be used on serviceEvent/code (CONF:1198-8420)</li></ol></li></ol> 
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>relatedDocument</b></tt> such that it  (CONF:1198-8432) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>parentDocument</b></tt> such that it  (CONF:1198-32089) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>id</b></tt> (CONF:1198-32090)</li></ol></li><li>When a Diagnostic Imaging Report has been transformed from a DICOM SR document, relatedDocument/@typeCode <b>SHALL</b> be XFRM, and relatedDocument/parentDocument/id <b>SHALL</b> contain the SOP Instance UID of the original DICOM SR document (CONF:1198-8433)</li></ol> 
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>componentOf</b></tt> such that it  (CONF:1198-30939) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>encompassingEncounter</b></tt> such that it  (CONF:1198-30940) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-30941)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-30943)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>responsibleParty</b></tt> such that it  (CONF:1198-30945) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-30946) <ol><li><b>SHOULD</b> contain zero or one [0..1] assignedPerson OR contain zero or one [0..1] representedOrganization (CONF:1198-30947)</li></ol></li></ol></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>encounterParticipant</b></tt>, where its type is <xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref> (CONF:1198-30948)</li><li>id In the case of transformed DICOM SR documents, an appropriate null flavor <b>MAY</b> be used if the id is unavailable (CONF:1198-30942)</li></ol></li></ol> 
+</li>
+<li>
+<b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30696, CONF:1198-30697)<ol>
+<li>Conforms to <xref href="../FindingsSection.dita">Findings Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.6.1.2</tt>)</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30698, CONF:1198-30699)<ol>
+<li>Conforms to <xref href="../DICOMObjectCatalogSection.dita">DICOM Object Catalog Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.6.1.1</tt>)</li></ol>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-14907) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>structuredBody</b></tt> such that it  (CONF:1198-30695) <ol><li><b>MAY</b> contain zero or more [0..*] <tt><b>component</b></tt> such that it  (CONF:1198-31055) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>section</b></tt> such that it  (CONF:1198-31056) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-31057), which <b>SHOULD</b> be selected from ValueSet<tt> DIRSectionTypeCodes 2.16.840.1.113883.11.20.9.59</tt><b> STATIC</b> (CONF:1198-31207)<p><lines><i>For sections listed in the DIR Section Type Codes table, the code element must contain a LOINC code or DCM code for sections that have no LOINC equivalent.
+Note: The section/code SHOULD be selected from LOINC or DICOM for sections not listed in the DIR Section Type Codes table.</i></lines></p></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>title</b></tt> (CONF:1198-31058)<p><lines><i>There is no equivalent to section/title in DICOM SR, so for a CDA to SR transformation, the section/code will be transferred and the title element will be dropped.</i></lines></p></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>text</b></tt> (CONF:1198-31059)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>subject</b></tt> such that it  (CONF:1198-31215) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>relatedSubject</b></tt>, where its type is <xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref> (CONF:1198-31216)</li></ol></li><li><b>MAY</b> contain zero or more [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31217) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>observerContext</b></tt>, where its type is <xref href="../ObserverContext.dita">Observer Context</xref> (CONF:1198-31218)</li></ol></li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../ProcedureContext.dita">Procedure Context</xref> (CONF:1198-31213, CONF:1198-31214)<p><lines><i>If the service context of a section is different from the value specified in documentationOf/serviceEvent, then the section SHALL contain one or more entries containing Procedure Context (templateId 2.16.840.1.113883.10.20.6.2.5), which will reset the context for any clinical statements nested within those elements</i></lines></p></li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../TextObservation.dita">Text Observation</xref> (CONF:1198-31357, CONF:1198-31358)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../CodeObservations.dita">Code Observations</xref> (CONF:1198-31359, CONF:1198-31360)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref> (CONF:1198-31361, CONF:1198-31362)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref> (CONF:1198-31363, CONF:1198-31364)</li><li>If clinical statements are present, the section/text <b>SHALL</b> represent faithfully all such statements and <b>MAY</b> contain additional text (CONF:1198-31060)</li><li>All text elements <b>SHALL</b> contain content. Text elements <b>SHALL</b> contain PCDATA or child elements (CONF:1198-31061)</li><li>The text elements (and their children) <b>MAY</b> contain Web Access to DICOM Persistent Object (WADO) references to DICOM objects by including a linkHtml element where @href is a valid WADO URL and the text content of linkHtml is the visible text of the hyperlink (CONF:1198-31062)</li><li>All sections defined in the DIR Section Type Codes table <b>SHALL</b> be top-level sections (CONF:1198-31211)</li><li><b>SHALL</b> contain at least one text element or one or more component elements (CONF:1198-31212)</li></ol></li></ol></li></ol></li></ol> 
+</li>
+<li>The physician requesting the imaging procedure (ClinicalDocument/participant[@typeCode=REF]/associatedEntity), if present, <b>SHOULD</b> also be recorded as an informationRecipient, unless in the local setting another physician (such as the attending physician for an inpatient) is known to be the appropriate recipient of the report (CONF:1198-8412)</li>
+<li>When no referring physician is present, as in the case of self-referred screening examinations allowed by law, the intendedRecipient <b>MAY</b> be absent. The intendedRecipient <b>MAY</b> also be the health chart of the patient, in which case the receivedOrganization <b>SHALL</b> be the scoping organization of that chart (CONF:1198-8413)</li>
+<li>The DICOM Object Catalog section (templateId 2.16.840.1.113883.10.20.6.1.1), if present, <b>SHALL</b> be the first section in the document Body (CONF:1198-31206)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/GeneralHeaderConstraints.html">General Header Constraints</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.1.1</tt>)</li>
+<li><b>SHALL</b> conform to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/USRealmHeader2.html">US Realm Header2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.1.1:2015-08-01</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>realmCode</b></tt><tt><b>/@code</b>="US" </tt> (CONF:1198-16791)
+<p>realmCode</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>typeId</b></tt> (CONF:5361, R2.1=CONF:1198-5361)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>id</b></tt> (CONF:1198-30932)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-14833), which <b>SHOULD</b> be selected from ValueSet<tt> LOINC Imaging Document Codes 1.3.6.1.4.1.12009.10.2.5</tt><b> DYNAMIC</b> (CONF:1198-14834)
+<p>Preferred code is 18748-4 LOINC Diagnostic Imaging Report</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1198-5254)
+<p>Note: The title can either be a locally defined name or the displayName corresponding to clinicalDocument/code</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:5256, R2.1=CONF:1198-5256) <p><lines><i>Signifies the document creation time, when the document first came into being. Where the CDA document is a transform from an original document in some other format, the ClinicalDocument.effectiveTime is the time the original document is created. The time when the transform occurred is not currently represented in CDA</i></lines></p>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>confidentialityCode</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> HL7 BasicConfidentialityKind 2.16.840.1.113883.1.11.16926</tt><b> STATIC</b> 2010-04-21 (CONF:5259, R2.1=CONF:1198-5259)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>languageCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Language 2.16.840.1.113883.1.11.11526</tt><b> DYNAMIC</b> (CONF:5372, R2.1=CONF:1198-5372, DSTU:806)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>setId</b></tt> (CONF:5261, R2.1=CONF:1198-5261)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>versionNumber</b></tt> (CONF:5264, R2.1=CONF:1198-5264)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>recordTarget</b></tt> such that it  (CONF:1198-5266) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>patientRole</b></tt> such that it  (CONF:1198-5267) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5268, R2.1=CONF:1198-5268)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5271, R2.1=CONF:1198-5271)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5280, R2.1=CONF:1198-5280)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>providerOrganization</b></tt> such that it  (CONF:5416, R2.1=CONF:1198-5416) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5417, R2.1=CONF:1198-5417)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5419, R2.1=CONF:1198-5419)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5420, R2.1=CONF:1198-5420)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5422, R2.1=CONF:1198-5422)</li><li>The id <b>SHOULD</b> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:9996, R2.1=CONF:1198-16820)</li></ol></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>patient</b></tt> such that it  (CONF:1198-5283) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5284, CONF:10411, R2.1=CONF:1198-5284, DSTU:808)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>administrativeGenderCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Administrative Gender (HL7 V3) 2.16.840.1.113883.1.11.1</tt><b> DYNAMIC</b> (CONF:6394, R2.1=CONF:1198-6394)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>maritalStatusCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> HL7 Marital Status 2.16.840.1.113883.1.11.12212</tt><b> DYNAMIC</b> (CONF:5303, R2.1=CONF:1198-5303)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>religiousAffiliationCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> HL7 Religious Affiliation 2.16.840.1.113883.1.11.19185</tt><b> DYNAMIC</b> (CONF:5317, R2.1=CONF:1198-5317)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>sDTCRaceCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Race 2.16.840.1.113883.1.11.14914</tt><b> DYNAMIC</b> (CONF:7263, R2.1=CONF:1198-7263)<p><lines><i>Note: The sdtc:raceCode is only used to record additional values when the patient has indicated multiple races or additional race detail beyond the five categories required for Meaningful Use Stage 2. The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the additional raceCode elements.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>raceCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Race Category Excluding Nulls 2.16.840.1.113883.3.2074.1.1.3</tt><b> DYNAMIC</b> (CONF:1198-5322)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>ethnicGroupCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> EthnicityGroup 2.16.840.1.114222.4.11.837</tt><b> DYNAMIC</b> (CONF:1198-5323)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>birthTime</b></tt> (CONF:1198-5298)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>sDTCEthnicGroupCode</b> (ethnicGroupCode)</tt> (1198-32901), which <b>SHALL</b> be selected from ValueSet<tt> Detailed Ethnicity 2.16.840.1.114222.4.11.877</tt><b> STATIC</b></li><li><b>MAY</b> contain zero or more [0..*] <tt><b>guardian</b></tt> such that it  (CONF:1198-5325) <ol><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>addr</b></tt> (CONF:5359, CONF:10413, R2.1=CONF:1198-5359)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Personal And Legal Relationship Role Type 2.16.840.1.113883.11.20.12.1</tt><b> DYNAMIC</b> (CONF:1198-5326)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>telecom</b></tt> (CONF:1198-5382)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>guardianPerson</b></tt> such that it  (CONF:5385, R2.1=CONF:1198-5385) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5386, R2.1=CONF:1198-5386)</li><li>The content of name <b>SHALL</b> be a conformant US Realm Person Name (PTN.US.FIELDED) (2.16.840.1.113883.10.20.22.5.1.1) (CONF:10414, R2.1=CONF:1198-5386)</li></ol></li><li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>languageCommunication</b></tt> such that it  (CONF:1198-5406) <ol><li><b>MAY</b> contain zero or one [0..1] <tt><b>modeCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> HL7 LanguageAbilityMode 2.16.840.1.113883.1.11.12249</tt><b> STATIC</b> 1 (CONF:5409, R2.1=CONF:1198-5409)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>proficiencyLevelCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> LanguageAbilityProficiency 2.16.840.1.113883.1.11.12199</tt><b> DYNAMIC</b> (CONF:9965, R2.1=CONF:1198-9965)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>languageCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Language 2.16.840.1.113883.1.11.11526</tt><b> DYNAMIC</b> (CONF:1198-5407)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>preferenceInd</b></tt> (CONF:1198-5414)</li></ol></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>birthplace</b></tt> such that it  (CONF:1198-5395) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>place</b></tt> such that it  (CONF:1198-5396) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>addr</b></tt> (CONF:5397, R2.1=CONF:1198-5397)</li><li>If country is US, this addr <b>SHALL</b> contain exactly one [1..1] state, which <b>SHALL</b> be selected from ValueSet StateValueSet 2.16.840.1.113883.3.88.12.80.1 DYNAMIC (CONF:1198-5402). Note: A nullFlavor of 'UNK' may be used if the state is unknown. (CONF:1198-5402)</li></ol></li></ol></li></ol></li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>dataEnterer</b></tt> such that it  (CONF:1198-5441) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-5442) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5443, R2.1=CONF:1198-5443)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5460, R2.1=CONF:1198-5460)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5466, R2.1=CONF:1198-5466)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:1198-32173)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedPerson</b></tt> such that it  (CONF:5469, R2.1=CONF:1198-5469) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5470, R2.1=CONF:1198-5470)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>author</b></tt> such that it  (CONF:1198-5444) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>time</b></tt> (CONF:5445, R2.1=CONF:1198-5445) <p><lines><i>The content SHALL be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:16866).</i></lines></p><p><lines><i>The content SHALL be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:16866).</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedAuthor</b></tt> such that it  (CONF:1198-5448) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5449, R2.1=CONF:1198-5449)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5452, R2.1=CONF:1198-5452)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5428, R2.1=CONF:1198-5428)</li><li>contain zero or one [0..1] <tt><b>code</b></tt><ol><li>Since the assignedAuthor is an assignedPerson, the assignedAuthor <b>SHOULD</b> contain zero or one [0..1] code, and this code, if present, <b>SHALL</b> contain exactly one [1..1] @code, which <b>SHOULD</b> be selected from ValueSet Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066 DYNAMIC (CONF:1198-16788)</li></ol></li><li>contain zero or one [0..1] <tt><b>assignedAuthoringDevice</b></tt> such that it  <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>manufacturerModelName</b></tt> (CONF:16784, R2.1=CONF:1198-16784)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>softwareName</b></tt> (CONF:16785, R2.1=CONF:1198-16785)</li></ol></li><li>contain zero or one [0..1] <tt><b>assignedPerson</b></tt> such that it  <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:16789, R2.1=CONF:1198-16789)</li></ol></li><li>Since the assignedAuthor is an assignedPerson, the assignedAuthor <b>SHOULD</b> contain zero or one [0..1] code (CONF:1198-16787)</li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>custodian</b></tt> such that it  (CONF:1198-5519) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedCustodian</b></tt> such that it  (CONF:5520, R2.1=CONF:1198-5520) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>representedCustodianOrganization</b></tt> such that it  (CONF:5521, R2.1=CONF:1198-5521) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5522, R2.1=CONF:1198-5522)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>name</b></tt> (CONF:5524, R2.1=CONF:1198-5524)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>telecom</b></tt> (CONF:5525, R2.1=CONF:1198-5525)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>addr</b></tt> (CONF:5559, R2.1=CONF:1198-5559)</li><li>The id <b>SHOULD</b> include zero or one [0..1] @root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16822, R2.1=CONF:1198-16822)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>informationRecipient</b></tt> such that it  (CONF:1198-5565) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>intendedRecipient</b></tt> such that it  (CONF:1198-5566) <ol><li><b>MAY</b> contain zero or more [0..*] <tt><b>id</b></tt> (CONF:1198-32399)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>informationRecipient</b></tt> such that it  (CONF:5568, R2.1=CONF:1198-5567) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5470, R2.1=CONF:1198-5568)</li></ol></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>receivedOrganization</b></tt> such that it  (CONF:5577, R2.1=CONF:1198-5577) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>name</b></tt> (CONF:5578, R2.1=CONF:1198-5578)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>legalAuthenticator</b></tt> such that it  (CONF:1198-5579) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>time</b></tt> (CONF:5580, R2.1=CONF:1198-5580)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>signatureCode</b></tt> (CONF:5583, R2.1=CONF:1198-5583)<tt><b>/@code</b>="S" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.89 Participationsignature</tt>) (CONF:5584, R2.1=CONF:1198-5584)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>sDTCSignatureText</b></tt> (CONF:1198-30810)<p><lines><i>sdtc:signatureText
+The sdtc:signatureText extension provides a location in CDA for a textual or multimedia depiction of the signature by which the participant endorses and accepts responsibility for his or her participation in the Act as specified in the Participation.typeCode. Details of what goes in the field are described in the HL7 CDA Digital Signature Standard balloted in Fall of 2013.
+
+Note: The signature can be represented either inline or by reference according to the ED data type. Typical cases for CDA are:
+
+1) Electronic signature: this attribute can represent virtually any electronic signature scheme.
+
+2) Digital signature: this attribute can represent digital signatures by reference to a signature data block that is constructed in accordance to a digital signature standard, such as XML-DSIG, PKCS#7, PGP, etc.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:5585, R2.1=CONF:1198-5585) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5586, R2.1=CONF:1198-5586)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:17000, R2.1=CONF:1198-17000)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5589, R2.1=CONF:1198-5589)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5595, R2.1=CONF:1198-5595)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedPerson</b></tt> such that it  (CONF:5597, R2.1=CONF:1198-5597) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5598, R2.1=CONF:1198-5598)</li></ol></li><li>The id <b>MAY</b> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16823, R2.1=CONF:1198-16823)</li></ol></li><li>time content <b>SHALL</b> be a conformant US Realm Date and Time (DTM.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4) (CONF:1198-29402)</li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>authenticator</b></tt> such that it  (CONF:1198-5607) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>time</b></tt> (CONF:5608, R2.1=CONF:1198-5608)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>signatureCode</b></tt> (CONF:5610, R2.1=CONF:1198-5610)<tt><b>/@code</b>="S" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.89 Participationsignature</tt>) (CONF:5611, R2.1=CONF:1198-5611)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>sDTCSignatureText</b></tt> (CONF:1198-30811)<p><lines><i>The sdtc:signatureText extension provides a location in CDA for a textual or multimedia depiction of the signature by which the participant endorses and accepts responsibility for his or her participation in the Act as specified in the Participation.typeCode. Details of what goes in the field are described in the HL7 CDA Digital Signature Standard balloted in Fall of 2013.
+
+Note: The signature can be represented either inline or by reference according to the ED data type. Typical cases for CDA are:
+
+1) Electronic signature: this attribute can represent virtually any electronic signature scheme.
+
+2) Digital signature: this attribute can represent digital signatures by reference to a signature data block that is constructed in accordance to a digital signature standard, such as XML-DSIG, PKCS#7, PGP, etc.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:5612, R2.1=CONF:1198-5612) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:5613, R2.1=CONF:1198-5613)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:16825, R2.1=CONF:1198-16825), which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:16826, R2.1=CONF:1198-16826)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:5616, R2.1=CONF:1198-5616)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>telecom</b></tt> (CONF:5622, R2.1=CONF:1198-5622)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedPerson</b></tt> such that it  (CONF:5624, R2.1=CONF:1198-5624) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:5625, R2.1=CONF:1198-5625)</li></ol></li><li>The id <b>SHOULD</b> contain zero or one [0..1] @root="2.16.840.1.113883.4.6" National Provider Identifier (CONF:16824, R2.1=CONF:1198-16824)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>informant</b></tt> such that it  (CONF:1198-8001, CONF:1198-31355) <ol><li>contain zero or one [0..1] <tt><b>assignedEntity</b></tt> such that it  <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9945, R2.1=CONF:1198-9945)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:1198-32174)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>addr</b></tt> (CONF:1198-8220)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedPerson</b></tt> such that it  (CONF:8221, R2.1=CONF:1198-8221) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:8222, CONF:10420, R2.1=CONF:1198-8222)</li></ol></li></ol></li><li>contain zero or one [0..1] <tt><b>relatedEntity</b></tt> such that it  <ol><li>contain  [0..0] <tt><b>addr</b></tt></li><li>contain  [0..0] <tt><b>relatedPerson</b></tt>, where its type is CDA Person</li></ol></li><li><b>SHALL</b> satisfy: contain exactly one [1..1] assignedEntity OR exactly one [1..1] relatedEntity (CONF:1198-8002, CONF:1198-31356)</li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>inFulfillmentOf</b></tt> such that it  (CONF:1198-9952) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>order</b></tt> such that it  (CONF:9953, R2.1=CONF:1198-9953) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9954, R2.1=CONF:1198-9954)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>componentOf</b></tt> such that it  (CONF:1198-9955) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>encompassingEncounter</b></tt> such that it  (CONF:1198-9956) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9959, R2.1=CONF:1198-9959)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:9958, R2.1=CONF:1198-9958)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>participant</b></tt> such that it  (CONF:1198-10003) <ol><li><b>MAY</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:10004, R2.1=CONF:1198-10004)</li><li><b>SHALL</b> contain associatedEntity/associatedPerson AND/OR associatedEntity/scopingOrganization (CONF:1198-10006)</li><li>When participant/@typeCode is IND, associatedEntity/@classCode <b>SHOULD</b> be selected from ValueSet 2.16.840.1.113883.11.20.9.33 INDRoleclassCodes STATIC 2011-09-30 (CONF:1198-10007)</li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>documentationOf</b></tt> such that it  (CONF:1198-14835) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>serviceEvent</b></tt> such that it  (CONF:1198-14836) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:14837, R2.1=CONF:1198-14837)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>performer</b></tt> such that it  (CONF:1198-14839) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt> (CONF:14840, R2.1=CONF:1198-14840)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>functionCode</b></tt> (CONF:1198-16818), which <b>SHOULD</b> be selected from ValueSet<tt> ParticipationFunction 2.16.840.1.113883.1.11.10267</tt><b> STATIC</b> 2014-09-01 (CONF:1198-32889)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-14841) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14846, R2.1=CONF:1198-14846)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:1198-14842)</li></ol></li></ol></li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>authorization</b></tt> such that it  (CONF:1198-16792) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>consent</b></tt> such that it  (CONF:16793, R2.1=CONF:1198-16793) <ol><li><b>MAY</b> contain zero or more [0..*] <tt><b>id</b></tt> (CONF:16794, R2.1=CONF:1198-16794)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:16795, R2.1=CONF:1198-16795)<p><lines><i>The type of consent (e.g., a consent to perform the related serviceEvent) is conveyed in consent/code.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:16797, R2.1=CONF:1198-16797)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:16798, R2.1=CONF:1198-16798)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>participant</b></tt> such that it  (CONF:1198-8414) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>associatedEntity</b></tt> such that it  (CONF:1198-31198) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>associatedPerson</b></tt> such that it  (CONF:1198-31199) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>name</b></tt> (CONF:1198-31200)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>inFulfillmentOf</b></tt> such that it  (CONF:1198-30936) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>order</b></tt> such that it  (CONF:1198-30937) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-30938)<p><lines><i>Note: DICOM Accession Number in the DICOM imaging and report data</i></lines></p></li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>documentationOf</b></tt> such that it  (CONF:1198-8416) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>serviceEvent</b></tt> such that it  (CONF:1198-8431) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-8430)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>id</b></tt> (CONF:1198-8418)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-8419)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>performer</b></tt>, where its type is <xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref> (CONF:1198-8422)</li><li>The value of serviceEvent/code <b>SHALL NOT</b> conflict with the ClininicalDocument/code. When transforming from DICOM SR documents that do not contain a procedure code, an appropriate nullFlavor <b>SHALL</b> be used on serviceEvent/code (CONF:1198-8420)</li></ol></li></ol> 
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>relatedDocument</b></tt> such that it  (CONF:1198-8432) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>parentDocument</b></tt> such that it  (CONF:1198-32089) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>id</b></tt> (CONF:1198-32090)</li></ol></li><li>When a Diagnostic Imaging Report has been transformed from a DICOM SR document, relatedDocument/@typeCode <b>SHALL</b> be XFRM, and relatedDocument/parentDocument/id <b>SHALL</b> contain the SOP Instance UID of the original DICOM SR document (CONF:1198-8433)</li></ol> 
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>componentOf</b></tt> such that it  (CONF:1198-30939) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>encompassingEncounter</b></tt> such that it  (CONF:1198-30940) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-30941)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-30943)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>responsibleParty</b></tt> such that it  (CONF:1198-30945) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-30946) <ol><li><b>SHOULD</b> contain zero or one [0..1] assignedPerson OR contain zero or one [0..1] representedOrganization (CONF:1198-30947)</li></ol></li></ol></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>encounterParticipant</b></tt>, where its type is <xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref> (CONF:1198-30948)</li><li>id In the case of transformed DICOM SR documents, an appropriate null flavor <b>MAY</b> be used if the id is unavailable (CONF:1198-30942)</li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain  [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-30696, CONF:1198-30697)
+<ol>
+<li>Conforms to <xref href="../FindingsSection.dita">Findings Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.6.1.2</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..1] <tt><b>component</b></tt> such that it  (CONF:1198-30698, CONF:1198-30699)
+<ol>
+<li>Conforms to <xref href="../DICOMObjectCatalogSection.dita">DICOM Object Catalog Section</xref> (templateId: <tt>2.16.840.1.113883.10.20.6.1.1</tt>)</li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>component</b></tt> such that it  (CONF:1198-14907) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>structuredBody</b></tt> such that it  (CONF:1198-30695) <ol><li><b>MAY</b> contain zero or more [0..*] <tt><b>component</b></tt> such that it  (CONF:1198-31055) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>section</b></tt> such that it  (CONF:1198-31056) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-31057), which <b>SHOULD</b> be selected from ValueSet<tt> DIRSectionTypeCodes 2.16.840.1.113883.11.20.9.59</tt><b> STATIC</b> (CONF:1198-31207)<p><lines><i>For sections listed in the DIR Section Type Codes table, the code element must contain a LOINC code or DCM code for sections that have no LOINC equivalent.
+Note: The section/code SHOULD be selected from LOINC or DICOM for sections not listed in the DIR Section Type Codes table.</i></lines></p></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>title</b></tt> (CONF:1198-31058)<p><lines><i>There is no equivalent to section/title in DICOM SR, so for a CDA to SR transformation, the section/code will be transferred and the title element will be dropped.</i></lines></p></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>text</b></tt> (CONF:1198-31059)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>subject</b></tt> such that it  (CONF:1198-31215) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>relatedSubject</b></tt>, where its type is <xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref> (CONF:1198-31216)</li></ol></li><li><b>MAY</b> contain zero or more [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31217) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>observerContext</b></tt>, where its type is <xref href="../ObserverContext.dita">Observer Context</xref> (CONF:1198-31218)</li></ol></li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../ProcedureContext.dita">Procedure Context</xref> (CONF:1198-31213, CONF:1198-31214)<p><lines><i>If the service context of a section is different from the value specified in documentationOf/serviceEvent, then the section SHALL contain one or more entries containing Procedure Context (templateId 2.16.840.1.113883.10.20.6.2.5), which will reset the context for any clinical statements nested within those elements</i></lines></p></li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../TextObservation.dita">Text Observation</xref> (CONF:1198-31357, CONF:1198-31358)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../CodeObservations.dita">Code Observations</xref> (CONF:1198-31359, CONF:1198-31360)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref> (CONF:1198-31361, CONF:1198-31362)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt>, where its type is <xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref> (CONF:1198-31363, CONF:1198-31364)</li><li>If clinical statements are present, the section/text <b>SHALL</b> represent faithfully all such statements and <b>MAY</b> contain additional text (CONF:1198-31060)</li><li>All text elements <b>SHALL</b> contain content. Text elements <b>SHALL</b> contain PCDATA or child elements (CONF:1198-31061)</li><li>The text elements (and their children) <b>MAY</b> contain Web Access to DICOM Persistent Object (WADO) references to DICOM objects by including a linkHtml element where @href is a valid WADO URL and the text content of linkHtml is the visible text of the hyperlink (CONF:1198-31062)</li><li>All sections defined in the DIR Section Type Codes table <b>SHALL</b> be top-level sections (CONF:1198-31211)</li><li><b>SHALL</b> contain at least one text element or one or more component elements (CONF:1198-31212)</li></ol></li></ol></li></ol></li></ol> 
+</li>
+<li>typeId <b>SHALL</b> contain exactly one [1..1] @root="2.16.840.1.113883.1.3" (CONF:5250, R2.1=CONF:1198-5250)</li>
+<li>typeId <b>SHALL</b> contain exactly one [1..1] @extension="POCD_HD000040" (CONF:5251, R2.1=CONF:1198-5251)</li>
+<li>id <b>SHALL</b> be a globally unique identifier for the document (CONF:9991, R2.1=CONF:1198-9991)</li>
+<li>code <b>SHALL</b> specify the particular kind of document (e.g. History and Physical, Discharge Summary, Progress Note). (CONF:9992, R2.1=CONF:1198-9992)</li>
+<li>If setId is present versionNumber <b>SHALL</b> be present (CONF:6380, R2.1=CONF:1198-6380)</li>
+<li>If versionNumber is present setId <b>SHALL</b> be present (CONF:6387, R2.1=CONF:1198-6387)</li>
+<li>The physician requesting the imaging procedure (ClinicalDocument/participant[@typeCode=REF]/associatedEntity), if present, <b>SHOULD</b> also be recorded as an informationRecipient, unless in the local setting another physician (such as the attending physician for an inpatient) is known to be the appropriate recipient of the report (CONF:1198-8412)</li>
+<li>When no referring physician is present, as in the case of self-referred screening examinations allowed by law, the intendedRecipient <b>MAY</b> be absent. The intendedRecipient <b>MAY</b> also be the health chart of the patient, in which case the receivedOrganization <b>SHALL</b> be the scoping organization of that chart (CONF:1198-8413)</li>
+<li>The DICOM Object Catalog section (templateId 2.16.840.1.113883.10.20.6.1.1), if present, <b>SHALL</b> be the first section in the document Body (CONF:1198-31206)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::DiagnosticImagingReport2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::clinicaldocument[cda:templateId/@root = 2.16.840.1.113883.10.20.22.1.1]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1198-14833</entry><entry> null</entry></row> 
+<row><entry>component2</entry><entry>1..1</entry><entry>SHALL</entry><entry>Component</entry><entry>CONF:1198-14907</entry><entry> </entry></row> 
+<row><entry>componentOf</entry><entry>0..1</entry><entry>MAY</entry><entry>ComponentOf</entry><entry>CONF:1198-30939</entry><entry> </entry></row> 
+<row><entry>dICOMObjectCatalogSection</entry><entry>0..1</entry><entry>SHOULD</entry><entry>DICOMObjectCatalogSection</entry><entry>CONF:1198-30698, CONF:1198-30699</entry><entry> </entry></row> 
+<row><entry>documentationOf</entry><entry>1..1</entry><entry>SHALL</entry><entry>DocumentationOf</entry><entry>CONF:1198-8416</entry><entry> </entry></row> 
+<row><entry>findingsSection</entry><entry>1..1</entry><entry>SHALL</entry><entry>FindingsSection</entry><entry>CONF:1198-30696, CONF:1198-30697</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..1</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:1198-30932</entry><entry> </entry></row> 
+<row><entry>informant</entry><entry>0..0</entry><entry>SHALL</entry><entry>Informant12</entry><entry>CONF:1198-8410</entry><entry> </entry></row> 
+<row><entry>informationRecipient</entry><entry>0..*</entry><entry>MAY</entry><entry>InformationRecipient</entry><entry>CONF:1198-8411</entry><entry> </entry></row> 
+<row><entry>inFulfillmentOf</entry><entry>0..*</entry><entry>MAY</entry><entry>InFulfillmentOf</entry><entry>CONF:1198-30936</entry><entry> </entry></row> 
+<row><entry>participant</entry><entry>0..1</entry><entry>MAY</entry><entry>Participant</entry><entry>CONF:1198-8414</entry><entry> </entry></row> 
+<row><entry>relatedDocument</entry><entry>0..1</entry><entry>MAY</entry><entry>RelatedDocument</entry><entry>CONF:1198-8432</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../DICOMObjectCatalogSection.dita">DICOM Object Catalog Section</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../FindingsSection.dita">Findings Section</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 infrastructure/cda/CDA_SDTC.xsd">
+  <realmCode code="US"/>
+  <realmCode code="US"/>
+  <realmCode code="US"/>
+  <typeId root="2.16.840.1.113883.1.3"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.5" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.5" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.5" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1"/>
+  <templateId root="2.16.840.1.113883.10.20.22.1.1" extension="2015-08-01"/>
+  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+  <title>org.openhealthtools.mdht.uml.cda.consol.impl. Diagnostic Imaging Report2 Impl</title>
+  <effectiveTime/>
+  <confidentialityCode codeSystem="2.16.840.1.113883.5.25" codeSystemName="ConfidentialityCode"/>
+  <languageCode code="Code forlanguageCode"/>
+  <setId root="MDHT" extension="7c307f30-8564-476f-828d-7ec351048b6e"/>
+  <versionNumber value="1"/>
+  <recordTarget>
+    <typeId root="2.16.840.1.113883.1.3"/>
+    <patientRole/>
+  </recordTarget>
+  <author>
+    <typeId root="2.16.840.1.113883.1.3"/>
+    <time/>
+    <assignedAuthor/>
+  </author>
+  <informant/>
+  <custodian/>
+  <informationRecipient/>
+  <participant>
+    <associatedEntity>
+      <associatedPerson/>
+    </associatedEntity>
+  </participant>
+  <inFulfillmentOf>
+    <order>
+      <id root="MDHT" extension="10159033"/>
+    </order>
+  </inFulfillmentOf>
+  <documentationOf>
+    <serviceEvent classCode="ACT">
+      <id root="MDHT" extension="412248167"/>
+      <code code="633323260"/>
+      <performer typeCode="PRF">
+        <templateId root="2.16.840.1.113883.10.20.6.2.1" extension="2014-06-09"/>
+        <templateId root="2.16.840.1.113883.10.20.6.2.1"/>
+      </performer>
+    </serviceEvent>
+  </documentationOf>
+  <relatedDocument>
+    <parentDocument>
+      <text>Text Value</text>
+    </parentDocument>
+  </relatedDocument>
+  <componentOf>
+    <encompassingEncounter>
+      <id root="MDHT" extension="795170747"/>
+      <responsibleParty/>
+      <encounterParticipant typeCode="ATND">
+        <templateId root="2.16.840.1.113883.10.20.6.2.2" extension="2014-06-09"/>
+        <templateId root="2.16.840.1.113883.10.20.6.2.2"/>
+      </encounterParticipant>
+    </encompassingEncounter>
+  </componentOf>
+  <component>
+    <structuredBody>
+      <component/>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.6.1.2"/>
+          <id root="MDHT" extension="1072922326"/>
+          <code code="1019510532"/>
+          <title>TEXT FOR TITLE</title>
+          <text>WbqxZ mfdodmwv QZvxeu ShYyZ fPMBgOYae VJtKkF bNxSh fNbMU ukvivZEx INETReZIr hZUtRuQc ImBxoBpn eiMJmXtUh soLwgRfws CybVSY 
+VafZQs zdXJNqS dkFyyWgNr KfaTIhd nUzbuYq LqqcIml nFQOM SDPmxxs VIsEIOuW NzvHBLMR bPnLigf adbQW masOPrwUs KGuRNlZbV PbqYf sRQCnB lFFApgGn mSned WEBVjZ sjoUlj vGoWNPCUh XMDjuGpwU YQaOOzGw PQNoi wOeIV GtQihQiD ysvyJlg BCMAJe BnBqXG wJBhYKE nWUDAWBth TueuU 
+</text>
+          <confidentialityCode code="1398694794"/>
+          <languageCode code="Code forlanguageCode"/>
+        </section>
+      </component>
+      <component>
+        <section>
+          <typeId root="2.16.840.1.113883.1.3"/>
+          <templateId root="2.16.840.1.113883.10.20.6.1.1"/>
+          <id root="MDHT" extension="905187188"/>
+          <code code="121181" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DCM" displayName="Dicom Object Catalog"/>
+          <title>Dicom Object Catalog</title>
+          <text>lwNDfah bOOoachY GZIEZyGl JtHXEEvC gBxAWqMP USdMRFdZA ghajxd EslEuGW ZMVmMBqq kqkzeWQIL VoufVTjAK lygYb oszTlNv tEreYqq iMCqZhx XIZycx rbwwvt CVmgqBt ArXJQqzm gmUpnT FytOIh ERugKtUX uEybeYRWN uzVxrT 
+qSHrGRN tfmxlc xMIqeguVZ TnLFHbqI WqYIMr VtXNbT OXWARR xxEollxkg bEcdnX huyzTp YOZGFGorm CBhwxt kvqOI HobANznY sNbmkk VkBtOyy JqAoiVW LZBvWWTp eQbgUxt MievrUs LDpuI bVENmx yFgoJAg XlLUGtjkl skmPxGhlt GmqGstV RafcBFwak lgEUTZAXI Yrhmm rYeXmqd rddEps uSyBpmXS wkFNQ SuYwrv puCVtriR VYMbWWaEf HDbCIcKqu VmFea ixAmOp zuLDZMhzk oFDTnaG iIdpqP TVfjL DVABanM DopYDfHe BCAoYaw bLRqpZiLJ 
+mSRcX qnObeEHsq QDMfA xRfSpa VQkloE HCumQZgs VmOoD iButSM LDwnXvL YsghUhq JTMYQii qPsuy hActRe 
+IhktnbzzC pMIkiByi cehtZYhQ egGhXl uzBAOp HzRtvDRV kltln LhkIwBF UFmkTUS hRjTPll cjgMH YAOMNZTl bUeqE QriBdqxk PfokMIPJQ nmYuzITL ZotARzbxD ARylHOh XUzWLx KfOvsVnt TLkfCEQao RibJT dYvOUStTt WfKTDArex 
+</text>
+          <confidentialityCode code="1280937715"/>
+          <languageCode code="Code forlanguageCode"/>
+          <entry>
+            <act classCode="ACT" moodCode="EVN">
+              <typeId root="2.16.840.1.113883.1.3"/>
+              <templateId root="2.16.840.1.113883.10.20.6.2.6"/>
+              <id root="MDHT" extension="72400276"/>
+              <code code="113014" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DCM"/>
+              <text>Text Value</text>
+              <effectiveTime>
+                <low value="2017"/>
+                <high value="2017"/>
+              </effectiveTime>
+              <languageCode code="Code forlanguageCode"/>
+              <entryRelationship>
+                <act classCode="ACT" moodCode="EVN">
+                  <templateId root="2.16.840.1.113883.10.20.22.4.63"/>
+                  <code code="113015" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DCM"/>
+                </act>
+              </entryRelationship>
+            </act>
+          </entry>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::DiagnosticImagingReport
+</p>
+<p id="DiagnosticImagingReport" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8404, CONF:10042 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.1.5"
+</li><li>Consol Diagnostic Imaging Report This code SHOULD contain zero or one [0..1] @code="18748-4" Diagnostic Imaging Report (CodeSystem: LOINC2.16.840.1.113883.6.1) (CONF:8409)
+</li><li>Consol Diagnostic Imaging Report The DICOM Object Catalog section (templateId 2.16.840.1.113883.10.20.6.1.1), if present, SHALL be the first section in the document Body
+</li><li>Consol Diagnostic Imaging Report With the exception of the DICOM Object Catalog (templateId 2.16.840.1.113883.10.20.6.1.1), all sections within the Diagnostic Imaging Report content SHOULD contain a title element (CONF:9409)
+</li><li>Consol Diagnostic Imaging Report The section/code SHOULD be selected from LOINC or DICOM for sections not listed in the DIR Section Type Codes table (CONF:9410)
+</li><li>Consol Diagnostic Imaging Report All sections defined in the DIR Section Type Codes table SHALL be top-level sections (CONF:9411)
+</li><li>Consol Diagnostic Imaging Report A section element SHALL have a code element which SHALL contain a LOINC code or DCM code for sections which have no LOINC equivalent. This only applies to sections described inthe DIR Section Type Codes table (CONF:9412)
+</li><li>Consol Diagnostic Imaging Report Apart from the DICOM Object Catalog (templateId 2.16.840.1.113883.10.20.6.1.1), all other instances of section SHALL contain at least one text element or one or more component elements (CONF:9413)
+</li><li>Consol Diagnostic Imaging Report All text or component elements SHALL contain content. text elements SHALL contain PCDATA or child elements, and component elements SHALL contain child elements (CONF:9414)
+</li><li>Consol Diagnostic Imaging Report The text elements (and their children) MAY contain Web Access to DICOM Persistent Object (WADO) references to DICOM objects by including a linkHtml element where @href is a valid WADO URL and the text content of linkHtml is the visible text of the hyperlink
+</li><li>Consol Diagnostic Imaging Report If clinical statements are present, the section/text SHALL represent faithfully all such statements and MAY contain additional text
+</li><li>SHALL conform to General Header Constraints template (templateId: 2.16.840.1.113883.10.20.22.1.1)
+</li><li>Consol Diagnostic Imaging Report SHALL contain exactly one [1..1] code (CONF:14833), which SHALL be selected from ValueSet DIRDocumentTypeCodes 2.16.840.1.113883.11.20.9.32 DYNAMIC (CONF:14834)
+</li><li>Consol Diagnostic Imaging Report SHALL contain exactly one [1..1] id (CONF:5363)
+</li><li>Consol Diagnostic Imaging Report SHALL contain  [0..0] informant such that it  (CONF:8410) Conforms to Informant12 from CDA
+</li><li>Consol Diagnostic Imaging Report MAY contain  [0..*] informationRecipient such that it  (CONF:8411) Conforms to Information Recipient from CDA
+</li><li>Consol Diagnostic Imaging Report MAY contain zero or one [0..1] participant, where its type is Participant (CONF:8414)
+</li><li>Consol Diagnostic Imaging Report MAY contain zero or one [0..1] inFulfillmentOf, where its type is In Fulfillment Of
+</li><li>Consol Diagnostic Imaging Report SHALL contain exactly one [1..1] documentationOf, where its type is Documentation Of (CONF:8416)
+</li><li>Consol Diagnostic Imaging Report MAY contain zero or one [0..1] relatedDocument, where its type is Related Document (CONF:8432)
+</li><li>Consol Diagnostic Imaging Report MAY contain zero or one [0..1] componentOf, where its type is Component Of (CONF:8434)
+</li><li>Consol Diagnostic Imaging Report SHALL contain  [1..1] component such that it  (CONF:9484) Conforms to Findings Section (templateId: 2.16.840.1.113883.10.20.6.1.2)
+</li><li>Consol Diagnostic Imaging Report SHOULD contain  [0..1] component such that it  (CONF:15141) Conforms to DICOM Object Catalog Section (templateId: 2.16.840.1.113883.10.20.6.1.1)
+</li><li>Consol Participant SHALL contain exactly one [1..1] associatedEntity, where its type is Associated Entity (CONF:8415)
+</li><li>Consol Associated Entity SHALL contain exactly one [1..1] associatedPerson, where its type is Person (CONF:8415)
+</li><li>Consol Person SHALL contain exactly one [1..1] name (CONF:9406)
+</li><li>Consol Documentation Of SHALL contain exactly one [1..1] serviceEvent, where its type is Service Event4 (CONF:8431)
+</li><li>Consol Service Event4 SHALL contain exactly one [1..1] @classCode="ACT" Act (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8430)
+</li><li>Consol Service Event4 SHALL contain exactly one [1..1] code (CONF:8419)
+</li><li>Consol Service Event4 SHOULD contain zero or more [0..*] id (CONF:8418)
+</li><li>Consol Service Event4 SHOULD contain zero or more [0..*] performer, where its type is Physician Reading Study Performer (CONF:8422)
+</li><li>Consol Related Document The relatedDocument/id/@root attribute SHALL be a syntactically correct OID, and SHALL NOT be a UUID. (CONF:10030)
+</li><li>Consol Component Of SHALL contain exactly one [1..1] encompassingEncounter, where its type is Encompassing Encounter7 (CONF:8449)
+</li><li>Consol Encompassing Encounter7 The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). SHALL be precise to the day (CONF:10133, CONF:10127)
+</li><li>Consol Encompassing Encounter7 The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). SHOULD be precise to the minute (CONF:10133, CONF:10128)
+</li><li>Consol Encompassing Encounter7 The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). MAY be precise to the second (CONF:10133, CONF:10129)
+</li><li>Consol Encompassing Encounter7 The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). If more precise than day, SHOULD include time-zone offset (CONF:10133, CONF:10130)
+</li><li>Consol Encompassing Encounter7 SHALL contain exactly one [1..1] effectiveTime (CONF:8437)
+</li><li>Consol Encompassing Encounter7 SHALL contain at least one [1..*] id (CONF:8435)
+</li><li>Consol Encompassing Encounter7 SHOULD contain zero or one [0..1] encounterParticipant, where its type is Physicianof Record Participant (CONF:8448)
+</li><li>Consol Encompassing Encounter7 MAY contain zero or one [0..1] responsibleParty, where its type is Responsible Party (CONF:8438)
+</li><li>Consol Responsible Party SHALL contain exactly one [1..1] assignedEntity, where its type is Assigned Entity (CONF:9407)
+</li><li>Consol Assigned Entity SHOULD contain zero or one [0..1] assignedPerson OR contain zero or one [0..1] representedOrganization (CONF:8439)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Diagnostic Imaging Report (V3)</ph></p>
+<p id="shortdesc">[ClinicalDocument: templateId <tt>2.16.840.1.113883.10.20.22.1.5</tt>]</p>
+</body>
+</topic>

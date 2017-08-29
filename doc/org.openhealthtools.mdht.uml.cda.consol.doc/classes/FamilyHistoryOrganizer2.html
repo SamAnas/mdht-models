@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Family History Organizer (V3)" />
+<meta name="abstract" content="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.45]" />
+<meta name="description" content="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.45]" />
+<meta name="DC.Coverage" content="Organizer" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Family History Organizer (V3)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Family History Organizer (V3)</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Organizer: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.45</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">The Family History Organizer associates a set of observations with a family member. For example, the Family History Organizer can group a set of observations about the patient's father.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-8604, CONF:1198-10497, CONF:1198-32606 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.45"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../FamilyHistoryOrganizer.html" title="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.45]">Family History Organizer</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.45</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1198-32485)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..*] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:1198-32428, CONF:1198-32429)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../FamilyHistoryObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.46]">Family History Observation2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.46:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Family History Organizer (V3)</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.45" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.45"/&gt;
+  &lt;id root="MDHT" extension="1545150777"/&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;component&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.46" extension="2015-08-01"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.46"/&gt;
+      &lt;id root="MDHT" extension="431977323"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+    &lt;/observation&gt;
+  &lt;/component&gt;
+&lt;/organizer&gt;</code></pre>
+	</div>
+
+</body>
+</html>

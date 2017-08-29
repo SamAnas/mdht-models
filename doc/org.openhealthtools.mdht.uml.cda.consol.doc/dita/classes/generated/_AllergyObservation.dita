@@ -9,40 +9,51 @@
 </prolog>
 <body>
 <section id="knownSubclasses">
+<p>Known Subclasses: <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyObservation2.html">Allergy Observation2</xref></p>
 </section>
 <section id="description">
-<p><lines><i>This clinical statement represents that an allergy or adverse reaction exists or does not exist. The agent that is the cause of the allergy or adverse reaction is represented as a manufactured material participant playing entity in the allergy - intolerance observation. While the agent is often implicit in the alert observation (e.g. "allergy to penicillin"), it should also be asserted explicitly as an entity. The manufactured material participant is used to represent natural and non-natural occurring substances.
-NOTE: The agent responsible for an allergy or adverse reaction is not always a manufactured material (for example, food allergies), nor is it necessarily consumed. The following constraints reflect limitations in the base CDA R2 specification, and should be used to represent any type of responsible agent.</i></lines></p>
+<p>This clinical statement represents that an allergy or adverse reaction exists or does not exist. The agent that is the cause of the allergy or adverse reaction is represented as a manufactured material participant playing entity in the allergy - intolerance observation. While the agent is often implicit in the alert observation (e.g. "allergy to penicillin"), it should also be asserted explicitly as an entity. The manufactured material participant is used to represent natural and non-natural occurring substances.
+NOTE: The agent responsible for an allergy or adverse reaction is not always a manufactured material (for example, food allergies), nor is it necessarily consumed. The following constraints reflect limitations in the base CDA R2 specification, and should be used to represent any type of responsible agent.</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:7381, CONF:10488 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.22.4.7"</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7379)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:7381, CONF:10488 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.7"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SubstanceOrDeviceAllergyObservation.html">Substance Or Device Allergy Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.24.3.90</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7379, R2.0=CONF:1098-7379)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:7380)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:7380, R2.0=CONF:1098-7380)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:7382)
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:7382, R2.0=CONF:1098-7382)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15947)<tt><b>/@code</b>="ASSERTION" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.4 HL7ActCode</tt>) (CONF:15948)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15947)<tt><b>/@code</b>="ASSERTION" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.4 HL7ActCode</tt>) (CONF:15948)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt><tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:7386)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt><tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:7386)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:7387)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:7387)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with @xsi:type="CD", which <b>SHALL</b> be selected from ValueSet<tt> <xref href="../../terminology/AllergyAdverseEventType.dita">Allergy/Adverse Event Type</xref> 2.16.840.1.113883.3.88.12.3221.6.2</tt><b> DYNAMIC</b> (CONF:7390, CONF:9139)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt>, which <b>SHALL</b> be selected from ValueSet<tt> Allergy/Adverse Event Type 2.16.840.1.113883.3.88.12.3221.6.2</tt><b> DYNAMIC</b> (CONF:7390, CONF:9139)
 </li>
-<li><b>MAY</b> contain zero or one [0..1] <tt><b>entryRelationship</b></tt> (CONF:7440, CONF:7906, CONF:15954)
-<ol>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:7440, CONF:7906, CONF:15954)<ol>
 <li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
-<li>Contains exactly one [1..1] <xref href="../AllergyStatusObservation.dita">Allergy Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.28</tt>)</li></ol></li>
-<li><b>SHOULD</b> contain zero or more [0..*] <tt><b>entryRelationship</b></tt> (CONF:7447, CONF:7907, CONF:15955)
-<ol>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyStatusObservation.html">Allergy Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.28</tt>)</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:7447, CONF:7907, CONF:15955)<ol>
 <li>Contains <tt><b>@typeCode="</b>MFST" </tt><i>MFST</i></li>
-<li>Contains exactly one [1..1] <xref href="../ReactionObservation.dita">Reaction Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9</tt>)</li></ol></li>
-<li><b>MAY</b> contain zero or one [0..1] <tt><b>entryRelationship</b></tt> (CONF:9961, CONF:9962, CONF:15956)
-<ol>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation.html">Reaction Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:9961, CONF:9962, CONF:15956)<ol>
 <li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
-<li>Contains exactly one [1..1] <xref href="../SeverityObservation.dita">Severity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.8</tt>)</li></ol></li>
-<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>participant</b></tt> (CONF:7402) <ol><li> This participant <b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt><tt><b>/@code</b>="CSM" </tt><i>Consumable</i> (CodeSystem:<tt> 2.16.840.1.113883.5.90 HL7ParticipationType</tt>) (CONF:7403)</li><li> This participant <b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> (CONF:7404) <ol><li> This participantRole <b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b></tt><tt><b>/@code</b>="MANU" </tt><i>Manufactured Product</i> (CodeSystem:<tt> 2.16.840.1.113883.5.110 HL7RoleClass</tt>) (CONF:7405)</li><li> This participantRole <b>SHALL</b> contain exactly one [1..1] <tt><b>playingEntity</b></tt> (CONF:7406) <ol><li> This playingEntity <b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="MMAT" </tt> (CONF:7407)</li><li> This playingEntity <b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> with @xsi:type="<xref href="../CE.dita">CE</xref>" (CONF:7419)</li><li> This playingEntity reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1 (CONF:15953)</li><li> This playingEntity In an allergy to a specific medication the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.16 Medication Brand Name DYNAMIC or the ValueSet 2.16.840.1.113883.3.88.12.80.17 Medication Clinical Drug DYNAMIC (CONF:7421)</li><li> This playingEntity In an allergy to a class of medications the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.18 Medication Drug Class DYNAMIC (CONF:10083)</li><li> This playingEntity In an allergy to a food or other substance the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.20 Ingredient Name DYNAMIC (CONF:10084)</li><li> This playingEntity reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:15952)</li><li> This playingEntity originalText, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:7425)</li></ol> </li></ol> </li></ol>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SeverityObservation.html">Severity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.8</tt>)</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>participant</b></tt> such that it  (CONF:7402) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt><tt><b>/@code</b>="CSM" </tt><i>Consumable</i> (CodeSystem:<tt> 2.16.840.1.113883.5.90 HL7ParticipationType</tt>) (CONF:7403, R2.0=CONF:1098-7403)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> such that it  (CONF:7404) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b></tt><tt><b>/@code</b>="MANU" </tt><i>Manufactured Product</i> (CodeSystem:<tt> 2.16.840.1.113883.5.110 HL7RoleClass</tt>) (CONF:7405, R2.0=CONF:1098-7405)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>playingEntity</b></tt> such that it  (CONF:7406) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="MMAT" </tt> (CONF:7407, R2.0=CONF:7407)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:7419)</li><li>reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1 (CONF:15953)</li><li>In an allergy to a specific medication the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.16 Medication Brand Name DYNAMIC or the ValueSet 2.16.840.1.113883.3.88.12.80.17 Medication Clinical Drug DYNAMIC (CONF:7421)</li><li>In an allergy to a class of medications the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.18 Medication Drug Class DYNAMIC (CONF:10083)</li><li>In an allergy to a food or other substance the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.20 Ingredient Name DYNAMIC (CONF:10084)</li><li>reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:15952)</li><li>originalText, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:7425)</li><li>code <b>SHALL</b> be selected from ValueSet Substance-Reactant for Intolerance 2.16.840.1.113762.1.4.1010.1 DYNAMIC. Note: Value set intentionally defined as a GROUPING made up of: Value Set: Medication Drug Class (2.16.840.1.113883.3.88.12.80.18) (NDFRT drug class codes); Value Set: Clinical Drug Ingredient (2.16.840.1.113762.1.4.1010.7) (RxNORM ingredient codes); Value Set: Unique Ingredient Identifier - Complete Set (2.16.840.1.113883.3.88.12.80.20) (UNII ingredient codes); Value Set: Substance Other Than Clinical Drug (2.16.840.1.113762.1.4.1010.9) (SNOMED CT substance codes). (CONF:7419)</li></ol></li></ol></li></ol> 
 </li>
 <li>If it is unknown when the allergy began, this effectiveTime <b>SHALL</b> contain low/@nullFLavor="UNK" (CONF:9103)</li>
 <li>If the allergy is no longer a concern, this effectiveTime <b>MAY</b> contain zero or one [0..1] high (CONF:10082)</li>
@@ -53,14 +64,14 @@ NOTE: The agent responsible for an allergy or adverse reaction is not always a m
 <li>entryRelationship with target entry AllergyStatusObservation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:7446)</li>
 <li>entryRelationship with target entry Reaction Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:7449)</li>
 <li>entryRelationship with target entry Severity Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:9964)</li>
-<li>In an allergy to a specific medication the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.16 Medication Brand Name DYNAMIC or the ValueSet 2.16.840.1.113883.3.88.12.80.17 Medication Clinical Drug DYNAMIC. In an allergy to a class of medications the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.18 Medication Drug Class DYNAMIC. In an allergy to a food or other substance the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.20 Ingredient Name DYNAMIC (CONF:7421, CONF:10083, CONF:10084)</li>
 </ol>
 <ol id="aggregate">
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7379)
+<li><b>SHALL</b> conform to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SubstanceOrDeviceAllergyObservation.html">Substance Or Device Allergy Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.24.3.90</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7379, R2.0=CONF:1098-7379)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:7380)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:7380, R2.0=CONF:1098-7380)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:7382)
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:7382, R2.0=CONF:1098-7382)
 </li>
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15947)<tt><b>/@code</b>="ASSERTION" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.4 HL7ActCode</tt>) (CONF:15948)
 </li>
@@ -68,22 +79,39 @@ NOTE: The agent responsible for an allergy or adverse reaction is not always a m
 </li>
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:7387)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with @xsi:type="CD", which <b>SHALL</b> be selected from ValueSet<tt> <xref href="../../terminology/AllergyAdverseEventType.dita">Allergy/Adverse Event Type</xref> 2.16.840.1.113883.3.88.12.3221.6.2</tt><b> DYNAMIC</b> (CONF:7390, CONF:9139)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt>, which <b>SHALL</b> be selected from ValueSet<tt> Allergy/Adverse Event Type 2.16.840.1.113883.3.88.12.3221.6.2</tt><b> DYNAMIC</b> (CONF:7390, CONF:9139)
 </li>
-<li><b>MAY</b> contain zero or one [0..1] <tt><b>entryRelationship</b></tt> (CONF:7440, CONF:7906, CONF:15954)
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:16333, CONF:16335, CONF:16336, R2.0=CONF:1098-16333, R2.0=CONF:1098-16335, R2.0=CONF:1098-16336)
 <ol>
 <li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
-<li>Contains exactly one [1..1] <xref href="../AllergyStatusObservation.dita">Allergy Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.28</tt>)</li></ol></li>
-<li><b>SHOULD</b> contain zero or more [0..*] <tt><b>entryRelationship</b></tt> (CONF:7447, CONF:7907, CONF:15955)
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyStatusObservation.html">Allergy Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.28</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:16337, CONF:16339, CONF:16340)
 <ol>
 <li>Contains <tt><b>@typeCode="</b>MFST" </tt><i>MFST</i></li>
-<li>Contains exactly one [1..1] <xref href="../ReactionObservation.dita">Reaction Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9</tt>)</li></ol></li>
-<li><b>MAY</b> contain zero or one [0..1] <tt><b>entryRelationship</b></tt> (CONF:9961, CONF:9962, CONF:15956)
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation.html">Reaction Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:16341, CONF:16342, CONF:16344)
 <ol>
 <li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
-<li>Contains exactly one [1..1] <xref href="../SeverityObservation.dita">Severity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.8</tt>)</li></ol></li>
-<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>participant</b></tt> (CONF:7402) <ol><li> This participant <b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt><tt><b>/@code</b>="CSM" </tt><i>Consumable</i> (CodeSystem:<tt> 2.16.840.1.113883.5.90 HL7ParticipationType</tt>) (CONF:7403)</li><li> This participant <b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> (CONF:7404) <ol><li> This participantRole <b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b></tt><tt><b>/@code</b>="MANU" </tt><i>Manufactured Product</i> (CodeSystem:<tt> 2.16.840.1.113883.5.110 HL7RoleClass</tt>) (CONF:7405)</li><li> This participantRole <b>SHALL</b> contain exactly one [1..1] <tt><b>playingEntity</b></tt> (CONF:7406) <ol><li> This playingEntity <b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="MMAT" </tt> (CONF:7407)</li><li> This playingEntity <b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> with @xsi:type="<xref href="../CE.dita">CE</xref>" (CONF:7419)</li><li> This playingEntity reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1 (CONF:15953)</li><li> This playingEntity In an allergy to a specific medication the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.16 Medication Brand Name DYNAMIC or the ValueSet 2.16.840.1.113883.3.88.12.80.17 Medication Clinical Drug DYNAMIC (CONF:7421)</li><li> This playingEntity In an allergy to a class of medications the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.18 Medication Drug Class DYNAMIC (CONF:10083)</li><li> This playingEntity In an allergy to a food or other substance the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.20 Ingredient Name DYNAMIC (CONF:10084)</li><li> This playingEntity reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:15952)</li><li> This playingEntity originalText, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:7425)</li></ol> </li></ol> </li></ol>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SeverityObservation.html">Severity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.8</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain zero or more [0..*] <tt><b>participant</b></tt> such that it  (CONF:16318) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="CSM" </tt> (CONF:16319, R2.0=CONF:1098-16319)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> such that it  (CONF:16320) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="MANU" </tt> (CONF:16321, R2.0=CONF:1098-16321)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>playingEntity</b></tt> such that it  (CONF:16322) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="MMAT" </tt> (CONF:16323, R2.0=CONF:1098-16323)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:16324)</li><li>code/originalText/reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1 (CONF:16329)</li><li>In an allergy to a specific medication the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.16 Medication Brand Name DYNAMIC or the ValueSet 2.16.840.1.113883.3.88.12.80.17 Medication Clinical Drug DYNAMIC (CONF:16325)</li><li>In an allergy to a class of medications the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.18 Medication Drug Class DYNAMIC (CONF:16331)</li><li>In an allergy to a food or other substance the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.20 Ingredient Name DYNAMIC (CONF:16332)</li><li>reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:16328)</li><li>originalText, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:16327)</li><li>code <b>MAY</b> be selected from ValueSet Substance-Reactant for Intolerance 2.16.840.1.113762.1.4.1010.1 DYNAMIC. Note: Value set intentionally defined as a GROUPING made up of: Value Set: Medication Drug Class (2.16.840.1.113883.3.88.12.80.18) (NDFRT drug class codes); Value Set: Clinical Drug Ingredient (2.16.840.1.113762.1.4.1010.7) (RxNORM ingredient codes); Value Set: Unique Ingredient Identifier - Complete Set (2.16.840.1.113883.3.88.12.80.20) (UNII ingredient codes); Value Set: Substance Other Than Clinical Drug (2.16.840.1.113762.1.4.1010.9) (SNOMED CT substance codes). (CONF:16324, R2.0=CONF:1098-16324)</li></ol></li></ol></li></ol> 
 </li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:7440, CONF:7906, CONF:15954)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyStatusObservation.html">Allergy Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.28</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:7447, CONF:7907, CONF:15955)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>MFST" </tt><i>MFST</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation.html">Reaction Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:9961, CONF:9962, CONF:15956)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SeverityObservation.html">Severity Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.8</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>participant</b></tt> such that it  (CONF:7402) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt><tt><b>/@code</b>="CSM" </tt><i>Consumable</i> (CodeSystem:<tt> 2.16.840.1.113883.5.90 HL7ParticipationType</tt>) (CONF:7403, R2.0=CONF:1098-7403)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> such that it  (CONF:7404) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b></tt><tt><b>/@code</b>="MANU" </tt><i>Manufactured Product</i> (CodeSystem:<tt> 2.16.840.1.113883.5.110 HL7RoleClass</tt>) (CONF:7405, R2.0=CONF:1098-7405)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>playingEntity</b></tt> such that it  (CONF:7406) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="MMAT" </tt> (CONF:7407, R2.0=CONF:7407)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:7419)</li><li>reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1 (CONF:15953)</li><li>In an allergy to a specific medication the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.16 Medication Brand Name DYNAMIC or the ValueSet 2.16.840.1.113883.3.88.12.80.17 Medication Clinical Drug DYNAMIC (CONF:7421)</li><li>In an allergy to a class of medications the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.18 Medication Drug Class DYNAMIC (CONF:10083)</li><li>In an allergy to a food or other substance the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.20 Ingredient Name DYNAMIC (CONF:10084)</li><li>reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:15952)</li><li>originalText, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:7425)</li><li>code <b>SHALL</b> be selected from ValueSet Substance-Reactant for Intolerance 2.16.840.1.113762.1.4.1010.1 DYNAMIC. Note: Value set intentionally defined as a GROUPING made up of: Value Set: Medication Drug Class (2.16.840.1.113883.3.88.12.80.18) (NDFRT drug class codes); Value Set: Clinical Drug Ingredient (2.16.840.1.113762.1.4.1010.7) (RxNORM ingredient codes); Value Set: Unique Ingredient Identifier - Complete Set (2.16.840.1.113883.3.88.12.80.20) (UNII ingredient codes); Value Set: Substance Other Than Clinical Drug (2.16.840.1.113762.1.4.1010.9) (SNOMED CT substance codes). (CONF:7419)</li></ol></li></ol></li></ol> 
+</li>
+<li>entryRelationship with target entry Allergy Status Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:16334, R2.0=CONF:1098-16334)</li>
+<li>entryRelationship with target entry Reaction Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:16338)</li>
+<li>entryRelationship with target entry Severity Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:16343)</li>
 <li>If it is unknown when the allergy began, this effectiveTime <b>SHALL</b> contain low/@nullFLavor="UNK" (CONF:9103)</li>
 <li>If the allergy is no longer a concern, this effectiveTime <b>MAY</b> contain zero or one [0..1] high (CONF:10082)</li>
 <li>value <b>SHOULD</b> contain zero or one [0..1] originalText (CONF:7422)</li>
@@ -93,30 +121,33 @@ NOTE: The agent responsible for an allergy or adverse reaction is not always a m
 <li>entryRelationship with target entry AllergyStatusObservation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:7446)</li>
 <li>entryRelationship with target entry Reaction Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:7449)</li>
 <li>entryRelationship with target entry Severity Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:9964)</li>
-<li>In an allergy to a specific medication the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.16 Medication Brand Name DYNAMIC or the ValueSet 2.16.840.1.113883.3.88.12.80.17 Medication Clinical Drug DYNAMIC. In an allergy to a class of medications the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.18 Medication Drug Class DYNAMIC. In an allergy to a food or other substance the code <b>SHALL</b> be selected from the ValueSet 2.16.840.1.113883.3.88.12.80.20 Ingredient Name DYNAMIC (CONF:7421, CONF:10083, CONF:10084)</li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::AllergyObservation</entry>  </row>  <row><entry namest="col0" nameend="col7" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.7]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>classCode</entry><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>ActClass</entry><entry>CONF:7379</entry><entry> ALRT</entry></row> 
-<row><entry>moodCode</entry><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>ActMood</entry><entry>CONF:7380</entry><entry> DEF</entry></row> 
-<row><entry>code</entry><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CD</entry><entry>CONF:15948</entry><entry>HL7ActCode 2.16.840.1.113883.5.4 ASSERTION</entry></row> 
-<row><entry>effectiveTime</entry><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>IVL_TS</entry><entry>CONF:7387</entry><entry> </entry></row> 
-<row><entry>id</entry><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>YES</entry><entry>II</entry><entry>CONF:7382</entry><entry> </entry></row> 
-<row><entry>statusCode</entry><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CS</entry><entry>CONF:7386</entry><entry>ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
-<row><entry>value</entry><entry>value</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CD</entry><entry>CONF:7390CONF:9139</entry><entry> </entry></row> 
-<row><entry>allergyObservation</entry><entry>allergyObservation</entry><entry>1..*</entry><entry>SHALL</entry><entry>YES</entry><entry>AllergyObservation</entry><entry>CONF:7509CONF:7915CONF:14925</entry><entry> </entry></row> 
-<row><entry>allergyStatusObservation</entry><entry>allergyStatusObservation</entry><entry>0..1</entry><entry>MAY</entry><entry>YES</entry><entry>AllergyStatusObservation</entry><entry>CONF:7440CONF:7906CONF:15954</entry><entry> </entry></row> 
-<row><entry>participant</entry><entry>participant</entry><entry>0..1</entry><entry>SHOULD</entry><entry>YES</entry><entry>Participant</entry><entry>CONF:7402</entry><entry> </entry></row> 
-<row><entry>reactionObservation</entry><entry>reactionObservation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>YES</entry><entry>ReactionObservation</entry><entry>CONF:7447CONF:7907CONF:15955</entry><entry> </entry></row> 
-<row><entry>severityObservation</entry><entry>severityObservation</entry><entry>0..1</entry><entry>MAY</entry><entry>YES</entry><entry>SeverityObservation</entry><entry>CONF:9961CONF:9962CONF:15956</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::AllergyObservation</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.24.3.90]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActClass</entry><entry>CONF:7379R2.0=CONF:1098-7379</entry><entry> ALRT</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActMood</entry><entry>CONF:7380R2.0=CONF:1098-7380</entry><entry> DEF</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:15948</entry><entry>HL7ActCode 2.16.840.1.113883.5.4HL7ActCode 2.16.840.1.113883.5.4 ASSERTION</entry></row> 
+<row><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_TS</entry><entry>CONF:7387</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:7382R2.0=CONF:1098-7382</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:7386</entry><entry>ActStatus 2.16.840.1.113883.5.14ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
+<row><entry>value</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:7390CONF:9139</entry><entry> </entry></row> 
+<row><entry>allergyObservation</entry><entry>1..*</entry><entry>SHALL</entry><entry>AllergyObservation</entry><entry>CONF:7509, CONF:7915, CONF:14925</entry><entry> </entry></row> 
+<row><entry>allergyStatusObservation</entry><entry>0..1</entry><entry>MAY</entry><entry>AllergyStatusObservation</entry><entry>CONF:7440CONF:7906CONF:15954</entry><entry> </entry></row> 
+<row><entry>participant</entry><entry>0..1</entry><entry>SHOULD</entry><entry>Participant</entry><entry>CONF:7402</entry><entry> </entry></row> 
+<row><entry>reactionObservation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>ReactionObservation</entry><entry>CONF:7447CONF:7907CONF:15955</entry><entry> </entry></row> 
+<row><entry>severityObservation</entry><entry>0..1</entry><entry>MAY</entry><entry>SeverityObservation</entry><entry>CONF:9961CONF:9962CONF:15956</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<observation xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyProblemAct.html">Allergy Problem Act</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/AllergyStatusObservation.html">Allergy Status Observation</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation.html">Reaction Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/SeverityObservation.html">Severity Observation</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
   <templateId root="2.16.840.1.113883.10.20.22.4.7"/>
-  <id root="MDHT" extension="1943991355"/>
-  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+  <templateId root="2.16.840.1.113883.10.20.24.3.90"/>
+  <id root="MDHT" extension="1682139968"/>
+  <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
+  <text>Text Value</text>
   <statusCode code="completed"/>
   <effectiveTime>
-    <low value="2014"/>
-    <high value="2014"/>
+    <low value="2017"/>
+    <high value="2017"/>
   </effectiveTime>
+  <value xsi:type="CD" code="268487315"/>
   <participant typeCode="CSM">
     <participantRole classCode="MANU">
       <playingEntity classCode="MMAT"/>
@@ -125,33 +156,39 @@ NOTE: The agent responsible for an allergy or adverse reaction is not always a m
   <entryRelationship>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
-      <id root="MDHT" extension="520649348"/>
-      <code code="945562631"/>
+      <id root="MDHT" extension="1778705373"/>
+      <code code="91885135"/>
+      <text>Text Value</text>
       <statusCode code="completed"/>
       <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
+        <low value="2017"/>
+        <high value="2017"/>
       </effectiveTime>
+      <value xsi:type="CD" code="2132736833"/>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
-          <id root="MDHT" extension="602288053"/>
+          <id root="MDHT" extension="835532582"/>
           <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+          <text>Text Value</text>
           <statusCode code="completed"/>
           <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
+            <low value="2017"/>
+            <high value="2017"/>
           </effectiveTime>
+          <value xsi:type="CD" code="1455245049"/>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <procedure classCode="PROC">
           <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
-          <id root="MDHT" extension="1321657595"/>
-          <code code="328645559"/>
+          <id root="MDHT" extension="1483688973"/>
+          <code code="1509685135"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
           <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
+            <low value="2017"/>
+            <high value="2017"/>
           </effectiveTime>
           <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
           <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
@@ -170,6 +207,7 @@ NOTE: The agent responsible for an allergy or adverse reaction is not always a m
               <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
               <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
               <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
             </substanceAdministration>
           </entryRelationship>
           <entryRelationship>
@@ -184,11 +222,16 @@ NOTE: The agent responsible for an allergy or adverse reaction is not always a m
       <entryRelationship>
         <substanceAdministration classCode="SBADM">
           <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
-          <id root="MDHT" extension="791240737"/>
-          <code code="880069182"/>
-          <effectiveTime value="20140803"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <id root="MDHT" extension="864216937"/>
+          <code code="187325557"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime value="20170828"/>
           <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
           <consumable/>
           <performer/>
           <entryRelationship>
@@ -221,7 +264,7 @@ NOTE: The agent responsible for an allergy or adverse reaction is not always a m
               <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
             </supply>
           </entryRelationship>
-          <precondition/>
+          <precondition typeCode="PRCN"/>
         </substanceAdministration>
       </entryRelationship>
     </observation>
@@ -229,25 +272,29 @@ NOTE: The agent responsible for an allergy or adverse reaction is not always a m
   <entryRelationship>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
-      <id root="MDHT" extension="1937413432"/>
+      <id root="MDHT" extension="1950872079"/>
       <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+      <text>Text Value</text>
       <statusCode code="completed"/>
       <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
+        <low value="2017"/>
+        <high value="2017"/>
       </effectiveTime>
+      <value xsi:type="CD" code="215707381"/>
     </observation>
   </entryRelationship>
   <entryRelationship>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.28"/>
-      <id root="MDHT" extension="817057047"/>
+      <id root="MDHT" extension="1379292911"/>
       <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+      <text>Text Value</text>
       <statusCode code="completed"/>
       <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
+        <low value="2017"/>
+        <high value="2017"/>
       </effectiveTime>
+      <value xsi:type="CE" code="680014827"/>
     </observation>
   </entryRelationship>
 </observation>]]></codeblock>

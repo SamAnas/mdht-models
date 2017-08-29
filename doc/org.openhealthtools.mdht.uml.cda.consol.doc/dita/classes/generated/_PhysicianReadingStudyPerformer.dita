@@ -2,52 +2,53 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic id="classId" xml:lang="en-us">
 <title>Physician Reading Study Performer - conformance rules</title>
-<shortdesc id="shortdesc">[Performer1: templateId <tt>2.16.840.1.113883.10.20.6.2.1</tt>]</shortdesc>
+<shortdesc id="shortdesc">[Performer: templateId <tt>2.16.840.1.113883.10.20.6.2.1</tt>]</shortdesc>
 <prolog id="prolog">
 <metadata><category>Performer1</category></metadata>
 <resourceid id="2.16.840.1.113883.10.20.6.2.1"/>
 </prolog>
 <body>
 <section id="knownSubclasses">
+<p>Known Subclasses: <xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></p>
 </section>
 <section id="description">
+<p>This participant is the Physician Reading Study Performer defined in documentationOf/serviceEvent and is usually different from the attending physician. The reading physician??interprets the images and evidence of the study (DICOM Definition)</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:8423 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.6.2.1"</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt> (CONF:8424)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:8423 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.6.2.1"</tt></li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="PRF" </tt> (CONF:8424, R2.0=CONF:1098-8424)
 </li>
-<li><b>MAY</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8425)
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8425, R2.0=CONF:1098-8425)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> (CONF:8426) <ol><li> This assignedEntity <b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:8427)</li><li> This assignedEntity <b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:10033)</li><li> This assignedEntity The id <b>SHOULD</b> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:10034)</li><li> This assignedEntity <b>SHALL</b> contain a valid DICOM personal identification code sequence (@codeSystem is 1.2.840.10008.2.16.4) or an appropriate national health care provider coding system (e.g., NUCC in the U.S., where @code is 2.16.840.1.113883.6.101).</li><li> This assignedEntity Every assignedEntity element <b>SHALL</b> have at least one assignedPerson or representedOrganization. (CONF:8429)</li></ol>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:8426, R2.0=CONF:1098-8426) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:10033, R2.0=CONF:1098-10033)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:8427, R2.0=CONF:1098-8427)</li><li><b>SHALL</b> contain a valid DICOM personal identification code sequence (@codeSystem is 1.2.840.10008.2.16.4) or an appropriate national health care provider coding system (e.g., NUCC in the U.S., where @code is 2.16.840.1.113883.6.101). (CONF:8428, R2.0=CONF:1098-8428)</li><li>Every assignedEntity element <b>SHALL</b> have at least one assignedPerson or representedOrganization. (CONF:8429, R2.0=CONF:1098-8429)</li><li>The id <b>SHOULD</b> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:10034, R2.0=CONF:1098-32135)</li></ol> 
 </li>
 </ol>
 <ol id="aggregate">
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt> (CONF:8424)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="PRF" </tt> (CONF:8424, R2.0=CONF:1098-8424)
 </li>
-<li><b>MAY</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8425)
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8425, R2.0=CONF:1098-8425)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> (CONF:8426) <ol><li> This assignedEntity <b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:8427)</li><li> This assignedEntity <b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:10033)</li><li> This assignedEntity The id <b>SHOULD</b> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:10034)</li><li> This assignedEntity <b>SHALL</b> contain a valid DICOM personal identification code sequence (@codeSystem is 1.2.840.10008.2.16.4) or an appropriate national health care provider coding system (e.g., NUCC in the U.S., where @code is 2.16.840.1.113883.6.101).</li><li> This assignedEntity Every assignedEntity element <b>SHALL</b> have at least one assignedPerson or representedOrganization. (CONF:8429)</li></ol>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:8426, R2.0=CONF:1098-8426) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:10033, R2.0=CONF:1098-10033)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:8427, R2.0=CONF:1098-8427)</li><li><b>SHALL</b> contain a valid DICOM personal identification code sequence (@codeSystem is 1.2.840.10008.2.16.4) or an appropriate national health care provider coding system (e.g., NUCC in the U.S., where @code is 2.16.840.1.113883.6.101). (CONF:8428, R2.0=CONF:1098-8428)</li><li>Every assignedEntity element <b>SHALL</b> have at least one assignedPerson or representedOrganization. (CONF:8429, R2.0=CONF:1098-8429)</li><li>The id <b>SHOULD</b> include zero or one [0..1] id where id/@root ="2.16.840.1.113883.4.6" National Provider Identifier (CONF:10034, R2.0=CONF:1098-32135)</li></ol> 
 </li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::PhysicianReadingStudyPerformer</entry>  </row>  <row><entry namest="col0" nameend="col7" >cda::performer1[cda:templateId/@root = 2.16.840.1.113883.10.20.6.2.1]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>typeCode</entry><entry>@typeCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>x_ServiceEventPerformer</entry><entry>CONF:8424</entry><entry> PRF</entry></row> 
-<row><entry>time</entry><entry>time</entry><entry>0..1</entry><entry>MAY</entry><entry>YES</entry><entry>IVL_TS</entry><entry>CONF:8425</entry><entry> </entry></row> 
-<row><entry>assignedEntity</entry><entry>assignedEntity</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>AssignedEntity</entry><entry>CONF:8426</entry><entry> </entry></row> 
-<row><entry>physicianReadingStudyPerformer</entry><entry>physicianReadingStudyPerformer</entry><entry>0..*</entry><entry>SHOULD</entry><entry>YES</entry><entry>PhysicianReadingStudyPerformer</entry><entry>CONF:8422</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::PhysicianReadingStudyPerformer</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::performer1[cda:templateId/@root = 2.16.840.1.113883.10.20.6.2.1]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@typeCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ServiceEventPerformer</entry><entry>CONF:8424R2.0=CONF:1098-8424</entry><entry> PRF</entry></row> 
+<row><entry>assignedEntity</entry><entry>1..1</entry><entry>SHALL</entry><entry>AssignedEntity</entry><entry>CONF:8426R2.0=CONF:1098-8426</entry><entry> </entry></row> 
+<row><entry>physicianReadingStudyPerformer</entry><entry>0..*</entry><entry>SHOULD</entry><entry>PhysicianReadingStudyPerformer</entry><entry>CONF:8422</entry><entry> </entry></row> 
+<row><entry>time</entry><entry>0..1</entry><entry>MAY</entry><entry>IVL_TS</entry><entry>CONF:8425R2.0=CONF:1098-8425</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<performer1 xmlns="urn:hl7-org:v3">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<performer1 xmlns="urn:hl7-org:v3" typeCode="PRF">
   <templateId root="2.16.840.1.113883.10.20.6.2.1"/>
-  <time>
-    <low value="2014"/>
-    <high value="2014"/>
-  </time>
   <assignedEntity>
-    <id root="MDHT" extension="2005942304"/>
-    <code code="681117566"/>
+    <id root="MDHT" extension="1707722003"/>
+    <code code="1039751000"/>
   </assignedEntity>
 </performer1>]]></codeblock>
 <section id="changes">
 </section>
 <p><ph id="classformalname">Physician Reading Study Performer</ph></p>
-<p id="shortdesc">[Performer1: templateId <tt>2.16.840.1.113883.10.20.6.2.1</tt>]</p>
+<p id="shortdesc">[Performer: templateId <tt>2.16.840.1.113883.10.20.6.2.1</tt>]</p>
 </body>
 </topic>

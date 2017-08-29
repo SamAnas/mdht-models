@@ -2,6 +2,23 @@
 <project name="UML to DITA Transformation" default="uml2dita" basedir=".">
 
 	<property file="dita.properties" />
+	
+	<eclipse.convertPath resourcePath="org.openhealthtools.mdht.uml.cda.${projectName}.model" property="modelProject"/>
+
+	<eclipse.convertPath resourcePath="org.openhealthtools.mdht.uml.cda.${projectName}.model/model/${modelName}.uml" property="modelPath.uml"/>
+
+	<eclipse.convertPath resourcePath="org.openhealthtools.mdht.uml.cda.${projectName}.model/model/${modelName}-vocab.uml" property="vocabPath.uml"/>
+
+	<eclipse.convertPath resourcePath="org.openhealthtools.mdht.uml.cda.consol.doc/dita" property="ditaFilePath"/>
+
+<!--	
+	modelProject = ${basedir}/../org.openhealthtools.mdht.uml.cda.${projectName}.model
+	modelPath.uml = ${modelProject}/model/${modelName}.uml
+	vocabPath.uml = ${modelProject}/model/${modelName}-vocab.uml
+	ditaFilePath = ${basedir}/dita
+-->
+	
+	
 
     <target name="uml2dita" description="Generate DITA from UML">
     	<mkdir dir="${ditaFilePath}"/>

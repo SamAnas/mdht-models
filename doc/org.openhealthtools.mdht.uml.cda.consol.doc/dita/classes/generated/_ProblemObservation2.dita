@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Problem Observation (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.4</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.4"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+<p>Known Subclasses: <xref href="../LongitudinalCareWoundObservation.dita">Longitudinal Care Wound Observation (V2)</xref></p>
+</section>
+<section id="description">
+<p>
+This template reflects a discrete observation about a patient's problem. Because it is a discrete observation, it will have a statusCode of "completed". The effectiveTime, also referred to as the "biologically relevant time" is the time at which the observation holds for the patient. For a provider seeing a patient in the clinic today, observing a history of heart attack that occurred five years ago, the effectiveTime is five years ago.
+
+
+The effectiveTime of the Problem Observation is the definitive indication of whether or not the underlying condition is resolved. If the problem is known to be resolved, then an effectiveTime/high would be present. If the date of resolution is not known, then effectiveTime/high will be present with a nullFlavor of "UNK".
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-14926, CONF:1198-14927, CONF:1198-32508 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.4"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../ProblemObservation.dita">Problem Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.4</tt>)</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@negationInd</b></tt> (CONF:1198-10139)
+<p>The negationInd is used to indicate the absence of the condition in observation/value. A negationInd of "true" coupled with an observation/value of SNOMED code 64572001 "Disease (disorder)" indicates that the patient has no known conditions.</p></li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-9050)<p>If the problem is known to be resolved, but the date of resolution is not known, then the high element SHALL be present, and the nullFlavor attribute SHALL be set to 'UNK'. Therefore, the existence of an high element within a problem does indicate that the problem has been resolved.</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Problem 2.16.840.1.113883.3.88.12.3221.7.4</tt><b> DYNAMIC</b> (CONF:1198-9058)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Problem Type (SNOMED CT) 2.16.840.1.113883.3.88.12.3221.7.2</tt><b> STATIC</b> 2012-06-01 (CONF:1198-9045)
+</li>
+<li>
+contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-9049)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19112)
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31147)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-29951, CONF:1198-31531, CONF:1198-29952)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PrognosisObservation.dita">Prognosis Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.113</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31063, CONF:1198-31532, CONF:1198-31064)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-9063, CONF:1198-9068, CONF:1198-15591)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ProblemStatus.dita">Problem Status</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.6</tt>)</li></ol>
+</li>
+<li>
+contain  [0..1] <tt><b>entryRelationship</b></tt> such that it <ol>
+<li>Conforms to <xref href="../HealthStatusObservation.dita">Health Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.5</tt>)</li></ol>
+</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li>effectiveTime, if present, <b>SHALL</b> contain exactly one [1..1] low (CONF:1198-15603)</li>
+<li>effectiveTime, if present, <b>MAY</b> contain zero or one [0..1] high (CONF:1198-15604)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../ProblemObservation.dita">Problem Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.4</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:9041, R2.1=CONF:1198-9041)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:9042, R2.1=CONF:1198-9042)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@negationInd</b></tt> (CONF:1198-10139)
+<p>The negationInd is used to indicate the absence of the condition in observation/value. A negationInd of "true" coupled with an observation/value of SNOMED code 64572001 "Disease (disorder)" indicates that the patient has no known conditions.</p></li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9043, R2.1=CONF:1198-9043)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Problem Type (SNOMED CT) 2.16.840.1.113883.3.88.12.3221.7.2</tt><b> STATIC</b> 2012-06-01 (CONF:1198-9045)
+</li>
+<li>contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-9049)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19112)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-9050)
+<p>If the problem is known to be resolved, but the date of resolution is not known, then the high element SHALL be present, and the nullFlavor attribute SHALL be set to 'UNK'. Therefore, the existence of an high element within a problem does indicate that the problem has been resolved.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Problem 2.16.840.1.113883.3.88.12.3221.7.4</tt><b> DYNAMIC</b> (CONF:1198-9058)
+</li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b> (Age At Onset)</tt> such that it  (CONF:9059, CONF:9060, CONF:15590, R2.1=CONF:1198-9059, R2.1=CONF:1198-9060, R2.1=CONF:1198-15590)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../AgeObservation.dita">Age Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.31</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b> (Problem Status)</tt> such that it  (CONF:9063, CONF:9068, CONF:15591)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ProblemStatus.dita">Problem Status</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.6</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b> (Health Status)</tt> such that it  (CONF:9067, CONF:9064, CONF:15592)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../HealthStatusObservation.dita">Health Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.5</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31147)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-29951, CONF:1198-31531, CONF:1198-29952)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PrognosisObservation.dita">Prognosis Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.113</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31063, CONF:1198-31532, CONF:1198-31064)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-9063, CONF:1198-9068, CONF:1198-15591)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../ProblemStatus.dita">Problem Status</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.6</tt>)</li></ol></li>
+<li>contain  [0..1] <tt><b>entryRelationship</b></tt> such that it 
+<ol>
+<li>Conforms to <xref href="../HealthStatusObservation.dita">Health Status Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.5</tt>)</li></ol></li>
+<li>The text, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:15587)</li>
+<li>reference, if present, <b>SHALL</b> contain exactly one [1..1] @value (CONF:15588)</li>
+<li>reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15589)</li>
+<li>The effectiveTime element , if present, <b>SHALL</b> contain exactly one [1..1] low (CONF:15603)</li>
+<li>effectiveTime, if present, <b>MAY</b> contain zero or one [0..1] high (CONF:15604)</li>
+<li>value <b>MAY</b> contain zero or one [0..1] @nullFlavor (CONF:10141)</li>
+<li>If the diagnosis is unknown or the SNOMED code is unknown, @nullFlavor <b>SHOULD</b> be 
+UNK.  If the code is something other than SNOMED, @nullFlavor <b>SHOULD</b> be OTH and the other code <b>SHOULD</b> be placed in the translation element (CONF:10142)</li>
+<li>entryRelationship with target entry Age Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:9069, R2.1=CONF:9069)</li>
+<li>value <b>MAY</b> contain zero or more [0..*] translation (CONF:16749, R2.1=CONF:1198-16749)</li>
+<li>translation, if present, <b>MAY</b> contain zero or one [0..1] @code (CodeSystem: ICD10CM 2.16.840.1.113883.6.90 STATIC) (CONF:16750, R2.1=CONF:1198-16750)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li>effectiveTime, if present, <b>SHALL</b> contain exactly one [1..1] low (CONF:1198-15603)</li>
+<li>effectiveTime, if present, <b>MAY</b> contain zero or one [0..1] high (CONF:1198-15604)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::ProblemObservation2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.4]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@negationInd</entry><entry>0..1</entry><entry>MAY</entry><entry>EBooleanObject</entry><entry>CONF:1198-10139</entry><entry> </entry></row> 
+<row><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_TS</entry><entry>CONF:1198-9050</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1198-19112</entry><entry>ActStatus 2.16.840.1.113883.5.14ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1198-31147</entry><entry> </entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHOULD</entry><entry>CD</entry><entry>CONF:1198-9045</entry><entry> null</entry></row> 
+<row><entry>healthStatusObservation</entry><entry>0..1</entry><entry>MAY</entry><entry>HealthStatusObservation</entry><entry>CONF:9067, CONF:9064, CONF:15592</entry><entry> </entry></row> 
+<row><entry>priorityPreference</entry><entry>0..*</entry><entry>MAY</entry><entry>PriorityPreference</entry><entry>CONF:1198-31063, CONF:1198-31532, CONF:1198-31064</entry><entry> </entry></row> 
+<row><entry>problemObservation2</entry><entry>1..*</entry><entry>SHALL</entry><entry>ProblemObservation2</entry><entry>CONF:1198-9034, CONF:1198-9035, CONF:1198-15980</entry><entry> </entry></row> 
+<row><entry>problemObservation2HasSupport</entry><entry>0..*</entry><entry>MAY</entry><entry>ProblemObservation2</entry><entry>CONF:1198-32208, CONF:1198-32282, CONF:1198-32283</entry><entry> </entry></row> 
+<row><entry>problemObservation2Support</entry><entry>0..*</entry><entry>MAY</entry><entry>ProblemObservation2</entry><entry>CONF:1198-31365, CONF:1198-31366, CONF:1198-31367</entry><entry> </entry></row> 
+<row><entry>problemStatus</entry><entry>0..1</entry><entry>MAY</entry><entry>ProblemStatus</entry><entry>CONF:1198-9063, CONF:1198-9068, CONF:1198-15591</entry><entry> </entry></row> 
+<row><entry>prognosisObservation</entry><entry>0..1</entry><entry>MAY</entry><entry>PrognosisObservation</entry><entry>CONF:1198-29951, CONF:1198-31531, CONF:1198-29952</entry><entry> </entry></row> 
+<row><entry>value</entry><entry>1..1</entry><entry>SHOULD</entry><entry>CD</entry><entry>CONF:1198-9058</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../ComplicationsSection2.dita">Complications Section (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../DeceasedObservation2.dita">Deceased Observation (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../EncounterDiagnosis2.dita">Encounter Diagnosis (V3)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry><xref href="../HealthConcernAct.dita">Health Concern Act (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref href="../HistoryOfPastIllnessSection2.dita">History of Past Illness Section (V3)</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry><xref href="../HospitalAdmissionDiagnosis2.dita">Hospital Admission Diagnosis (V3)</xref></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry><xref href="../HospitalDischargeDiagnosis2.dita">Hospital Discharge Diagnosis (V3)</xref></entry><entry><xref href="../HealthStatusObservation.dita">Health Status Observation</xref></entry></row><row><entry><xref href="../PostprocedureDiagnosis2.dita">Postprocedure Diagnosis (V3)</xref></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry><xref href="../PreoperativeDiagnosis2.dita">Preoperative Diagnosis (V3)</xref></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry><xref href="../ProblemConcernAct2.dita">Problem Concern Act (V3)</xref></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry><xref href="../ProcedureFindingsSection2.dita">Procedure Findings Section (V3)</xref></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry><xref href="../RiskConcernAct.dita">Risk Concern Act (V2)</xref></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../PriorityPreference.dita">Priority Preference</xref></entry></row><row><entry></entry><entry><xref href="../ProblemStatus.dita">Problem Status</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../PrognosisObservation.dita">Prognosis Observation</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+  <id root="MDHT" extension="135979339"/>
+  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="4775136"/>
+      <code code="1999127922"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+      <id root="MDHT" extension="1613626993"/>
+      <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <id root="MDHT" extension="1988928594"/>
+      <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <value xsi:type="CD" code="1217530779"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+      <id root="MDHT" extension="910147333"/>
+      <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <value xsi:type="CD" code="1929798494"/>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+      <id root="MDHT" extension="1212586372"/>
+      <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <value xsi:type="CD" code="1526773363"/>
+    </observation>
+  </entryRelationship>
+</observation>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::ProblemObservation
+</p>
+<p id="ProblemObservation" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:14926, CONF:14927 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.4"
+</li><li>Consol Problem Observation The text, if present, SHOULD contain zero or one [0..1] reference (CONF:15587)
+</li><li>Consol Problem Observation reference, if present, SHALL contain exactly one [1..1] @value (CONF:15588)
+</li><li>Consol Problem Observation reference/@value SHALL begin with a '#' and SHALL point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15589)
+</li><li>Consol Problem Observation The effectiveTime element , if present, SHALL contain exactly one [1..1] low (CONF:15603)
+</li><li>Consol Problem Observation effectiveTime, if present, MAY contain zero or one [0..1] high (CONF:15604)
+</li><li>Consol Problem Observation value MAY contain zero or one [0..1] @nullFlavor (CONF:10141)
+</li><li>Consol Problem Observation If the diagnosis is unknown or the SNOMED code is unknown, @nullFlavor SHOULD be  UNK.  If the code is something other than SNOMED, @nullFlavor SHOULD be OTH and the other code SHOULD be placed in the translation element (CONF:10142)
+</li><li>Consol Problem Observation entryRelationship with target entry Age Observation SHALL contain exactly one [1..1] @inversionInd="true" True (CONF:9069, R2.1=CONF:9069)
+</li><li>Consol Problem Observation value MAY contain zero or more [0..*] translation (CONF:16749, R2.1=CONF:1198-16749)
+</li><li>Consol Problem Observation translation, if present, MAY contain zero or one [0..1] @code (CodeSystem: ICD10CM 2.16.840.1.113883.6.90 STATIC) (CONF:16750, R2.1=CONF:1198-16750)
+</li><li>SHALL conform to CDA Observation
+</li><li>Consol Problem Observation SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:9041, R2.1=CONF:1198-9041)
+</li><li>Consol Problem Observation SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:9042, R2.1=CONF:1198-9042)
+</li><li>Consol Problem Observation MAY contain zero or one [0..1] @negationInd (CONF:10139)
+</li><li>Consol Problem Observation SHALL contain at least one [1..*] id (CONF:9043, R2.1=CONF:1198-9043)
+</li><li>Consol Problem Observation SHALL contain exactly one [1..1] code (Problem Type), which SHOULD be selected from ValueSet Problem Type 2.16.840.1.113883.3.88.12.3221.7.2 STATIC 2008-12-18 (CONF:9045)
+</li><li>Consol Problem Observation SHOULD contain zero or one [0..1] text (Problem Name) (CONF:9185)
+</li><li>Consol Problem Observation SHALL contain exactly one [1..1] statusCode/@code="completed" Completed (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:9049, R2.1=CONF:1198-9049)
+</li><li>Consol Problem Observation SHOULD contain zero or one [0..1] effectiveTime (Problem Date) (CONF:9050)
+</li><li>Consol Problem Observation SHALL contain exactly one [1..1] value (Problem Code) with @xsi:type="CD", which SHOULD be selected from ValueSet Problem 2.16.840.1.113883.3.88.12.3221.7.4 DYNAMIC (CONF:9058)
+</li><li>Consol Problem Observation MAY contain  [0..1] entryRelationship (Age At Onset) such that it  (CONF:9059, CONF:9060, CONF:15590, R2.1=CONF:1198-9059, R2.1=CONF:1198-9060, R2.1=CONF:1198-15590) Contains @typeCode="SUBJ" SUBJ, and Conforms to Age Observation (templateId: 2.16.840.1.113883.10.20.22.4.31)
+</li><li>Consol Problem Observation MAY contain  [0..1] entryRelationship (Problem Status) such that it  (CONF:9063, CONF:9068, CONF:15591) Contains @typeCode="REFR" REFR, and Conforms to Problem Status (templateId: 2.16.840.1.113883.10.20.22.4.6)
+</li><li>Consol Problem Observation MAY contain  [0..1] entryRelationship (Health Status) such that it  (CONF:9067, CONF:9064, CONF:15592) Contains @typeCode="REFR" REFR, and Conforms to Health Status Observation (templateId: 2.16.840.1.113883.10.20.22.4.5)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Problem Observation (V3)</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.4</tt>]</p>
+</body>
+</topic>

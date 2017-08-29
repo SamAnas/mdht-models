@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Outcome Observation - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.144</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.144"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>
+This template represents the outcome of care resulting from the interventions used to treat the patient. In the Care Planning workflow, the judgment about how well the person is progressing towards the goal is based on the observations made about the status of the patient with respect to interventions performed in the pursuit of achieving that goal.
+
+
+Often thought of as an "actual outcome", the Outcome Observation may be related to goals, progression toward goals, and the associated interventions. For example, an observation outcome of a blood oxygen saturation level of 95% is related to the goal of "Maintain Pulse Ox greater than 92", which in turn is related to the health concern of respiratory insufficiency and the problem of pneumonia. The template makes use of the Entry Reference (templateId:2.16.840.1.113883.10.20.22.4.122) to reference the interventions and goals defined elsewhere in the Care Plan CDA instance.
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-31221, CONF:1098-31222 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.144"</tt></li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31219)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31220)
+</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-31223)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-32746)
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>value</b></tt> (CONF:1098-32747)
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-31553)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31224, CONF:1098-31225, CONF:1098-32465)<p>The following entryRelationship represents the relationship between an Outcome Observation and a Goal Observation. Because the Goal Observation is already described in the CDA document instance's Goals section, rather than repeating the full content of the Goal Observation, the Entry Reference template can be used to reference this entry.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>GEVL" </tt><i>GEVL</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31427, CONF:1098-31428, CONF:1098-31430)<p>The following entryRelationship represents the relationship between an Outcome Observation and a Progress Toward Goal Observation (Outcome Observation SUPPORTS Progress Toward Goal Observation). In the Care Planning workflow, the judgment about how well the person is progressing towards the goal is based on the observations made about the status of the patient with respect to interventions performed in the pursuit of achieving that goal.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>SPRT" </tt><i>SPRT</i></li>
+<li>Conforms to <xref href="../ProgressTowardGoalObservation.dita">Progress Toward Goal Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.110</tt>)</li>
+<li>The Progress Toward Goal Observation entryRelationship, if present, <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" (CONF:1098-31429)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31688, CONF:1098-31689, CONF:1098-31690)<p>Where an Outcome Observation needs to reference an Intervention Act already described in the CDA document instance, rather than repeating the full content of the Intervention Act, the Entry Reference template may be used to reference this entry.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>reference</b></tt> such that it  (CONF:1098-32763) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="REFR" </tt> (CONF:1098-32764)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>externalDocument</b></tt>, where its type is <xref href="../ExternalDocumentReference.dita">External Document Reference</xref> (CONF:1098-32765)</li></ol> 
+</li>
+<li>
+<b>SHALL</b> contain  [1..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32782)<ol>
+<li>Conforms to Entry Relationship from CDA</li></ol>
+</li>
+<li>The entryReference for the entryRelationship which contains @typeCode="GEVL" and contains an entryReference template <b>SHALL</b> reference an instance of a Goal Observation template (CONF:1098-32461)</li>
+<li>The entryReference for the entryRelationship which contains @typeCode="RSON" and contains an entryReference template <b>SHALL</b> reference an instance of an Intervention Act template (CONF:1098-32462)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31219)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31220)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-31223)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-32746)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>value</b></tt> (CONF:1098-32747)
+</li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-31553)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31224, CONF:1098-31225, CONF:1098-32465)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>GEVL" </tt><i>GEVL</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol><p>The following entryRelationship represents the relationship between an Outcome Observation and a Goal Observation. Because the Goal Observation is already described in the CDA document instance's Goals section, rather than repeating the full content of the Goal Observation, the Entry Reference template can be used to reference this entry.</p></li>
+<li><b>SHOULD</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31427, CONF:1098-31428, CONF:1098-31430)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SPRT" </tt><i>SPRT</i></li>
+<li>Conforms to <xref href="../ProgressTowardGoalObservation.dita">Progress Toward Goal Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.110</tt>)</li>
+<li>The Progress Toward Goal Observation entryRelationship, if present, <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" (CONF:1098-31429)</li></ol><p>The following entryRelationship represents the relationship between an Outcome Observation and a Progress Toward Goal Observation (Outcome Observation SUPPORTS Progress Toward Goal Observation). In the Care Planning workflow, the judgment about how well the person is progressing towards the goal is based on the observations made about the status of the patient with respect to interventions performed in the pursuit of achieving that goal.</p></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31688, CONF:1098-31689, CONF:1098-31690)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../EntryReference.dita">Entry Reference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.122</tt>)</li></ol><p>Where an Outcome Observation needs to reference an Intervention Act already described in the CDA document instance, rather than repeating the full content of the Intervention Act, the Entry Reference template may be used to reference this entry.</p></li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>reference</b></tt> such that it  (CONF:1098-32763) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="REFR" </tt> (CONF:1098-32764)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>externalDocument</b></tt>, where its type is <xref href="../ExternalDocumentReference.dita">External Document Reference</xref> (CONF:1098-32765)</li></ol> 
+</li>
+<li><b>SHALL</b> contain  [1..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32782)
+<ol>
+<li>Conforms to Entry Relationship from CDA</li></ol></li>
+<li>The Progress Toward Goal Observation entryRelationship, if present, <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" (CONF:1098-31429)</li>
+<li>The entryReference for the entryRelationship which contains @typeCode="GEVL" and contains an entryReference template <b>SHALL</b> reference an instance of a Goal Observation template (CONF:1098-32461)</li>
+<li>The entryReference for the entryRelationship which contains @typeCode="RSON" and contains an entryReference template <b>SHALL</b> reference an instance of an Intervention Act template (CONF:1098-32462)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::OutcomeObservation</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.144]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActClassObservation</entry><entry>CONF:1098-31219</entry><entry> ALRT</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActMoodDocumentObservation</entry><entry>CONF:1098-31220</entry><entry> DEF</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry></entry><entry>LOINC 2.16.840.1.113883.6.1 null</entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:1098-31223</entry><entry> </entry></row> 
+<row><entry>value</entry><entry>0..1</entry><entry>SHOULD</entry><entry>ANY</entry><entry>CONF:1098-32747</entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1098-31553</entry><entry> </entry></row> 
+<row><entry>entryReferenceGoalObs</entry><entry>0..*</entry><entry>SHOULD</entry><entry>EntryReference</entry><entry>CONF:1098-31224CONF:1098-31225CONF:1098-32465</entry><entry> </entry></row> 
+<row><entry>entryReferenceInterventionAct</entry><entry>0..*</entry><entry>MAY</entry><entry>EntryReference</entry><entry>CONF:1098-31688CONF:1098-31689CONF:1098-31690</entry><entry> </entry></row> 
+<row><entry>entryRelationship</entry><entry>1..*</entry><entry>SHALL</entry><entry>EntryRelationship</entry><entry>CONF:1098-32782</entry><entry> </entry></row> 
+<row><entry>outcomeObservation</entry><entry>1..*</entry><entry>SHALL</entry><entry>OutcomeObservation</entry><entry>CONF:1098-31227CONF:1098-31228</entry><entry> </entry></row> 
+<row><entry>progressTowardGoalObservation</entry><entry>0..1</entry><entry>SHOULD</entry><entry>ProgressTowardGoalObservation</entry><entry>CONF:1098-31427CONF:1098-31428CONF:1098-31430</entry><entry> </entry></row> 
+<row><entry>reference</entry><entry>0..*</entry><entry>MAY</entry><entry>Reference</entry><entry>CONF:1098-32763</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../HealthStatusEvaluationsAndOutcomesSection.dita">Health Status Evaluations And Outcomes Section</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../EntryReference.dita">Entry Reference</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../ProgressTowardGoalObservation.dita">Progress Toward Goal Observation</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.144"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.144"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.144"/>
+  <id root="MDHT" extension="368967879"/>
+  <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+  <text>Text Value</text>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="1582800313"/>
+      <code code="574460956"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship/>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.122"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.110"/>
+      <id root="MDHT" extension="592378128"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <value xsi:type="CD" code="886535881"/>
+    </observation>
+  </entryRelationship>
+  <reference typeCode="REFR">
+    <externalDocument classCode="DOCCLIN" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.115"/>
+      <id root="MDHT" extension="419663901"/>
+      <code code="1187158160"/>
+      <text>Text Value</text>
+      <setId root="MDHT" extension="1f3f46f6-e833-4adc-a576-57108f5396b6"/>
+      <versionNumber value="1"/>
+    </externalDocument>
+  </reference>
+</observation>]]></codeblock>
+<section id="changes">
+</section>
+<p><ph id="classformalname">Outcome Observation</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.144</tt>]</p>
+</body>
+</topic>

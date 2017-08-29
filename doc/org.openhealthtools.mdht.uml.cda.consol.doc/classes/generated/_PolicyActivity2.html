@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Policy Activity (V3) - conformance rules" />
+<meta name="abstract" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]" />
+<meta name="description" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]" />
+<meta name="DC.Coverage" content="Act" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css" />
+<title>Policy Activity (V3) - conformance rules</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+<h1 class="title topictitle1" id="ariaid-title1">Policy Activity (V3) - conformance rules</h1>
+
+
+
+<div class="body"><p class="shortdesc">[Act: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.61</tt>]</p>
+
+<div class="section" id="classId__knownSubclasses">
+</div>
+
+<div class="section" id="classId__description">
+<p class="p">A policy activity represents the policy or program providing the coverage. The person for whom payment is being provided (i.e., the patient) is the covered party. The subscriber of the policy or program is represented as a participant that is the holder of the coverage. The payer is represented as the performer of the policy activity.</p>
+
+</div>
+
+<ol class="ol" id="classId__conformance">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-8900, CONF:1198-10516, CONF:1198-32595 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.61"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="../PolicyActivity.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.61</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Health Insurance Type 2.16.840.1.113883.3.88.12.3221.5.2</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1198-8903)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:1198-8902)<tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19109)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:1198-8906) <p class="p"><p class="lines"><em class="ph i">This performer represents the Payer.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PRF" </tt> (CONF:8907, R2.1=CONF:1198-8907)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:1198-8908) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8909, R2.1=CONF:1198-8909)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8914, R2.1=CONF:1198-8914), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Financially Responsible Party Type Value Set 2.16.840.1.113883.1.11.10416</tt><strong class="ph b"> DYNAMIC</strong> (CONF:15992, R2.1=CONF:1198-15992)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:1198-8910)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:1198-8911)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">representedOrganization</strong></tt> such that it  (CONF:8912, R2.1=CONF:1198-8912) <ol class="ol"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:1198-8913)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:1198-8961) <p class="p"><p class="lines"><em class="ph i">This performer represents the Guarantor.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:8963, R2.1=CONF:1198-8963)</li>
+<li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PRF" </tt></li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:1198-8962) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-8968)<tt class="ph tt"><strong class="ph b">/@code</strong>="GUAR" </tt><em class="ph i">Guarantor</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.110 HL7RoleClass</tt>) (CONF:1198-16096, CONF:1198-32165)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:1198-8964)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:1198-8965)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:1198-8916) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="COV" </tt> (CONF:8917, R2.1=CONF:1198-8917)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:8918, R2.1=CONF:1198-8918)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">participantRole</strong></tt> such that it  (CONF:1198-8921) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8923, R2.1=CONF:1198-8923), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Coverage Role Type 2.16.840.1.113883.1.11.18877</tt><strong class="ph b"> DYNAMIC</strong> (CONF:16078, R2.1=CONF:1198-16078)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:8956, R2.1=CONF:1198-8956)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1198-8922)<p class="p"><p class="lines"><em class="ph i">This id is a unique identifier for the covered party member. Implementers SHOULD use the same GUID for each instance of a member identifier from the same health plan (CONF:1098-8984).</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">playingEntity</strong></tt> such that it  (CONF:1198-8932) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:1198-8930)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">sDTCBirthTime</strong></tt> (CONF:1198-31344)<p class="p"><p class="lines"><em class="ph i">If the covered party's date of birth is recorded differently in the health plan and in the registration/pharmacy benefit summary, use the date of birth as it is recorded in the health plan.<br />
+The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the birthTime element (CONF:1098-31345).</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">When the Subscriber is the patient, the participant element describing the subscriber <strong class="ph b">SHALL NOT</strong> be present. This information will be recorded instead in the data elements used to record member information (CONF:1198-17139)</li>
+
+</ol>
+
+<ol class="ol" id="classId__aggregate">
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="../PolicyActivity.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.61</tt>)</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="ACT" </tt><em class="ph i">Act</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8898, R2.1=CONF:1198-8898)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8899, R2.1=CONF:1198-8899)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8901, R2.1=CONF:1198-8901)
+<p class="p">This id is a unique identifier for the policy or program providing the coverage</p>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Health Insurance Type 2.16.840.1.113883.3.88.12.3221.5.2</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1198-8903)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:1198-8902)<tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19109)
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:8934, R2.1=CONF:1198-8934) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="HLD" </tt> (CONF:8935, R2.1=CONF:1198-8935)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:8938, R2.1=CONF:1198-8938)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">participantRole</strong></tt> such that it  (CONF:8936, R2.1=CONF:1198-8936) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8937, R2.1=CONF:1198-8937)<p class="p"><p class="lines"><em class="ph i">This id is a unique identifier for the subscriber of the coverage (CONF:10120)</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:8925, R2.1=CONF:1198-8925)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:8939, R2.1=CONF:1198-8939) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="REFR" </tt> (CONF:8940, R2.1=CONF:1198-8940)</li>
+<li class="li">The target of a policy activity with act/entryRelationship/@typeCode="REFR" <strong class="ph b">SHALL</strong> be an authorization activity (templateId 2.16.840.1.113883.10.20.1.19) OR an act, with act[@classCode="ACT"] and act[@moodCode="DEF"], representing a description of the coverage plan (CONF:8942, R2.1=CONF:1198-8942)</li>
+<li class="li">A description of the coverage plan <strong class="ph b">SHALL</strong> contain one or more act/id, to represent the plan identifier, and an act/text with the name of the plan (CONF:8943, R2.1=CONF:1198-8943)</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:1198-8906) <p class="p"><p class="lines"><em class="ph i">This performer represents the Payer.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PRF" </tt> (CONF:8907, R2.1=CONF:1198-8907)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:1198-8908) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8909, R2.1=CONF:1198-8909)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8914, R2.1=CONF:1198-8914), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Financially Responsible Party Type Value Set 2.16.840.1.113883.1.11.10416</tt><strong class="ph b"> DYNAMIC</strong> (CONF:15992, R2.1=CONF:1198-15992)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:1198-8910)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:1198-8911)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">representedOrganization</strong></tt> such that it  (CONF:8912, R2.1=CONF:1198-8912) <ol class="ol"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:1198-8913)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:1198-8961) <p class="p"><p class="lines"><em class="ph i">This performer represents the Guarantor.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:8963, R2.1=CONF:1198-8963)</li>
+<li class="li">contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PRF" </tt></li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:1198-8962) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-8968)<tt class="ph tt"><strong class="ph b">/@code</strong>="GUAR" </tt><em class="ph i">Guarantor</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.110 HL7RoleClass</tt>) (CONF:1198-16096, CONF:1198-32165)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:1198-8964)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">telecom</strong></tt> (CONF:1198-8965)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:1198-8916) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="COV" </tt> (CONF:8917, R2.1=CONF:1198-8917)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">time</strong></tt> (CONF:8918, R2.1=CONF:1198-8918)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">participantRole</strong></tt> such that it  (CONF:1198-8921) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8923, R2.1=CONF:1198-8923), which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Coverage Role Type 2.16.840.1.113883.1.11.18877</tt><strong class="ph b"> DYNAMIC</strong> (CONF:16078, R2.1=CONF:1198-16078)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">addr</strong></tt> (CONF:8956, R2.1=CONF:1198-8956)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1198-8922)<p class="p"><p class="lines"><em class="ph i">This id is a unique identifier for the covered party member. Implementers SHOULD use the same GUID for each instance of a member identifier from the same health plan (CONF:1098-8984).</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">playingEntity</strong></tt> such that it  (CONF:1198-8932) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:1198-8930)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">sDTCBirthTime</strong></tt> (CONF:1198-31344)<p class="p"><p class="lines"><em class="ph i">If the covered party's date of birth is recorded differently in the health plan and in the registration/pharmacy benefit summary, use the date of birth as it is recorded in the health plan.<br />
+The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the birthTime element (CONF:1098-31345).</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">When the Subscriber is the patient, the participant element describing the subscriber <strong class="ph b">SHALL NOT</strong> be present. This information will be recorded instead in the data elements used to record member information (CONF:1198-17139)</li>
+
+</ol>
+
+<div class="section" id="classId__tableconformance"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col style="width:25%" /><col style="width:8.333333333333332%" /><col style="width:8.333333333333332%" /><col style="width:16.666666666666664%" /><col style="width:16.666666666666664%" /><col style="width:25%" /></colgroup><thead class="thead" style="text-align:left;"> <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d644784e877">consol::PolicyActivity2</th>
+  </tr>
+  <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d644784e882">cda::act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.61]/</th>
+  </tr>
+ <tr class="row"><th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d644784e887">XPath</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d644784e889">Card.</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d644784e891">Verb</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d644784e893">Data Type</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d644784e895">CONF#</th>
+<th class="entry cell-norowborder" style="text-align:left;vertical-align:top;" id="d644784e897">Fixed Value</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e887 ">statusCode</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e889 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e891 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e893 ">CS</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e895 ">CONF:1198-19109</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e897 ">ActStatus 2.16.840.1.113883.5.14ActStatus 2.16.840.1.113883.5.14 completed</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e887 ">code</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e889 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e891 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e893 ">CD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e895 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e897 "> null</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e887 ">coverage</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e889 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e891 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e893 ">Coverage</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e895 ">CONF:1198-8916</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e897 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e887 ">guarantor</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e889 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e891 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e893 ">Guarantor</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e895 ">CONF:1198-8961</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e897 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e887 ">payer</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e889 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e891 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e893 ">Payer</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e895 ">CONF:1198-8906</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e897 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e887 ">policyActivity2</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e889 ">1..*</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e891 "> </td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e893 ">PolicyActivity2</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e895 "> </td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d644784e877 d644784e882 d644784e897 "> </td>
+</tr>
+ 
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="section" id="classId__contextTable"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col /><col /></colgroup><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry nocellnorowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d644784e992">Contained By</th>
+<th class="entry cell-norowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d644784e994">Contains</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "><a class="xref" href="../CoverageActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.60]">Coverage Activity (V3)</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../AdvanceDirectiveObservation2.html">Advance Directive Observation (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../AdvanceDirectiveOrganizer.html" title="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.108]">Advance Directive Organizer (V2)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../CodeObservations.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.13]">Code Observations</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../Coverage.html">Coverage</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../ExternalDocumentReference.html">External Document Reference</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../FetusSubjectContext.html">Fetus Subject Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../Guarantor.html">Guarantor</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../ImmunizationMedicationInformation.html">Immunization Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../ImmunizationMedicationInformation2.html">Immunization Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../MedicationInformation.html">Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../MedicationInformation2.html">Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../ObserverContext.html">Observer Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../Payer.html">Payer</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../PhysicianReadingStudyPerformer2.html">Physician Reading Study Performer2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../PhysicianofRecordParticipant.html">Physicianof Record Participant</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../PhysicianofRecordParticipant2.html">Physicianof Record Participant2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../PolicyActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../PreconditionForSubstanceAdministration.html">Precondition For Substance Administration</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../PreconditionForSubstanceAdministration2.html">Precondition For Substance Administration2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../ProcedureActivityAct2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.12]">Procedure Activity Act2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../ProcedureActivityObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.13]">Procedure Activity Observation2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../ProcedureActivityProcedure2.html" title="[Procedure: templateId 2.16.840.1.113883.10.20.22.4.14]">Procedure Activity Procedure2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../ProcedureContext.html" title="[Act: templateId 2.16.840.1.113883.10.20.6.2.5]">Procedure Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../QuantityMeasurementObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.14]">Quantity Measurement Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../SOPInstanceObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.8]">SOP Instance Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../SubstanceAdministeredAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.118]">Substance Administered Act</a></td>
+</tr>
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d644784e992 "> </td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d644784e994 "><a class="xref" href="../TextObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.12]">Text Observation</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<pre class="pre codeblock language-xml" id="classId__example"><code>&lt;act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.61"/&gt;
+  &lt;id root="MDHT" extension="556068686"/&gt;
+  &lt;code codeSystemName=""/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;performer&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.87"/&gt;
+    &lt;assignedEntity&gt;
+      &lt;id root="MDHT" extension="2028180917"/&gt;
+      &lt;code code="1220527170"/&gt;
+      &lt;telecom/&gt;
+    &lt;/assignedEntity&gt;
+  &lt;/performer&gt;
+  &lt;performer typeCode="PRF"&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.88"/&gt;
+    &lt;time&gt;
+      &lt;low value="2017"/&gt;
+      &lt;high value="2017"/&gt;
+    &lt;/time&gt;
+    &lt;assignedEntity&gt;
+      &lt;id root="MDHT" extension="1570230557"/&gt;
+      &lt;code code="861159009"/&gt;
+      &lt;telecom/&gt;
+    &lt;/assignedEntity&gt;
+  &lt;/performer&gt;
+  &lt;participant&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.89"/&gt;
+    &lt;time&gt;
+      &lt;low value="2017"/&gt;
+      &lt;high value="2017"/&gt;
+    &lt;/time&gt;
+    &lt;participantRole&gt;
+      &lt;id root="MDHT" extension="1955202205"/&gt;
+      &lt;code code="1972290718"/&gt;
+      &lt;addr/&gt;
+      &lt;playingEntity/&gt;
+    &lt;/participantRole&gt;
+  &lt;/participant&gt;
+&lt;/act&gt;</code></pre>
+<div class="section" id="classId__changes">
+<p class="p">
+Change Log from Consol::PolicyActivity
+</p>
+
+<div class="p" id="classId__PolicyActivity">
+<ol class="ol"><li class="li"><strong class="ph b">Modifications</strong>
+</li>
+<li class="li">SHALL contain exactly one [1..1] templateId ( CONF:8900, CONF:10516 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.61"
+</li>
+<li class="li">SHALL conform to CDA Act
+</li>
+<li class="li">Consol Policy Activity SHALL contain exactly one [1..1] @classCode="ACT" Act (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8898, R2.1=CONF:1198-8898)
+</li>
+<li class="li">Consol Policy Activity SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:8899, R2.1=CONF:1198-8899)
+</li>
+<li class="li">Consol Policy Activity SHALL contain at least one [1..*] id (CONF:8901, R2.1=CONF:1198-8901)
+</li>
+<li class="li">Consol Policy Activity SHALL contain exactly one [1..1] code (CONF:8903), which SHOULD be selected from ValueSet Health Insurance Type 2.16.840.1.113883.3.88.12.3221.5.2 DYNAMIC (CONF:19185)
+</li>
+<li class="li">Consol Policy Activity SHALL contain exactly one [1..1] statusCode/@code="completed" Completed (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:8902)
+</li>
+<li class="li">Consol Policy Activity SHALL contain exactly one [1..1] performer, where its type is Payer (CONF:8906)
+</li>
+<li class="li">Consol Policy Activity SHOULD contain zero or one [0..1] performer, where its type is Guarantor (CONF:8961)
+</li>
+<li class="li">Consol Policy Activity SHALL contain exactly one [1..1] participant, where its type is Coverage (CONF:8916)
+</li>
+<li class="li">Consol Policy Activity SHOULD contain zero or one [0..1] participant, where its type is Holder (CONF:8934, R2.1=CONF:1198-8934)
+</li>
+<li class="li">Consol Policy Activity SHALL contain at least one [1..*] entryRelationship, where its type is Entry Relationship (CONF:8939, R2.1=CONF:1198-8939)
+</li>
+<li class="li">SHALL contain exactly one [1..1] templateId ( CONF:16808, CONF:16809 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.87"
+</li>
+<li class="li">SHALL conform to CDA Performer2
+</li>
+<li class="li">Consol Payer SHALL contain exactly one [1..1] assignedEntity, where its type is Payer Assigned Entity (CONF:8908)
+</li>
+<li class="li">Consol Payer SHALL contain exactly one [1..1] @typeCode="PRF"  (CONF:8907, R2.1=CONF:1198-8907)
+</li>
+<li class="li">SHALL contain exactly one [1..1] templateId such that it SHALL contain exactly one [1..1] @root=""
+</li>
+<li class="li">Consol Payer Assigned Entity The content of addr SHALL be a conformant US Realm Address (AD.US.FIELDED) (2.16.840.1.113883.10.20.22.5.2) (CONF:10481)
+</li>
+<li class="li">SHALL conform to CDA Assigned Entity
+</li>
+<li class="li">Consol Payer Assigned Entity SHALL contain at least one [1..*] id (CONF:8909, R2.1=CONF:1198-8909)
+</li>
+<li class="li">Consol Payer Assigned Entity SHOULD contain zero or one [0..1] code (CONF:8914, R2.1=CONF:1198-8914), which SHOULD be selected from ValueSet Financially Responsible Party Type Value Set 2.16.840.1.113883.1.11.10416 DYNAMIC (CONF:15992, R2.1=CONF:1198-15992)
+</li>
+<li class="li">Consol Payer Assigned Entity MAY contain zero or one [0..1] addr (CONF:8910, CONF:10481)
+</li>
+<li class="li">Consol Payer Assigned Entity MAY contain zero or one [0..1] telecom (CONF:8911)
+</li>
+<li class="li">Consol Payer Assigned Entity SHOULD contain zero or one [0..1] representedOrganization, where its type is Payer Organization (CONF:8912, R2.1=CONF:1198-8912)
+</li>
+<li class="li">SHALL contain exactly one [1..1] templateId such that it SHALL contain exactly one [1..1] @root=""
+</li>
+<li class="li">SHALL conform to CDA Organization
+</li>
+<li class="li">Consol Payer Organization SHOULD contain zero or one [0..1] name (CONF:1198-8913)
+</li>
+<li class="li">SHALL contain exactly one [1..1] templateId ( CONF:16810, CONF:16811 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.88"
+</li>
+<li class="li">SHALL conform to CDA Performer2
+</li>
+<li class="li">Consol Guarantor SHOULD contain zero or one [0..1] time (CONF:8963, R2.1=CONF:1198-8963)
+</li>
+<li class="li">Consol Guarantor SHALL contain exactly one [1..1] assignedEntity, where its type is Guarantor Assigned Entity (CONF:8962)
+</li>
+<li class="li">Consol Guarantor SHOULD contain zero or one [0..1] @typeCode="PRF"  (CONF:8961)
+</li>
+<li class="li">Consol Guarantor Assigned Entity SHOULD include assignedEntity/assignedPerson/name AND/OR assignedEntity/representedOrganization/name (CONF:8967, R2.1=CONF:1198-8967)
+</li>
+<li class="li">Consol Guarantor Assigned Entity The content of addr SHALL be a conformant US Realm Address (AD.US.FIELDED) (2.16.840.1.113883.10.20.22.5.2) (CONF:10482)
+</li>
+<li class="li">SHALL conform to CDA Assigned Entity
+</li>
+<li class="li">Consol Guarantor Assigned Entity SHALL contain exactly one [1..1] code (CONF:8968)/@code="GUAR" Guarantor (CodeSystem: 2.16.840.1.113883.5.110 HL7RoleClass) (CONF:16096)
+</li>
+<li class="li">Consol Guarantor Assigned Entity SHOULD contain zero or one [0..1] addr (CONF:8964, CONF:10482) such that it  The content of addr SHALL be a conformant US Realm Address (AD.US.FIELDED) (2.16.840.1.113883.10.20.22.5.2) (CONF:10482)
+</li>
+<li class="li">Consol Guarantor Assigned Entity SHOULD contain zero or one [0..1] telecom (CONF:8965)
+</li>
+<li class="li">SHALL contain exactly one [1..1] templateId ( CONF:16812, CONF:16814 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.89"
+</li>
+<li class="li">Consol Coverage The time, if present, SHOULD contain zero or one [0..1] low (CONF:8919, R2.1=CONF:1198-8919)
+</li>
+<li class="li">Consol Coverage The time, if present, SHOULD contain zero or one [0..1] high (CONF:8920, R2.1=CONF:1198-8920)
+</li>
+<li class="li">SHALL conform to CDA Participant2
+</li>
+<li class="li">Consol Coverage SHALL contain exactly one [1..1] @typeCode="COV"  (CONF:8917, R2.1=CONF:1198-8917)
+</li>
+<li class="li">Consol Coverage SHOULD contain zero or one [0..1] time (CONF:8918, R2.1=CONF:1198-8918)
+</li>
+<li class="li">Consol Coverage SHALL contain exactly one [1..1] participantRole, where its type is Coverage Role (CONF:8921)
+</li>
+<li class="li">SHALL conform to CDA Participant Role
+</li>
+<li class="li">Consol Coverage Role SHALL contain at least one [1..*] id (CONF:8922)
+</li>
+<li class="li">Consol Coverage Role SHALL contain exactly one [1..1] code (CONF:8923, R2.1=CONF:1198-8923), which SHOULD be selected from ValueSet Coverage Role Type 2.16.840.1.113883.1.11.18877 DYNAMIC (CONF:16078, R2.1=CONF:1198-16078)
+</li>
+<li class="li">Consol Coverage Role SHOULD contain zero or one [0..1] addr (CONF:8956, R2.1=CONF:1198-8956)
+</li>
+<li class="li">Consol Coverage Role SHOULD contain zero or one [0..1] playingEntity, where its type is Coverage Playing Entity (CONF:8932)
+</li>
+<li class="li">Consol Coverage Playing Entity If the member date of birth as recorded by the health plan differs from the patient date of birth as recorded in the registration/medication summary, then the member date of birth SHALL be recorded in sdtc:birthTime. (CONF:8933)
+</li>
+<li class="li">SHALL conform to CDA Playing Entity
+</li>
+<li class="li">Consol Coverage Playing Entity SHALL contain exactly one [1..1] name (CONF:8930)
+</li>
+<li class="li">SHALL contain exactly one [1..1] templateId ( CONF:16813, CONF:16815, R2.1=CONF:1198-16813, R2.1=CONF:1198-16815 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.90"
+</li>
+<li class="li">SHALL conform to CDA Participant2
+</li>
+<li class="li">Consol Holder SHALL contain exactly one [1..1] @typeCode="HLD"  (CONF:8935, R2.1=CONF:1198-8935)
+</li>
+<li class="li">Consol Holder MAY contain zero or one [0..1] time (CONF:8938, R2.1=CONF:1198-8938)
+</li>
+<li class="li">Consol Holder SHALL contain exactly one [1..1] participantRole, where its type is Holder Role (CONF:8936, R2.1=CONF:1198-8936)
+</li>
+<li class="li">SHALL conform to CDA Participant Role
+</li>
+<li class="li">Consol Holder Role SHALL contain at least one [1..*] id (CONF:8937, R2.1=CONF:1198-8937)
+</li>
+<li class="li">Consol Holder Role SHOULD contain zero or one [0..1] addr (CONF:8925, R2.1=CONF:1198-8925)
+</li>
+<li class="li">Consol Entry Relationship The target of a policy activity with act/entryRelationship/@typeCode="REFR" SHALL be an authorization activity (templateId 2.16.840.1.113883.10.20.1.19) OR an act, with act[@classCode="ACT"] and act[@moodCode="DEF"], representing a description of the coverage plan (CONF:8942, R2.1=CONF:1198-8942)
+</li>
+<li class="li">Consol Entry Relationship A description of the coverage plan SHALL contain one or more act/id, to represent the plan identifier, and an act/text with the name of the plan (CONF:8943, R2.1=CONF:1198-8943)
+</li>
+<li class="li">SHALL conform to CDA Entry Relationship
+</li>
+<li class="li">Consol Entry Relationship SHALL contain exactly one [1..1] @typeCode="REFR"  (CONF:8940, R2.1=CONF:1198-8940)
+</li>
+<li class="li"><strong class="ph b">Additions</strong>
+</li>
+</ol>
+</div>
+
+</div>
+
+<p class="p"><span class="ph" id="classId__classformalname">Policy Activity (V3)</span></p>
+
+<p class="p" id="classId__shortdesc">[Act: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.61</tt>]</p>
+
+</div>
+
+</body>
+</html>

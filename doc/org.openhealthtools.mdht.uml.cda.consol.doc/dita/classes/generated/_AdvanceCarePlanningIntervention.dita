@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Advance Care Planning Intervention (V1) - conformance rules</title>
+<shortdesc id="shortdesc">[Procedure: templateId <tt>2.16.840.1.113883.10.20.22.4.204</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Procedure</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.204"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.204"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2017-05-01"</tt></li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="PROC" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (3332-32991)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt> (3332), which <b>SHALL</b> be selected from ValueSet<tt> PlannedorCompletedMoodCode 2.16.840.1.113883.11.20.9.69.6</tt><b> DYNAMIC</b> (32995)
+</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (3332-32993)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (3332-32947), which <b>SHALL</b> be selected from ValueSet<tt> Advance Care Planning Services Grouping Value Set 2.16.840.1.113883.11.20.9.69.1</tt><b> STATIC</b>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (3332), which <b>SHALL</b> be selected from ValueSet<tt> ProcedureActStatusCode 2.16.840.1.113883.11.20.9.22</tt><b> DYNAMIC</b> (32969)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt>
+</li>
+<li>
+<b>SHOULD</b> contain zero or more [0..*] <tt><b>performer</b></tt> such that it  (3332-33014) <p><lines><i>The performer records the person who is intended to complete the planned action, or the person who completed the action when moodCode=EVN. The performer/time element records when the performer is expected to complete the action, or when the performer completed the action if moodCode=EVN.</i></lines></p><ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>time</b></tt> (3332-33015)</li></ol> 
+</li>
+<li>
+<b>SHALL</b> contain  [1..*] <tt><b>author</b></tt> such that it <ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>entryRelationship</b></tt> such that it  (3332-33016) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31485)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31486)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-31489) such that it  <p><lines><i>The ID must equal another entry/id in the same document instance. Application Software must be responsible for resolving the identifier back to its original object and then rendering the information in the correct place in the containing section's narrative text.</i></lines></p><p><lines><i>The ID must equal another entry/id in the same document instance. Application Software must be responsible for resolving the identifier back to its original object and then rendering the information in the correct place in the containing section's narrative text.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-31490)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-31498)<tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31499)</li></ol> <ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="PROC" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (3332-32991)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt> (3332), which <b>SHALL</b> be selected from ValueSet<tt> PlannedorCompletedMoodCode 2.16.840.1.113883.11.20.9.69.6</tt><b> DYNAMIC</b> (32995)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (3332-32993)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (3332-32947), which <b>SHALL</b> be selected from ValueSet<tt> Advance Care Planning Services Grouping Value Set 2.16.840.1.113883.11.20.9.69.1</tt><b> STATIC</b>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (3332), which <b>SHALL</b> be selected from ValueSet<tt> ProcedureActStatusCode 2.16.840.1.113883.11.20.9.22</tt><b> DYNAMIC</b> (32969)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt>
+</li>
+<li><b>SHOULD</b> contain zero or more [0..*] <tt><b>performer</b></tt> such that it  (3332-33014) <p><lines><i>The performer records the person who is intended to complete the planned action, or the person who completed the action when moodCode=EVN. The performer/time element records when the performer is expected to complete the action, or when the performer completed the action if moodCode=EVN.</i></lines></p><ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>time</b></tt> (3332-33015)</li></ol> 
+</li>
+<li><b>SHALL</b> contain  [1..*] <tt><b>author</b></tt> such that it 
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>entryRelationship</b></tt> such that it  (3332-33016) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1098-31485)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1098-31486)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1098-31489) such that it  <p><lines><i>The ID must equal another entry/id in the same document instance. Application Software must be responsible for resolving the identifier back to its original object and then rendering the information in the correct place in the containing section's narrative text.</i></lines></p><p><lines><i>The ID must equal another entry/id in the same document instance. Application Software must be responsible for resolving the identifier back to its original object and then rendering the information in the correct place in the containing section's narrative text.</i></lines></p></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-31490)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-31498)<tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31499)</li></ol> 
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li></ol></li>
+</ol>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../EntryReference.dita">Entry Reference</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<procedure classCode="PROC" moodCode="RQO">
+  <templateId root="2.16.840.1.113883.10.20.22.4.204" extension="2017-05-01"/>
+  <id/>
+  <code/>
+  <statusCode/>
+  <effectiveTime>
+    <low/>
+  </effectiveTime>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id/>
+    </assignedAuthor>
+  </author>
+</procedure>
+]]></codeblock>
+<!--Error code 1: Pathmap to CDA .ecore files not resolved: pathmap://CDA_MODEL/../../org.eclipse.mdht.uml.hl7.rim/model/rim.ecore#//Act. Will not use any CDA extension!-->
+<section id="changes">
+</section>
+<p><ph id="classformalname">Advance Care Planning Intervention (V1)</ph></p>
+<p id="shortdesc">[Procedure: templateId <tt>2.16.840.1.113883.10.20.22.4.204</tt>]</p>
+</body>
+</topic>

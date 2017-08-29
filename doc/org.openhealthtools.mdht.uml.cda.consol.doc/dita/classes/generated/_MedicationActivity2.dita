@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Medication Activity2 - conformance rules</title>
+<shortdesc id="shortdesc">[SubstanceAdministration: templateId <tt>2.16.840.1.113883.10.20.22.4.16</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>SubstanceAdministration</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.16"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>A Medication Activity describes substance administrations that have actually occurred (e.g., pills ingested or injections given) or are intended to occur (e.g., "take 2 tablets twice a day for the next 10 days"). Medication activities in "INT" mood are reflections of what a clinician intends a patient to be taking. For example, a clinician may intend that a patient to be administered Lisinopril 20 mg PO for blood pressure control. If what was actually administered was Lisinopril 10 mg., then the Medication activities in the "EVN" mood would reflect actual use.
+A moodCode of INT is allowed, but it is recommended that the Planned Medication Activity (V2) template be used for moodCodes other than EVN if the document type contains a section that includes Planned Medication Activity (V2) (for example a Care Plan document with Plan of Treatment, Intervention, or Goal sections).
+At a minimum, a Medication Activity shall include an effectiveTime indicating the duration of the administration (or single-administration timestamp). Ambulatory medication lists generally provide a summary of use for a given medication over time - a medication activity in event mood with the duration reflecting when the medication started and stopped. Ongoing medications will not have a stop date (or will have a stop date with a suitable NULL value). Ambulatory medication lists will generally also have a frequency (e.g., a medication is being taken twice a day). Inpatient medications generally record each administration as a separate act.
+The dose (doseQuantity) represents how many of the consumables are to be administered at each administration event. As a result, the dose is always relative to the consumable and the interval of administration. Thus, a patient consuming a single "metoprolol 25mg tablet" per administration will have a doseQuantity of "1", whereas a patient consuming "metoprolol" will have a dose of "25 mg".</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-7499, CONF:1098-10504, CONF:1098-32498 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.16"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../MedicationActivity.dita">Medication Activity</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.16</tt>)</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:1098-7506)<p>Note: SubstanceAdministration.code is an optional field. Per HL7 Pharmacy Committee, "this is intended to further specify the nature of the substance administration act. To date the committee has made no use of this attribute". Because the type of substance administration is generally implicit in the routeCode, in the consumable participant, etc., the field is generally not used, and there is no defined value set.</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-7507), which <b>SHALL</b> be selected from ValueSet<tt> ActStatus 2.16.840.1.113883.1.11.159331</tt><b> DYNAMIC</b> (CONF:1098-32360)
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>repeatNumber</b></tt> (CONF:1098-7555)<p>In "INT" (intent) mood, the repeatNumber defines the number of allowed administrations. For example, a repeatNumber of "3" means that the substance can be administered up to 3 times. In "EVN" (event) mood, the repeatNumber is the number of occurrences. For example, a repeatNumber of "3" in a substance administration event means that the current administration is the 3rd in a series.</p>
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>routeCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Medication Route FDA Value Set 2.16.840.1.113883.3.88.12.3221.8.7</tt><b> DYNAMIC</b> (CONF:1098-7514)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>doseQuantity</b></tt> (CONF:1098-7516)<p>b. Pre-coordinated consumable: If the consumable code is a pre-coordinated unit dose (e.g. "metoprolol 25mg tablet") then doseQuantity is a unitless number that indicates the number of products given per administration (e.g. "2", meaning 2 x "metoprolol 25mg tablet" per administration) (CONF:1098-16878).
+
+c. Not pre-coordinated consumable: If the consumable code is not pre-coordinated (e.g. is simply "metoprolol"), then doseQuantity must represent a physical quantity with @unit, e.g. "25" and "mg", specifying the amount of product given per administration (CONF:1098-16879).
+</p>
+</li>
+<li>
+<b>MAY</b> contain zero or one [0..1] <tt><b>administrationUnitCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> AdministrationUnitDoseForm 2.16.840.1.113762.1.4.1021.30</tt><b> DYNAMIC</b> (CONF:1098-7519)
+</li>
+<li>
+contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-31150)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7536, CONF:1098-7537, CONF:1098-16087)<ol>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../Indication2.dita">Indication2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7539, CONF:1098-7540, CONF:1098-31387)<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../Instruction2.dita">Instruction2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7543, CONF:1098-7547, CONF:1098-16089)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MedicationSupplyOrder2.dita">Medication Supply Order2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.17:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7549, CONF:1098-7553, CONF:1098-16090)<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MedicationDispense2.dita">Medication Dispense2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.18:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7552, CONF:1098-7544, CONF:1098-16091)<ol>
+<li>Contains <tt><b>@typeCode="</b>CAUS" </tt><i>CAUS</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation2.html">Reaction Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-30820, CONF:1098-30821, CONF:1098-30822)<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../DrugMonitoringAct.dita">Drug Monitoring Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.123</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31515, CONF:1098-31516, CONF:1098-31519)<ol><li><p>The following entryRelationship is used to indicate a given medication's order in a series. The nested Substance Administered Act identifies an administration in the series. The entryRelationship/sequenceNumber shows the order of this particular administration in that series.</p></li>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.118</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>precondition</b></tt> such that it  (CONF:1098-31520) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="PRCN" </tt> (CONF:1098-31882)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>criterion</b></tt>, where its type is <xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref> (CONF:1098-31883)</li></ol> 
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>consumable</b></tt> such that it  (CONF:1098-7520) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>manufacturedProduct</b></tt>, where its type is <xref href="../MedicationInformation2.dita">Medication Information2</xref> (CONF:1098-16085)</li></ol> 
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32907, CONF:1098-32908, CONF:1098-32909)<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../MedicationFreeTextSig.dita">Medication Free Text Sig</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.147</tt>)</li></ol>
+</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li>entryRelationship with target entry Instruction2 <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:1098-7542)</li>
+<li>Medication Activity (V2) <b>SHOULD</b> include doseQuantity OR rateQuantity (CONF:1098-30800)</li>
+<li>entryRelationship with target entry Substance Administered Act <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" (CONF:1098-31517)</li>
+<li>entryRelationship with target entry Substance Administered Act <b>MAY</b> contain zero or one [0..1] sequenceNumber (CONF:1098-31518)</li>
+<li><b>SHALL</b> contain exactly one [1..1] effectiveTime such that it <b>SHALL</b> contain exactly one [1..1] @xsi:type="IVL_TS" or contain exactly one [1..1] @xsi:type="TS" (CONF:1098-7508)</li>
+<li>If effectiveTime @xsi:type="IVL_TS", <b>SHOULD</b> contain zero or one [0..1] low (CONF:1098-32776)</li>
+<li>If effectiveTime @xsi:type="IVL_TS", <b>MAY</b> contain zero or one [0..1] high (CONF:1098-32777)</li>
+<li><b>SHOULD</b> contain zero or one [0..1] effectiveTime such that it <b>SHALL</b> contain exactly one [1..1] @xsi:type = "PIVL_TS" or "EIVL_TS" (CONF:1098-7513, CONF:1098-28499)</li>
+<li>If an effectiveTime is present with @xsi:type="IVL_TS" or @xsi:type="TS", this effectiveTime <b>SHALL</b> contain either a low or a @value but not both (CONF:1098-32890)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../MedicationActivity.dita">Medication Activity</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.16</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="SBADM" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:7496, R2.0=CONF:1098-7496)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> MoodCodeEvnInt 2.16.840.1.113883.11.20.9.18</tt><b> STATIC</b> 2011-04-03 (CONF:7497, R2.0=CONF:1098-7497)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:7500, R2.0=CONF:1098-7500)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:1098-7506)
+<p>Note: SubstanceAdministration.code is an optional field. Per HL7 Pharmacy Committee, "this is intended to further specify the nature of the substance administration act. To date the committee has made no use of this attribute". Because the type of substance administration is generally implicit in the routeCode, in the consumable participant, etc., the field is generally not used, and there is no defined value set.</p></li>
+<li>contain zero or one [0..1] <tt><b>text</b></tt>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-7507), which <b>SHALL</b> be selected from ValueSet<tt> ActStatus 2.16.840.1.113883.1.11.159331</tt><b> DYNAMIC</b> (CONF:1098-32360)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>repeatNumber</b></tt> (CONF:1098-7555)
+<p>In "INT" (intent) mood, the repeatNumber defines the number of allowed administrations. For example, a repeatNumber of "3" means that the substance can be administered up to 3 times. In "EVN" (event) mood, the repeatNumber is the number of occurrences. For example, a repeatNumber of "3" in a substance administration event means that the current administration is the 3rd in a series.</p></li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>routeCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Medication Route FDA Value Set 2.16.840.1.113883.3.88.12.3221.8.7</tt><b> DYNAMIC</b> (CONF:1098-7514)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>approachSiteCode</b> (Site)</tt>, which <b>SHALL</b> be selected from ValueSet<tt> Body Site 2.16.840.1.113883.3.88.12.3221.8.9</tt><b> DYNAMIC</b> (CONF:7515, R2.0=CONF:1098-7515)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>doseQuantity</b></tt> (CONF:1098-7516)
+<p>b. Pre-coordinated consumable: If the consumable code is a pre-coordinated unit dose (e.g. "metoprolol 25mg tablet") then doseQuantity is a unitless number that indicates the number of products given per administration (e.g. "2", meaning 2 x "metoprolol 25mg tablet" per administration) (CONF:1098-16878).
+
+c. Not pre-coordinated consumable: If the consumable code is not pre-coordinated (e.g. is simply "metoprolol"), then doseQuantity must represent a physical quantity with @unit, e.g. "25" and "mg", specifying the amount of product given per administration (CONF:1098-16879).
+</p></li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>rateQuantity</b></tt> (CONF:7517, R2.0=CONF:1098-7517)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>maxDoseQuantity</b> (Dose Restriction)</tt> (CONF:7518, R2.0=CONF:1098-7518)
+</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>administrationUnitCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> AdministrationUnitDoseForm 2.16.840.1.113762.1.4.1021.30</tt><b> DYNAMIC</b> (CONF:1098-7519)
+</li>
+<li><b>MAY</b> contain  [0..1] <tt><b>performer</b></tt> such that it  (CONF:7522, R2.0=CONF:1098-7522)
+<ol>
+<li>Conforms to Performer2 from CDA</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>participant</b></tt> such that it  (CONF:7523, CONF:16086, R2.0=CONF:1098-7523, R2.0=CONF:1098-16086)
+<ol>
+<li>Conforms to <xref href="../DrugVehicle.dita">Drug Vehicle</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.24</tt>)</li></ol></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1098-31150)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7536, CONF:1098-7537, CONF:1098-16087)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../Indication2.dita">Indication2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7539, CONF:1098-7540, CONF:1098-31387)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../Instruction2.dita">Instruction2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7543, CONF:1098-7547, CONF:1098-16089)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MedicationSupplyOrder2.dita">Medication Supply Order2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.17:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7549, CONF:1098-7553, CONF:1098-16090)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../MedicationDispense2.dita">Medication Dispense2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.18:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-7552, CONF:1098-7544, CONF:1098-16091)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>CAUS" </tt><i>CAUS</i></li>
+<li>Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation2.html">Reaction Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.9:2014-06-09</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-30820, CONF:1098-30821, CONF:1098-30822)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../DrugMonitoringAct.dita">Drug Monitoring Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.123</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31515, CONF:1098-31516, CONF:1098-31519)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.118</tt>)</li></ol><ol><li><p>The following entryRelationship is used to indicate a given medication's order in a series. The nested Substance Administered Act identifies an administration in the series. The entryRelationship/sequenceNumber shows the order of this particular administration in that series.</p></li></ol></li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>precondition</b></tt> such that it  (CONF:1098-31520) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="PRCN" </tt> (CONF:1098-31882)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>criterion</b></tt>, where its type is <xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref> (CONF:1098-31883)</li></ol> 
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>consumable</b></tt> such that it  (CONF:1098-7520) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>manufacturedProduct</b></tt>, where its type is <xref href="../MedicationInformation2.dita">Medication Information2</xref> (CONF:1098-16085)</li></ol> 
+</li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-32907, CONF:1098-32908, CONF:1098-32909)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../MedicationFreeTextSig.dita">Medication Free Text Sig</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.147</tt>)</li></ol></li>
+<li>Medication Activity <b>SHOULD</b> include doseQuantity OR rateQuantity (CONF:7529)</li>
+<li>text, if present, <b>SHOULD</b> contain zero or one [0..1] reference (CONF:15977)</li>
+<li>reference, if present, <b>SHOULD</b> contain zero or one [0..1] @value (CONF:15978)</li>
+<li>reference/@value <b>SHALL</b> begin with a '#' and <b>SHALL</b> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15979)</li>
+<li><b>SHALL</b> contain exactly one [1..1] effectiveTime such that it <b>SHALL</b> contain exactly one [1..1] @xsi:type="IVL_TS" or contain exactly one [1..1] @xsi:type="TS" (CONF:7508)</li>
+<li>If effectiveTime @xsi:type="IVL_TS", <b>SHALL</b> contain exactly one [1..1] low (CONF:7511)</li>
+<li>If effectiveTime @xsi:type="IVL_TS", <b>SHALL</b> contain exactly one [1..1] high (CONF:7512)</li>
+<li>If effectiveTime @xsi:type="TS", <b>SHALL</b> contain exactly one [1..1] @value (CONF:NEW, R2.0=CONF:1098-32775)</li>
+<li><b>SHOULD</b> contain zero or one [0..1] effectiveTime such that it <b>SHALL</b> contain exactly one [1..1] @xsi:type = "PIVL_TS" or "EIVL_TS" (CONF:7513, CONF:9105)</li>
+<li>effectiveTime with @xsi:type = "PIVL_TS" or "EIVL_TS" <b>SHALL</b> contain exactly one [1..1] @operator="A" (CONF:9106, R2.0=CONF:1098-9106)</li>
+<li>doseQuantity, if present, <b>SHOULD</b> contain zero or one [0..1] @unit, which <b>SHALL</b> be selected from ValueSet UCUM Units of Measure (case sensitive) 2.16.840.1.113883.1.11.12839 DYNAMIC (CONF:7526, R2.0=CONF:1098-7526)</li>
+<li>participant with target entry Drug Vehicle <b>SHALL</b> contain exactly one [1..1] @typeCode="CSM" (CodeSystem: HL7ParticipationType 2.16.840.1.113883.5.90) (CONF:7524, R2.0=CONF:1098-7524)</li>
+<li>entryRelationship with target entry Instructions <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:7542)</li>
+<li>rateQuantity, if present, <b>SHALL</b> contain exactly one [1..1] @unit, which <b>SHALL</b> be selected from ValueSet UnitsOfMeasureCaseSensitive 2.16.840.1.113883.1.11.12839 DYNAMIC (CONF:7525, R2.0=CONF:1098-7525)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li>entryRelationship with target entry Instruction2 <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:1098-7542)</li>
+<li>Medication Activity (V2) <b>SHOULD</b> include doseQuantity OR rateQuantity (CONF:1098-30800)</li>
+<li>entryRelationship with target entry Substance Administered Act <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" (CONF:1098-31517)</li>
+<li>entryRelationship with target entry Substance Administered Act <b>MAY</b> contain zero or one [0..1] sequenceNumber (CONF:1098-31518)</li>
+<li><b>SHALL</b> contain exactly one [1..1] effectiveTime such that it <b>SHALL</b> contain exactly one [1..1] @xsi:type="IVL_TS" or contain exactly one [1..1] @xsi:type="TS" (CONF:1098-7508)</li>
+<li>If effectiveTime @xsi:type="IVL_TS", <b>SHOULD</b> contain zero or one [0..1] low (CONF:1098-32776)</li>
+<li>If effectiveTime @xsi:type="IVL_TS", <b>MAY</b> contain zero or one [0..1] high (CONF:1098-32777)</li>
+<li><b>SHOULD</b> contain zero or one [0..1] effectiveTime such that it <b>SHALL</b> contain exactly one [1..1] @xsi:type = "PIVL_TS" or "EIVL_TS" (CONF:1098-7513, CONF:1098-28499)</li>
+<li>If an effectiveTime is present with @xsi:type="IVL_TS" or @xsi:type="TS", this effectiveTime <b>SHALL</b> contain either a low or a @value but not both (CONF:1098-32890)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::MedicationActivity2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::substanceadministration[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.16]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>administrationUnitCode</entry><entry>0..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1098-7519</entry><entry> null</entry></row> 
+<row><entry>code</entry><entry>0..1</entry><entry>MAY</entry><entry>CD</entry><entry>CONF:1098-7506</entry><entry> </entry></row> 
+<row><entry>doseQuantity</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_PQ</entry><entry>CONF:1098-7516</entry><entry> </entry></row> 
+<row><entry>repeatNumber</entry><entry>0..1</entry><entry>MAY</entry><entry>IVL_INT</entry><entry>CONF:1098-7555</entry><entry> </entry></row> 
+<row><entry>routeCode</entry><entry>0..1</entry><entry>SHOULD</entry><entry>CE</entry><entry></entry><entry> null</entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1098-7507</entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1098-31150</entry><entry> </entry></row> 
+<row><entry>consumable</entry><entry>1..1</entry><entry>SHALL</entry><entry>Consumable</entry><entry>CONF:1098-7520</entry><entry> </entry></row> 
+<row><entry>drugMonitoringAct</entry><entry>0..1</entry><entry>MAY</entry><entry>DrugMonitoringAct</entry><entry>CONF:1098-30820CONF:1098-30821CONF:1098-30822</entry><entry> </entry></row> 
+<row><entry>indication2</entry><entry>0..*</entry><entry>MAY</entry><entry>Indication2</entry><entry>CONF:1098-7536CONF:1098-7537CONF:1098-16087</entry><entry> </entry></row> 
+<row><entry>instruction2</entry><entry>0..1</entry><entry>MAY</entry><entry>Instruction2</entry><entry>CONF:1098-7539CONF:1098-7540CONF:1098-31387</entry><entry> </entry></row> 
+<row><entry>medicationActivity2</entry><entry>1..*</entry><entry>SHALL</entry><entry>MedicationActivity2</entry><entry>CONF:1098-7701CONF:1098-7702CONF:1098-15520</entry><entry> </entry></row> 
+<row><entry>medicationDispense2</entry><entry>0..*</entry><entry>MAY</entry><entry>MedicationDispense2</entry><entry>CONF:1098-7549CONF:1098-7553CONF:1098-16090</entry><entry> </entry></row> 
+<row><entry>medicationFreeTextSig</entry><entry>0..*</entry><entry>MAY</entry><entry>MedicationFreeTextSig</entry><entry>CONF:1098-32907CONF:1098-32908CONF:1098-32909</entry><entry> </entry></row> 
+<row><entry>medicationSupplyOrder2</entry><entry>0..1</entry><entry>MAY</entry><entry>MedicationSupplyOrder2</entry><entry>CONF:1098-7543CONF:1098-7547CONF:1098-16089</entry><entry> </entry></row> 
+<row><entry>precondition</entry><entry>0..*</entry><entry>MAY</entry><entry>Precondition</entry><entry>CONF:1098-31520</entry><entry> </entry></row> 
+<row><entry>reactionObservation2</entry><entry>0..1</entry><entry>MAY</entry><entry>ReactionObservation2</entry><entry>CONF:1098-7552CONF:1098-7544CONF:1098-16091</entry><entry> </entry></row> 
+<row><entry>substanceAdministeredAct</entry><entry>0..*</entry><entry>MAY</entry><entry>SubstanceAdministeredAct</entry><entry>CONF:1098-31515CONF:1098-31516CONF:1098-31519</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../AdmissionMedication2.dita">Admission Medication2</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../AnesthesiaSection2.dita">Anesthesia Section2</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../DischargeMedication2.dita">Discharge Medication (V3)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry><xref href="../InterventionAct.dita">Intervention Act (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref href="../MedicationsAdministeredSection2.dita">Medications Administered Section2</xref></entry><entry><xref href="../DrugMonitoringAct.dita">Drug Monitoring Act</xref></entry></row><row><entry><xref href="../MedicationsSection2.dita">Medications Section2</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry><xref href="../MedicationsSectionEntriesOptional2.dita">Medications Section Entries Optional2</xref></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry><xref href="../PlannedInterventionAct.dita">Planned Intervention Act (V2)</xref></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry><entry><xref href="../Indication2.dita">Indication2</xref></entry></row><row><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry><entry><xref href="../Instruction2.dita">Instruction2</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation2.html">Reaction Observation2</xref></entry><entry><xref href="../MedicationDispense2.dita">Medication Dispense2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationFreeTextSig.dita">Medication Free Text Sig</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationSupplyOrder2.dita">Medication Supply Order2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation2.html">Reaction Observation2</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<substanceadministration xmlns="urn:hl7-org:v3" classCode="SBADM">
+  <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+  <id root="MDHT" extension="1996233902"/>
+  <code code="1307580737"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <repeatNumber value="1"/>
+  <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+  <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <doseQuantity/>
+  <rateQuantity/>
+  <maxDoseQuantity/>
+  <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+  <consumable>
+    <manufacturedProduct classCode="MANU">
+      <templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.23"/>
+      <id root="MDHT" extension="1477159946"/>
+      <manufacturedMaterial>
+        <code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"/>
+      </manufacturedMaterial>
+    </manufacturedProduct>
+  </consumable>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="536850727"/>
+      <code code="1443100605"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="INT">
+      <templateId root="2.16.840.1.113883.10.20.22.4.123"/>
+      <id root="MDHT" extension="1997178893"/>
+      <code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <participant typeCode="RESP">
+        <participantRole classCode="ASSIGNED"/>
+      </participant>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="INT">
+      <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+      <id root="MDHT" extension="1321234822"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.118"/>
+      <id root="MDHT" extension="1903832895"/>
+      <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+      <id root="MDHT" extension="345658290"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <repeatNumber value="1"/>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <supply classCode="SPLY" moodCode="INT">
+      <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+      <id root="MDHT" extension="1167164641"/>
+      <code code="1876028012"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <repeatNumber value="1"/>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+          <id root="MDHT" extension="1921012843"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+    </supply>
+  </entryRelationship>
+  <entryRelationship>
+    <supply classCode="SPLY" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+      <id root="MDHT" extension="365519442"/>
+      <code code="1362396489"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <repeatNumber value="1"/>
+      <entryRelationship>
+        <supply classCode="SPLY" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+          <id root="MDHT" extension="1092864789"/>
+          <code code="1278080869"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <repeatNumber value="1"/>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+        </supply>
+      </entryRelationship>
+    </supply>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+      <id root="MDHT" extension="2016002114"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <repeatNumber value="1"/>
+      <entryRelationship>
+        <procedure classCode="PROC" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.14"/>
+          <id root="MDHT" extension="1526506092"/>
+          <code code="68319601"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+          <approachSiteCode code="1842077170"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <specimen/>
+          <performer/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+              <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+              <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+        </procedure>
+      </entryRelationship>
+      <entryRelationship>
+        <substanceAdministration classCode="SBADM">
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.16"/>
+          <id root="MDHT" extension="394881493"/>
+          <code code="390729817"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <repeatNumber value="1"/>
+          <routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <doseQuantity/>
+          <rateQuantity/>
+          <maxDoseQuantity/>
+          <administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/>
+          <consumable/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.123"/>
+              <code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <act classCode="ACT" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.118"/>
+              <code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/>
+              <statusCode code="completed"/>
+            </act>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+              <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="INT">
+              <templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.17"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <supply classCode="SPLY" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.18"/>
+            </supply>
+          </entryRelationship>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/>
+              <templateId root="2.16.840.1.113883.10.20.22.4.9"/>
+              <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <entryRelationship>
+            <substanceAdministration classCode="SBADM">
+              <templateId root="2.16.840.1.113883.10.20.22.4.147"/>
+              <code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/>
+            </substanceAdministration>
+          </entryRelationship>
+          <precondition typeCode="PRCN"/>
+        </substanceAdministration>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.8"/>
+          <id root="MDHT" extension="514196677"/>
+          <code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <repeatNumber value="1"/>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <substanceAdministration classCode="SBADM">
+      <templateId root="2.16.840.1.113883.10.20.22.4.147"/>
+      <id root="MDHT" extension="1102164033"/>
+      <code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/>
+      <statusCode code="completed"/>
+      <repeatNumber value="1"/>
+      <routeCode code="257073275"/>
+      <approachSiteCode code="1786693192"/>
+      <doseQuantity/>
+      <rateQuantity/>
+      <maxDoseQuantity/>
+      <administrationUnitCode code="1838794627"/>
+      <consumable>
+        <manufacturedProduct/>
+      </consumable>
+    </substanceAdministration>
+  </entryRelationship>
+  <precondition typeCode="PRCN">
+    <criterion>
+      <templateId root="2.16.840.1.113883.10.20.22.4.25" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.25"/>
+      <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
+      <text>Text Value</text>
+    </criterion>
+  </precondition>
+</substanceadministration>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::MedicationActivity
+</p>
+<p id="MedicationActivity" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:7499, CONF:10504 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.16"
+</li><li>Consol Medication Activity Medication Activity SHOULD include doseQuantity OR rateQuantity (CONF:7529)
+</li><li>Consol Medication Activity text, if present, SHOULD contain zero or one [0..1] reference (CONF:15977)
+</li><li>Consol Medication Activity reference, if present, SHOULD contain zero or one [0..1] @value (CONF:15978)
+</li><li>Consol Medication Activity reference/@value SHALL begin with a '#' and SHALL point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15979)
+</li><li>Consol Medication Activity SHALL contain exactly one [1..1] effectiveTime such that it SHALL contain exactly one [1..1] @xsi:type="IVL_TS" or contain exactly one [1..1] @xsi:type="TS" (CONF:7508)
+</li><li>Consol Medication Activity If effectiveTime @xsi:type="IVL_TS", SHALL contain exactly one [1..1] low (CONF:7511)
+</li><li>Consol Medication Activity If effectiveTime @xsi:type="IVL_TS", SHALL contain exactly one [1..1] high (CONF:7512)
+</li><li>Consol Medication Activity If effectiveTime @xsi:type="TS", SHALL contain exactly one [1..1] @value (CONF:NEW, R2.0=CONF:1098-32775)
+</li><li>Consol Medication Activity SHOULD contain zero or one [0..1] effectiveTime such that it SHALL contain exactly one [1..1] @xsi:type = "PIVL_TS" or "EIVL_TS" (CONF:7513, CONF:9105)
+</li><li>Consol Medication Activity effectiveTime with @xsi:type = "PIVL_TS" or "EIVL_TS" SHALL contain exactly one [1..1] @operator="A" (CONF:9106, R2.0=CONF:1098-9106)
+</li><li>Consol Medication Activity doseQuantity, if present, SHOULD contain zero or one [0..1] @unit, which SHALL be selected from ValueSet UCUM Units of Measure (case sensitive) 2.16.840.1.113883.1.11.12839 DYNAMIC (CONF:7526, R2.0=CONF:1098-7526)
+</li><li>Consol Medication Activity participant with target entry Drug Vehicle SHALL contain exactly one [1..1] @typeCode="CSM" (CodeSystem: HL7ParticipationType 2.16.840.1.113883.5.90) (CONF:7524, R2.0=CONF:1098-7524)
+</li><li>Consol Medication Activity entryRelationship with target entry Instructions SHALL contain exactly one [1..1] @inversionInd="true" True (CONF:7542)
+</li><li>Consol Medication Activity rateQuantity, if present, SHALL contain exactly one [1..1] @unit, which SHALL be selected from ValueSet UnitsOfMeasureCaseSensitive 2.16.840.1.113883.1.11.12839 DYNAMIC (CONF:7525, R2.0=CONF:1098-7525)
+</li><li>SHALL conform to CDA Substance Administration
+</li><li>Consol Medication Activity SHALL contain exactly one [1..1] @classCode="SBADM"  (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:7496, R2.0=CONF:1098-7496)
+</li><li>Consol Medication Activity SHALL contain exactly one [1..1] @moodCode, which SHALL be selected from ValueSet MoodCodeEvnInt 2.16.840.1.113883.11.20.9.18 STATIC 2011-04-03 (CONF:7497, R2.0=CONF:1098-7497)
+</li><li>Consol Medication Activity SHALL contain at least one [1..*] id (CONF:7500, R2.0=CONF:1098-7500)
+</li><li>Consol Medication Activity MAY contain zero or one [0..1] code (Delivery Method) (CONF:7506)
+</li><li>Consol Medication Activity SHALL contain exactly one [1..1] statusCode (CONF:7507)
+</li><li>Consol Medication Activity MAY contain zero or one [0..1] routeCode (Route), which SHALL be selected from ValueSet Medication Route FDA Value Set 2.16.840.1.113883.3.88.12.3221.8.7 DYNAMIC (CONF:7514)
+</li><li>Consol Medication Activity MAY contain zero or one [0..1] approachSiteCode (Site), which SHALL be selected from ValueSet Body Site 2.16.840.1.113883.3.88.12.3221.8.9 DYNAMIC (CONF:7515, R2.0=CONF:1098-7515)
+</li><li>Consol Medication Activity SHOULD contain zero or one [0..1] doseQuantity (Dose) (CONF:7516)
+</li><li>Consol Medication Activity MAY contain zero or one [0..1] rateQuantity (CONF:7517, R2.0=CONF:1098-7517)
+</li><li>Consol Medication Activity MAY contain zero or one [0..1] maxDoseQuantity (Dose Restriction) (CONF:7518, R2.0=CONF:1098-7518)
+</li><li>Consol Medication Activity MAY contain zero or one [0..1] administrationUnitCode (Product Form), which SHALL be selected from ValueSet Medication Product Form Value Set 2.16.840.1.113883.3.88.12.3221.8.11 DYNAMIC (CONF:7519)
+</li><li>Consol Medication Activity MAY contain  [0..1] performer such that it  (CONF:7522, R2.0=CONF:1098-7522) Conforms to Performer2 from CDA
+</li><li>Consol Medication Activity MAY contain  [0..1] entryRelationship (Patient Instructions) such that it  (CONF:7539, CONF:7540, CONF:16088) Contains @typeCode="SUBJ" SUBJ, and Conforms to Instructions (templateId: 2.16.840.1.113883.10.20.22.4.20)
+</li><li>Consol Medication Activity MAY contain  [0..1] entryRelationship (Order Information) such that it  (CONF:7543, CONF:7547, CONF:16089) Contains @typeCode="REFR" REFR, and Conforms to Medication Supply Order (templateId: 2.16.840.1.113883.10.20.22.4.17)
+</li><li>Consol Medication Activity MAY contain  [0..1] entryRelationship (Reaction) such that it  (CONF:7552, CONF:7544, CONF:16091) Contains @typeCode="CAUS" CAUS, and Conforms to Reaction Observation (templateId: 2.16.840.1.113883.10.20.22.4.9)
+</li><li>Consol Medication Activity MAY contain  [0..*] entryRelationship such that it  (CONF:7536, CONF:7537, CONF:16087) Contains @typeCode="RSON" RSON, and Conforms to Indication (templateId: 2.16.840.1.113883.10.20.22.4.19)
+</li><li>Consol Medication Activity MAY contain  [0..*] entryRelationship (Fulfillment Instructions) such that it  (CONF:7549, CONF:7553, CONF:16090) Contains @typeCode="REFR" REFR, and Conforms to Medication Dispense (templateId: 2.16.840.1.113883.10.20.22.4.18)
+</li><li>Consol Medication Activity MAY contain  [0..*] participant such that it  (CONF:7523, CONF:16086, R2.0=CONF:1098-7523, R2.0=CONF:1098-16086) Conforms to Drug Vehicle (templateId: 2.16.840.1.113883.10.20.22.4.24)
+</li><li>Consol Medication Activity SHOULD contain zero or one [0..1] text (Free Text Sig) (CONF:7501)
+</li><li>Consol Medication Activity MAY contain zero or one [0..1] repeatNumber (CONF:7555)
+</li><li>Consol Medication Activity SHALL contain exactly one [1..1] consumable (Medication Information), where its type is Consumable (CONF:7520)
+</li><li>Consol Medication Activity MAY contain zero or more [0..*] precondition, where its type is Precondition (CONF:7546)
+</li><li>SHALL conform to CDA Consumable
+</li><li>Consol Consumable SHALL contain exactly one [1..1] manufacturedProduct, where its type is Medication Information (CONF:16085)
+</li><li>SHALL conform to CDA Precondition
+</li><li>Consol Precondition SHALL contain exactly one [1..1] @typeCode="PRCN"  (CONF:7550)
+</li><li>Consol Precondition SHALL contain exactly one [1..1] criterion, where its type is Precondition For Substance Administration (CONF:16092)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Medication Activity2</ph></p>
+<p id="shortdesc">[SubstanceAdministration: templateId <tt>2.16.840.1.113883.10.20.22.4.16</tt>]</p>
+</body>
+</topic>

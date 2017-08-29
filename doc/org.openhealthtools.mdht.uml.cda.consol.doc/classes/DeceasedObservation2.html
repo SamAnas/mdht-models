@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Deceased Observation (V3)" />
+<meta name="abstract" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.79]" />
+<meta name="description" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.79]" />
+<meta name="DC.Coverage" content="Observation" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Deceased Observation (V3)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Deceased Observation (V3)</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Observation: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.79</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">This template represents the observation that a patient has died. It also represents the cause of death, indicated by an entryRelationship type of 'CAUS'. This template allows for more specific representation of data than is available with the use of dischargeDispositionCode.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-14871, CONF:1198-14872, CONF:1198-32541 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.79"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../DeceasedObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.79]">Deceased Observation</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.79</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-14853)<tt class="ph tt"><strong class="ph b">/@code</strong>="ASSERTION" </tt><em class="ph i">Assertion</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.4 HL7ActCode</tt>) (CONF:1198-19135, CONF:1198-32158)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1198-14868, CONF:1198-14875, CONF:1198-14870)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>CAUS" </tt><em class="ph i">CAUS</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../ProblemObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.4]">Problem Observation2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.4:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Deceased Observation (V3)</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.79" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.79"/&gt;
+  &lt;id root="MDHT" extension="200446726"/&gt;
+  &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+      &lt;id root="MDHT" extension="816569699"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;author&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+        &lt;time/&gt;
+        &lt;assignedAuthor/&gt;
+      &lt;/author&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.113"/&gt;
+          &lt;id root="MDHT" extension="954412256"/&gt;
+          &lt;code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+          &lt;id root="MDHT" extension="521554572"/&gt;
+          &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+          &lt;value xsi:type="CD" code="1428790752"/&gt;
+          &lt;author&gt;
+            &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+          &lt;/author&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.5"/&gt;
+          &lt;id root="MDHT" extension="281006470"/&gt;
+          &lt;code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+          &lt;value xsi:type="CD" code="1791980820"/&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.6"/&gt;
+          &lt;id root="MDHT" extension="1284037507"/&gt;
+          &lt;code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+          &lt;value xsi:type="CD" code="429906536"/&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+&lt;/observation&gt;</code></pre>
+	</div>
+
+</body>
+</html>

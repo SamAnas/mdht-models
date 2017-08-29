@@ -9,9 +9,10 @@
 </prolog>
 <body>
 <section id="knownSubclasses">
+<p>Known Subclasses: <xref href="../FunctionalStatusSection2.dita">Functional Status Section2</xref></p>
 </section>
 <section id="description">
-<p><lines><i>The Functional Status section describes the patient's physical state, status of functioning, and environmental status at the time the document was created. 
+<p>The Functional Status section describes the patient's physical state, status of functioning, and environmental status at the time the document was created. 
 A patient's physical state may include information regarding the patient's physical findings as they relate to problems, including but not limited to:
 Pressure Ulcers
 Amputations
@@ -33,142 +34,151 @@ Radiation
 Safety hazards in home, such as throw rugs, poor lighting, lack of railings/grab bars, etc.
 Safety hazards at work, such as communicable diseases, excessive heat, excessive noise, etc.
 The patient's functional status may be expressed as a problem or as a result observation. A functional or cognitive status problem observation describes a patient's problem, symptoms or condition. A functional or cognitive status result observation may include observations resulting from an assessment scale, evaluation or question and answer assessment.
-Any deviation from normal function displayed by the patient and recorded in the record should be included. Of particular interest are those limitations that would interfere with self-care or the medical therapeutic process in any way. In addition, a note of normal function, an improvement, or a change in functioning status may be included.</i></lines></p>
+Any deviation from normal function displayed by the patient and recorded in the record should be included. Of particular interest are those limitations that would interfere with self-care or the medical therapeutic process in any way. In addition, a note of normal function, an improvement, or a change in functioning status may be included.</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:10389 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.22.2.14"</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt><tt><b>/@code</b>="47420-5" </tt><i>Functional status assessment</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:7921)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:10389 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.14"</tt></li></ol></li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt><tt><b>/@code</b>="47420-5" </tt><i>Functional status assessment</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:7921)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7922)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7922, R2.0=CONF:1098-7922)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7923)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7923, R2.0=CONF:1098-7923)
 </li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14414, CONF:14415)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../FunctionalStatusResultOrganizer.dita">Functional Status Result Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.66</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14416, CONF:14417)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../CognitiveStatusResultOrganizer.dita">Cognitive Status Result Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.75</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14418, CONF:14419)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14420, CONF:14421)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../CognitiveStatusResultObservation.dita">Cognitive Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14422, CONF:14423)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../FunctionalStatusProblemObservation.dita">Functional Status Problem Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.68</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14424, CONF:14425)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../CognitiveStatusProblemObservation.dita">Cognitive Status Problem Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.73</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14426, CONF:14427)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14580, CONF:14581)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14582, CONF:14583)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:16777, CONF:16778)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../PressureUlcerObservation.dita">Pressure Ulcer Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.70</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:16779, CONF:16780)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../NumberOfPressureUlcersObservation.dita">Number Of Pressure Ulcers Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.76</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:16781, CONF:16782)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../HighestPressureUlcerStage.dita">Highest Pressure Ulcer Stage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.77</tt>)</li></ol></li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14414, CONF:14415)<ol>
+<li>Conforms to <xref href="../FunctionalStatusResultOrganizer.dita">Functional Status Result Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.66</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14418, CONF:14419)<ol>
+<li>Conforms to <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14416, CONF:14417)<ol>
+<li>Conforms to <xref href="../CognitiveStatusResultOrganizer.dita">Cognitive Status Result Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.75</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14420, CONF:14421)<ol>
+<li>Conforms to <xref href="../CognitiveStatusResultObservation.dita">Cognitive Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14424, R2.0=CONF:1098-14424, CONF:14425, R2.0=CONF:1098-14425)<ol>
+<li>Conforms to <xref href="../CognitiveStatusProblemObservation.dita">Cognitive Status Problem Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.73</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14422, R2.0=CONF:1098-14422, CONF:14423, R2.0=CONF:1098-14423)<ol>
+<li>Conforms to <xref href="../FunctionalStatusProblemObservation.dita">Functional Status Problem Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.68</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14426, R2.0=CONF:1098-14426, CONF:14427, R2.0=CONF:1098-14427)<ol>
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14580, R2.0=CONF:1098-14580, CONF:14581, R2.0=CONF:1098-14581)<ol>
+<li>Conforms to <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14582, CONF:14583)<ol>
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:16777, R2.0=CONF:1098-16777, CONF:16778, R2.0=CONF:1098-16778)<ol>
+<li>Conforms to <xref href="../PressureUlcerObservation.dita">Pressure Ulcer Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.70</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:16779, CONF:16780)<ol>
+<li>Conforms to <xref href="../NumberOfPressureUlcersObservation.dita">Number Of Pressure Ulcers Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.76</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:16781, CONF:16782)<ol>
+<li>Conforms to <xref href="../HighestPressureUlcerStage.dita">Highest Pressure Ulcer Stage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.77</tt>)</li></ol>
+</li>
 </ol>
 <ol id="aggregate">
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt><tt><b>/@code</b>="47420-5" </tt><i>Functional status assessment</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:7921)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7922)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7922, R2.0=CONF:1098-7922)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7923)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7923, R2.0=CONF:1098-7923)
 </li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14414, CONF:14415)
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14414, CONF:14415)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../FunctionalStatusResultOrganizer.dita">Functional Status Result Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.66</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14416, CONF:14417)
+<li>Conforms to <xref href="../FunctionalStatusResultOrganizer.dita">Functional Status Result Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.66</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14418, CONF:14419)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../CognitiveStatusResultOrganizer.dita">Cognitive Status Result Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.75</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14418, CONF:14419)
+<li>Conforms to <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14416, CONF:14417)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14420, CONF:14421)
+<li>Conforms to <xref href="../CognitiveStatusResultOrganizer.dita">Cognitive Status Result Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.75</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14420, CONF:14421)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../CognitiveStatusResultObservation.dita">Cognitive Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14422, CONF:14423)
+<li>Conforms to <xref href="../CognitiveStatusResultObservation.dita">Cognitive Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14424, R2.0=CONF:1098-14424, CONF:14425, R2.0=CONF:1098-14425)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../FunctionalStatusProblemObservation.dita">Functional Status Problem Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.68</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14424, CONF:14425)
+<li>Conforms to <xref href="../CognitiveStatusProblemObservation.dita">Cognitive Status Problem Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.73</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14422, R2.0=CONF:1098-14422, CONF:14423, R2.0=CONF:1098-14423)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../CognitiveStatusProblemObservation.dita">Cognitive Status Problem Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.73</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14426, CONF:14427)
+<li>Conforms to <xref href="../FunctionalStatusProblemObservation.dita">Functional Status Problem Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.68</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14426, R2.0=CONF:1098-14426, CONF:14427, R2.0=CONF:1098-14427)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14580, CONF:14581)
+<li>Conforms to <xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.72</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14580, R2.0=CONF:1098-14580, CONF:14581, R2.0=CONF:1098-14581)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:14582, CONF:14583)
+<li>Conforms to <xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.69</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:14582, CONF:14583)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:16777, CONF:16778)
+<li>Conforms to <xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.50</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:16777, R2.0=CONF:1098-16777, CONF:16778, R2.0=CONF:1098-16778)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../PressureUlcerObservation.dita">Pressure Ulcer Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.70</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:16779, CONF:16780)
+<li>Conforms to <xref href="../PressureUlcerObservation.dita">Pressure Ulcer Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.70</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:16779, CONF:16780)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../NumberOfPressureUlcersObservation.dita">Number Of Pressure Ulcers Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.76</tt>)</li></ol></li>
-<li>If section/@nullFlavor is not present, <b>MAY</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:16781, CONF:16782)
+<li>Conforms to <xref href="../NumberOfPressureUlcersObservation.dita">Number Of Pressure Ulcers Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.76</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:16781, CONF:16782)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../HighestPressureUlcerStage.dita">Highest Pressure Ulcer Stage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.77</tt>)</li></ol></li>
+<li>Conforms to <xref href="../HighestPressureUlcerStage.dita">Highest Pressure Ulcer Stage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.77</tt>)</li></ol></li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::FunctionalStatusSection</entry>  </row>  <row><entry namest="col0" nameend="col7" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.14]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>code</entry><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CE</entry><entry>CONF:7921</entry><entry>LOINC 2.16.840.1.113883.6.1 47420-5</entry></row> 
-<row><entry>title</entry><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>ST</entry><entry>CONF:7922</entry><entry> </entry></row> 
-<row><entry>assessmentScaleObservation</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.69]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>AssessmentScaleObservation</entry><entry>CONF:14580CONF:14581</entry><entry> </entry></row> 
-<row><entry>caregiverCharacteristics</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.72]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>CaregiverCharacteristics</entry><entry>CONF:14426CONF:14427</entry><entry> </entry></row> 
-<row><entry>cognitiveStatusProblemObservation</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.4]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>CognitiveStatusProblemObservation</entry><entry>CONF:14424CONF:14425</entry><entry> </entry></row> 
-<row><entry>cognitiveStatusResultObservation</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.2]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>CognitiveStatusResultObservation</entry><entry>CONF:14420CONF:14421</entry><entry> </entry></row> 
-<row><entry>cognitiveStatusResultOrganizer</entry><entry>cda:entry/cda:organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.1]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>CognitiveStatusResultOrganizer</entry><entry>CONF:14416CONF:14417</entry><entry> </entry></row> 
-<row><entry>functionalStatusProblemObservation</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.4]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>FunctionalStatusProblemObservation</entry><entry>CONF:14422CONF:14423</entry><entry> </entry></row> 
-<row><entry>functionalStatusResultObservation</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.2]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>FunctionalStatusResultObservation</entry><entry>CONF:14418CONF:14419</entry><entry> </entry></row> 
-<row><entry>functionalStatusResultOrganizer</entry><entry>cda:entry/cda:organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.1]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>FunctionalStatusResultOrganizer</entry><entry>CONF:14414CONF:14415</entry><entry> </entry></row> 
-<row><entry>functionalStatusSection</entry><entry>functionalStatusSection</entry><entry>0..1</entry><entry>MAY</entry><entry>YES</entry><entry>FunctionalStatusSection</entry><entry>CONF:9562</entry><entry> </entry></row> 
-<row><entry>highestPressureUlcerStage</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.77]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>HighestPressureUlcerStage</entry><entry>CONF:16781CONF:16782</entry><entry> </entry></row> 
-<row><entry>nonMedicinalSupplyActivity</entry><entry>cda:entry/cda:supply[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.50]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>NonMedicinalSupplyActivity</entry><entry>CONF:14582CONF:14583</entry><entry> </entry></row> 
-<row><entry>numberOfPressureUlcersObservation</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.76]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>NumberOfPressureUlcersObservation</entry><entry>CONF:16779CONF:16780</entry><entry> </entry></row> 
-<row><entry>pressureUlcerObservation</entry><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.70]</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>PressureUlcerObservation</entry><entry>CONF:16777CONF:16778</entry><entry> </entry></row> 
-<row><entry>text</entry><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>StrucDocText</entry><entry>CONF:7923</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::FunctionalStatusSection</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.14]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:7921</entry><entry>LOINC 2.16.840.1.113883.6.1 47420-5</entry></row> 
+<row><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>ST</entry><entry>CONF:7922R2.0=CONF:1098-7922</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.69]</entry><entry>0..*</entry><entry>MAY</entry><entry>AssessmentScaleObservation</entry><entry>CONF:14580R2.0=CONF:1098-14580CONF:14581R2.0=CONF:1098-14581</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.72]</entry><entry>0..*</entry><entry>MAY</entry><entry>CaregiverCharacteristics</entry><entry>CONF:14426R2.0=CONF:1098-14426CONF:14427R2.0=CONF:1098-14427</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.4]</entry><entry>0..*</entry><entry>MAY</entry><entry>CognitiveStatusProblemObservation</entry><entry>CONF:14424R2.0=CONF:1098-14424CONF:14425R2.0=CONF:1098-14425</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.2]</entry><entry>0..*</entry><entry>MAY</entry><entry>CognitiveStatusResultObservation</entry><entry>CONF:14420CONF:14421</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.1]</entry><entry>0..*</entry><entry>MAY</entry><entry>CognitiveStatusResultOrganizer</entry><entry>CONF:14416CONF:14417</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.4]</entry><entry>0..*</entry><entry>MAY</entry><entry>FunctionalStatusProblemObservation</entry><entry>CONF:14422R2.0=CONF:1098-14422CONF:14423R2.0=CONF:1098-14423</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.2]</entry><entry>0..*</entry><entry>MAY</entry><entry>FunctionalStatusResultObservation</entry><entry>CONF:14418CONF:14419</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.1]</entry><entry>0..*</entry><entry>MAY</entry><entry>FunctionalStatusResultOrganizer</entry><entry>CONF:14414CONF:14415</entry><entry> </entry></row> 
+<row><entry>functionalStatusSection</entry><entry>0..1</entry><entry>MAY</entry><entry>FunctionalStatusSection</entry><entry>CONF:9562</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.77]</entry><entry>0..*</entry><entry>MAY</entry><entry>HighestPressureUlcerStage</entry><entry>CONF:16781CONF:16782</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:supply[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.50]</entry><entry>0..*</entry><entry>MAY</entry><entry>NonMedicinalSupplyActivity</entry><entry>CONF:14582CONF:14583</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.76]</entry><entry>0..*</entry><entry>MAY</entry><entry>NumberOfPressureUlcersObservation</entry><entry>CONF:16779CONF:16780</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.70]</entry><entry>0..*</entry><entry>MAY</entry><entry>PressureUlcerObservation</entry><entry>CONF:16777R2.0=CONF:1098-16777CONF:16778R2.0=CONF:1098-16778</entry><entry> </entry></row> 
+<row><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>StrucDocText</entry><entry>CONF:7923R2.0=CONF:1098-7923</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<section xmlns="urn:hl7-org:v3">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ContinuityOfCareDocument.html">Continuity Of Care Document</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/DischargeSummary.html">Discharge Summary</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../AssessmentScaleObservation.dita">Assessment Scale Observation</xref></entry></row><row><entry></entry><entry><xref href="../CaregiverCharacteristics.dita">Caregiver Characteristics</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../CognitiveStatusProblemObservation.dita">Cognitive Status Problem Observation</xref></entry></row><row><entry></entry><entry><xref href="../CognitiveStatusResultObservation.dita">Cognitive Status Result Observation</xref></entry></row><row><entry></entry><entry><xref href="../CognitiveStatusResultOrganizer.dita">Cognitive Status Result Organizer</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../FunctionalStatusProblemObservation.dita">Functional Status Problem Observation</xref></entry></row><row><entry></entry><entry><xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref></entry></row><row><entry></entry><entry><xref href="../FunctionalStatusResultOrganizer.dita">Functional Status Result Organizer</xref></entry></row><row><entry></entry><entry><xref href="../HighestPressureUlcerStage.dita">Highest Pressure Ulcer Stage</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../NonMedicinalSupplyActivity.dita">Non Medicinal Supply Activity</xref></entry></row><row><entry></entry><entry><xref href="../NumberOfPressureUlcersObservation.dita">Number Of Pressure Ulcers Observation</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../PressureUlcerObservation.dita">Pressure Ulcer Observation</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
   <templateId root="2.16.840.1.113883.10.20.22.2.14"/>
-  <id root="MDHT" extension="1838211318"/>
   <code code="47420-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Functional status assessment"/>
-  <title>TEXT FOR TITLE</title>
-  <text/>
+  <title>Functional status assessment</title>
+  <text>bQunuJC BuItBSHwE AOkQgE zLVUt VytnI UHIDilm DSsMhPby iFSWzB nUdGpZ EEDgd CSFCuStbi FgDky UROYe oSObw FtmUGj qFxINA mEoSviU kyecGkdV YJinX RWgJrV awSzq aWZqoWyBG lpuqzhnV rkvdT okJNurV hnVzL NGcgoIC jMiAx cpcFLawMt wcSvjy WQPKuvuW SscgEjvlR RWhaeT RXNCJbsf vXcFx SKwJrfSl OXdMO vDmwJMp sIwIXwB ppAnqxGJ FGxCSFYx hVSoBAir nQSMWSrzq QCPFS XBxozE tbjNQqP CRjfxu IHMldh vEENlGjC fdrLnEOhR ihsEt IyBwrB FzntpYJgT 
+VoBfYggo xdmuva VzLvJr zjFKlgoHx YpbtF ByiSIDw QkwBJ aNVvAl rvkVo nKAJezA OhQXA PCoius cgvnBGlF GAeFIRD elHIBB fwzzxkzSM NVzaC SAlxrPn bPgaikq cZtyUFN rIudDeS SVbjn jiZFyOtit CQgSEqIrD pymOXU ALYUuY UHBKHmVl RUnOni aFUkkCZDs KyTuHEJXl eXERpLwAU uBXApAS KnftOgqnT kUQTzAbXI ZSmdBrDm XiPGAQnyM HgvSInuzh sJGpBeMFu 
+</text>
   <entry>
     <organizer classCode="CLUSTER" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.66"/>
       <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
-      <id root="MDHT" extension="1629749898"/>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <component>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
           <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
-          <id root="MDHT" extension="432815755"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
           <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <author/>
           <entryRelationship>
             <supply classCode="SPLY">
@@ -196,24 +206,16 @@ Any deviation from normal function displayed by the patient and recorded in the 
     <organizer classCode="CLUSTER" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.75"/>
       <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
-      <id root="MDHT" extension="1336614619"/>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <component>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
           <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
-          <id root="MDHT" extension="1770167607"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
           <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <author/>
           <entryRelationship>
             <supply classCode="SPLY">
@@ -241,48 +243,34 @@ Any deviation from normal function displayed by the patient and recorded in the 
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
       <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
-      <id root="MDHT" extension="242923683"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
       <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
       <text>Text Value</text>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <author/>
       <entryRelationship>
         <supply classCode="SPLY">
           <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
-          <id root="MDHT" extension="1662216665"/>
           <text>Text Value</text>
-          <effectiveTime value="20140803"/>
         </supply>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
-          <id root="MDHT" extension="1813385698"/>
-          <code code="337264581"/>
+          <code code="1682913491"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <participant typeCode="IND"/>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
-          <id root="MDHT" extension="1341884462"/>
-          <code code="524820412"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <code code="1621858896"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <author/>
           <entryRelationship>
             <observation classCode="OBS" moodCode="EVN">
@@ -302,48 +290,34 @@ Any deviation from normal function displayed by the patient and recorded in the 
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
       <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
-      <id root="MDHT" extension="1788632822"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
       <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
       <text>Text Value</text>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <author/>
       <entryRelationship>
         <supply classCode="SPLY">
           <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
-          <id root="MDHT" extension="1192264852"/>
           <text>Text Value</text>
-          <effectiveTime value="20140803"/>
         </supply>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
-          <id root="MDHT" extension="1413241148"/>
-          <code code="1935393417"/>
+          <code code="72058511"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <participant typeCode="IND"/>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
-          <id root="MDHT" extension="1349002765"/>
-          <code code="1183783301"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <code code="874611452"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <author/>
           <entryRelationship>
             <observation classCode="OBS" moodCode="EVN">
@@ -363,47 +337,31 @@ Any deviation from normal function displayed by the patient and recorded in the 
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.68"/>
       <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
-      <id root="MDHT" extension="217201772"/>
       <code code="248536006" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="finding of functional performance and activity"/>
       <text>Text Value</text>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <entryRelationship>
         <supply classCode="SPLY">
           <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
-          <id root="MDHT" extension="1389304697"/>
           <text>Text Value</text>
-          <effectiveTime value="20140803"/>
         </supply>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
-          <id root="MDHT" extension="415854412"/>
-          <code code="1309383377"/>
+          <code code="1920092833"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <participant typeCode="IND"/>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
-          <id root="MDHT" extension="1726649104"/>
-          <code code="1811926949"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <code code="1262703420"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <author/>
           <entryRelationship>
             <observation classCode="OBS" moodCode="EVN">
@@ -420,47 +378,31 @@ Any deviation from normal function displayed by the patient and recorded in the 
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.73"/>
       <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
-      <id root="MDHT" extension="2085223358"/>
       <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
       <text>Text Value</text>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <entryRelationship>
         <supply classCode="SPLY">
           <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
-          <id root="MDHT" extension="935710705"/>
           <text>Text Value</text>
-          <effectiveTime value="20140803"/>
         </supply>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
-          <id root="MDHT" extension="1270139502"/>
-          <code code="2023488265"/>
+          <code code="157020409"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <participant typeCode="IND"/>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
-          <id root="MDHT" extension="906262044"/>
-          <code code="1304275198"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <code code="207330890"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <author/>
           <entryRelationship>
             <observation classCode="OBS" moodCode="EVN">
@@ -476,18 +418,13 @@ Any deviation from normal function displayed by the patient and recorded in the 
   <entry>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
-      <id root="MDHT" extension="2020948518"/>
-      <code code="626802537"/>
+      <code code="594813190"/>
       <text>Text Value</text>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <participant typeCode="IND">
         <time>
-          <low value="2014"/>
-          <high value="2014"/>
+          <low value="2017"/>
+          <high value="2017"/>
         </time>
         <participantRole classCode="CAREGIVER"/>
       </participant>
@@ -496,26 +433,17 @@ Any deviation from normal function displayed by the patient and recorded in the 
   <entry>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
-      <id root="MDHT" extension="178778829"/>
-      <code code="1976726140"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+      <code code="482911950"/>
       <text>Text Value</text>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <author/>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
-          <id root="MDHT" extension="686026599"/>
-          <code code="800426650"/>
+          <code code="1240804076"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
         </observation>
       </entryRelationship>
       <referenceRange>
@@ -526,21 +454,15 @@ Any deviation from normal function displayed by the patient and recorded in the 
   <entry>
     <supply classCode="SPLY">
       <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
-      <id root="MDHT" extension="1038196103"/>
       <text>Text Value</text>
-      <effectiveTime value="20140803"/>
     </supply>
   </entry>
   <entry>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.70"/>
-      <id root="MDHT" extension="259135016"/>
       <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/>
       <text>Text Value</text>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
+      <statusCode code="completed"/>
       <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
       <entryRelationship typeCode="COMP">
         <observation classCode="OBS" moodCode="EVN">
@@ -562,14 +484,10 @@ Any deviation from normal function displayed by the patient and recorded in the 
   <entry>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.76"/>
-      <id root="MDHT" extension="259568393"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.76"/>
       <code code="2264892003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="number of pressure ulcers"/>
       <text>Text Value</text>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <author/>
       <entryRelationship typeCode="SUBJ">
         <observation classCode="OBS" moodCode="EVN"/>
@@ -579,13 +497,8 @@ Any deviation from normal function displayed by the patient and recorded in the 
   <entry>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.77"/>
-      <id root="MDHT" extension="1589440759"/>
       <code code="420905001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Highest Pressure Ulcer Stage"/>
       <text>Text Value</text>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
     </observation>
   </entry>
 </section>]]></codeblock>

@@ -6555,6 +6555,124 @@ public class ConsolSwitch<T> {
 				}
 				return result;
 			}
+			case ConsolPackage.ADVANCE_DIRECTIVES_SECTION_ENTRIES_OPTIONAL3: {
+				AdvanceDirectivesSectionEntriesOptional3 advanceDirectivesSectionEntriesOptional3 = (AdvanceDirectivesSectionEntriesOptional3) theEObject;
+				T result = caseAdvanceDirectivesSectionEntriesOptional3(advanceDirectivesSectionEntriesOptional3);
+				if (result == null) {
+					result = caseAdvanceDirectivesSectionEntriesOptional2(advanceDirectivesSectionEntriesOptional3);
+				}
+				if (result == null) {
+					result = caseAdvanceDirectivesSectionEntriesOptional(advanceDirectivesSectionEntriesOptional3);
+				}
+				if (result == null) {
+					result = caseSection(advanceDirectivesSectionEntriesOptional3);
+				}
+				if (result == null) {
+					result = caseAct(advanceDirectivesSectionEntriesOptional3);
+				}
+				if (result == null) {
+					result = caseInfrastructureRoot(advanceDirectivesSectionEntriesOptional3);
+				}
+				if (result == null) {
+					result = defaultCase(theEObject);
+				}
+				return result;
+			}
+			case ConsolPackage.ADVANCE_DIRECTIVE_ORGANIZER2: {
+				AdvanceDirectiveOrganizer2 advanceDirectiveOrganizer2 = (AdvanceDirectiveOrganizer2) theEObject;
+				T result = caseAdvanceDirectiveOrganizer2(advanceDirectiveOrganizer2);
+				if (result == null) {
+					result = caseAdvanceDirectiveOrganizer(advanceDirectiveOrganizer2);
+				}
+				if (result == null) {
+					result = caseOrganizer(advanceDirectiveOrganizer2);
+				}
+				if (result == null) {
+					result = caseClinicalStatement(advanceDirectiveOrganizer2);
+				}
+				if (result == null) {
+					result = caseAct(advanceDirectiveOrganizer2);
+				}
+				if (result == null) {
+					result = caseInfrastructureRoot(advanceDirectiveOrganizer2);
+				}
+				if (result == null) {
+					result = defaultCase(theEObject);
+				}
+				return result;
+			}
+			case ConsolPackage.ADVANCE_DIRECTIVE_OBSERVATION3: {
+				AdvanceDirectiveObservation3 advanceDirectiveObservation3 = (AdvanceDirectiveObservation3) theEObject;
+				T result = caseAdvanceDirectiveObservation3(advanceDirectiveObservation3);
+				if (result == null) {
+					result = caseAdvanceDirectiveObservation2(advanceDirectiveObservation3);
+				}
+				if (result == null) {
+					result = caseAdvanceDirectiveObservation(advanceDirectiveObservation3);
+				}
+				if (result == null) {
+					result = caseObservation(advanceDirectiveObservation3);
+				}
+				if (result == null) {
+					result = caseClinicalStatement(advanceDirectiveObservation3);
+				}
+				if (result == null) {
+					result = caseAct(advanceDirectiveObservation3);
+				}
+				if (result == null) {
+					result = caseInfrastructureRoot(advanceDirectiveObservation3);
+				}
+				if (result == null) {
+					result = defaultCase(theEObject);
+				}
+				return result;
+			}
+			case ConsolPackage.ADVANCE_DIRECTIVES_SECTION3: {
+				AdvanceDirectivesSection3 advanceDirectivesSection3 = (AdvanceDirectivesSection3) theEObject;
+				T result = caseAdvanceDirectivesSection3(advanceDirectivesSection3);
+				if (result == null) {
+					result = caseAdvanceDirectivesSection2(advanceDirectivesSection3);
+				}
+				if (result == null) {
+					result = caseAdvanceDirectivesSectionEntriesOptional2(advanceDirectivesSection3);
+				}
+				if (result == null) {
+					result = caseAdvanceDirectivesSectionEntriesOptional(advanceDirectivesSection3);
+				}
+				if (result == null) {
+					result = caseSection(advanceDirectivesSection3);
+				}
+				if (result == null) {
+					result = caseAct(advanceDirectivesSection3);
+				}
+				if (result == null) {
+					result = caseInfrastructureRoot(advanceDirectivesSection3);
+				}
+				if (result == null) {
+					result = defaultCase(theEObject);
+				}
+				return result;
+			}
+			case ConsolPackage.ADVANCE_CARE_PLANNING_INTERVENTION: {
+				AdvanceCarePlanningIntervention advanceCarePlanningIntervention = (AdvanceCarePlanningIntervention) theEObject;
+				T result = caseAdvanceCarePlanningIntervention(advanceCarePlanningIntervention);
+				if (result == null) {
+					result = caseProcedure(advanceCarePlanningIntervention);
+				}
+				if (result == null) {
+					result = caseClinicalStatement(advanceCarePlanningIntervention);
+				}
+				if (result == null) {
+					result = caseAct(advanceCarePlanningIntervention);
+				}
+				if (result == null) {
+					result = caseInfrastructureRoot(advanceCarePlanningIntervention);
+				}
+				if (result == null) {
+					result = defaultCase(theEObject);
+				}
+				return result;
+			}
 			default:
 				return defaultCase(theEObject);
 		}
@@ -11299,6 +11417,81 @@ public class ConsolSwitch<T> {
 	 * @generated
 	 */
 	public T casePhysicianReadingStudyPerformer2(PhysicianReadingStudyPerformer2 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Advance Directives Section Entries Optional3</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Advance Directives Section Entries Optional3</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdvanceDirectivesSectionEntriesOptional3(AdvanceDirectivesSectionEntriesOptional3 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Advance Directive Organizer2</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Advance Directive Organizer2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdvanceDirectiveOrganizer2(AdvanceDirectiveOrganizer2 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Advance Directive Observation3</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Advance Directive Observation3</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdvanceDirectiveObservation3(AdvanceDirectiveObservation3 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Advance Directives Section3</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Advance Directives Section3</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdvanceDirectivesSection3(AdvanceDirectivesSection3 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Advance Care Planning Intervention</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Advance Care Planning Intervention</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAdvanceCarePlanningIntervention(AdvanceCarePlanningIntervention object) {
 		return null;
 	}
 

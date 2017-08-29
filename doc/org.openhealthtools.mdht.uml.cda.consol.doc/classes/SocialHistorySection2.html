@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Social History Section (V3)" />
+<meta name="abstract" content="[Section: templateId 2.16.840.1.113883.10.20.22.2.17]" />
+<meta name="description" content="[Section: templateId 2.16.840.1.113883.10.20.22.2.17]" />
+<meta name="DC.Coverage" content="Section" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Social History Section (V3)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1">
+		<span class="ph">Social History Section (V3)</span>
+	</h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Section: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.2.17</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">This section contains social history data that influence a patient's physical, psychological or emotional health (e.g., smoking status, pregnancy). Demographic data, such as marital status, race, ethnicity, and religious affiliation, is captured in the header.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-7936, CONF:1198-10449, CONF:1198-32494 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.2.17"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../SocialHistorySection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.17]">Social History Section</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.17</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-14819)<tt class="ph tt"><strong class="ph b">/@code</strong>="29762-2" </tt><em class="ph i">Social History</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-14820, CONF:1198-30814)
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1198-7953, CONF:1198-14821)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../SocialHistoryObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.38]">Social History Observation2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.38:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1198-14823, CONF:1198-14824)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../SmokingStatusMeaningfulUse2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.78]">Smoking Status Meaningful Use2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.78:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1198-16816, CONF:1198-16817)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../TobaccoUse2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.85]">Tobacco Use2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.85:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1198-28361, CONF:1198-28362)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../CaregiverCharacteristics.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.72]">Caregiver Characteristics</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.72</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1198-28366, CONF:1198-28367)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../CulturalAndReligiousObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.111]">Cultural And Religious Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.111</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1198-28825, CONF:1198-28826)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../CharacteristicsOfHomeEnvironment.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.109]">Characteristics Of Home Environment</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.109</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1198-NEW)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../BirthSexObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.200]">Birth Sex Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.200:2016-06-01</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+	</div>
+
+</body>
+</html>

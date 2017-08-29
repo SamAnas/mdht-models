@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Problem Concern Act (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.3</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Act</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.3"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>
+This template reflects an ongoing concern on behalf of the provider that placed the concern on a patient's problem list. So long as the underlying condition is of concern to the provider (i.e., as long as the condition, whether active or resolved, is of ongoing concern and interest to the provider), the statusCode is "active". Only when the underlying condition is no longer of concern is the statusCode set to "completed". The effectiveTime reflects the time that the underlying condition was felt to be a concern; it may or may not correspond to the effectiveTime of the condition (e.g., even five years later, the clinician may remain concerned about a prior heart attack).
+
+
+The statusCode of the Problem Concern Act is the definitive indication of the status of the concern, whereas the effectiveTime of the nested Problem Observation is the definitive indication of whether or not the underlying condition is resolved.
+
+The effectiveTime/low of the Problem Concern Act asserts when the concern became active. This equates to the time the concern was authored in the patient's chart. The effectiveTime/high asserts when the concern was completed (e.g., when the clinician deemed there is no longer any need to track the underlying condition).
+
+
+A Problem Concern Act can contain many Problem Observations (templateId 2.16.840.1.113883.10.20.22.4.4). Each Problem Observation is a discrete observation of a condition, and therefore will have a statusCode of "completed". The many Problem Observations nested under a Problem Concern Act reflect the change in the clinical understanding of a condition over time. For instance, a Concern may initially contain a Problem Observation of "chest pain":
+<ul>
+<li>Problem Concern 1</li>
+<ul><li>Problem Observation: Chest Pain</li></ul>
+</ul>
+
+
+Later, a new Problem Observation of "esophagitis" will be added, reflecting a better understanding of the nature of the chest pain. The later problem observation will have a more recent author time stamp.
+<ul>
+<li>Problem Concern 1</li>
+<ul>
+<li>Problem Observation (author/time Jan 3, 2012): Chest Pain</li>
+<li>Problem Observation (author/time Jan 6, 2012): Esophagitis</li>
+</ul>
+</ul>
+
+
+Many systems display the nested Problem Observation with the most recent author time stamp, and provide a mechanism for viewing prior observations.
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-16772, CONF:1198-16773, CONF:1198-32509 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.3"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../ProblemConcernAct.dita">Problem Concern Act</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.3</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-9029), which <b>SHALL</b> be selected from ValueSet<tt> ProblemAct statusCode 2.16.840.1.113883.11.20.9.19</tt><b> STATIC</b> 2011-09-10 (CONF:1198-31525)<p>The statusCode of the Problem Concern Act is the definitive indication of the status of the concern, whereas the effectiveTime of the nested Problem Observation is the definitive indication of whether or not the underlying condition is resolved.</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-9030)<p>null</p>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-9027)<tt><b>/@code</b>="CONC" </tt><i>Concern</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-19184, CONF:1198-32168)
+</li>
+<li>
+<b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31146)<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>SHALL</b> contain  [1..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-9034, CONF:1198-9035, CONF:1198-15980)<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../ProblemObservation2.dita">Problem Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.4:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31638, CONF:1198-31639, CONF:1198-31640)<p>The following entryRelationship represents the importance of the concern to a provider.</p><ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol>
+</li>
+<li>effectiveTime <b>SHALL</b> contain exactly one [1..1] low (CONF:1198-9032)</li>
+<li>effectiveTime <b>MAY</b> contain zero or one [0..1] high (CONF:1198-9033)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../ProblemConcernAct.dita">Problem Concern Act</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.3</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:9024, R2.1=CONF:1198-9024)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:9025, R2.1=CONF:1198-9025)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:9026, R2.1=CONF:1198-9026)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-9027)<tt><b>/@code</b>="CONC" </tt><i>Concern</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-19184, CONF:1198-32168)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-9029), which <b>SHALL</b> be selected from ValueSet<tt> ProblemAct statusCode 2.16.840.1.113883.11.20.9.19</tt><b> STATIC</b> 2011-09-10 (CONF:1198-31525)
+<p>The statusCode of the Problem Concern Act is the definitive indication of the status of the concern, whereas the effectiveTime of the nested Problem Observation is the definitive indication of whether or not the underlying condition is resolved.</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-9030)
+<p>null</p></li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-31146)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li><b>SHALL</b> contain  [1..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-9034, CONF:1198-9035, CONF:1198-15980)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../ProblemObservation2.dita">Problem Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.4:2015-08-01</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-31638, CONF:1198-31639, CONF:1198-31640)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol><p>The following entryRelationship represents the importance of the concern to a provider.</p></li>
+<li>effectiveTime <b>SHALL</b> contain exactly one [1..1] low (CONF:9032)</li>
+<li>effectiveTime <b>SHOULD</b> contain zero or one [0..1] high (CONF:9033)</li>
+<li>effectiveTime <b>SHALL</b> contain exactly one [1..1] low (CONF:1198-9032)</li>
+<li>effectiveTime <b>MAY</b> contain zero or one [0..1] high (CONF:1198-9033)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::ProblemConcernAct2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.3]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1198-19184, CONF:1198-32168</entry><entry>HL7ActClass 2.16.840.1.113883.5.6HL7ActClass 2.16.840.1.113883.5.6 CONC</entry></row> 
+<row><entry>effectiveTime</entry><entry>1..1</entry><entry>SHALL</entry><entry>IVL_TS</entry><entry>CONF:1198-9030</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1198-31525</entry><entry> </entry></row> 
+<row><entry>authorParticipation</entry><entry>0..*</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1198-31146</entry><entry> </entry></row> 
+<row><entry>priorityPreference</entry><entry>0..*</entry><entry>MAY</entry><entry>PriorityPreference</entry><entry>CONF:1198-31638, CONF:1198-31639, CONF:1198-31640</entry><entry> </entry></row> 
+<row><entry>problemConcernAct2</entry><entry>0..*</entry><entry>SHOULD</entry><entry>ProblemConcernAct2</entry><entry>CONF:1198-7881, CONF:1198-15505</entry><entry> </entry></row> 
+<row><entry>problemObservation2</entry><entry>1..*</entry><entry>SHALL</entry><entry>ProblemObservation2</entry><entry>CONF:1198-9034, CONF:1198-9035, CONF:1198-15980</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../HealthConcernAct.dita">Health Concern Act (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../ProblemSection2.dita">Problem Section (V3) (entries required)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../ProblemSectionEntriesOptional2.dita">Problem Section (V3) (entries optional)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry><xref href="../RiskConcernAct.dita">Risk Concern Act (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../PriorityPreference.dita">Priority Preference</xref></entry></row><row><entry></entry><entry><xref href="../ProblemObservation2.dita">Problem Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.3" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.3"/>
+  <id root="MDHT" extension="1744551835"/>
+  <code code="CONC" codeSystem="2.16.840.1.113883.5.6" codeSystemName="HL7ActClass" displayName="Concern"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="1293587227"/>
+      <code code="2080820512"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <id root="MDHT" extension="1949968014"/>
+      <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
+      <id root="MDHT" extension="522669784"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.113"/>
+          <id root="MDHT" extension="1922983800"/>
+          <code code="75328-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prognosis"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <id root="MDHT" extension="570604693"/>
+          <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+          <id root="MDHT" extension="1445263181"/>
+          <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.6"/>
+          <id root="MDHT" extension="844576507"/>
+          <code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+        </observation>
+      </entryRelationship>
+    </observation>
+  </entryRelationship>
+</act>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::ProblemConcernAct
+</p>
+<p id="ProblemConcernAct" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:16772, CONF:16773, CONF:1198-32509 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.3"
+</li><li>Consol Problem Concern Act effectiveTime SHALL contain exactly one [1..1] low (CONF:9032)
+</li><li>Consol Problem Concern Act effectiveTime SHOULD contain zero or one [0..1] high (CONF:9033)
+</li><li>SHALL conform to CDA Act
+</li><li>Consol Problem Concern Act SHALL contain exactly one [1..1] @classCode="ACT" Act (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:9024, R2.1=CONF:1198-9024)
+</li><li>Consol Problem Concern Act SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:9025, R2.1=CONF:1198-9025)
+</li><li>Consol Problem Concern Act SHALL contain at least one [1..*] id (CONF:9026, R2.1=CONF:1198-9026)
+</li><li>Consol Problem Concern Act SHALL contain exactly one [1..1] code (CONF:9027)/@code="CONC" Concern (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:9440)
+</li><li>Consol Problem Concern Act SHALL contain exactly one [1..1] statusCode (Concern Status), which SHALL be selected from ValueSet ProblemActStatusCode 2.16.840.1.113883.11.20.9.19 STATIC 2011-09-09 (CONF:9029)
+</li><li>Consol Problem Concern Act SHALL contain exactly one [1..1] effectiveTime (Concern Date) (CONF:9030, R2.1=CONF:1198-9030)
+</li><li>Consol Problem Concern Act SHALL contain  [1..*] entryRelationship such that it  (CONF:15980) Contains @typeCode="SUBJ" SUBJ, and Conforms to Problem Observation (templateId: 2.16.840.1.113883.10.20.22.4.4)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Problem Concern Act (V3)</ph></p>
+<p id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.3</tt>]</p>
+</body>
+</topic>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Longitudinal Care Wound Observation (V2)" />
+<meta name="abstract" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.114]" />
+<meta name="description" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.114]" />
+<meta name="DC.Coverage" content="Observation" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Longitudinal Care Wound Observation (V2)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Longitudinal Care Wound Observation (V2)</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Observation: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.114</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">This template represents acquired or surgical wounds and is not intended to encompass all wound types. The template applies to wounds such as pressure ulcers, surgical incisions, and deep tissue injury wounds. Information in this template may include information about the wound measurements characteristics.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-29473, CONF:1198-29474, CONF:1198-32913 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.114"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../ProblemObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.4]">Problem Observation2</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.4:2015-08-01</tt>)</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-31012)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1198-31013)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-29476)<tt class="ph tt"><strong class="ph b">/@code</strong>="ASSERTION" </tt><em class="ph i">assertion</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.4 HL7ActCode</tt>) (CONF:1198-29477, CONF:1198-31010)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> with <tt class="ph tt"><strong class="ph b">@xsi:type</strong>="CD"</tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Wound Type 2.16.840.1.113883.1.11.20.2.6</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1198-29485)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">targetSiteCode</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Body Site 2.16.840.1.113883.3.88.12.3221.8.9</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1198-29488)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1198-31542)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../AuthorParticipation.html">Author Participation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.119</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1198-29495, CONF:1198-29496, CONF:1198-29497)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>COMP" </tt><em class="ph i">COMP</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../WoundMeasurementObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.133]">Wound Measurement Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.133</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1198-29503, CONF:1198-29504, CONF:1198-29505)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>COMP" </tt><em class="ph i">COMP</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../WoundCharacteristic.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.134]">Wound Characteristic</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.134</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1198-31890, CONF:1198-31891, CONF:1198-31892)<p class="p">When the wound observed is a type of pressure ulcer, then this template SHOULD contain an entry for the Number of Pressure Ulcers.</p>
+<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>COMP" </tt><em class="ph i">COMP</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../NumberOfPressureUlcersObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.76]">Number Of Pressure Ulcers Observation2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.76:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1198-31893, CONF:1198-31894, CONF:1198-31919)<p class="p">When the wound observed is a type of pressure ulcer, then this template SHOULD contain an entry for the Highest Pressure Ulcer Stage.</p>
+<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>COMP" </tt><em class="ph i">COMP</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../HighestPressureUlcerStage.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.77]">Highest Pressure Ulcer Stage</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.77</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Longitudinal Care Wound Observation (V2)</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.114" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.114" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.4" extension="2015-08-01"/&gt;
+  &lt;id root="MDHT" extension="923663712"/&gt;
+  &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="assertion"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;value xsi:type="CD" code="506118057"/&gt;
+  &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;author&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="704283582"/&gt;
+      &lt;code code="1983242968"/&gt;
+      &lt;assignedPerson/&gt;
+      &lt;representedOrganization/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.133"/&gt;
+      &lt;id root="MDHT" extension="1387506286"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;value xsi:type="PQ"/&gt;
+      &lt;targetSiteCode code="980865615"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.134"/&gt;
+      &lt;id root="MDHT" extension="224656472"/&gt;
+      &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="assertion"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;value xsi:type="CD" code="2089566339"/&gt;
+      &lt;targetSiteCode code="143775765"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.77"/&gt;
+      &lt;id root="MDHT" extension="4184700"/&gt;
+      &lt;code code="420905001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Highest Pressure Ulcer Stage"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;targetSiteCode code="2066019086"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.76" extension="2015-08-01"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.76"/&gt;
+      &lt;id root="MDHT" extension="2126951153"/&gt;
+      &lt;code code="2264892003" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="number of pressure ulcers"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;targetSiteCode code="1131667438"/&gt;
+      &lt;entryRelationship typeCode="SUBJ"&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+&lt;/observation&gt;</code></pre>
+	</div>
+
+</body>
+</html>

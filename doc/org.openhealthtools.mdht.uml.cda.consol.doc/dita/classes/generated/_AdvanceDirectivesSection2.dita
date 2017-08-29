@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Advance Directives Section (entries required) (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.21.1</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.2.21.1"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+<p>Known Subclasses: <xref href="../AdvanceDirectivesSection3.dita">Advance Directives Section (entries required) (V4)</xref></p>
+</section>
+<section id="description">
+<p>
+This section contains data defining the patient's advance directives and any reference to supporting documentation, including living wills, healthcare proxies, and CPR and resuscitation status. If the referenced documents are available, they can be included in the exchange package.
+
+
+The most recent directives are required, if known, and should be listed in as much detail as possible.
+
+
+This section differentiates between "advance directives" and "advance directive documents". The former is the directions to be followed whereas the latter refers to a legal document containing those directions.
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-30227, CONF:1198-30228, CONF:1198-32512 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.21.1"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../AdvanceDirectivesSectionEntriesOptional2.dita">Advance Directives Section Entries Optional2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.21:2015-08-01</tt>)</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@nullFlavor</b>="NI" </tt> (CONF:1198-32800)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-32929)<tt><b>/@code</b>="42348-3" </tt><i>Advance Directives</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-32930, CONF:1198-32931)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1198-32932)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:1198-32933)
+</li>
+<li>
+If section/@nullFlavor is not present, contains  [0..*] <tt><b>entry</b></tt> such that it <ol>
+<li>Conforms to <xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.48:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, contains  [0..*] <tt><b>entry</b></tt> such that it <ol>
+<li>Conforms to <xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.108:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>SHALL</b> contain at least one [1..*] <tt><b>entry</b></tt> such that it  (CONF:1198-30235) <ol><li><b>MAY</b> contain zero or one [0..1] <tt><b>observation</b></tt>, where its type is <xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref> (CONF:1198-30236)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>organizer</b></tt>, where its type is <xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref> (CONF:1198-32420)</li></ol> 
+</li>
+<li>If section/@nullFlavor is not present, this entry <b>SHALL</b> contain EITHER an Advance Directive Observation (V3) OR an Advance Directive Organizer (V2) (CONF:1198-32881)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../AdvanceDirectivesSectionEntriesOptional.dita">Advance Directives Section Entries Optional</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.21</tt>)</li>
+<li><b>SHALL</b> conform to <xref href="../AdvanceDirectivesSectionEntriesOptional2.dita">Advance Directives Section Entries Optional2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.21:2015-08-01</tt>)</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@nullFlavor</b>="NI" </tt> (CONF:1198-32800)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-32929)<tt><b>/@code</b>="42348-3" </tt><i>Advance Directives</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-32930, CONF:1198-32931)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1198-32932)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:1198-32933)
+</li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-7957, CONF:1198-15443)
+<ol>
+<li>Conforms to <xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.48:2015-08-01</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-32891, CONF:1198-32892)
+<ol>
+<li>Conforms to <xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.108:2015-08-01</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, contains  [0..*] <tt><b>entry</b></tt> such that it 
+<ol>
+<li>Conforms to <xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.48:2015-08-01</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, contains  [0..*] <tt><b>entry</b></tt> such that it 
+<ol>
+<li>Conforms to <xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.108:2015-08-01</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>SHALL</b> contain at least one [1..*] <tt><b>entry</b></tt> such that it  (CONF:1198-30235) <ol><li><b>MAY</b> contain zero or one [0..1] <tt><b>observation</b></tt>, where its type is <xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref> (CONF:1198-30236)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>organizer</b></tt>, where its type is <xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref> (CONF:1198-32420)</li></ol> 
+</li>
+<li>If section/@nullFlavor is not present, this entry <b>SHALL</b> contain EITHER an Advance Directive Observation (V3) OR an Advance Directive Organizer (V2) (CONF:1198-32881)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::AdvanceDirectivesSection2</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.21]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@nullFlavor</entry><entry>0..1</entry><entry>MAY</entry><entry>NullFlavor</entry><entry>CONF:1198-32800</entry><entry> ASKU</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1198-32929</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 42348-3</entry></row> 
+<row><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>ST</entry><entry>CONF:1198-32932</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.48]</entry><entry>0..*</entry><entry>MAY</entry><entry>AdvanceDirectiveObservation2</entry><entry>CONF:1198-7957, CONF:1198-15443</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.108]</entry><entry>0..*</entry><entry>MAY</entry><entry>AdvanceDirectiveOrganizer</entry><entry>CONF:1198-32891, CONF:1198-32892</entry><entry> </entry></row> 
+<row><entry>advanceDirectivesSection2</entry><entry>0..1</entry><entry>SHOULD</entry><entry>AdvanceDirectivesSection2</entry><entry>CONF:1198-28253, CONF:1198-28254</entry><entry> </entry></row> 
+<row><entry>entry</entry><entry>1..*</entry><entry>SHALL</entry><entry>Entry</entry><entry>CONF:1198-30235</entry><entry> MISSINGTYPE</entry></row> 
+<row><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>StrucDocText</entry><entry>CONF:1198-32933</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/TransferSummary.html">Transfer Summary (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3" nullFlavor="NI">
+  <templateId root="2.16.840.1.113883.10.20.22.2.21.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.2.21"/>
+  <templateId root="2.16.840.1.113883.10.20.22.2.21" extension="2015-08-01"/>
+  <code code="42348-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Advance Directives"/>
+  <title>Advance Directives</title>
+  <text>NZtLdO RRECEzFR omKnf ploHT jAmYEabZ rWwzaEC QGGbX dPuyy OqjyOGt sidtlbUi AZCEyU SNGJYUC eZRoVezp lagTzpGfK RjYQQFfu wNgPEeO BbZFzdfW AqdvInf qhHwiCO mfPgwRp dpUrDIOUq dYhUqop KYDnV byCanGSE uFsGIjMgQ zQghhz SDcqHXb bXmLNvC UhYJrRiq YfzAOGQxi 
+QcwNaPANo HxFUYLUiF rvdgk YJCaeYk oCIgbcM IeoPWcj XpHOxvGV XGoeJM Enxftm cEQNHzg OHSIKi KDGXbT bqsGeBSA YobDfl RzdwnI VZLqtNcp Rkcag JIXloXkez XmcnSTbW cupaM pHyToxkCA acjeODB aMGyXL kQcYg zyOlC ZeFYZXbON dYEaZu UbCCPQ CdayGz cyeDq uQQuF ErKfe YvOKTemBv eBXzBJLL kSJSl rbBsvHZ caNhdzbbm PCiAA GYtrJ ACoawL DutflHEL MWlJgFdg gVncGFYJa poLYGQAwk mSkmyTvp MMidPk dQiKiM Rkyofi IvEEQ qnEmXkGui VgtNgBBD ZANmnTis TxWXVWKmD QmWyeIkNc DWUaG 
+</text>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+      <id root="MDHT" extension="1396324393"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+      </author>
+      <participant>
+        <templateId root="2.16.840.1.113883.10.20.1.58"/>
+      </participant>
+      <participant/>
+      <reference typeCode="REFR"/>
+    </observation>
+    <organizer classCode="CLUSTER" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.108" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.108" extension="2015-08-01"/>
+      <id root="MDHT" extension="738309999"/>
+      <code code="45473-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Advance directive - living will"/>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+      </author>
+      <component>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <statusCode code="completed"/>
+        </observation>
+      </component>
+    </organizer>
+  </entry>
+  <entry>
+    <organizer classCode="CLUSTER" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.108" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.108" extension="2015-08-01"/>
+      <code code="45473-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Advance directive - living will"/>
+      <statusCode code="completed"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <component>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.48"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <participant>
+            <templateId root="2.16.840.1.113883.10.20.1.58"/>
+          </participant>
+          <participant/>
+          <reference typeCode="REFR"/>
+        </observation>
+      </component>
+    </organizer>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::AdvanceDirectivesSection
+</p>
+<p id="AdvanceDirectivesSection" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8643, CONF:10377 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.2.21.1"
+</li><li>SHALL conform to Advance Directives Section Entries Optional template (templateId: 2.16.840.1.113883.10.20.22.2.21)
+</li><li>Consol Advance Directives Section SHALL contain exactly one [1..1] code (CONF:15343)/@code="42348-3" Advance directives (CodeSystem: 2.16.840.1.113883.6.1 LOINC) (CONF:15344)
+</li><li>Consol Advance Directives Section SHALL contain exactly one [1..1] title (CONF:8645)
+</li><li>Consol Advance Directives Section SHALL contain exactly one [1..1] text (CONF:8646)
+</li><li>Consol Advance Directives Section If section/@nullFlavor is not present, SHALL contain  [1..*] entry such that it  (CONF:8647, CONF:8801) Conforms to Advance Directive Observation (templateId: 2.16.840.1.113883.10.20.22.4.48)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Advance Directives Section (entries required) (V3)</ph></p>
+<p id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.21.1</tt>]</p>
+</body>
+</topic>

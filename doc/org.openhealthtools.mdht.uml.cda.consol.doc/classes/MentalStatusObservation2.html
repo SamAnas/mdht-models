@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Mental Status Observation (V3)" />
+<meta name="abstract" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.74]" />
+<meta name="description" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.74]" />
+<meta name="DC.Coverage" content="Observation" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Mental Status Observation (V3)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Mental Status Observation (V3)</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Observation: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.74</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">The Mental Status Observation template represents an observation about mental status that can come from a broad range of subjective and objective information (including measured data) to address those categories described in the Mental Status Section. See also Assessment Scale Observation for specific collections of observations that together yield a summary evaluation of a particular condition.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-14255, CONF:1198-14256, CONF:1198-32565 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.74"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../CognitiveStatusResultObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.74]">Cognitive Status Result Observation</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.74</tt>)</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:1198-14249)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:1198-14250)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:1198-14257)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-14591)<tt class="ph tt"><strong class="ph b">/@code</strong>="373930000" </tt><em class="ph i">Cognitive function</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.96 SNOMEDCT</tt>) (CONF:1198-32788, CONF:1198-32789)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:1198-14254)<tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19092)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:1198-14261)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> (CONF:1198-14263)
+</li>
+
+<li class="li">
+contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">text</strong></tt>
+</li>
+
+<li class="li">
+contains zero or more [0..*] <tt class="ph tt"><strong class="ph b">interpretationCode</strong></tt>
+</li>
+
+<li class="li">
+contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">methodCode</strong></tt>
+</li>
+
+<li class="li">
+contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">targetSiteCode</strong></tt> with <tt class="ph tt"><strong class="ph b">@xsi:type</strong>="CE"</tt>
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1198-14266)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../AuthorParticipation.html">Author Participation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.119</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1198-14469, CONF:1198-14595, CONF:1198-14470)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>COMP" </tt><em class="ph i">COMP</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../AssessmentScaleObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.69]">Assessment Scale Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.69</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">referenceRange</strong></tt> such that it  (CONF:1198-14267) <p class="p"><p class="lines"><em class="ph i">The referenceRange could be used to represent normal or expected capability for the mental function being evaluated.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li">contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">observationRange</strong></tt> such that it  <ol class="ol" type="i"><li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+contain  [0..1] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it <ol class="ol" type="a">
+<li class="li">Conforms to Author from CDA</li>
+</ol>
+
+</li>
+
+<li class="li">
+contains  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it <ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../NonMedicinalSupplyActivity.html" title="[Supply: templateId 2.16.840.1.113883.10.20.22.4.50]">Non Medicinal Supply Activity</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.50</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+contains  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it <ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../CaregiverCharacteristics.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.72]">Caregiver Characteristics</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.72</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">If value/@xsi:type="CD", <strong class="ph b">SHOULD</strong> contain a code from SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:1198-14271)</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Mental Status Observation (V3)</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.74"/&gt;
+  &lt;id root="MDHT" extension="1489868217"/&gt;
+  &lt;code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;interpretationCode code="115951272"/&gt;
+  &lt;methodCode code="1600300747"/&gt;
+  &lt;targetSiteCode xsi:type="CE" code="1189995393"/&gt;
+  &lt;author&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="1737077032"/&gt;
+      &lt;code code="1960696102"/&gt;
+      &lt;assignedPerson/&gt;
+      &lt;representedOrganization/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+  &lt;author/&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.69"/&gt;
+      &lt;id root="MDHT" extension="229540728"/&gt;
+      &lt;code code="946255932"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;interpretationCode code="1344180128"/&gt;
+      &lt;methodCode code="714816990"/&gt;
+      &lt;targetSiteCode code="1840245810"/&gt;
+      &lt;author/&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.86"/&gt;
+          &lt;id root="MDHT" extension="928370492"/&gt;
+          &lt;code code="654223209"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;effectiveTime&gt;
+            &lt;low value="2017"/&gt;
+            &lt;high value="2017"/&gt;
+          &lt;/effectiveTime&gt;
+          &lt;interpretationCode code="2137600438"/&gt;
+          &lt;methodCode code="705692146"/&gt;
+          &lt;targetSiteCode code="1297983073"/&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+      &lt;referenceRange&gt;
+        &lt;observationRange/&gt;
+      &lt;/referenceRange&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;supply classCode="SPLY"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.50"/&gt;
+      &lt;id root="MDHT" extension="1983411396"/&gt;
+      &lt;code code="337469159"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime value="20170828"/&gt;
+    &lt;/supply&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.72"/&gt;
+      &lt;id root="MDHT" extension="1931323392"/&gt;
+      &lt;code code="1767496798"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;value xsi:type="CD" code="59019924"/&gt;
+      &lt;interpretationCode code="56084808"/&gt;
+      &lt;methodCode code="209643182"/&gt;
+      &lt;targetSiteCode code="2025634384"/&gt;
+      &lt;participant typeCode="IND"&gt;
+        &lt;time&gt;
+          &lt;low value="2017"/&gt;
+          &lt;high value="2017"/&gt;
+        &lt;/time&gt;
+        &lt;participantRole classCode="CAREGIVER"/&gt;
+      &lt;/participant&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;referenceRange&gt;
+    &lt;observationRange&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+    &lt;/observationRange&gt;
+  &lt;/referenceRange&gt;
+&lt;/observation&gt;</code></pre>
+	</div>
+
+</body>
+</html>

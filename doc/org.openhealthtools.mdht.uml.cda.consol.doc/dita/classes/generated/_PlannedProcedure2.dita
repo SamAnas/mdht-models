@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Planned Procedure2 - conformance rules</title>
+<shortdesc id="shortdesc">[Procedure: templateId <tt>2.16.840.1.113883.10.20.22.4.41</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Procedure</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.41"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This template represents planned alterations of the patient's physical condition. Examples of such procedures are tracheostomy, knee replacement, and craniectomy. The priority of the procedure to the patient and provider is communicated through Priority Preference. The effectiveTime indicates the time when the procedure is intended to take place and authorTime indicates when the documentation of the plan occurred. The Planned Procedure Template may also indicate the potential insurance coverage for the procedure.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-30444, CONF:1098-30445, CONF:1098-32554 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.41"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../PlanOfCareActivityProcedure.dita">Plan Of Care Activity Procedure</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.41</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Planned moodCode (Act/Encounter/Procedure) 2.16.840.1.113883.11.20.9.23</tt><b> STATIC</b> 2011-09-30 (CONF:1098-8569)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-31976)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-30446)<tt><b>/@code</b>="active" </tt><i>Active</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31978)
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1098-30447)<p>The effectiveTime in a planned procedure represents the time that the procedure should occur.</p>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>methodCode</b></tt> (CONF:1098-31980)<p>In a planned procedure the provider may suggest that a procedure should be performed using a particular method.
+MethodCode SHALL NOT conflict with the method inherent in Procedure / code.</p>
+</li>
+<li>
+<b>MAY</b> contain zero or more [0..*] <tt><b>targetSiteCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Body Site 2.16.840.1.113883.3.88.12.3221.8.9</tt><b> DYNAMIC</b> (CONF:1098-31981)<p>The targetSiteCode is used to identify the part of the body of concern for the planned procedure.</p>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>performer</b></tt> such that it  (CONF:1098-30449)<ol><li><p>The clinician who is expected to perform the procedure could be identified using procedure/performer.</p></li>
+<li>Conforms to Performer2 from CDA</li></ol>
+</li>
+<li>
+<b>SHOULD</b> contain  [0..1] <tt><b>author</b></tt> such that it  (CONF:1098-31979)<ol><li><p>The author in a planned procedure represents the clinician who is requesting or planning the procedure.</p></li>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31079, CONF:1098-31080, CONF:1098-31081)<ol><li><p>The following entryRelationship represents the priority that a patient or a provider places on the procedure.</p></li>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31982, CONF:1098-31983, CONF:1098-31984)<ol><li><p>The following entryRelationship represents the indication for the procedure.</p></li>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../Indication2.dita">Indication2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31985, CONF:1098-31986, CONF:1098-31989)<ol><li><p>The following entryRelationship captures any instructions associated with the planned procedure.</p></li>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../Instruction2.dita">Instruction2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li></ol>
+</li>
+<li>
+<b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31990, CONF:1098-31991, CONF:1098-31992)<ol><li><p>The following entryRelationship represents the insurance coverage the patient may have for the procedure.</p></li>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../PlannedCoverage.dita">Planned Coverage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.129</tt>)</li></ol>
+</li>
+<li>The procedure/code in a planned procedure <b>SHOULD</b> be selected from LOINC (codeSystem 2.16.840.1.113883.6.1) or SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:1098-31977)</li>
+<li>The procedure/code in a planned procedure <b>MAY</b> be selected from CPT-4 (CodeSystem: 2.16.840.1.113883.6.12) or ICD10 PCS (CodeSystem: 2.16.840.1.113883.6.4) (CONF:1098-31977)</li>
+<li>entryRelationship with target entry Instruction2 if present, <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:1098-31987)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../PlanOfCareActivityProcedure.dita">Plan Of Care Activity Procedure</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.41</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="PROC" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8568, R2.0=CONF:1098-8568)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Planned moodCode (Act/Encounter/Procedure) 2.16.840.1.113883.11.20.9.23</tt><b> STATIC</b> 2011-09-30 (CONF:1098-8569)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8571, R2.0=CONF:1098-8571)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-31976)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1098-30446)<tt><b>/@code</b>="active" </tt><i>Active</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-31978)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1098-30447)
+<p>The effectiveTime in a planned procedure represents the time that the procedure should occur.</p></li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>methodCode</b></tt> (CONF:1098-31980)
+<p>In a planned procedure the provider may suggest that a procedure should be performed using a particular method.
+MethodCode SHALL NOT conflict with the method inherent in Procedure / code.</p></li>
+<li><b>MAY</b> contain zero or more [0..*] <tt><b>targetSiteCode</b></tt>, which <b>SHALL</b> be selected from ValueSet<tt> Body Site 2.16.840.1.113883.3.88.12.3221.8.9</tt><b> DYNAMIC</b> (CONF:1098-31981)
+<p>The targetSiteCode is used to identify the part of the body of concern for the planned procedure.</p></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>performer</b></tt> such that it  (CONF:1098-30449)
+<ol>
+<li>Conforms to Performer2 from CDA</li></ol><ol><li><p>The clinician who is expected to perform the procedure could be identified using procedure/performer.</p></li></ol></li>
+<li><b>SHOULD</b> contain  [0..1] <tt><b>author</b></tt> such that it  (CONF:1098-31979)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol><ol><li><p>The author in a planned procedure represents the clinician who is requesting or planning the procedure.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31079, CONF:1098-31080, CONF:1098-31081)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>REFR" </tt><i>REFR</i></li>
+<li>Conforms to <xref href="../PriorityPreference.dita">Priority Preference</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.143</tt>)</li></ol><ol><li><p>The following entryRelationship represents the priority that a patient or a provider places on the procedure.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31982, CONF:1098-31983, CONF:1098-31984)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>RSON" </tt><i>RSON</i></li>
+<li>Conforms to <xref href="../Indication2.dita">Indication2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol><ol><li><p>The following entryRelationship represents the indication for the procedure.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31985, CONF:1098-31986, CONF:1098-31989)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../Instruction2.dita">Instruction2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li></ol><ol><li><p>The following entryRelationship captures any instructions associated with the planned procedure.</p></li></ol></li>
+<li><b>MAY</b> contain  [0..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1098-31990, CONF:1098-31991, CONF:1098-31992)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>COMP" </tt><i>COMP</i></li>
+<li>Conforms to <xref href="../PlannedCoverage.dita">Planned Coverage</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.129</tt>)</li></ol><ol><li><p>The following entryRelationship represents the insurance coverage the patient may have for the procedure.</p></li></ol></li>
+<li>The procedure/code in a planned procedure <b>SHOULD</b> be selected from LOINC (codeSystem 2.16.840.1.113883.6.1) or SNOMED CT (CodeSystem: 2.16.840.1.113883.6.96) (CONF:1098-31977)</li>
+<li>The procedure/code in a planned procedure <b>MAY</b> be selected from CPT-4 (CodeSystem: 2.16.840.1.113883.6.12) or ICD10 PCS (CodeSystem: 2.16.840.1.113883.6.4) (CONF:1098-31977)</li>
+<li>entryRelationship with target entry Instruction2 if present, <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:1098-31987)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::PlannedProcedure2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::procedure[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.41]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_DocumentProcedureMood</entry><entry>CONF:1098-8569</entry><entry> APT</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1098-31976</entry><entry> </entry></row> 
+<row><entry>effectiveTime</entry><entry>0..1</entry><entry>SHOULD</entry><entry>IVL_TS</entry><entry>CONF:1098-30447</entry><entry> </entry></row> 
+<row><entry>methodCode</entry><entry>0..*</entry><entry>MAY</entry><entry>CE</entry><entry>CONF:1098-31980</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1098-30446</entry><entry>ActStatus 2.16.840.1.113883.5.14 active</entry></row> 
+<row><entry>targetSiteCode</entry><entry>0..*</entry><entry>MAY</entry><entry>CD</entry><entry></entry><entry> null</entry></row> 
+<row><entry>authorParticipation</entry><entry>0..1</entry><entry>SHOULD</entry><entry>AuthorParticipation</entry><entry>CONF:1098-31979</entry><entry> </entry></row> 
+<row><entry>indication2</entry><entry>0..*</entry><entry>MAY</entry><entry>Indication2</entry><entry>CONF:1098-31982CONF:1098-31983CONF:1098-31984</entry><entry> </entry></row> 
+<row><entry>instruction2</entry><entry>0..*</entry><entry>MAY</entry><entry>Instruction2</entry><entry>CONF:1098-31985CONF:1098-31986CONF:1098-31989</entry><entry> </entry></row> 
+<row><entry>performer</entry><entry>0..*</entry><entry>MAY</entry><entry>Performer2</entry><entry>CONF:1098-30449</entry><entry> </entry></row> 
+<row><entry>plannedCoverage</entry><entry>0..*</entry><entry>MAY</entry><entry>PlannedCoverage</entry><entry>CONF:1098-31990CONF:1098-31991CONF:1098-31992</entry><entry> </entry></row> 
+<row><entry>plannedProcedure2</entry><entry>0..*</entry><entry>MAY</entry><entry>PlannedProcedure2</entry><entry></entry><entry> </entry></row> 
+<row><entry>PriorityPreference</entry><entry>0..*</entry><entry>MAY</entry><entry>PriorityPreference</entry><entry>CONF:1098-31079CONF:1098-31080CONF:1098-31081</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../NutritionRecommendation.dita">Nutrition Recommendation</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../PlanOfTreatmentSection2.dita">Plan Of Treatment Section2</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../PlannedInterventionAct.dita">Planned Intervention Act (V2)</xref></entry><entry><xref href="../AuthorParticipation.dita">Author Participation</xref></entry></row><row><entry><xref href="../PlannedProcedureSection2.dita">Planned Procedure Section2</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../Indication2.dita">Indication2</xref></entry></row><row><entry></entry><entry><xref href="../Instruction2.dita">Instruction2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PlannedCoverage.dita">Planned Coverage</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../PriorityPreference.dita">Priority Preference</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<procedure xmlns="urn:hl7-org:v3" classCode="PROC">
+  <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+  <id root="MDHT" extension="1125484937"/>
+  <code code="1062936809"/>
+  <text>Text Value</text>
+  <statusCode code="active"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <methodCode code="1598924901"/>
+  <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <performer/>
+  <author>
+    <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+    <time/>
+    <assignedAuthor>
+      <id root="MDHT" extension="1971520476"/>
+      <code code="221082091"/>
+      <assignedPerson/>
+      <representedOrganization/>
+    </assignedAuthor>
+  </author>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+      <id root="MDHT" extension="1998237706"/>
+      <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <methodCode code="1885622832"/>
+      <targetSiteCode code="1158636072"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+      <id root="MDHT" extension="1530847097"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <methodCode code="1208577531"/>
+      <targetSiteCode code="1064004834"/>
+    </observation>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="INT">
+      <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+      <id root="MDHT" extension="450032942"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="INT">
+      <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+      <id root="MDHT" extension="1083039213"/>
+      <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+      <text>Text Value</text>
+      <statusCode code="active"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship typeCode="COMP">
+        <act classCode="ACT" moodCode="INT">
+          <code codeSystem="2.16.840.1.113883.3.221.5" codeSystemName="Source of Payment Typology (PHDSC)"/>
+          <statusCode code="active"/>
+        </act>
+      </entryRelationship>
+    </act>
+  </entryRelationship>
+</procedure>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::PlanOfCareActivityProcedure
+</p>
+<p id="PlanOfCareActivityProcedure" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8570, CONF:10513 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.41"
+</li><li>SHALL conform to CDA Procedure
+</li><li>Consol Plan Of Care Activity Procedure SHALL contain exactly one [1..1] @classCode="PROC"  (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8568, R2.0=CONF:1098-8568)
+</li><li>Consol Plan Of Care Activity Procedure SHALL contain exactly one [1..1] @moodCode, which SHALL be selected from ValueSet Plan of Care moodCode (Act/Encounter/Procedure) 2.16.840.1.113883.11.20.9.23 STATIC (CONF:8569)
+</li><li>Consol Plan Of Care Activity Procedure SHALL contain at least one [1..*] id (CONF:8571, R2.0=CONF:1098-8571)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Planned Procedure2</ph></p>
+<p id="shortdesc">[Procedure: templateId <tt>2.16.840.1.113883.10.20.22.4.41</tt>]</p>
+</body>
+</topic>

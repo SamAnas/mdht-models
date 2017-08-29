@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Planned Medication Activity2" />
+<meta name="abstract" content="[SubstanceAdministration: templateId 2.16.840.1.113883.10.20.22.4.42]" />
+<meta name="description" content="[SubstanceAdministration: templateId 2.16.840.1.113883.10.20.22.4.42]" />
+<meta name="DC.Coverage" content="SubstanceAdministration" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Planned Medication Activity2</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Planned Medication Activity2</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[SubstanceAdministration: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.42</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">This template represents planned medication activities. The priority of the medication activity to the patient and provider is communicated through Priority Preference. The effectiveTime indicates the time when the medication activity is intended to take place. The authorTime indicates when the documentation of the plan occurred.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1098-30465, CONF:1098-30466, CONF:1098-32557 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.42"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2014-06-09"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../PlanOfCareActivitySubstanceAdministration.html" title="[SubstanceAdministration: templateId 2.16.840.1.113883.10.20.22.4.42]">Plan Of Care Activity Substance Administration</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.42</tt>)</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Planned moodCode (SubstanceAdministration/Supply) 2.16.840.1.113883.11.20.9.24</tt><strong class="ph b"> STATIC</strong> 2011-09-30 (CONF:1098-8573)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt> (CONF:1098-32087)<tt class="ph tt"><strong class="ph b">/@code</strong>="active" </tt><em class="ph i">Active</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1098-32088)
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">repeatNumber</strong></tt> (CONF:1098-32066)<p class="p">In a Planned Medication Activity, repeatNumber defines the number of allowed administrations. For example, a repeatNumber of "3" means that the substance can be administered up to 3 times.</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">routeCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Medication Route FDA Value Set 2.16.840.1.113883.3.88.12.3221.8.7</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1098-32067)
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">approachSiteCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Body Site 2.16.840.1.113883.3.88.12.3221.8.9</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1098-32078)
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">doseQuantity</strong></tt> (CONF:1098-32068)
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">rateQuantity</strong></tt> (CONF:1098-32079)
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">maxDoseQuantity</strong></tt> (CONF:1098-32080)
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">administrationUnitCode</strong></tt>, which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> AdministrableDrugForm 2.16.840.1.113883.1.11.14570</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1098-32081)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">consumable</strong></tt> such that it  (CONF:1098-32082) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">manufacturedProduct</strong></tt>, where its type is <a class="xref" href="generated/../MedicationInformation2.html">Medication Information2</a> (CONF:1098-32083)</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt> such that it  (CONF:1098-30470)<ol class="ol" type="a"><li class="li"><p class="p">The clinician who is expected to perform the medication activity could be identified using substanceAdministration/performer.</p>
+</li>
+
+<li class="li">Conforms to Performer2 from CDA</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1098-32046)<ol class="ol" type="a"><li class="li"><p class="p">The author in a planned medication activity represents the clinician who is requesting or planning the medication activity.</p>
+</li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../AuthorParticipation.html">Author Participation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.119</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-31104, CONF:1098-31105, CONF:1098-31106)<ol class="ol" type="a"><li class="li"><p class="p">The following entryRelationship represents the priority that a patient or a provider places on the planned medication activity.</p>
+</li>
+
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>REFR" </tt><em class="ph i">REFR</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../PriorityPreference.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.143]">Priority Preference</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.143</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-32069, CONF:1098-32070, CONF:1098-32071)<ol class="ol" type="a"><li class="li"><p class="p">The following entryRelationship represents the indication for the planned medication activity.</p>
+</li>
+
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>RSON" </tt><em class="ph i">RSON</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../Indication2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.19]">Indication2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1098-32072, CONF:1098-32073, CONF:1098-32074)<ol class="ol" type="a"><li class="li"><p class="p">The following entryRelationship captures any instructions associated with the planned medication activity.</p>
+</li>
+
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>SUBJ" </tt><em class="ph i">SUBJ</em></li>
+
+<li class="li">Conforms to <a class="xref" href="generated/../Instruction2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.20]">Instruction2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">precondition</strong></tt> such that it  (CONF:1098-32084) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="PRCN" </tt> (CONF:1098-32085)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">criterion</strong></tt>, where its type is <a class="xref" href="generated/../PreconditionForSubstanceAdministration2.html">Precondition For Substance Administration2</a> (CONF:1098-32086)</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] effectiveTime such that it <strong class="ph b">SHALL</strong> contain exactly one [1..1] @xsi:type="IVL_TS" or contain exactly one [1..1] @xsi:type="TS" (CONF:NEW, DSTU:1045)</li>
+
+<li class="li">If effectiveTime @xsi:type="IVL_TS", <strong class="ph b">SHOULD</strong> contain zero or one [0..1] low (CONF:NEW, DSTU:1045)</li>
+
+<li class="li">If effectiveTime @xsi:type="IVL_TS", <strong class="ph b">MAY</strong> contain zero or one [0..1] high (CONF:NEW, DSTU:1045)</li>
+
+<li class="li">If an effectiveTime is present with @xsi:type="IVL_TS" or @xsi:type="TS", this effectiveTime <strong class="ph b">SHALL</strong> contain either a low or a @value but not both (CONF:NEW, DSTU:1045)</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] effectiveTime such that it <strong class="ph b">SHALL</strong> contain exactly one [1..1] @xsi:type = "PIVL_TS" or "EIVL_TS" (CONF:NEW, DSTU:1045)</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Planned Medication Activity2</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;substanceadministration xmlns="urn:hl7-org:v3" classCode="SBADM"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.42" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.42"/&gt;
+  &lt;id root="MDHT" extension="579698524"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="active"/&gt;
+  &lt;repeatNumber value="1"/&gt;
+  &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+  &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;maxDoseQuantity/&gt;
+  &lt;administrationUnitCode codeSystem="2.16.840.1.113883.5.85" codeSystemName="orderableDrugForm"/&gt;
+  &lt;consumable&gt;
+    &lt;manufacturedProduct classCode="MANU"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.23"/&gt;
+      &lt;id root="MDHT" extension="1963824910"/&gt;
+      &lt;manufacturedMaterial&gt;
+        &lt;code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"/&gt;
+      &lt;/manufacturedMaterial&gt;
+    &lt;/manufacturedProduct&gt;
+  &lt;/consumable&gt;
+  &lt;performer/&gt;
+  &lt;author&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="1231154218"/&gt;
+      &lt;code code="1966543202"/&gt;
+      &lt;assignedPerson/&gt;
+      &lt;representedOrganization/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.143"/&gt;
+      &lt;id root="MDHT" extension="1562309615"/&gt;
+      &lt;code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;repeatNumber value="1"/&gt;
+      &lt;author&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+        &lt;time/&gt;
+        &lt;assignedAuthor/&gt;
+      &lt;/author&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+      &lt;id root="MDHT" extension="51181173"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;repeatNumber value="1"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;act classCode="ACT" moodCode="INT"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+      &lt;id root="MDHT" extension="1255104495"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+    &lt;/act&gt;
+  &lt;/entryRelationship&gt;
+  &lt;precondition typeCode="PRCN"&gt;
+    &lt;criterion&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.25" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.25"/&gt;
+      &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+    &lt;/criterion&gt;
+  &lt;/precondition&gt;
+&lt;/substanceadministration&gt;</code></pre>
+	</div>
+
+</body>
+</html>

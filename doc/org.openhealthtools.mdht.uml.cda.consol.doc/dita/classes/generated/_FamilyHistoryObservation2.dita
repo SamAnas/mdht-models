@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Family History Observation (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.46</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.46"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>Family History Observations related to a particular family member are contained within a Family History Organizer. The effectiveTime in the Family History Observation is the biologically or clinically relevant time of the observation. The biologically or clinically relevant time is the time at which the observation holds (is effective) for the family member (the subject of the observation).</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-8599, CONF:1198-10496, CONF:1198-32605 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.46"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../FamilyHistoryObservation.dita">Family History Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.46</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Problem Type (SNOMED CT) 2.16.840.1.113883.3.88.12.3221.7.2</tt><b> STATIC</b> 2012-06-01 (CONF:1198-32427)
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../FamilyHistoryObservation.dita">Family History Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.46</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8586, R2.1=CONF:1198-8586)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8587, R2.1=CONF:1198-8587)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8592, R2.1=CONF:1198-8592)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Problem Type (SNOMED CT) 2.16.840.1.113883.3.88.12.3221.7.2</tt><b> STATIC</b> 2012-06-01 (CONF:1198-32427)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (R2.1=CONF:1198-8590)<tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:8590, R2.1=CONF:1198-19098)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:8593, R2.1=CONF:1198-8593)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt>, which <b>SHALL</b> be selected from ValueSet<tt> Problem 2.16.840.1.113883.3.88.12.3221.7.4</tt><b> DYNAMIC</b> (CONF:8591, CONF:1198-8591)
+</li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:8675, CONF:8676, CONF:15526, R2.1=CONF:1198-8675, R2.1=CONF:1198-8676, R2.1=CONF:1198-15526)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>SUBJ" </tt><i>SUBJ</i></li>
+<li>Conforms to <xref href="../AgeObservation.dita">Age Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.31</tt>)</li></ol></li>
+<li><b>MAY</b> contain  [0..1] <tt><b>entryRelationship</b></tt> such that it  (CONF:8678, CONF:8679, CONF:15527, R2.1=CONF:1198-8678, R2.1=CONF:1198-8679, R2.1=CONF:1198-15527)
+<ol>
+<li>Contains <tt><b>@typeCode="</b>CAUS" </tt><i>CAUS</i></li>
+<li>Conforms to <xref href="../FamilyHistoryDeathObservation.dita">Family History Death Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.47</tt>)</li></ol></li>
+<li>entryRelationship with target entry Age Observation <b>SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:8677, R2.1=CONF:1198-8677)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::FamilyHistoryObservation2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.46]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHOULD</entry><entry>CD</entry><entry>CONF:1198-32427</entry><entry> null</entry></row> 
+<row><entry>familyHistoryObservation2</entry><entry>1..*</entry><entry>SHALL</entry><entry>FamilyHistoryObservation2</entry><entry>CONF:1198-32428, CONF:1198-32429</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../FamilyHistoryOrganizer2.dita">Family History Organizer (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.46" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.46"/>
+  <id root="MDHT" extension="590856740"/>
+  <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+</observation>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::FamilyHistoryObservation
+</p>
+<p id="FamilyHistoryObservation" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:10496 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.46"
+</li><li>Consol Family History Observation entryRelationship with target entry Age Observation SHALL contain exactly one [1..1] @inversionInd="true" True (CONF:8677, R2.1=CONF:1198-8677)
+</li><li>SHALL conform to CDA Observation
+</li><li>Consol Family History Observation SHALL contain exactly one [1..1] @classCode="OBS" Observation (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8586, R2.1=CONF:1198-8586)
+</li><li>Consol Family History Observation SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:8587, R2.1=CONF:1198-8587)
+</li><li>Consol Family History Observation SHALL contain at least one [1..*] id (CONF:8592, R2.1=CONF:1198-8592)
+</li><li>Consol Family History Observation SHALL contain exactly one [1..1] code, which SHOULD be selected from ValueSet Problem Type 2.16.840.1.113883.3.88.12.3221.7.2 STATIC 2008-12-18 (CONF:8589)
+</li><li>Consol Family History Observation SHALL contain exactly one [1..1] statusCode (R2.1=CONF:1198-8590)/@code="completed"  (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:8590, R2.1=CONF:1198-19098)
+</li><li>Consol Family History Observation SHOULD contain zero or one [0..1] effectiveTime (CONF:8593, R2.1=CONF:1198-8593)
+</li><li>Consol Family History Observation SHALL contain exactly one [1..1] value with @xsi:type="CD", which SHALL be selected from ValueSet Problem 2.16.840.1.113883.3.88.12.3221.7.4 DYNAMIC (CONF:8591, CONF:1198-8591)
+</li><li>Consol Family History Observation MAY contain  [0..1] entryRelationship such that it  (CONF:8675, CONF:8676, CONF:15526, R2.1=CONF:1198-8675, R2.1=CONF:1198-8676, R2.1=CONF:1198-15526) Contains @typeCode="SUBJ" SUBJ, and Conforms to Age Observation (templateId: 2.16.840.1.113883.10.20.22.4.31)
+</li><li>Consol Family History Observation MAY contain  [0..1] entryRelationship such that it  (CONF:8678, CONF:8679, CONF:15527, R2.1=CONF:1198-8678, R2.1=CONF:1198-8679, R2.1=CONF:1198-15527) Contains @typeCode="CAUS" CAUS, and Conforms to Family History Death Observation (templateId: 2.16.840.1.113883.10.20.22.4.47)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Family History Observation (V3)</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.46</tt>]</p>
+</body>
+</topic>

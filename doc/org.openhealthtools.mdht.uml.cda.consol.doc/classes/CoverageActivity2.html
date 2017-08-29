@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Coverage Activity (V3)" />
+<meta name="abstract" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.60]" />
+<meta name="description" content="[Act: templateId 2.16.840.1.113883.10.20.22.4.60]" />
+<meta name="DC.Coverage" content="Act" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Coverage Activity (V3)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Coverage Activity (V3)</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Act: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.60</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">A Coverage Activity groups the policy and authorization acts within a Payers Section to order the payment sources. A Coverage Activity contains one or more Policy Activities, each of which contains zero or more Authorization Activities. The Coverage Activity id is the ID from the patient's insurance card. The sequenceNumber/@value shows the policy order of preference.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-8897, CONF:1198-10492, CONF:1198-32596 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.60"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../CoverageActivity.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.60]">Coverage Activity</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.60</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-8876)<tt class="ph tt"><strong class="ph b">/@code</strong>="48768-6" </tt><em class="ph i">Payment Sources</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-19160, CONF:1198-32156)
+</li>
+
+<li class="li">
+contains  [1..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it <ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PolicyActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.61:2015-08-01</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">entryRelationship</strong></tt> such that it  (CONF:1198-8878) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@typeCode</strong>="COMP" </tt> (CONF:1198-8879)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">sequenceNumber</strong></tt> (CONF:1198-17174)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">act</strong></tt>, where its type is <a class="xref" href="generated/../PolicyActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity (V3)</a> (CONF:1198-15528)</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Coverage Activity (V3)</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.60" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.60"/&gt;
+  &lt;id root="MDHT" extension="915773433"/&gt;
+  &lt;code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;entryRelationship typeCode="COMP"&gt;
+    &lt;act classCode="ACT" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.61"/&gt;
+      &lt;id root="MDHT" extension="1663246304"/&gt;
+      &lt;code codeSystemName=""/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;performer&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.87"/&gt;
+      &lt;/performer&gt;
+      &lt;performer typeCode="PRF"&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.88"/&gt;
+      &lt;/performer&gt;
+      &lt;participant&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.89"/&gt;
+      &lt;/participant&gt;
+    &lt;/act&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;act classCode="ACT" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.61"/&gt;
+      &lt;id root="MDHT" extension="1134891033"/&gt;
+      &lt;code codeSystemName=""/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;performer&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.87"/&gt;
+        &lt;assignedEntity/&gt;
+      &lt;/performer&gt;
+      &lt;performer typeCode="PRF"&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.88"/&gt;
+        &lt;time&gt;
+          &lt;low value="2017"/&gt;
+          &lt;high value="2017"/&gt;
+        &lt;/time&gt;
+        &lt;assignedEntity/&gt;
+      &lt;/performer&gt;
+      &lt;participant&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.22.4.89"/&gt;
+        &lt;time&gt;
+          &lt;low value="2017"/&gt;
+          &lt;high value="2017"/&gt;
+        &lt;/time&gt;
+        &lt;participantRole/&gt;
+      &lt;/participant&gt;
+    &lt;/act&gt;
+  &lt;/entryRelationship&gt;
+&lt;/act&gt;</code></pre>
+	</div>
+
+</body>
+</html>

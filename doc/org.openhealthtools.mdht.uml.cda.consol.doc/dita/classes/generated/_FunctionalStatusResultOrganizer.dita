@@ -9,110 +9,106 @@
 </prolog>
 <body>
 <section id="knownSubclasses">
+<p>Known Subclasses: <xref href="../FunctionalStatusOrganizer2.dita">Functional Status Organizer2</xref></p>
 </section>
 <section id="description">
-<p><lines><i>This clinical statement identifies a set of functional status result observations. It contains information applicable to all of the contained functional status result observations. A functional status organizer may group self-care observations related to a patient's ability to feed, bathe, and dress.
-An appropriate nullFlavor can be used when the organizer/code or organizer/id is unknown.</i></lines></p>
+<p>This clinical statement identifies a set of functional status result observations. It contains information applicable to all of the contained functional status result observations. A functional status organizer may group self-care observations related to a patient's ability to feed, bathe, and dress.
+An appropriate nullFlavor can be used when the organizer/code or organizer/id is unknown.</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:14361, CONF:14362 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.22.4.66"</li></ol></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:14361, CONF:14362 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.66"</tt></li></ol></li>
 <li><b>SHALL</b> conform to <xref href="../ResultOrganizer.dita">Result Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.1</tt>)</li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14355)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14355, R2.0=1098-14355)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14357)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14357, R2.0=1098-14357)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14363)
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14363, R2.0=CONF:1098-14363)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:14364)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:14364)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:14358)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:14358)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>component</b></tt> (CONF:14359, CONF:14368)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li></ol></li>
+<li>
+<b>SHALL</b> contain  [1..*] <tt><b>component</b></tt> such that it  (CONF:14359, CONF:14368)<ol>
+<li>Conforms to <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li></ol>
+</li>
 <li>code <b>SHOULD</b> contain zero or one [0..1] @code should be selected from ICF (codeSystem 2.16.840.1.113883.6.254) or SNOMED CT (codeSystem 2.16.840.1.113883.6.96) (CONF:14747, CONF:14748)</li>
 </ol>
 <ol id="aggregate">
 <li><b>SHALL</b> conform to <xref href="../ResultOrganizer.dita">Result Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.1</tt>)</li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14355)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14355, R2.0=1098-14355)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14357)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14357, R2.0=1098-14357)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14363)
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14363, R2.0=CONF:1098-14363)
 </li>
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:14364)
 </li>
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:14358)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>)
 </li>
-<li><b>SHALL</b> contain at least one [1..*] <tt><b>component</b></tt> (CONF:14359, CONF:14368)
+<li><b>SHALL</b> contain  [1..*] <tt><b>component</b></tt> such that it  (CONF:14359, CONF:14368)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li></ol></li>
+<li>Conforms to <xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.67</tt>)</li></ol></li>
 <li>The value for 'code' in a result organizer <b>SHOULD</b> be selected from LOINC (codeSystem 2.16.840.1.113883.6.1) or SNOMED CT (codeSystem 2.16.840.1.113883.6.96) and <b>MAY</b> be selected from CPT-4 (codeSystem 2.16.840.1.113883.6.12).  Laboratory results <b>SHOULD</b> be from LOINC (CodeSystem: 2.16.840.1.113883.6.1) or other constrained terminology named by the US Department of Health and Human Services Office of National Coordinator or other federal agency. Local and/or regional codes for laboratory results <b>SHOULD</b> also be allowed. (CONF:7164)</li>
 <li><b>SHOULD</b> contain zero or one [0..1] @classCode="CLUSTER" Cluster (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) OR <b>SHOULD</b> contain zero or one [0..1] @classCode="BATTERY" Battery (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:7165)</li>
 <li>code <b>SHOULD</b> contain zero or one [0..1] @code should be selected from ICF (codeSystem 2.16.840.1.113883.6.254) or SNOMED CT (codeSystem 2.16.840.1.113883.6.96) (CONF:14747, CONF:14748)</li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::FunctionalStatusResultOrganizer</entry>  </row>  <row><entry namest="col0" nameend="col7" >cda::organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.1]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>classCode</entry><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>x_ActClassDocumentEntryOrganizer</entry><entry>CONF:14355</entry><entry> BATTERY</entry></row> 
-<row><entry>moodCode</entry><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>NO</entry><entry>ActMood</entry><entry>CONF:14357</entry><entry> APT</entry></row> 
-<row><entry>code</entry><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CD</entry><entry>CONF:14364</entry><entry> </entry></row> 
-<row><entry>id</entry><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>YES</entry><entry>II</entry><entry>CONF:14363</entry><entry> </entry></row> 
-<row><entry>statusCode</entry><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CS</entry><entry>CONF:14358</entry><entry>ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
-<row><entry>functionalStatusResultObservation</entry><entry>functionalStatusResultObservation</entry><entry>1..*</entry><entry>SHALL</entry><entry>YES</entry><entry>FunctionalStatusResultObservation</entry><entry>CONF:14359CONF:14368</entry><entry> </entry></row> 
-<row><entry>functionalStatusResultOrganizer</entry><entry>functionalStatusResultOrganizer</entry><entry>0..*</entry><entry>MAY</entry><entry>YES</entry><entry>FunctionalStatusResultOrganizer</entry><entry>CONF:14414CONF:14415</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::FunctionalStatusResultOrganizer</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.1]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@classCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>x_ActClassDocumentEntryOrganizer</entry><entry>CONF:14355R2.0=1098-14355</entry><entry> BATTERY</entry></row> 
+<row><entry>@moodCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>ActMood</entry><entry>CONF:14357R2.0=1098-14357</entry><entry> APT</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:14364</entry><entry> </entry></row> 
+<row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:14363R2.0=CONF:1098-14363</entry><entry> </entry></row> 
+<row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:14358</entry><entry>ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
+<row><entry>functionalStatusResultObservation</entry><entry>1..*</entry><entry>SHALL</entry><entry>FunctionalStatusResultObservation</entry><entry>CONF:14359CONF:14368</entry><entry> </entry></row> 
+<row><entry>functionalStatusResultOrganizer</entry><entry>0..*</entry><entry>MAY</entry><entry>FunctionalStatusResultOrganizer</entry><entry>CONF:14414CONF:14415</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../FunctionalStatusSection.dita">Functional Status Section</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../FunctionalStatusResultObservation.dita">Functional Status Result Observation</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN">
   <templateId root="2.16.840.1.113883.10.20.22.4.66"/>
   <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
-  <id root="MDHT" extension="1585605187"/>
-  <code code="534814432"/>
+  <id root="MDHT" extension="1208056192"/>
+  <code code="248434069"/>
   <statusCode code="completed"/>
-  <effectiveTime>
-    <low value="2014"/>
-    <high value="2014"/>
-  </effectiveTime>
   <component>
     <observation classCode="OBS" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
       <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
-      <id root="MDHT" extension="526180489"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.67"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <id root="MDHT" extension="1051417473"/>
       <code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+      <text>Text Value</text>
       <statusCode code="completed"/>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <author/>
       <entryRelationship>
         <supply classCode="SPLY">
           <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
-          <id root="MDHT" extension="1886239118"/>
-          <code code="1325078279"/>
+          <id root="MDHT" extension="935840875"/>
+          <code code="1053631629"/>
+          <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime value="20140803"/>
         </supply>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
-          <id root="MDHT" extension="2002400854"/>
-          <code code="1914519367"/>
+          <id root="MDHT" extension="222694656"/>
+          <code code="405250749"/>
+          <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <participant typeCode="IND"/>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
-          <id root="MDHT" extension="796337336"/>
-          <code code="1957208542"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <id root="MDHT" extension="1153959107"/>
+          <code code="924304720"/>
+          <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <author/>
           <entryRelationship>
             <observation classCode="OBS" moodCode="EVN">

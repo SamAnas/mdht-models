@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html
   PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xml:lang="en-us" lang="en-us">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="copyright" content="(C) Copyright 2005"/>
-<meta name="DC.rights.owner" content="(C) Copyright 2005"/>
-<meta name="DC.Type" content="topic"/>
-<meta name="DC.Title" content="Diagnostic Imaging Report"/>
-<meta name="abstract" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.5]"/>
-<meta name="description" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.5]"/>
-<meta name="DC.Coverage" content="ClinicalDocument"/>
-<meta name="DC.Format" content="XHTML"/>
-<meta name="DC.Identifier" content="classId"/>
-<meta name="DC.Language" content="en-us"/>
-<link rel="stylesheet" type="text/css" href="../css/commonltr.css"/>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Diagnostic Imaging Report" />
+<meta name="abstract" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.5]" />
+<meta name="description" content="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.5]" />
+<meta name="DC.Coverage" content="ClinicalDocument" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
 <title>Diagnostic Imaging Report</title>
 </head>
 <body id="classId">
@@ -22,8 +22,7 @@
 	<p><b>Non-Normative Content</b> The Normative content for these specifications
 	may be found on the HL7, IHE, and HITSP web sites.</p>
 </div>
-
-	<h1 class="title topictitle1">
+	<h1 class="title topictitle1" id="ariaid-title1">
 		<span class="ph">Diagnostic Imaging Report</span>
 	</h1>
 
@@ -33,8 +32,7 @@
 
 		
 		<div class="section">
-<div class="p"><p class="lines"><em class="ph i">A Diagnostic Imaging Report (DIR) is a document that contains a consulting specialist's interpretation of image data.  It conveys the interpretation to the referring (ordering) physician and becomes part of the patient's medical record.  It is for use in Radiology, Endoscopy, Cardiology, and other imaging specialties.</em></p>
-</div>
+<p class="p">A Diagnostic Imaging Report (DIR) is a document that contains a consulting specialist's interpretation of image data.  It conveys the interpretation to the referring (ordering) physician and becomes part of the patient's medical record.  It is for use in Radiology, Endoscopy, Cardiology, and other imaging specialties.</p>
 
 </div>
 
@@ -50,116 +48,113 @@
 			
 				<div class="p">
 				<ol class="ol">
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] templateId ( CONF:8404, CONF:10042 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.1.5"</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:8404, CONF:10042 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.1.5"</tt></li>
 </ol>
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="GeneralHeaderConstraints.html" title="[ClinicalDocument: templateId 2.16.840.1.113883.10.20.22.1.1]">General Header Constraints</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1</tt>)</li>
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/GeneralHeaderConstraints.html">General Header Constraints</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.1.1</tt>)</li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:14833), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> <a class="xref" href="../terminology/DIRDocumentTypeCodes.html">DIRDocumentTypeCodes</a> 2.16.840.1.113883.11.20.9.32</tt><strong class="ph b"> DYNAMIC</strong> (CONF:14834)
-<ul class="ul"><li class="li"><div class="p"><p class="lines"><em class="ph i">Given that DIR documents may be transformed from established collections of imaging reports already stored with their own type codes, there is no static set of Document Type codes. The set of LOINC codes listed in the DIR LOINC Document Type Codes table may be extended by additions to LOINC and supplemented by local codes as translations.<br/>
-The DIR document recommends use of a single document type code, 18748-4 "Diagnostic Imaging Report", with further specification provided by author or performer, setting, or specialty. Some of these codes in the DIR LOINC Document Type Codes table are pre-coordinated with either the imaging modality, body part examined, or specific imaging method such as the view.  Use of these codes is not recommended, as this duplicates information potentially present with the header. When pre-coordinated codes are used, any coded values describing the author or performer of the service act or the practice setting must be consistent with the LOINC document type. This table is drawn from LOINC Version 2.36, June 30, 2011, and consists of codes whose scale is DOC and that refer to reports for diagnostic imaging procedures.</em></p>
-</div>
-</li>
-</ul>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:14833), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> DIRDocumentTypeCodes 2.16.840.1.113883.11.20.9.32</tt><strong class="ph b"> DYNAMIC</strong> (CONF:14834)<p class="p">Given that DIR documents may be transformed from established collections of imaging reports already stored with their own type codes, there is no static set of Document Type codes. The set of LOINC codes listed in the DIR LOINC Document Type Codes table may be extended by additions to LOINC and supplemented by local codes as translations.
+The DIR document recommends use of a single document type code, 18748-4 "Diagnostic Imaging Report", with further specification provided by author or performer, setting, or specialty. Some of these codes in the DIR LOINC Document Type Codes table are pre-coordinated with either the imaging modality, body part examined, or specific imaging method such as the view.  Use of these codes is not recommended, as this duplicates information potentially present with the header. When pre-coordinated codes are used, any coded values describing the author or performer of the service act or the practice setting must be consistent with the LOINC document type. This table is drawn from LOINC Version 2.36, June 30, 2011, and consists of codes whose scale is DOC and that refer to reports for diagnostic imaging procedures.</p>
+
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5363)
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:5363)
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain  [0..0] <tt class="ph tt"><strong class="ph b">informant</strong></tt> (CONF:8410)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] CDA Informant12</li>
-</ol>
-</li>
-
-<li class="li"><strong class="ph b">MAY</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">informationRecipient</strong></tt> (CONF:8411)
-<ul class="ul"><li class="li"><div class="p"><p class="lines"><em class="ph i">The physician requesting the imaging procedure (ClincalDocument/participant[@typeCode=REF]/associatedEntity), if present, SHOULD also be recorded as an informationRecipient, unless in the local setting another physician (such as the attending physician for an inpatient) is known to be the appropriate recipient of the report.</em></p>
-</div>
-</li>
-<li class="li"><div class="p"><p class="lines"><em class="ph i">When no referring physician is present, as in the case of self-referred screening examinations allowed by law, the intendedRecipient MAY be absent. The intendedRecipient MAY also be the health chart of the patient, in which case the receivedOrganization SHALL be the scoping organization of that chart.</em></p>
-</div>
-</li>
-</ul>
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] CDA Information Recipient</li>
-</ol>
-</li>
-
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">participant</strong></tt> (CONF:8414) <ol class="ol" type="a"><li class="li"> This participant <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">associatedEntity</strong></tt> (CONF:8415) <ol class="ol" type="i"><li class="li"> This associatedEntity <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">associatedPerson</strong></tt> (CONF:8415) <ol class="ol"><li class="li"> This associatedPerson <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:9406)</li>
-</ol>
- </li>
-</ol>
- </li>
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [0..0] <tt class="ph tt"><strong class="ph b">informant</strong></tt> such that it  (CONF:8410)<ol class="ol" type="a">
+<li class="li">Conforms to Informant12 from CDA</li>
 </ol>
 
 </li>
 
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">inFulfillmentOf</strong></tt> <div class="p"><p class="lines"><em class="ph i">An inFulfillmentOf element represents the Placer Order that is either a group of orders (modeled as PlacerGroup in the Placer Order RMIM of the Orders and Observations domain) or a single order item (modeled as ObservationRequest in the same RMIM).  This optionality reflects two major approaches to the grouping of procedures as implemented in the installed base of imaging information systems.  These approaches differ in their handling of grouped procedures and how they are mapped to identifiers in the Digital Imaging and Communications in Medicine (DICOM) image and structured reporting data.  The example of a CT examination covering chest, abdomen, and pelvis will be used in the discussion below.<br/>
-In the IHE Scheduled Workflow model, the Chest CT, Abdomen CT, and Pelvis CT each represent a Requested Procedure, and all three procedures are grouped under a single Filler Order.  The Filler Order number maps directly to the DICOM Accession Number in the DICOM imaging and report data.<br/>
-A widely deployed alternative approach maps the requested procedure identifiers directly to the DICOM Accession Number.  The Requested Procedure ID in such implementations may or may not be different from the Accession Number, but is of little identifying importance because there is only one Requested Procedure per Accession Number.  There is no identifier that formally connects the requested procedures ordered in this group.<br/>
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">informationRecipient</strong></tt> such that it  (CONF:8411)<ol class="ol" type="a"><li class="li"><p class="p">The physician requesting the imaging procedure (ClincalDocument/participant[@typeCode=REF]/associatedEntity), if present, SHOULD also be recorded as an informationRecipient, unless in the local setting another physician (such as the attending physician for an inpatient) is known to be the appropriate recipient of the report.</p>
+</li>
+<li class="li"><p class="p">When no referring physician is present, as in the case of self-referred screening examinations allowed by law, the intendedRecipient MAY be absent. The intendedRecipient MAY also be the health chart of the patient, in which case the receivedOrganization SHALL be the scoping organization of that chart.</p>
+</li>
+
+<li class="li">Conforms to Information Recipient from CDA</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">participant</strong></tt> such that it  (CONF:8414) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">associatedEntity</strong></tt> such that it  (CONF:8415) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">associatedPerson</strong></tt> such that it  (CONF:8415) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">name</strong></tt> (CONF:9406)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">inFulfillmentOf</strong></tt> such that it  <p class="p"><p class="lines"><em class="ph i">An inFulfillmentOf element represents the Placer Order that is either a group of orders (modeled as PlacerGroup in the Placer Order RMIM of the Orders and Observations domain) or a single order item (modeled as ObservationRequest in the same RMIM).  This optionality reflects two major approaches to the grouping of procedures as implemented in the installed base of imaging information systems.  These approaches differ in their handling of grouped procedures and how they are mapped to identifiers in the Digital Imaging and Communications in Medicine (DICOM) image and structured reporting data.  The example of a CT examination covering chest, abdomen, and pelvis will be used in the discussion below.<br />
+In the IHE Scheduled Workflow model, the Chest CT, Abdomen CT, and Pelvis CT each represent a Requested Procedure, and all three procedures are grouped under a single Filler Order.  The Filler Order number maps directly to the DICOM Accession Number in the DICOM imaging and report data.<br />
+A widely deployed alternative approach maps the requested procedure identifiers directly to the DICOM Accession Number.  The Requested Procedure ID in such implementations may or may not be different from the Accession Number, but is of little identifying importance because there is only one Requested Procedure per Accession Number.  There is no identifier that formally connects the requested procedures ordered in this group.<br />
 In both cases, inFulfillmentOf/order/id is mapped to the DICOM Accession Number in the imaging data.</em></p>
-</div>
-<ol class="ol" type="a"><li class="li"/>
+</p>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> such that it  (CONF:8416) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> such that it  (CONF:8431) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="ACT" </tt><em class="ph i">Act</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8430)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8419)<p class="p"><p class="lines"><em class="ph i">The value of serviceEvent/code SHALL NOT conflict with the ClininicalDocument/code. When transforming from DICOM SR documents that do not contain a procedure code, an appropriate nullFlavor SHALL be used on serviceEvent/code.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8418)</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt>, where its type is <a class="xref" href="generated/../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a> (CONF:8422)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">relatedDocument</strong></tt> such that it  (CONF:8432) <p class="p"><p class="lines"><em class="ph i">When a Diagnostic Imaging Report has been transformed from a DICOM SR document, relatedDocument/@typeCode SHALL be XFRM, and relatedDocument/parentDocument/id SHALL contain the SOP Instance UID of the original DICOM SR document.</em></p>
+</p>
+<ol class="ol" type="a"><li class="li">The relatedDocument/id/@root attribute <strong class="ph b">SHALL</strong> be a syntactically correct OID, and <strong class="ph b">SHALL NOT</strong> be a UUID. (CONF:10030)</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">componentOf</strong></tt> such that it  (CONF:8434) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">encompassingEncounter</strong></tt> such that it  (CONF:8449) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8437)</li>
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8435)<p class="p"><p class="lines"><em class="ph i">In the case of transformed DICOM SR documents, an appropriate null flavor MAY be used if the id is unavailable.</em></p>
+</p>
+</li>
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">encounterParticipant</strong></tt>, where its type is <a class="xref" href="generated/../PhysicianofRecordParticipant.html">Physicianof Record Participant</a> (CONF:8448)</li>
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">responsibleParty</strong></tt> such that it  (CONF:8438) <ol class="ol"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> such that it  (CONF:9407) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] assignedPerson OR contain zero or one [0..1] representedOrganization (CONF:8439)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHALL</strong> be precise to the day (CONF:10133, CONF:10127)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHOULD</strong> be precise to the minute (CONF:10133, CONF:10128)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">MAY</strong> be precise to the second (CONF:10133, CONF:10129)</li>
+<li class="li">The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). If more precise than day, <strong class="ph b">SHOULD</strong> include time-zone offset (CONF:10133, CONF:10130)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain  [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:9484)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../FindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.2]">Findings Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.1.2</tt>)</li>
 </ol>
 
 </li>
 
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">documentationOf</strong></tt> (CONF:8416) <ol class="ol" type="a"><li class="li"> This documentationOf <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">serviceEvent</strong></tt> (CONF:8431) <ol class="ol" type="i"><li class="li"> This serviceEvent <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="ACT" </tt><em class="ph i">Act</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8430)</li>
-<li class="li"> This serviceEvent <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:8419)<div class="p"><p class="lines"><em class="ph i">The value of serviceEvent/code SHALL NOT conflict with the ClininicalDocument/code. When transforming from DICOM SR documents that do not contain a procedure code, an appropriate nullFlavor SHALL be used on serviceEvent/code.</em></p>
-</div>
-</li>
-<li class="li"> This serviceEvent <strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8418)</li>
-<li class="li"> This serviceEvent <strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">performer</strong></tt>, where its type is <a class="xref" href="generated/../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a> (CONF:8422)<ol class="ol">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="generated/../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.2.1</tt>)</li>
-</ol>
-</li>
-</ol>
- </li>
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> such that it  (CONF:15141)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../DICOMObjectCatalogSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.1]">DICOM Object Catalog Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.1.1</tt>)</li>
 </ol>
 
-</li>
-
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">relatedDocument</strong></tt> (CONF:8432) <div class="p"><p class="lines"><em class="ph i">When a Diagnostic Imaging Report has been transformed from a DICOM SR document, relatedDocument/@typeCode SHALL be XFRM, and relatedDocument/parentDocument/id SHALL contain the SOP Instance UID of the original DICOM SR document.</em></p>
-</div>
-<ol class="ol" type="a"><li class="li"> This relatedDocument The relatedDocument/id/@root attribute <strong class="ph b">SHALL</strong> be a syntactically correct OID, and <strong class="ph b">SHALL NOT</strong> be a UUID. (CONF:10030)</li>
-</ol>
-
-</li>
-
-<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">componentOf</strong></tt> (CONF:8434) <ol class="ol" type="a"><li class="li"> This componentOf <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">encompassingEncounter</strong></tt> (CONF:8449) <ol class="ol" type="i"><li class="li"> This encompassingEncounter <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:8437)</li>
-<li class="li"> This encompassingEncounter <strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:8435)<div class="p"><p class="lines"><em class="ph i">In the case of transformed DICOM SR documents, an appropriate null flavor MAY be used if the id is unavailable.</em></p>
-</div>
-</li>
-<li class="li"> This encompassingEncounter <strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">encounterParticipant</strong></tt>, where its type is <a class="xref" href="generated/../PhysicianofRecordParticipant.html">Physicianof Record Participant</a> (CONF:8448)<ol class="ol">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="generated/../PhysicianofRecordParticipant.html">Physicianof Record Participant</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.2.2</tt>)</li>
-</ol>
-</li>
-<li class="li"> This encompassingEncounter <strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">responsibleParty</strong></tt> (CONF:8438) <ol class="ol"><li class="li"> This responsibleParty <strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">assignedEntity</strong></tt> (CONF:9407) <ol class="ol" type="a"><li class="li"> This assignedEntity <strong class="ph b">SHOULD</strong> contain zero or one [0..1] assignedPerson OR contain zero or one [0..1] representedOrganization (CONF:8439)</li>
-</ol>
- </li>
-</ol>
- </li>
-<li class="li"> This encompassingEncounter The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHALL</strong> be precise to the day (CONF:10133, CONF:10127)</li>
-<li class="li"> This encompassingEncounter The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">SHOULD</strong> be precise to the minute (CONF:10133, CONF:10128)</li>
-<li class="li"> This encompassingEncounter The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). <strong class="ph b">MAY</strong> be precise to the second (CONF:10133, CONF:10129)</li>
-<li class="li"> This encompassingEncounter The content of effectiveTime conforms to US Realm Date and Time (DT.US.FIELDED) (2.16.840.1.113883.10.20.22.5.4). If more precise than day, <strong class="ph b">SHOULD</strong> include time-zone offset (CONF:10133, CONF:10130)</li>
-</ol>
- </li>
-</ol>
-
-</li>
-
-<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:9484)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="FindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.2]">Findings Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.1.2</tt>)</li>
-</ol>
-</li>
-
-<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">component</strong></tt> (CONF:15141)
-<ol class="ol" type="a">
-<li class="li">Contains exactly one [1..1] <a class="xref" href="DICOMObjectCatalogSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.6.1.1]">DICOM Object Catalog Section</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.6.1.1</tt>)</li>
-</ol>
 </li>
 
 <li class="li">This code <strong class="ph b">SHOULD</strong> contain zero or one [0..1] @code="18748-4" Diagnostic Imaging Report (CodeSystem: LOINC2.16.840.1.113883.6.1) (CONF:8409)</li>
@@ -194,18 +189,25 @@ In both cases, inFulfillmentOf/order/id is mapped to the DICOM Accession Number 
 		<div class="section"><h2 class="title sectiontitle"><span class="ph">Diagnostic Imaging Report</span> Example</h2>
 			
 			<div class="p">
-			<pre class="pre codeblock">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd"&gt;
+			<pre class="pre codeblock language-xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ClinicalDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 infrastructure/cda/CDA_SDTC.xsd"&gt;
+  &lt;realmCode code="US"/&gt;
+  &lt;realmCode code="US"/&gt;
   &lt;realmCode code="US"/&gt;
   &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
   &lt;templateId root="2.16.840.1.113883.10.20.22.1.5"/&gt;
   &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
-  &lt;id root="MDHT" extension="1043626978"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.5"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.5"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.1.1"/&gt;
+  &lt;id root="MDHT" extension="1767709759"/&gt;
   &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
-  &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
+  &lt;title&gt;org.openhealthtools.mdht.uml.cda.consol.impl. Diagnostic Imaging Report Impl&lt;/title&gt;
   &lt;effectiveTime/&gt;
   &lt;confidentialityCode codeSystem="2.16.840.1.113883.5.25" codeSystemName="ConfidentialityCode"/&gt;
-  &lt;setId root="MDHT" extension="5b8412ae-33e3-4efc-ba81-d249dfdda4a7"/&gt;
+  &lt;languageCode code="Code forlanguageCode"/&gt;
+  &lt;setId root="MDHT" extension="cb0f5595-d814-4f9f-9ec0-f9a45663bc08"/&gt;
   &lt;versionNumber value="1"/&gt;
   &lt;recordTarget&gt;
     &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
@@ -229,9 +231,11 @@ In both cases, inFulfillmentOf/order/id is mapped to the DICOM Accession Number 
   &lt;/inFulfillmentOf&gt;
   &lt;documentationOf&gt;
     &lt;serviceEvent classCode="ACT"&gt;
-      &lt;id root="MDHT" extension="205819016"/&gt;
-      &lt;code code="739349761"/&gt;
-      &lt;performer/&gt;
+      &lt;id root="MDHT" extension="291623143"/&gt;
+      &lt;code code="1692548177"/&gt;
+      &lt;performer typeCode="PRF"&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.6.2.1"/&gt;
+      &lt;/performer&gt;
     &lt;/serviceEvent&gt;
   &lt;/documentationOf&gt;
   &lt;relatedDocument&gt;
@@ -239,13 +243,15 @@ In both cases, inFulfillmentOf/order/id is mapped to the DICOM Accession Number 
   &lt;/relatedDocument&gt;
   &lt;componentOf&gt;
     &lt;encompassingEncounter&gt;
-      &lt;id root="MDHT" extension="52419059"/&gt;
+      &lt;id root="MDHT" extension="501247370"/&gt;
       &lt;effectiveTime&gt;
-        &lt;low value="2014"/&gt;
-        &lt;high value="2014"/&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
       &lt;/effectiveTime&gt;
       &lt;responsibleParty/&gt;
-      &lt;encounterParticipant/&gt;
+      &lt;encounterParticipant typeCode="ATND"&gt;
+        &lt;templateId root="2.16.840.1.113883.10.20.6.2.2"/&gt;
+      &lt;/encounterParticipant&gt;
     &lt;/encompassingEncounter&gt;
   &lt;/componentOf&gt;
   &lt;component&gt;
@@ -254,30 +260,41 @@ In both cases, inFulfillmentOf/order/id is mapped to the DICOM Accession Number 
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.6.1.2"/&gt;
-          &lt;id root="MDHT" extension="1193414586"/&gt;
-          &lt;code code="2040100127"/&gt;
+          &lt;id root="MDHT" extension="295744451"/&gt;
+          &lt;code code="356105881"/&gt;
           &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="183499768"/&gt;
+          &lt;text&gt;RkVQKQ YpupeMY SwbwCFSjx urzXe QVDYRw msjqwFZSn kVFLsFInA tWNAdQEJ OUqUS KpUPHDgG aLUkA FgQZd NUZGXsf KGkzE Lzycmq TYfKnJwD GYQQJk CbxEuK foSyW YWntDrN oJSbDv GtTpy dcmwsNrIY yBzjzMHv VVdRlXsq ZxuPxUEj UgcaJx zNgPu JWtEogzLP BQNnO YGJKopmY NjYqBiEGt rxvpyZL zrUvBl xTDRXgyn NdwflUN CbcecQ ILUzHBik VCdPBH AzShnB POYXfmv LVUsEPi dNAIDZsI HaADjV GptFx tQwyPFr RZXtuNw rvzHji FPkQTcKR 
+kSepqwNs oEvARZBz QXVDDFJ LtZDcqhf brDQlZO DNpssp RZuPAqt RnsBt wcEeoG miXSeL ROWcIg FvdOFPGkm FlWTQ ToanItAj wdSLmcA bDSwh klpOqJZ okFKWlK OsHHYOX urJvhtAjs Cexxc lsjghA RaYpp AiOnKkFHi gMmtR EUxjdx VRfGHwx HONeyxuf RObOZVIwJ brhgNDvr ssUdbwoWS gxQouw kNBgy QgmuQ sTpiWhh EudEJTf SzcQCEml Nvxlu XLQvcoav ZCJcx OtifC seRNxG tWZRr wTuJa LqHwYUS BfAkZyqxS 
+KYbGfg MHbmSQjXk tZhjminc pPbXlFik WGUEW wSehV TcpjNles AeYMSQXPJ OtJLspUEC OvqCOS ZSZDNlj jyLCpumb RaYHz GgkCkPES vtgLHo UPeXtB eaoYoTR SWPosJ mofopBndd nIgddEHPQ tPWAFWb uNOEHJniL fqGPh DGjtXQP xCaMs oyMye rQpNmtgu RwLZDVdWQ WCNSpV hKEWRVbs bfreVj EZWBVo lRivn XfgTPD mVdkn 
+&lt;/text&gt;
+          &lt;confidentialityCode code="1366459920"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
         &lt;/section&gt;
       &lt;/component&gt;
       &lt;component&gt;
         &lt;section&gt;
           &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
           &lt;templateId root="2.16.840.1.113883.10.20.6.1.1"/&gt;
-          &lt;id root="MDHT" extension="495649256"/&gt;
+          &lt;id root="MDHT" extension="7107956"/&gt;
           &lt;code code="121181" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DCM" displayName="Dicom Object Catalog"/&gt;
-          &lt;title&gt;TEXT FOR TITLE&lt;/title&gt;
-          &lt;confidentialityCode code="16328311"/&gt;
+          &lt;title&gt;Dicom Object Catalog&lt;/title&gt;
+          &lt;text&gt;nzdDNtM nJUeRRs gdgdJwIL THnLItJ BcCBrF szphp kcaCrItxI QSCsczzu AYXfGKbc fWruuIQt aZAXZlso eILdY nCaKYCVIA AEODB hDIXd nHAYhG PMePz oCPRU LKLAi WUJJW dfrHR WYmhLH fXSQREGtm HEqcRyiWh zxqHWYX WGmCjeKQ oexbKH ZDKIGg mDvyWxLQ DVqfeOR TIXaDYuh rGkgCIvqG XqKoVo gMQsoHZ vQErB weCdRAKg 
+eWIhzX FFkAuucA YvWGyU awvRM lhVtTZFow emRyKktKH TEWdpma XibDFi IbSMQuUE xlFxZ LeqkBwrXd wvMTI oiQHHtA EfHuN xogSNy CNINnNrH WmmsU bfbSm rNvEhTdH UfJfYdmjT JlKkxvNY DBPPwPC HVdSleds oerFHQD hNGrU MTDHGnwN fPgmw JsTYvQGf SEcoLifT CxTCrEtBe fzOPEATI zrXoi rzasB iXglTJKz OstHeBbO 
+&lt;/text&gt;
+          &lt;confidentialityCode code="699718959"/&gt;
+          &lt;languageCode code="Code forlanguageCode"/&gt;
           &lt;entry&gt;
             &lt;act classCode="ACT" moodCode="EVN"&gt;
               &lt;typeId root="2.16.840.1.113883.1.3"/&gt;
               &lt;templateId root="2.16.840.1.113883.10.20.6.2.6"/&gt;
-              &lt;id root="MDHT" extension="487513392"/&gt;
+              &lt;id root="MDHT" extension="1948069038"/&gt;
               &lt;code code="113014" codeSystem="1.2.840.10008.2.16.4" codeSystemName="DCM"/&gt;
+              &lt;text&gt;Text Value&lt;/text&gt;
               &lt;effectiveTime&gt;
-                &lt;low value="2014"/&gt;
-                &lt;high value="2014"/&gt;
+                &lt;low value="2017"/&gt;
+                &lt;high value="2017"/&gt;
               &lt;/effectiveTime&gt;
+              &lt;languageCode code="Code forlanguageCode"/&gt;
               &lt;entryRelationship&gt;
                 &lt;act classCode="ACT" moodCode="EVN"&gt;
                   &lt;templateId root="2.16.840.1.113883.10.20.22.4.63"/&gt;
@@ -290,14 +307,12 @@ In both cases, inFulfillmentOf/order/id is mapped to the DICOM Accession Number 
       &lt;/component&gt;
     &lt;/structuredBody&gt;
   &lt;/component&gt;
-&lt;/ClinicalDocument&gt;</pre>
-
+&lt;/ClinicalDocument&gt;</code></pre>
 			</div>
 
 		</div>
 	
 	</div>
-
 
 </body>
 </html>

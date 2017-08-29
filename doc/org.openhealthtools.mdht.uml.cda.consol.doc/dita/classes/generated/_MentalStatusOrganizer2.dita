@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Mental Status Organizer (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Organizer: templateId <tt>2.16.840.1.113883.10.20.22.4.75</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Organizer</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.75"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>The Mental Status Organizer template may be used to group related Mental Status Observations (e.g., results of mental tests) and associated Assessment Scale Observations into subcategories and/or groupings by time. Subcategories can be things such as Mood and Affect, Behavior, Thought Process, Perception, Cognition, etc.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-14375, CONF:1198-14376, CONF:1198-32566 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.75"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../CognitiveStatusResultOrganizer.dita">Cognitive Status Result Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.75</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-14378) <p><lines><i>The code selected indicates the category that groups the contained mental status observations (e.g., communication, learning and applying knowledge).</i></lines></p>
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1198-32424)<p>The effectiveTime is an interval that spans the effectiveTimes of the contained mental status observations. Because all contained mental status observations have a required time stamp, it is not required that this effectiveTime be populated.</p>
+</li>
+<li>
+<b>SHALL</b> contain  [1..*] <tt><b>component</b></tt> such that it  (CONF:1198-14373, CONF:1198-14381)<ol>
+<li>Conforms to <xref href="../MentalStatusObservation2.dita">Mental Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74:2015-08-01</tt>)</li></ol>
+</li>
+<li>code/@code <b>SHOULD</b> be selected from ICF (codeSystem 2.16.840.1.113883.6.254) OR LOINC (codeSystem 2.16.840.1.113883.6.96) (CONF:1198-14698)</li>
+<li>The Organizer <b>SHALL</b> have at least one of code or effectiveTime (CONF:1198-32425, CONF:1198-32426)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../ResultOrganizer.dita">Result Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.1</tt>)</li>
+<li><b>SHALL</b> conform to <xref href="../CognitiveStatusResultOrganizer.dita">Cognitive Status Result Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.75</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:14369, R2.1=CONF:1198-14369)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:14371, R2.1=CONF:1198-14371)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:14377, R2.1=CONF:1198-14377)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-14378) <p><lines><i>The code selected indicates the category that groups the contained mental status observations (e.g., communication, learning and applying knowledge).</i></lines></p>
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt><tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:14372, R2.1=CONF:1198-14372, R2.1=CONF:1198-19093)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>effectiveTime</b></tt> (CONF:1198-32424)
+<p>The effectiveTime is an interval that spans the effectiveTimes of the contained mental status observations. Because all contained mental status observations have a required time stamp, it is not required that this effectiveTime be populated.</p></li>
+<li><b>SHALL</b> contain  [1..*] <tt><b>component</b></tt> such that it  (CONF:1198-14373, CONF:1198-14381)
+<ol>
+<li>Conforms to <xref href="../MentalStatusObservation2.dita">Mental Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.74:2015-08-01</tt>)</li></ol></li>
+<li>The value for 'code' in a result organizer <b>SHOULD</b> be selected from LOINC (codeSystem 2.16.840.1.113883.6.1) or SNOMED CT (codeSystem 2.16.840.1.113883.6.96) and <b>MAY</b> be selected from CPT-4 (codeSystem 2.16.840.1.113883.6.12).  Laboratory results <b>SHOULD</b> be from LOINC (CodeSystem: 2.16.840.1.113883.6.1) or other constrained terminology named by the US Department of Health and Human Services Office of National Coordinator or other federal agency. Local and/or regional codes for laboratory results <b>SHOULD</b> also be allowed. (CONF:7164)</li>
+<li><b>SHOULD</b> contain zero or one [0..1] @classCode="CLUSTER" Cluster (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) OR <b>SHOULD</b> contain zero or one [0..1] @classCode="BATTERY" Battery (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:7165)</li>
+<li>code <b>SHOULD</b> contain zero or one [0..1] @code should be selected from ICF (codeSystem 2.16.840.1.113883.6.254) or SNOMED CT (codeSystem 2.16.840.1.113883.6.96) (CONF:14697, CONF:14698)</li>
+<li>code/@code <b>SHOULD</b> be selected from ICF (codeSystem 2.16.840.1.113883.6.254) OR LOINC (codeSystem 2.16.840.1.113883.6.96) (CONF:1198-14698)</li>
+<li>The Organizer <b>SHALL</b> have at least one of code or effectiveTime (CONF:1198-32425, CONF:1198-32426)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::MentalStatusOrganizer2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.75]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>effectiveTime</entry><entry>0..1</entry><entry>SHOULD</entry><entry>IVL_TS</entry><entry>CONF:1198-32424</entry><entry> </entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1198-14378</entry><entry> </entry></row> 
+<row><entry>mentalStatusObservation2</entry><entry>1..*</entry><entry>SHALL</entry><entry>MentalStatusObservation2</entry><entry>CONF:1198-14373, CONF:1198-14381</entry><entry> </entry></row> 
+<row><entry>mentalStatusOrganizer2</entry><entry>0..*</entry><entry>MAY</entry><entry>MentalStatusOrganizer2</entry><entry>CONF:1198-28301, CONF:1198-28302</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../MentalStatusSection.dita">Mental Status Section (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MentalStatusObservation2.dita">Mental Status Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.75" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.1"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.75"/>
+  <id root="MDHT" extension="1573756953"/>
+  <statusCode code="completed"/>
+  <effectiveTime>
+    <low value="2017"/>
+    <high value="2017"/>
+  </effectiveTime>
+  <component>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.2"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.74"/>
+      <id root="MDHT" extension="2104697760"/>
+      <code code="373930000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Cognitive function finding"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <effectiveTime>
+        <low value="2017"/>
+        <high value="2017"/>
+      </effectiveTime>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <author/>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.69"/>
+          <id root="MDHT" extension="1379070883"/>
+          <code code="683918464"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <author/>
+          <entryRelationship>
+            <observation classCode="OBS" moodCode="EVN">
+              <templateId root="2.16.840.1.113883.10.20.22.4.86"/>
+              <statusCode code="completed"/>
+            </observation>
+          </entryRelationship>
+          <referenceRange/>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <supply classCode="SPLY">
+          <templateId root="2.16.840.1.113883.10.20.22.4.50"/>
+          <id root="MDHT" extension="90488761"/>
+          <code code="1151580166"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime value="20170828"/>
+        </supply>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.72"/>
+          <id root="MDHT" extension="140277218"/>
+          <code code="149026522"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <effectiveTime>
+            <low value="2017"/>
+            <high value="2017"/>
+          </effectiveTime>
+          <participant typeCode="IND"/>
+        </observation>
+      </entryRelationship>
+      <referenceRange>
+        <observationRange/>
+      </referenceRange>
+    </observation>
+  </component>
+</organizer>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::CognitiveStatusResultOrganizer
+</p>
+<p id="CognitiveStatusResultOrganizer" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:14375, CONF:14376 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.75"
+</li><li>Consol Cognitive Status Result Organizer code SHOULD contain zero or one [0..1] @code should be selected from ICF (codeSystem 2.16.840.1.113883.6.254) or SNOMED CT (codeSystem 2.16.840.1.113883.6.96) (CONF:14697, CONF:14698)
+</li><li>SHALL conform to Result Organizer template (templateId: 2.16.840.1.113883.10.20.22.4.1)
+</li><li>Consol Cognitive Status Result Organizer SHALL contain exactly one [1..1] @classCode="CLUSTER"  (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:14369, R2.1=CONF:1198-14369)
+</li><li>Consol Cognitive Status Result Organizer SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:14371, R2.1=CONF:1198-14371)
+</li><li>Consol Cognitive Status Result Organizer SHALL contain at least one [1..*] id (CONF:14377, R2.1=CONF:1198-14377)
+</li><li>Consol Cognitive Status Result Organizer SHALL contain exactly one [1..1] code (CONF:14378)
+</li><li>Consol Cognitive Status Result Organizer SHALL contain exactly one [1..1] statusCode/@code="completed" Completed (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:14372, R2.1=CONF:1198-14372, R2.1=CONF:1198-19093)
+</li><li>Consol Cognitive Status Result Organizer SHALL contain  [1..*] component such that it  (CONF:14373, CONF:14381) Conforms to Cognitive Status Result Observation (templateId: 2.16.840.1.113883.10.20.22.4.74)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Mental Status Organizer (V3)</ph></p>
+<p id="shortdesc">[Organizer: templateId <tt>2.16.840.1.113883.10.20.22.4.75</tt>]</p>
+</body>
+</topic>

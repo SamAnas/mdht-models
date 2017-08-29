@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Problem Observation - conformance rules" />
+<meta name="abstract" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.4]" />
+<meta name="description" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.4]" />
+<meta name="DC.Coverage" content="Observation" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../../css/commonltr.css" />
+<title>Problem Observation - conformance rules</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+<h1 class="title topictitle1" id="ariaid-title1">Problem Observation - conformance rules</h1>
+
+
+
+<div class="body"><p class="shortdesc">[Observation: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.4</tt>]</p>
+
+<div class="section" id="classId__knownSubclasses">
+<p class="p">Known Subclasses: <a class="xref" href="../ProblemObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.4]">Problem Observation (V3)</a>, <a class="xref" href="../FunctionalStatusProblemObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.68]">Functional Status Problem Observation</a>, <a class="xref" href="../CognitiveStatusProblemObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.73]">Cognitive Status Problem Observation</a></p>
+
+</div>
+
+<div class="section" id="classId__description">
+<p class="p">A problem is a clinical statement that a clinician has noted. In health care it is a condition that requires monitoring or diagnostic, therapeutic, or educational action. It also refers to any unmet or partially met basic human need.
+A Problem Observation is required to be wrapped in an act wrapper in locations such as the Problem Section, Allergies Section, and Hospital Discharge Diagnosis Section, where the type of problem needs to be identified or the condition tracked. A Problem Observation can be a valid "standalone" template instance in cases where a simple problem observation is to be sent.
+The negationInd attribute, if true, specifies that the problem indicated was observed to not have occurred (which is subtly but importantly different from having not been observed). NegationInd='true' is an acceptable way to make a clinical assertion that something did not occur, for example, "no diabetes".</p>
+
+</div>
+
+<ol class="ol" id="classId__conformance">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:14926, CONF:14927 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.4"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:9041, R2.1=CONF:1198-9041)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:9042, R2.1=CONF:1198-9042)
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">@negationInd</strong></tt> (CONF:10139)
+<p class="p">Use negationInd="true" to indicate that the problem was not observed (CONF:16880)</p>
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:9043, R2.1=CONF:1198-9043)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong> (Problem Type)</tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Problem Type 2.16.840.1.113883.3.88.12.3221.7.2</tt><strong class="ph b"> STATIC</strong> 2008-12-18 (CONF:9045)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">text</strong> (Problem Name)</tt> (CONF:9185)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt><tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:9049, R2.1=CONF:1198-9049)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong> (Problem Date)</tt> (CONF:9050)
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong> (Problem Code)</tt> with <tt class="ph tt"><strong class="ph b">@xsi:type</strong>="CD"</tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Problem 2.16.840.1.113883.3.88.12.3221.7.4</tt><strong class="ph b"> DYNAMIC</strong> (CONF:9058)
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong> (Age At Onset)</tt> such that it  (CONF:9059, CONF:9060, CONF:15590, R2.1=CONF:1198-9059, R2.1=CONF:1198-9060, R2.1=CONF:1198-15590)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>SUBJ" </tt><em class="ph i">SUBJ</em></li>
+
+<li class="li">Conforms to <a class="xref" href="../AgeObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.31]">Age Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.31</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong> (Problem Status)</tt> such that it  (CONF:9063, CONF:9068, CONF:15591)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>REFR" </tt><em class="ph i">REFR</em></li>
+
+<li class="li">Conforms to <a class="xref" href="../ProblemStatus.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.6]">Problem Status</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.6</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong> (Health Status)</tt> such that it  (CONF:9067, CONF:9064, CONF:15592)<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>REFR" </tt><em class="ph i">REFR</em></li>
+
+<li class="li">Conforms to <a class="xref" href="../HealthStatusObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.5]">Health Status Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.5</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">The text, if present, <strong class="ph b">SHOULD</strong> contain zero or one [0..1] reference (CONF:15587)</li>
+
+<li class="li">reference, if present, <strong class="ph b">SHALL</strong> contain exactly one [1..1] @value (CONF:15588)</li>
+
+<li class="li">reference/@value <strong class="ph b">SHALL</strong> begin with a '#' and <strong class="ph b">SHALL</strong> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15589)</li>
+
+<li class="li">The effectiveTime element , if present, <strong class="ph b">SHALL</strong> contain exactly one [1..1] low (CONF:15603)</li>
+
+<li class="li">effectiveTime, if present, <strong class="ph b">MAY</strong> contain zero or one [0..1] high (CONF:15604)</li>
+
+<li class="li">value <strong class="ph b">MAY</strong> contain zero or one [0..1] @nullFlavor (CONF:10141)</li>
+
+<li class="li">If the diagnosis is unknown or the SNOMED code is unknown, @nullFlavor <strong class="ph b">SHOULD</strong> be 
+UNK.  If the code is something other than SNOMED, @nullFlavor <strong class="ph b">SHOULD</strong> be OTH and the other code <strong class="ph b">SHOULD</strong> be placed in the translation element (CONF:10142)</li>
+
+<li class="li">entryRelationship with target entry Age Observation <strong class="ph b">SHALL</strong> contain exactly one [1..1] @inversionInd="true" True (CONF:9069, R2.1=CONF:9069)</li>
+
+<li class="li">value <strong class="ph b">MAY</strong> contain zero or more [0..*] translation (CONF:16749, R2.1=CONF:1198-16749)</li>
+
+<li class="li">translation, if present, <strong class="ph b">MAY</strong> contain zero or one [0..1] @code (CodeSystem: ICD10CM 2.16.840.1.113883.6.90 STATIC) (CONF:16750, R2.1=CONF:1198-16750)</li>
+
+</ol>
+
+<ol class="ol" id="classId__aggregate">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@classCode</strong>="OBS" </tt><em class="ph i">Observation</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:9041, R2.1=CONF:1198-9041)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@moodCode</strong>="EVN" </tt><em class="ph i">Event</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:9042, R2.1=CONF:1198-9042)
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">@negationInd</strong></tt> (CONF:10139)
+<p class="p">Use negationInd="true" to indicate that the problem was not observed (CONF:16880)</p>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain at least one [1..*] <tt class="ph tt"><strong class="ph b">id</strong></tt> (CONF:9043, R2.1=CONF:1198-9043)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong> (Problem Type)</tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Problem Type 2.16.840.1.113883.3.88.12.3221.7.2</tt><strong class="ph b"> STATIC</strong> 2008-12-18 (CONF:9045)
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">text</strong> (Problem Name)</tt> (CONF:9185)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">statusCode</strong></tt><tt class="ph tt"><strong class="ph b">/@code</strong>="completed" </tt><em class="ph i">Completed</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:9049, R2.1=CONF:1198-9049)
+</li>
+
+<li class="li"><strong class="ph b">SHOULD</strong> contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong> (Problem Date)</tt> (CONF:9050)
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong> (Problem Code)</tt> with <tt class="ph tt"><strong class="ph b">@xsi:type</strong>="CD"</tt>, which <strong class="ph b">SHOULD</strong> be selected from ValueSet<tt class="ph tt"> Problem 2.16.840.1.113883.3.88.12.3221.7.4</tt><strong class="ph b"> DYNAMIC</strong> (CONF:9058)
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong> (Age At Onset)</tt> such that it  (CONF:9059, CONF:9060, CONF:15590, R2.1=CONF:1198-9059, R2.1=CONF:1198-9060, R2.1=CONF:1198-15590)
+<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>SUBJ" </tt><em class="ph i">SUBJ</em></li>
+
+<li class="li">Conforms to <a class="xref" href="../AgeObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.31]">Age Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.31</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong> (Problem Status)</tt> such that it  (CONF:9063, CONF:9068, CONF:15591)
+<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>REFR" </tt><em class="ph i">REFR</em></li>
+
+<li class="li">Conforms to <a class="xref" href="../ProblemStatus.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.6]">Problem Status</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.6</tt>)</li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> contain  [0..1] <tt class="ph tt"><strong class="ph b">entryRelationship</strong> (Health Status)</tt> such that it  (CONF:9067, CONF:9064, CONF:15592)
+<ol class="ol" type="a">
+<li class="li">Contains <tt class="ph tt"><strong class="ph b">@typeCode="</strong>REFR" </tt><em class="ph i">REFR</em></li>
+
+<li class="li">Conforms to <a class="xref" href="../HealthStatusObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.5]">Health Status Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.5</tt>)</li>
+</ol>
+</li>
+
+<li class="li">The text, if present, <strong class="ph b">SHOULD</strong> contain zero or one [0..1] reference (CONF:15587)</li>
+
+<li class="li">reference, if present, <strong class="ph b">SHALL</strong> contain exactly one [1..1] @value (CONF:15588)</li>
+
+<li class="li">reference/@value <strong class="ph b">SHALL</strong> begin with a '#' and <strong class="ph b">SHALL</strong> point to its corresponding narrative (using the approach defined in CDA Release 2, section 4.3.5.1) (CONF:15589)</li>
+
+<li class="li">The effectiveTime element , if present, <strong class="ph b">SHALL</strong> contain exactly one [1..1] low (CONF:15603)</li>
+
+<li class="li">effectiveTime, if present, <strong class="ph b">MAY</strong> contain zero or one [0..1] high (CONF:15604)</li>
+
+<li class="li">value <strong class="ph b">MAY</strong> contain zero or one [0..1] @nullFlavor (CONF:10141)</li>
+
+<li class="li">If the diagnosis is unknown or the SNOMED code is unknown, @nullFlavor <strong class="ph b">SHOULD</strong> be 
+UNK.  If the code is something other than SNOMED, @nullFlavor <strong class="ph b">SHOULD</strong> be OTH and the other code <strong class="ph b">SHOULD</strong> be placed in the translation element (CONF:10142)</li>
+
+<li class="li">entryRelationship with target entry Age Observation <strong class="ph b">SHALL</strong> contain exactly one [1..1] @inversionInd="true" True (CONF:9069, R2.1=CONF:9069)</li>
+
+<li class="li">value <strong class="ph b">MAY</strong> contain zero or more [0..*] translation (CONF:16749, R2.1=CONF:1198-16749)</li>
+
+<li class="li">translation, if present, <strong class="ph b">MAY</strong> contain zero or one [0..1] @code (CodeSystem: ICD10CM 2.16.840.1.113883.6.90 STATIC) (CONF:16750, R2.1=CONF:1198-16750)</li>
+
+</ol>
+
+<div class="section" id="classId__tableconformance"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col style="width:25%" /><col style="width:8.333333333333332%" /><col style="width:8.333333333333332%" /><col style="width:16.666666666666664%" /><col style="width:16.666666666666664%" /><col style="width:25%" /></colgroup><thead class="thead" style="text-align:left;"> <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d672923e738">consol::ProblemObservation</th>
+  </tr>
+  <tr class="row"><th class="entry cell-norowborder" colspan="6" style="text-align:left;vertical-align:top;" id="d672923e743">cda::observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.4]/</th>
+  </tr>
+ <tr class="row"><th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d672923e748">XPath</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d672923e750">Card.</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d672923e752">Verb</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d672923e754">Data Type</th>
+<th class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" id="d672923e756">CONF#</th>
+<th class="entry cell-norowborder" style="text-align:left;vertical-align:top;" id="d672923e758">Fixed Value</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">@classCode</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">ActClassObservation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9041, R2.1=CONF:1198-9041</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> ALRT</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">@moodCode</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">x_ActMoodDocumentObservation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9042, R2.1=CONF:1198-9042</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> DEF</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">@negationInd</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">EBooleanObject</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:10139</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">id</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">1..*</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">II</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9043, R2.1=CONF:1198-9043</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">value</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">CD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9058</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">effectiveTime</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">IVL_TS</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9050</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">text</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">ED</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9185</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">code</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHOULD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">CD</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9045</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> null</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">statusCode</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">1..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHALL</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">CS</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9049, R2.1=CONF:1198-9049</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 ">ActStatus 2.16.840.1.113883.5.14 completed</td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">ageObservation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">AgeObservation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9059, CONF:9060, CONF:15590, R2.1=CONF:1198-9059, R2.1=CONF:1198-9060, R2.1=CONF:1198-15590</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">healthStatusObservation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">HealthStatusObservation</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9067, CONF:9064, CONF:15592</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">problemStatus</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">0..1</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">MAY</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">ProblemStatus</td>
+<td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:9063, CONF:9068, CONF:15591</td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e748 ">problemObservation</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e750 ">1..*</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e752 ">SHALL</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e754 ">ProblemObservation</td>
+<td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e756 ">CONF:15980</td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d672923e738 d672923e743 d672923e758 "> </td>
+</tr>
+ 
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="section" id="classId__contextTable"><div class="p">
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" width="100%" frame="border" border="1" rules="all"><colgroup><col /><col /></colgroup><thead class="thead" style="text-align:left;"><tr class="row"><th class="entry nocellnorowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d672923e956">Contained By</th>
+<th class="entry cell-norowborder" colspan="1" style="text-align:left;vertical-align:top;" id="d672923e958">Contains</th>
+</tr>
+</thead>
+<tbody class="tbody"><tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../ComplicationsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.37]">Complications Section</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../AdvanceDirectiveObservation2.html">Advance Directive Observation (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../DeceasedObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.79]">Deceased Observation</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../AdvanceDirectiveOrganizer.html" title="[Organizer: templateId 2.16.840.1.113883.10.20.22.4.108]">Advance Directive Organizer (V2)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../EncounterDiagnosis.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.80]">Encounter Diagnosis</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../AgeObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.31]">Age Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../HistoryOfPastIllnessSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.20]">History Of Past Illness Section</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../CodeObservations.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.13]">Code Observations</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../HospitalAdmissionDiagnosis.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.34]">Hospital Admission Diagnosis</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ExternalDocumentReference.html">External Document Reference</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../HospitalDischargeDiagnosis.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.33]">Hospital Discharge Diagnosis</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../FetusSubjectContext.html">Fetus Subject Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../PostprocedureDiagnosis.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.51]">Postprocedure Diagnosis</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../HealthStatusObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.5]">Health Status Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../PreoperativeDiagnosis.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.65]">Preoperative Diagnosis</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ImmunizationMedicationInformation.html">Immunization Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../ProblemConcernAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.3]">Problem Concern</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ImmunizationMedicationInformation2.html">Immunization Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "><a class="xref" href="../ProcedureFindingsSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.28]">Procedure Findings Section</a></td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../MedicationInformation.html">Medication Information</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../MedicationInformation2.html">Medication Information2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ObserverContext.html">Observer Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../PhysicianReadingStudyPerformer.html">Physician Reading Study Performer</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../PhysicianReadingStudyPerformer2.html">Physician Reading Study Performer2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../PhysicianofRecordParticipant.html">Physicianof Record Participant</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../PhysicianofRecordParticipant2.html">Physicianof Record Participant2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../PolicyActivity2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.61]">Policy Activity (V3)</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../PreconditionForSubstanceAdministration.html">Precondition For Substance Administration</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../PreconditionForSubstanceAdministration2.html">Precondition For Substance Administration2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ProblemStatus.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.6]">Problem Status</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ProcedureActivityAct2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.12]">Procedure Activity Act2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ProcedureActivityObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.13]">Procedure Activity Observation2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ProcedureActivityProcedure2.html" title="[Procedure: templateId 2.16.840.1.113883.10.20.22.4.14]">Procedure Activity Procedure2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../ProcedureContext.html" title="[Act: templateId 2.16.840.1.113883.10.20.6.2.5]">Procedure Context</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../QuantityMeasurementObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.14]">Quantity Measurement Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../SOPInstanceObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.8]">SOP Instance Observation</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</a></td>
+</tr>
+<tr class="row"><td class="entry nocellnorowborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cell-norowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../SubstanceAdministeredAct.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.118]">Substance Administered Act</a></td>
+</tr>
+<tr class="row"><td class="entry row-nocellborder" style="text-align:left;vertical-align:top;" headers="d672923e956 "> </td>
+<td class="entry cellrowborder" style="text-align:left;vertical-align:top;" headers="d672923e958 "><a class="xref" href="../TextObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.6.2.12]">Text Observation</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<pre class="pre codeblock language-xml" id="classId__example"><code>&lt;observation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.4"/&gt;
+  &lt;id root="MDHT" extension="1783056538"/&gt;
+  &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;value xsi:type="CD" code="1233136304"/&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.31"/&gt;
+      &lt;id root="MDHT" extension="1390017197"/&gt;
+      &lt;code code="445518008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Age At Onset"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;value xsi:type="PQ"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.5"/&gt;
+      &lt;id root="MDHT" extension="888230781"/&gt;
+      &lt;code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;value xsi:type="CD" code="575735924"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.6"/&gt;
+      &lt;id root="MDHT" extension="1891920326"/&gt;
+      &lt;code code="33999-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Status"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;effectiveTime&gt;
+        &lt;low value="2017"/&gt;
+        &lt;high value="2017"/&gt;
+      &lt;/effectiveTime&gt;
+      &lt;value xsi:type="CD" code="508510959"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+&lt;/observation&gt;</code></pre>
+<div class="section" id="classId__changes">
+</div>
+
+<p class="p"><span class="ph" id="classId__classformalname">Problem Observation</span></p>
+
+<p class="p" id="classId__shortdesc">[Observation: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.4</tt>]</p>
+
+</div>
+
+</body>
+</html>

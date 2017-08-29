@@ -9,81 +9,74 @@
 </prolog>
 <body>
 <section id="knownSubclasses">
-<p>Known Subclasses: <xref href="../EncountersSection.dita">Encounters Section</xref></p>
+<p>Known Subclasses: <xref href="../EncountersSection.dita">Encounters Section</xref>, <xref href="../EncountersSectionEntriesOptional2.dita">Encounters Section (entries optional) (V3)</xref></p>
 </section>
 <section id="description">
-<p><lines><i>This section lists and describes any healthcare encounters pertinent to the patient's current health status or historical health history. An Encounter is an interaction, regardless of the setting, between a patient and a practitioner who is vested with primary responsibility for diagnosing, evaluating, or treating the patient's condition. It may include visits, appointments, as well as non face-to-face interactions. It is also a contact between a patient and a practitioner who has primary responsibility for assessing and treating the patient at a given contact, exercising independent judgment. This section may contain all encounters for the time period being summarized, but should include notable encounters.</i></lines></p>
+<p>This section lists and describes any healthcare encounters pertinent to the patient's current health status or historical health history. An Encounter is an interaction, regardless of the setting, between a patient and a practitioner who is vested with primary responsibility for diagnosing, evaluating, or treating the patient's condition. It may include visits, appointments, as well as non face-to-face interactions. It is also a contact between a patient and a practitioner who has primary responsibility for assessing and treating the patient at a given contact, exercising independent judgment. This section may contain all encounters for the time period being summarized, but should include notable encounters.</p>
 </section>
 <ol id="conformance">
-<li><b>SHALL</b> contain exactly one [1..1] templateId ( CONF:10386 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <b>@root</b>="2.16.840.1.113883.10.20.22.2.22"</li></ol></li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15461)<tt><b>/@code</b>="46240-8" </tt><i>Encounters</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15462)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:10386 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.22"</tt></li></ol></li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15461)<tt><b>/@code</b>="46240-8" </tt><i>Encounters</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15462)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7942)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7942, R2.1=CONF:1198-7942)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7943)
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7943, R2.1=CONF:1198-7943)
 </li>
-<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:7951, CONF:8802)
-<ol>
-<li>Contains exactly one [1..1] <xref href="../EncounterActivities.dita">Encounter Activities</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.49</tt>)</li></ol></li>
+<li>
+If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:7951, CONF:8802)<ol>
+<li>Conforms to <xref href="../EncounterActivities.dita">Encounter Activities</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.49</tt>)</li></ol>
+</li>
 </ol>
 <ol id="aggregate">
 <li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15461)<tt><b>/@code</b>="46240-8" </tt><i>Encounters</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:15462)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7942)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7942, R2.1=CONF:1198-7942)
 </li>
-<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7943)
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7943, R2.1=CONF:1198-7943)
 </li>
-<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain zero or more [0..*] <tt><b>entry</b></tt> (CONF:7951, CONF:8802)
+<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:7951, CONF:8802)
 <ol>
-<li>Contains exactly one [1..1] <xref href="../EncounterActivities.dita">Encounter Activities</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.49</tt>)</li></ol></li>
+<li>Conforms to <xref href="../EncounterActivities.dita">Encounter Activities</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.49</tt>)</li></ol></li>
 </ol>
-<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="8" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><colspec colname="col2" colnum="2" /><colspec colname="col3" colnum="3" /><colspec colname="col4" colnum="4" /><colspec colname="col5" colnum="5" /><colspec colname="col6" colnum="6" /><colspec colname="col7" colnum="7" /><thead> <row><entry namest="col0" nameend="col7" >consol::EncountersSectionEntriesOptional</entry>  </row>  <row><entry namest="col0" nameend="col7" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.22]/</entry>  </row>  <row><entry>Name</entry><entry>XPath</entry><entry>Cardinality</entry><entry>Severity</entry><entry>Nullable</entry><entry>Data Type</entry><entry>Conformance</entry><entry>Value(s)</entry></row></thead><tbody><row><entry>code</entry><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>CE</entry><entry>CONF:15462</entry><entry>LOINC 2.16.840.1.113883.6.1 46240-8</entry></row> 
-<row><entry>title</entry><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>ST</entry><entry>CONF:7942</entry><entry> </entry></row> 
-<row><entry>encounterActivities</entry><entry>cda:entry/cda:encounter[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.49]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>YES</entry><entry>EncounterActivities</entry><entry>CONF:7951CONF:8802</entry><entry> </entry></row> 
-<row><entry>text</entry><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>YES</entry><entry>StrucDocText</entry><entry>CONF:7943</entry><entry> </entry></row> 
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::EncountersSectionEntriesOptional</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.22]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:15462</entry><entry>LOINC 2.16.840.1.113883.6.1 46240-8</entry></row> 
+<row><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>ST</entry><entry>CONF:7942, R2.1=CONF:1198-7942</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:encounter[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.49]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>EncounterActivities</entry><entry>CONF:7951, CONF:8802</entry><entry> </entry></row> 
+<row><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>StrucDocText</entry><entry>CONF:7943, R2.1=CONF:1198-7943</entry><entry> </entry></row> 
 </tbody></tgroup></table></p></section>
-<codeblock id="example"><![CDATA[<section xmlns="urn:hl7-org:v3" xmlns:sdtc="urn:hl7-org:sdtc">
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../EncounterActivities.dita">Encounter Activities</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
   <templateId root="2.16.840.1.113883.10.20.22.2.22"/>
-  <id root="MDHT" extension="752243590"/>
   <code code="46240-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Encounters"/>
-  <title>TEXT FOR TITLE</title>
-  <text/>
+  <title>Encounters</title>
+  <text>WVWjnj DxkQXiUzJ xCoWsQDl KHPnuRfZ bUreHc pwJeSo JxhriEFK aOVbq HyihdBsk hgPfbl uZYdF dpOpJevCB uXAIZV LavNDp ZdXhwXUe vYMAoxAB swZRyX kSVTRQM sWAuHO lSRuuGiNK UODEz EowCMzhk eiMMEy NSuKDWoaR PVUTDYh idCoat WdDQwqLOw lihuC 
+sHSLHnGT UyLDiMvY MatHg SoUUhMQ rITfmOr olWOz IDtwjekK EscNDPwE TGWsell GUsKXlsMI LZZabb IrMySkLaL ggaZg gvwTZF amkMrqty SdlWsaA oRVmZn NTdxc oFhowOTH sdxAOiSAT oMgkDK DUepqLT CpNYMiM OtZcbgXyo RinjBYm VmRUu lhdJVpy HMEgE rAeSEm olYwkoD eOagI ARBjZCWPB pAibDmS UvjUbTDc QlemFy fUODPJo nIxgdDHOP fEwMyohY dgVhlSidU GiwhONKO WjkknF XDSbOZPsL PxSGO SDykAAX YKaGrDc MlsyGWnMV XxmqBQEf qaNkpVrpT 
+isUpOGtw ZeIWC iBeYLBR QzvXCXD Rblrx ZGeLdo IJvyxR FjFgUoTY iCZlZ JhDiJxG RShamrN dSrGWRj CszWbK wygRgmean xhwTfcYms LZMplzwhn GMYxalw RKLbIqPl XzLnzqwf bbDLh USRXS KplCTuwk ihIwTyb DVCOss louBhfTg rvWEzN TfOaYdpm kucfbWCbz oqLQRH UWByP TyPbhKjY GrKto WinpCivjU MZNqz VbluCd kvTdrgoI zyvJZ vPGALFUl qBlKXOib WjhOEJI OIRqITkp wlRyYfwG JyyIxmBWV wDuPenv rnfmJy kPSXp mLHOnJi WaBVWYUmB kyQeme Tbvfhx UGsDOs FzMVgbvbT AgYNm McAeWzqBA kHWirEoA IcgmX 
+kgIZBXBeb nROtlRbh ivwAxWOf sDeuZQI JalrWwDBk GOazKaN uBcTg entXsDd QPkhzNcFE uohsR OTJgjrOt tsXNNPU tYyyHabZj LdtfTe PmpjdW LjZpL mJNAn vzajISRo YbMuZa pwPir mIADrr 
+</text>
   <entry>
     <encounter classCode="ENC" moodCode="EVN">
       <templateId root="2.16.840.1.113883.10.20.22.4.49"/>
-      <id root="MDHT" extension="520430768"/>
       <code codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"/>
       <text>Text Value</text>
-      <effectiveTime>
-        <low value="2014"/>
-        <high value="2014"/>
-      </effectiveTime>
       <performer>
         <assignedEntity/>
       </performer>
       <entryRelationship>
         <observation classCode="OBS" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
-          <id root="MDHT" extension="1837172207"/>
           <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
           <text>Text Value</text>
           <statusCode code="completed"/>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
         </observation>
       </entryRelationship>
       <entryRelationship>
         <act classCode="ACT" moodCode="EVN">
           <templateId root="2.16.840.1.113883.10.20.22.4.80"/>
-          <id root="MDHT" extension="1421713716"/>
           <code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/>
           <text>Text Value</text>
-          <effectiveTime>
-            <low value="2014"/>
-            <high value="2014"/>
-          </effectiveTime>
           <entryRelationship>
             <observation classCode="OBS" moodCode="EVN">
               <templateId root="2.16.840.1.113883.10.20.22.4.4"/>
@@ -93,7 +86,6 @@
           </entryRelationship>
         </act>
       </entryRelationship>
-      <sdtc:dischargeDispositionCode codeSystem="2.16.840.1.113883.12.112" codeSystemName="HL7DischargeDisposition"/>
     </encounter>
   </entry>
 </section>]]></codeblock>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Coverage Activity (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.60</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Act</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.60"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>A Coverage Activity groups the policy and authorization acts within a Payers Section to order the payment sources. A Coverage Activity contains one or more Policy Activities, each of which contains zero or more Authorization Activities. The Coverage Activity id is the ID from the patient's insurance card. The sequenceNumber/@value shows the policy order of preference.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-8897, CONF:1198-10492, CONF:1198-32596 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.60"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../CoverageActivity.dita">Coverage Activity</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.60</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-8876)<tt><b>/@code</b>="48768-6" </tt><i>Payment Sources</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-19160, CONF:1198-32156)
+</li>
+<li>
+contains  [1..*] <tt><b>entryRelationship</b></tt> such that it <ol>
+<li>Conforms to <xref href="../PolicyActivity2.dita">Policy Activity2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.61:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-8878) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="COMP" </tt> (CONF:1198-8879)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>sequenceNumber</b></tt> (CONF:1198-17174)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>act</b></tt>, where its type is <xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref> (CONF:1198-15528)</li></ol> 
+</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../CoverageActivity.dita">Coverage Activity</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.60</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8872, R2.1=CONF:1198-8872)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8873, R2.1=CONF:1198-8873)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8874, R2.1=CONF:1198-8874)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-8876)<tt><b>/@code</b>="48768-6" </tt><i>Payment Sources</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-19160, CONF:1198-32156)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt><tt><b>/@code</b>="completed" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:8875, R2.1=CONF:1198-8875, R2.1=CONF:1198-19094)
+</li>
+<li>contains  [1..*] <tt><b>entryRelationship</b></tt> such that it 
+<ol>
+<li>Conforms to <xref href="../PolicyActivity2.dita">Policy Activity2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.61:2015-08-01</tt>)</li></ol></li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:1198-8878) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="COMP" </tt> (CONF:1198-8879)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>sequenceNumber</b></tt> (CONF:1198-17174)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>act</b></tt>, where its type is <xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref> (CONF:1198-15528)</li></ol> 
+</li>
+<li><b>MAY</b> contain zero or one [0..1] sequenceNumber/@value (CONF:8973) (CONF:8973)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::CoverageActivity2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.60]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry>CONF:1198-19160, CONF:1198-32156</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 48768-6</entry></row> 
+<row><entry>coverageActivity2</entry><entry>0..*</entry><entry>SHOULD</entry><entry>CoverageActivity2</entry><entry>CONF:1198-7959, CONF:1198-15501</entry><entry> </entry></row> 
+<row><entry>entryRelationship</entry><entry>1..*</entry><entry>SHALL</entry><entry>EntryRelationship</entry><entry>CONF:1198-8878</entry><entry> </entry></row> 
+<row><entry>policyActivity2</entry><entry>1..*</entry><entry></entry><entry>PolicyActivity2</entry><entry></entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../PayersSection2.dita">Payers Section (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.60" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.60"/>
+  <id root="MDHT" extension="915773433"/>
+  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <entryRelationship typeCode="COMP">
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.61"/>
+      <id root="MDHT" extension="1663246304"/>
+      <code codeSystemName=""/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <performer>
+        <templateId root="2.16.840.1.113883.10.20.22.4.87"/>
+      </performer>
+      <performer typeCode="PRF">
+        <templateId root="2.16.840.1.113883.10.20.22.4.88"/>
+      </performer>
+      <participant>
+        <templateId root="2.16.840.1.113883.10.20.22.4.89"/>
+      </participant>
+    </act>
+  </entryRelationship>
+  <entryRelationship>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.61"/>
+      <id root="MDHT" extension="1134891033"/>
+      <code codeSystemName=""/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <performer>
+        <templateId root="2.16.840.1.113883.10.20.22.4.87"/>
+        <assignedEntity/>
+      </performer>
+      <performer typeCode="PRF">
+        <templateId root="2.16.840.1.113883.10.20.22.4.88"/>
+        <time>
+          <low value="2017"/>
+          <high value="2017"/>
+        </time>
+        <assignedEntity/>
+      </performer>
+      <participant>
+        <templateId root="2.16.840.1.113883.10.20.22.4.89"/>
+        <time>
+          <low value="2017"/>
+          <high value="2017"/>
+        </time>
+        <participantRole/>
+      </participant>
+    </act>
+  </entryRelationship>
+</act>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::CoverageActivity
+</p>
+<p id="CoverageActivity" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8897, CONF:10492 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.60"
+</li><li>Consol Coverage Activity MAY contain zero or one [0..1] sequenceNumber/@value (CONF:8973) (CONF:8973)
+</li><li>SHALL conform to CDA Act
+</li><li>Consol Coverage Activity SHALL contain exactly one [1..1] @classCode="ACT" Act (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8872, R2.1=CONF:1198-8872)
+</li><li>Consol Coverage Activity SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:8873, R2.1=CONF:1198-8873)
+</li><li>Consol Coverage Activity SHALL contain at least one [1..*] id (CONF:8874, R2.1=CONF:1198-8874)
+</li><li>Consol Coverage Activity SHALL contain exactly one [1..1] code/@code="48768-6" Payment Sources (CodeSystem: 2.16.840.1.113883.6.1 LOINC) (CONF:8876)
+</li><li>Consol Coverage Activity SHALL contain exactly one [1..1] statusCode/@code="completed"  (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:8875, R2.1=CONF:1198-8875, R2.1=CONF:1198-19094)
+</li><li>Consol Coverage Activity SHALL contain  [1..*] entryRelationship such that it  (CONF:8878, R2.1=CONF:1198-8878, CONF:8879, R2.1=CONF:1198-8879, CONF:15528, R2.1=CONF:1198-15528) Contains @typeCode="COMP" COMP, and Conforms to Policy Activity (templateId: 2.16.840.1.113883.10.20.22.4.61)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Coverage Activity (V3)</ph></p>
+<p id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.60</tt>]</p>
+</body>
+</topic>

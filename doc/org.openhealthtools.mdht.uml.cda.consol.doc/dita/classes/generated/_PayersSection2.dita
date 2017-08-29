@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Payers Section (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.18</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.2.18"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>
+The Payers Section contains data on the patient's payers, whether "third party" insurance, self-pay, other payer or guarantor, or some combination of payers, and is used to define which entity is the responsible fiduciary for the financial aspects of a patient's care.
+
+
+Each unique instance of a payer and all the pertinent data needed to contact, bill to, and collect from that payer should be included. Authorization information that can be used to define pertinent referral, authorization tracking number, procedure, therapy, intervention, device, or similar authorizations for the patient or provider, or both should be included. At a minimum, the patient's pertinent current payment sources should be listed.
+
+
+The sources of payment are represented as a Coverage Activity, which identifies all of the insurance policies or government or other programs that cover some or all of the patient's healthcare expenses. The policies or programs are sequenced by preference. The Coverage Activity has a sequence number that represents the preference order. Each policy or program identifies the covered party with respect to the payer, so that the identifiers can be recorded.
+</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-7924, CONF:1198-10434, CONF:1198-32597 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.18"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../PayersSection.dita">Payers Section</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.18</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-15395)<tt><b>/@code</b>="48768-6" </tt><i>Payers</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-15396, CONF:1198-32149)
+</li>
+<li>
+If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-7959, CONF:1198-15501)<ol>
+<li>Conforms to <xref href="../CoverageActivity2.dita">Coverage Activity2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.60:2015-08-01</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../PayersSection.dita">Payers Section</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.18</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-15395)<tt><b>/@code</b>="48768-6" </tt><i>Payers</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-15396, CONF:1198-32149)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7926, R2.1=CONF:1198-7926)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7927, R2.1=CONF:1198-7927)
+</li>
+<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-7959, CONF:1198-15501)
+<ol>
+<li>Conforms to <xref href="../CoverageActivity2.dita">Coverage Activity2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.60:2015-08-01</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::PayersSection2</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.18]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1198-15396, CONF:1198-32149</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 48768-6</entry></row> 
+<row><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.60]</entry><entry>0..*</entry><entry>SHOULD</entry><entry>CoverageActivity2</entry><entry>CONF:1198-7959, CONF:1198-15501</entry><entry> </entry></row> 
+<row><entry>payersSection2</entry><entry>0..1</entry><entry>MAY</entry><entry>PayersSection2</entry><entry>CONF:1198-28279, CONF:1198-28230</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ContinuityOfCareDocument2.html">Continuity of Care Document (CCD) (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/TransferSummary.html">Transfer Summary (V2)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../CoverageActivity2.dita">Coverage Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
+  <templateId root="2.16.840.1.113883.10.20.22.2.18" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.2.18"/>
+  <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payers"/>
+  <title>Payers</title>
+  <text>caWVzb aeRrujAMd ifvRgsQa gLIoJPaeC pJLFyQ RoPvrKmh lOGHbnD EBBhtKBt TebQKcH WbRbRW noSxDg ecUOXYT vzobDxy NXjyzranX MkIYmKI RgeNZC DguzEdX IDGVuyP JmArz ipgBy MqFTrHVZ XQddB dnSHiC UaWQwETi vrjXabz tMHXXuDt flEuvNN XUmhEaQ FUkih 
+rKylEfpWd pcOynby QtuLxd PsqDOiX HFRddoe IFltaHW gEcBZA JwbRBu NdudBU QEWheSS SDRRYJTlh gSRrwg uGZwN CkhPAo XNcDl mPAZqiaAO KtilBbnvE FbUvVI rpVUmrB 
+uVmqFaMg rmYbEeDC CzhjDMPr fQfvkV Clzlq qUAODXXYj wMOyB hjTfw LufmXM IPRGztQP CmIWYq EpHHoEfND URGxgKp TOpTJpdH rxiyhvg YUMSaHNA UrrpdgOxf ptDFMb lRoiwUZcH MbINXUtDA IZfkwcF pSeMlaA mEvXKniBm rCvhOE LMjnl DJoWM ZiSpEdCy dntvz PGYTTblC 
+iPFpSWbMQ lXeSTtXTv GZxnMXLy fmYVegtnu mUKkENtd VCHpxhzL LeqpFbi twZbNU hxdcwJZ hjETfk UFXZceBJ lzlZJPx eLkZWtOHR XDpBLDS bvtyZL WJRVH ibNOwz kXiWNiTvj aedhl UnTHIH TmcpYWiX hooxBipf ifPTv ZnPhCALm QHREAyR AeLNfp emyWVg jReteWz PLiCyAVEV CdUaxhqt rVoEBhD QPrCsX 
+</text>
+  <entry>
+    <act classCode="ACT" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.60" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.60"/>
+      <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+      <entryRelationship typeCode="COMP">
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.61"/>
+          <code codeSystemName=""/>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.61"/>
+          <code codeSystemName=""/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+          <performer>
+            <templateId root="2.16.840.1.113883.10.20.22.4.87"/>
+          </performer>
+          <performer typeCode="PRF">
+            <templateId root="2.16.840.1.113883.10.20.22.4.88"/>
+          </performer>
+          <participant>
+            <templateId root="2.16.840.1.113883.10.20.22.4.89"/>
+          </participant>
+        </act>
+      </entryRelationship>
+    </act>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::PayersSection
+</p>
+<p id="PayersSection" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:7924, CONF:10434 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.2.18"
+</li><li>SHALL conform to CDA Section
+</li><li>Consol Payers Section SHALL contain exactly one [1..1] code (CONF:15395)/@code="48768-6" Payers (CodeSystem: 2.16.840.1.113883.6.1 LOINC) (CONF:15396)
+</li><li>Consol Payers Section SHALL contain exactly one [1..1] title (CONF:7926, R2.1=CONF:1198-7926)
+</li><li>Consol Payers Section SHALL contain exactly one [1..1] text (CONF:7927, R2.1=CONF:1198-7927)
+</li><li>Consol Payers Section If section/@nullFlavor is not present, SHOULD contain  [0..*] entry such that it  (CONF:7959, CONF:8905) Conforms to Coverage Activity (templateId: 2.16.840.1.113883.10.20.22.4.60)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Payers Section (V3)</ph></p>
+<p id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.18</tt>]</p>
+</body>
+</topic>

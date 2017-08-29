@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Result Observation (V3)" />
+<meta name="abstract" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.2]" />
+<meta name="description" content="[Observation: templateId 2.16.840.1.113883.10.20.22.4.2]" />
+<meta name="DC.Coverage" content="Observation" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Result Observation (V3)</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1"><span class="ph">Result Observation (V3)</span></h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Observation: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.4.2</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">
+This template represents the results of a laboratory, radiology, or other study performed on a patient.
+
+
+The result observation includes a statusCode to allow recording the status of an observation. "Pending" results (e.g., a test has been run but results have not been reported yet) should be represented as "active" ActStatus.
+</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1198-7136, CONF:1198-9138, CONF:1198-32575 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.4.2"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2015-08-01"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../ResultObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.2]">Result Observation</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.2</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">effectiveTime</strong></tt> (CONF:1198-7140)<p class="p">Note: Represents the biologically relevant time of the measurement (e.g., the time a blood pressure reading is obtained, the time the blood sample was obtained for a chemistry test).</p>
+
+</li>
+
+<li class="li">
+contain zero or one [0..1] <tt class="ph tt"><strong class="ph b">text</strong></tt><ol class="ol" type="a">
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt>, which <strong class="ph b">SHOULD</strong> be selected from (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-7133)<p class="p">This code SHOULD be a code from the LOINC that identifies the result observation. If an appropriate LOINC code does not exist, then the local code for this result SHALL be sent (CONF:1098-19212).</p>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> (CONF:1198-7143)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">interpretationCode</strong></tt> (CONF:1198-7147), which <strong class="ph b">SHALL</strong> be selected from ValueSet<tt class="ph tt"> Observation Interpretation (HL7) DYNAMIC 2.16.840.1.113883.1.11.78</tt><strong class="ph b"> DYNAMIC</strong> (CONF:1198-32476, DSTU:963)
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">author</strong></tt> such that it  (CONF:1198-7149)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../AuthorParticipation.html">Author Participation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.119</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+<strong class="ph b">SHOULD</strong> contain zero or more [0..*] <tt class="ph tt"><strong class="ph b">referenceRange</strong></tt> such that it  (CONF:1198-7150) <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">observationRange</strong></tt> such that it  (CONF:1198-7151) <ol class="ol" type="i"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">value</strong></tt> (CONF:1198-32175)</li>
+<li class="li"><strong class="ph b">SHALL NOT</strong> contain  [0..0] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1198-7152)</li>
+</ol>
+</li>
+</ol>
+ 
+</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li">If Observation/value is a physical quantity (xsi:type="PQ"), the unit of measure <strong class="ph b">SHALL</strong> be selected from ValueSet UnitsOfMeasureCaseSensitive 2.16.840.1.113883.1.11.12839 DYNAMIC (CONF:1198-31484)</li>
+
+<li class="li">A coded value <strong class="ph b">MAY</strong> contain zero or more [0..*] translations, which can be used to represent the original results as output by the lab (CONF:1198-31866)</li>
+
+<li class="li">If Observation/value is a CD (xsi:type="CD") the value <strong class="ph b">SHOULD</strong> be SNOMED-CT (CONF:1198-32610)</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+<li class="li"><strong class="ph b">MAY</strong> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+		<p class="p">
+			<strong class="ph b"><span class="ph">Result Observation (V3)</span> example</strong>
+		</p>
+		
+		<pre class="pre codeblock language-xml"><code>&lt;observation xmlns="urn:hl7-org:v3" classCode="OBS" moodCode="EVN"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2" extension="2015-08-01"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.2"/&gt;
+  &lt;id root="MDHT" extension="322879048"/&gt;
+  &lt;code codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;effectiveTime&gt;
+    &lt;low value="2017"/&gt;
+    &lt;high value="2017"/&gt;
+  &lt;/effectiveTime&gt;
+  &lt;interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/&gt;
+  &lt;interpretationCode codeSystem="2.16.840.1.113883.5.83" codeSystemName="ObservationInterpretation"/&gt;
+  &lt;methodCode code="593053286"/&gt;
+  &lt;targetSiteCode code="1229760041"/&gt;
+  &lt;author&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="25825696"/&gt;
+      &lt;code code="1352465442"/&gt;
+      &lt;assignedPerson/&gt;
+      &lt;representedOrganization/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+  &lt;referenceRange&gt;
+    &lt;observationRange&gt;
+      &lt;code code="1483786705"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+    &lt;/observationRange&gt;
+  &lt;/referenceRange&gt;
+&lt;/observation&gt;</code></pre>
+	</div>
+
+</body>
+</html>

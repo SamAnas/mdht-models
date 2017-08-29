@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Planned Procedure Section2 - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.30</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.2.30"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This section contains the procedure(s) that a clinician planned based on the preoperative assessment.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-8082, CONF:1098-10436, CONF:1098-32590 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.30"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../PlannedProcedureSection.dita">Planned Procedure Section</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.30</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-15399)<tt><b>/@code</b>="59772-4" </tt><i>Planned Procedure</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-15400, CONF:1098-32151)
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1098-8744, CONF:1098-15502)<ol>
+<li>Conforms to <xref href="../PlannedProcedure2.dita">Planned Procedure2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.41:2014-06-09</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../PlannedProcedureSection.dita">Planned Procedure Section</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.30</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-15399)<tt><b>/@code</b>="59772-4" </tt><i>Planned Procedure</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-15400, CONF:1098-32151)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:8084, R2.0=CONF:1098-8084)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:8085, R2.0=CONF:1098-8085)
+</li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1098-8744, CONF:1098-15502)
+<ol>
+<li>Conforms to <xref href="../PlannedProcedure2.dita">Planned Procedure2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.41:2014-06-09</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::PlannedProcedureSection2</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.30]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1098-15400CONF:1098-32151</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 59772-4</entry></row> 
+<row><entry>cda:entry/cda:procedure[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.41]</entry><entry>0..*</entry><entry>MAY</entry><entry>PlannedProcedure2</entry><entry>CONF:1098-8744CONF:1098-15502</entry><entry> </entry></row> 
+<row><entry>plannedProcedureSection2</entry><entry>0..1</entry><entry>MAY</entry><entry>PlannedProcedureSection2</entry><entry>CONF:1198-30510, CONF:1198-30511</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/OperativeNote2.html">Operative Note (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ProcedureNote2.html">Procedure Note (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PlannedProcedure2.dita">Planned Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
+  <templateId root="2.16.840.1.113883.10.20.22.2.30" extension="2014-06-09"/>
+  <templateId root="2.16.840.1.113883.10.20.22.2.30"/>
+  <code code="59772-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Planned Procedure"/>
+  <title>Planned Procedure</title>
+  <text>XsBJcPuz pWzHqzRO yZZAIdqrg OCNRmgM DyHkq WIpnjU oQzGj YmNVDOik eceYZDJHD jLXCodXt OIpvuBj QhBWg VNmbdzzdn rWITzZvjV tcCaOkgtc WdMMQeokG zzfSoYKZC Jkutzn oiKhbao CZrUrMNM PvGtImkxH cMnXnfH pQMQAG KhxTF lhCRWPd aMQMqShZ OhfLU 
+LImhzgZUK OxtbS YySuYUtLR fNPGcBWMw RNJQU BMeNrMJk AFZiF SBYCeitB ZjHLXBd OddKM gtwAjAgF oNmkZJUx PVlkvhpX mSjkXd FjxtJm EQxolvZEj wLInfK DYpwee KxnjaCnmE nhqUNC PZlNC TsSPoWfCt xKbUL vexBaBOQS nqjSxuFa FhoEGsw foNFB SPDbnLu antgXhWR ULoSwe ODlSD lhVToyU QmwNDDe TZoEtm AfbNNIo PmuylG RNvMfExjw vDxGeLcG JzXjVWrkn XYyrOiq KpLaRkn LcVREi gtSfCSOU eQTqjM kjqKozpw PRvJsiy cPkbDXh iAWDRi 
+yLRUJpZ imsdPd irNrWyE ApBxyJ dBMiY CHFYM pAsvjS UfZUgyJ wnRMgfh OXoXMT DQFPNgc LRwOyNOT bsSaO ZegGYLf 
+</text>
+  <entry>
+    <procedure classCode="PROC">
+      <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.41" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.41"/>
+      <code code="1752775524"/>
+      <text>Text Value</text>
+      <statusCode code="active"/>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <performer/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.143"/>
+          <code code="225773000" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Preference"/>
+          <text>Text Value</text>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.20"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </act>
+      </entryRelationship>
+      <entryRelationship>
+        <act classCode="ACT" moodCode="INT">
+          <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.129"/>
+          <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Payment Sources"/>
+          <text>Text Value</text>
+          <statusCode code="active"/>
+          <author>
+            <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+          </author>
+          <entryRelationship typeCode="COMP"/>
+        </act>
+      </entryRelationship>
+    </procedure>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::PlannedProcedureSection
+</p>
+<p id="PlannedProcedureSection" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8082, CONF:10436 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.2.30"
+</li><li>SHALL conform to CDA Section
+</li><li>Consol Planned Procedure Section SHALL contain exactly one [1..1] code (CONF:15399)/@code="59772-4" Planned Procedure (CodeSystem: 2.16.840.1.113883.6.1 LOINC) (CONF:15400)
+</li><li>Consol Planned Procedure Section SHALL contain exactly one [1..1] title (CONF:8084, R2.0=CONF:1098-8084)
+</li><li>Consol Planned Procedure Section SHALL contain exactly one [1..1] text (CONF:8085, R2.0=CONF:1098-8085)
+</li><li>Consol Planned Procedure Section If section/@nullFlavor is not present, MAY contain  [0..*] entry such that it  (CONF:8744, CONF:8766) Conforms to Plan Of Care Activity Procedure (templateId: 2.16.840.1.113883.10.20.22.4.41)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Planned Procedure Section2</ph></p>
+<p id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.30</tt>]</p>
+</body>
+</topic>

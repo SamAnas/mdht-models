@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Family History Organizer (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Organizer: templateId <tt>2.16.840.1.113883.10.20.22.4.45</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Organizer</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.45"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>The Family History Organizer associates a set of observations with a family member. For example, the Family History Organizer can group a set of observations about the patient's father.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-8604, CONF:1198-10497, CONF:1198-32606 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.45"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../FamilyHistoryOrganizer.dita">Family History Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.45</tt>)</li>
+<li>
+<b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-32485)
+</li>
+<li>
+<b>SHALL</b> contain  [1..*] <tt><b>component</b></tt> such that it  (CONF:1198-32428, CONF:1198-32429)<ol>
+<li>Conforms to <xref href="../FamilyHistoryObservation2.dita">Family History Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.46:2015-08-01</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../FamilyHistoryOrganizer.dita">Family History Organizer</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.45</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="CLUSTER" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8600, R2.1=CONF:1198-8600)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8601, R2.1=CONF:1198-8601)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-32485)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (R2.1=CONF:1198-8602)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:8602, R2.1=CONF:1198-19099)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>subject</b></tt> such that it  (CONF:8609, R2.1=CONF:1198-8609) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>relatedSubject</b></tt> such that it  (CONF:15244, R2.1=CONF:1198-15244) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="PRS" </tt> (CONF:15245, R2.1=CONF:1198-15245)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:15246, R2.1=CONF:1198-15246), which <b>SHOULD</b> be selected from ValueSet<tt> Family Member Value Set 2.16.840.1.113883.1.11.19579</tt><b> DYNAMIC</b> (CONF:15247, R2.1=CONF:1198-15247)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>subject</b></tt> such that it  (CONF:15248, R2.1=CONF:1198-15248) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>administrativeGenderCode</b></tt> (CONF:15974, R2.1=CONF:1198-15974), which <b>SHALL</b> be selected from ValueSet<tt> Administrative Gender (HL7 V3) 2.16.840.1.113883.1.11.1</tt><b> DYNAMIC</b> (CONF:15975, R2.1=CONF:1198-15975)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>birthTime</b></tt> (CONF:15976, R2.1=CONF:1198-15976)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>sDTCDeceasedInd</b></tt> (CONF:15981, R2.1=CONF:1198-15981)<p><lines><i>The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the deceasedInd element.</i></lines></p></li><li><b>MAY</b> contain zero or one [0..1] <tt><b>sDTCDeceasedTime</b></tt> (CONF:15982, R2.1=CONF:1198-15982)<p><lines><i>The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the deceasedTime element.</i></lines></p></li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>sDTCId</b></tt> (CONF:15249, R2.1=CONF:1198-15249)<p><lines><i>The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the id element.</i></lines></p></li><li>age of a relative at the time of a family history observation <b>SHOULD</b> be inferred by comparing RelatedSubject/subject/birthTime with Observation/effectiveTime (CONF:15983, R2.1=CONF:1198-15983)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain  [1..*] <tt><b>component</b></tt> such that it  (CONF:1198-32428, CONF:1198-32429)
+<ol>
+<li>Conforms to <xref href="../FamilyHistoryObservation2.dita">Family History Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.46:2015-08-01</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::FamilyHistoryOrganizer2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::organizer[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.45]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>id</entry><entry>1..*</entry><entry>SHALL</entry><entry>II</entry><entry>CONF:1198-32485</entry><entry> </entry></row> 
+<row><entry>familyHistoryObservation2</entry><entry>1..*</entry><entry>SHALL</entry><entry>FamilyHistoryObservation2</entry><entry>CONF:1198-32428, CONF:1198-32429</entry><entry> </entry></row> 
+<row><entry>familyHistoryOrganizer2</entry><entry>0..*</entry><entry>MAY</entry><entry>FamilyHistoryOrganizer2</entry><entry>CONF:1198-32430, CONF:1198-32431</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../FamilyHistorySection2.dita">Family History Section (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../HealthConcernAct.dita">Health Concern Act (V2)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref href="../RiskConcernAct.dita">Risk Concern Act (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FamilyHistoryObservation2.dita">Family History Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<organizer xmlns="urn:hl7-org:v3" classCode="CLUSTER" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.45" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.45"/>
+  <id root="MDHT" extension="1545150777"/>
+  <statusCode code="completed"/>
+  <component>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.46" extension="2015-08-01"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.46"/>
+      <id root="MDHT" extension="431977323"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </observation>
+  </component>
+</organizer>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::FamilyHistoryOrganizer
+</p>
+<p id="FamilyHistoryOrganizer" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:10497 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.45"
+</li><li>SHALL conform to CDA Organizer
+</li><li>Consol Family History Organizer SHALL contain exactly one [1..1] @classCode="CLUSTER"  (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8600, R2.1=CONF:1198-8600)
+</li><li>Consol Family History Organizer SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:8601, R2.1=CONF:1198-8601)
+</li><li>Consol Family History Organizer SHALL contain exactly one [1..1] statusCode (R2.1=CONF:1198-8602)/@code="completed" Completed (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:8602, R2.1=CONF:1198-19099)
+</li><li>Consol Family History Organizer SHALL contain  [1..*] component such that it  (CONF:8607, CONF:16888) Conforms to Family History Observation (templateId: 2.16.840.1.113883.10.20.22.4.46)
+</li><li>Consol Family History Organizer SHALL contain exactly one [1..1] subject, where its type is Subject (CONF:8609, R2.1=CONF:1198-8609)
+</li><li>SHALL contain exactly one [1..1] templateId such that it SHALL contain exactly one [1..1] @root=""
+</li><li>SHALL conform to CDA Subject
+</li><li>Consol Subject SHALL contain exactly one [1..1] relatedSubject, where its type is Related Subject (CONF:15244, R2.1=CONF:1198-15244)
+</li><li>SHALL contain exactly one [1..1] templateId such that it SHALL contain exactly one [1..1] @root=""
+</li><li>SHALL conform to CDA Related Subject
+</li><li>Consol Related Subject SHALL contain exactly one [1..1] @classCode="PRS"  (CONF:15245, R2.1=CONF:1198-15245)
+</li><li>Consol Related Subject SHALL contain exactly one [1..1] code (CONF:15246, R2.1=CONF:1198-15246), which SHOULD be selected from ValueSet Family Member Value Set 2.16.840.1.113883.1.11.19579 DYNAMIC (CONF:15247, R2.1=CONF:1198-15247)
+</li><li>Consol Related Subject SHOULD contain zero or one [0..1] subject, where its type is Subject Person (CONF:15248, R2.1=CONF:1198-15248)
+</li><li>SHALL contain exactly one [1..1] templateId such that it SHALL contain exactly one [1..1] @root=""
+</li><li>Consol Subject Person age of a relative at the time of a family history observation SHOULD be inferred by comparing RelatedSubject/subject/birthTime with Observation/effectiveTime (CONF:15983, R2.1=CONF:1198-15983)
+</li><li>SHALL conform to CDA Subject Person
+</li><li>Consol Subject Person SHALL contain exactly one [1..1] administrativeGenderCode (CONF:15974, R2.1=CONF:1198-15974), which SHALL be selected from ValueSet Administrative Gender (HL7 V3) 2.16.840.1.113883.1.11.1 DYNAMIC (CONF:15975, R2.1=CONF:1198-15975)
+</li><li>Consol Subject Person SHOULD contain zero or one [0..1] birthTime (CONF:15976, R2.1=CONF:1198-15976)
+</li><li>Consol Subject Person MAY contain zero or one [0..1] sDTCDeceasedInd (CONF:15981, R2.1=CONF:1198-15981)
+</li><li>Consol Subject Person MAY contain zero or one [0..1] sDTCDeceasedTime (CONF:15982, R2.1=CONF:1198-15982)
+</li><li>Consol Subject Person SHOULD contain zero or more [0..*] sDTCId (CONF:15249, R2.1=CONF:1198-15249)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Family History Organizer (V3)</ph></p>
+<p id="shortdesc">[Organizer: templateId <tt>2.16.840.1.113883.10.20.22.4.45</tt>]</p>
+</body>
+</topic>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Policy Activity (V3) - conformance rules</title>
+<shortdesc id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.61</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Act</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.61"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>A policy activity represents the policy or program providing the coverage. The person for whom payment is being provided (i.e., the patient) is the covered party. The subscriber of the policy or program is represented as a participant that is the holder of the coverage. The payer is represented as the performer of the policy activity.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-8900, CONF:1198-10516, CONF:1198-32595 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.61"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../PolicyActivity.dita">Policy Activity</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.61</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Health Insurance Type 2.16.840.1.113883.3.88.12.3221.5.2</tt><b> DYNAMIC</b> (CONF:1198-8903)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-8902)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19109)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>performer</b></tt> such that it  (CONF:1198-8906) <p><lines><i>This performer represents the Payer.</i></lines></p><ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="PRF" </tt> (CONF:8907, R2.1=CONF:1198-8907)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-8908) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8909, R2.1=CONF:1198-8909)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:8914, R2.1=CONF:1198-8914), which <b>SHOULD</b> be selected from ValueSet<tt> Financially Responsible Party Type Value Set 2.16.840.1.113883.1.11.10416</tt><b> DYNAMIC</b> (CONF:15992, R2.1=CONF:1198-15992)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>addr</b></tt> (CONF:1198-8910)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>telecom</b></tt> (CONF:1198-8911)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>representedOrganization</b></tt> such that it  (CONF:8912, R2.1=CONF:1198-8912) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>name</b></tt> (CONF:1198-8913)</li></ol></li></ol></li></ol> 
+</li>
+<li>
+<b>SHOULD</b> contain zero or one [0..1] <tt><b>performer</b></tt> such that it  (CONF:1198-8961) <p><lines><i>This performer represents the Guarantor.</i></lines></p><ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8963, R2.1=CONF:1198-8963)</li><li>contain zero or one [0..1] <tt><b>@typeCode</b>="PRF" </tt></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-8962) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-8968)<tt><b>/@code</b>="GUAR" </tt><i>Guarantor</i> (CodeSystem:<tt> 2.16.840.1.113883.5.110 HL7RoleClass</tt>) (CONF:1198-16096, CONF:1198-32165)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>addr</b></tt> (CONF:1198-8964)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>telecom</b></tt> (CONF:1198-8965)</li></ol></li></ol> 
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>participant</b></tt> such that it  (CONF:1198-8916) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="COV" </tt> (CONF:8917, R2.1=CONF:1198-8917)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8918, R2.1=CONF:1198-8918)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> such that it  (CONF:1198-8921) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:8923, R2.1=CONF:1198-8923), which <b>SHOULD</b> be selected from ValueSet<tt> Coverage Role Type 2.16.840.1.113883.1.11.18877</tt><b> DYNAMIC</b> (CONF:16078, R2.1=CONF:1198-16078)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>addr</b></tt> (CONF:8956, R2.1=CONF:1198-8956)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-8922)<p><lines><i>This id is a unique identifier for the covered party member. Implementers SHOULD use the same GUID for each instance of a member identifier from the same health plan (CONF:1098-8984).</i></lines></p></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>playingEntity</b></tt> such that it  (CONF:1198-8932) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:1198-8930)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>sDTCBirthTime</b></tt> (CONF:1198-31344)<p><lines><i>If the covered party's date of birth is recorded differently in the health plan and in the registration/pharmacy benefit summary, use the date of birth as it is recorded in the health plan.
+The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the birthTime element (CONF:1098-31345).</i></lines></p></li><li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li></ol></li></ol> 
+</li>
+<li>When the Subscriber is the patient, the participant element describing the subscriber <b>SHALL NOT</b> be present. This information will be recorded instead in the data elements used to record member information (CONF:1198-17139)</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../PolicyActivity.dita">Policy Activity</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.61</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="ACT" </tt><i>Act</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8898, R2.1=CONF:1198-8898)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8899, R2.1=CONF:1198-8899)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8901, R2.1=CONF:1198-8901)
+<p>This id is a unique identifier for the policy or program providing the coverage</p></li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Health Insurance Type 2.16.840.1.113883.3.88.12.3221.5.2</tt><b> DYNAMIC</b> (CONF:1198-8903)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt> (CONF:1198-8902)<tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:1198-19109)
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>participant</b></tt> such that it  (CONF:8934, R2.1=CONF:1198-8934) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="HLD" </tt> (CONF:8935, R2.1=CONF:1198-8935)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8938, R2.1=CONF:1198-8938)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> such that it  (CONF:8936, R2.1=CONF:1198-8936) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8937, R2.1=CONF:1198-8937)<p><lines><i>This id is a unique identifier for the subscriber of the coverage (CONF:10120)</i></lines></p></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>addr</b></tt> (CONF:8925, R2.1=CONF:1198-8925)</li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>entryRelationship</b></tt> such that it  (CONF:8939, R2.1=CONF:1198-8939) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="REFR" </tt> (CONF:8940, R2.1=CONF:1198-8940)</li><li>The target of a policy activity with act/entryRelationship/@typeCode="REFR" <b>SHALL</b> be an authorization activity (templateId 2.16.840.1.113883.10.20.1.19) OR an act, with act[@classCode="ACT"] and act[@moodCode="DEF"], representing a description of the coverage plan (CONF:8942, R2.1=CONF:1198-8942)</li><li>A description of the coverage plan <b>SHALL</b> contain one or more act/id, to represent the plan identifier, and an act/text with the name of the plan (CONF:8943, R2.1=CONF:1198-8943)</li></ol> 
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>performer</b></tt> such that it  (CONF:1198-8906) <p><lines><i>This performer represents the Payer.</i></lines></p><ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="PRF" </tt> (CONF:8907, R2.1=CONF:1198-8907)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-8908) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8909, R2.1=CONF:1198-8909)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt> (CONF:8914, R2.1=CONF:1198-8914), which <b>SHOULD</b> be selected from ValueSet<tt> Financially Responsible Party Type Value Set 2.16.840.1.113883.1.11.10416</tt><b> DYNAMIC</b> (CONF:15992, R2.1=CONF:1198-15992)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>addr</b></tt> (CONF:1198-8910)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>telecom</b></tt> (CONF:1198-8911)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>representedOrganization</b></tt> such that it  (CONF:8912, R2.1=CONF:1198-8912) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>name</b></tt> (CONF:1198-8913)</li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHOULD</b> contain zero or one [0..1] <tt><b>performer</b></tt> such that it  (CONF:1198-8961) <p><lines><i>This performer represents the Guarantor.</i></lines></p><ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8963, R2.1=CONF:1198-8963)</li><li>contain zero or one [0..1] <tt><b>@typeCode</b>="PRF" </tt></li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>assignedEntity</b></tt> such that it  (CONF:1198-8962) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-8968)<tt><b>/@code</b>="GUAR" </tt><i>Guarantor</i> (CodeSystem:<tt> 2.16.840.1.113883.5.110 HL7RoleClass</tt>) (CONF:1198-16096, CONF:1198-32165)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>addr</b></tt> (CONF:1198-8964)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>telecom</b></tt> (CONF:1198-8965)</li></ol></li></ol> 
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>participant</b></tt> such that it  (CONF:1198-8916) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="COV" </tt> (CONF:8917, R2.1=CONF:1198-8917)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:8918, R2.1=CONF:1198-8918)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> such that it  (CONF:1198-8921) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:8923, R2.1=CONF:1198-8923), which <b>SHOULD</b> be selected from ValueSet<tt> Coverage Role Type 2.16.840.1.113883.1.11.18877</tt><b> DYNAMIC</b> (CONF:16078, R2.1=CONF:1198-16078)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>addr</b></tt> (CONF:8956, R2.1=CONF:1198-8956)</li><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:1198-8922)<p><lines><i>This id is a unique identifier for the covered party member. Implementers SHOULD use the same GUID for each instance of a member identifier from the same health plan (CONF:1098-8984).</i></lines></p></li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>playingEntity</b></tt> such that it  (CONF:1198-8932) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>name</b></tt> (CONF:1198-8930)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>sDTCBirthTime</b></tt> (CONF:1198-31344)<p><lines><i>If the covered party's date of birth is recorded differently in the health plan and in the registration/pharmacy benefit summary, use the date of birth as it is recorded in the health plan.
+The prefix sdtc: SHALL be bound to the namespace "urn:hl7-org:sdtc". The use of the namespace provides a necessary extension to CDA R2 for the use of the birthTime element (CONF:1098-31345).</i></lines></p></li><li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li></ol></li></ol></li></ol> 
+</li>
+<li>When the Subscriber is the patient, the participant element describing the subscriber <b>SHALL NOT</b> be present. This information will be recorded instead in the data elements used to record member information (CONF:1198-17139)</li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::PolicyActivity2</entry>  </row>  <row><entry namest="col0" nameend="col5" >cda::act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.61]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>statusCode</entry><entry>1..1</entry><entry>SHALL</entry><entry>CS</entry><entry>CONF:1198-19109</entry><entry>ActStatus 2.16.840.1.113883.5.14ActStatus 2.16.840.1.113883.5.14 completed</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CD</entry><entry></entry><entry> null</entry></row> 
+<row><entry>coverage</entry><entry>1..1</entry><entry>SHALL</entry><entry>Coverage</entry><entry>CONF:1198-8916</entry><entry> </entry></row> 
+<row><entry>guarantor</entry><entry>0..1</entry><entry>SHOULD</entry><entry>Guarantor</entry><entry>CONF:1198-8961</entry><entry> </entry></row> 
+<row><entry>payer</entry><entry>1..1</entry><entry>SHALL</entry><entry>Payer</entry><entry>CONF:1198-8906</entry><entry> </entry></row> 
+<row><entry>policyActivity2</entry><entry>1..*</entry><entry></entry><entry>PolicyActivity2</entry><entry></entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../CoverageActivity2.dita">Coverage Activity (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../Coverage.dita">Coverage</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../Guarantor.dita">Guarantor</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../Payer.dita">Payer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<act xmlns="urn:hl7-org:v3" classCode="ACT" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.61" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.4.61"/>
+  <id root="MDHT" extension="556068686"/>
+  <code codeSystemName=""/>
+  <text>Text Value</text>
+  <statusCode code="completed"/>
+  <performer>
+    <templateId root="2.16.840.1.113883.10.20.22.4.87"/>
+    <assignedEntity>
+      <id root="MDHT" extension="2028180917"/>
+      <code code="1220527170"/>
+      <telecom/>
+    </assignedEntity>
+  </performer>
+  <performer typeCode="PRF">
+    <templateId root="2.16.840.1.113883.10.20.22.4.88"/>
+    <time>
+      <low value="2017"/>
+      <high value="2017"/>
+    </time>
+    <assignedEntity>
+      <id root="MDHT" extension="1570230557"/>
+      <code code="861159009"/>
+      <telecom/>
+    </assignedEntity>
+  </performer>
+  <participant>
+    <templateId root="2.16.840.1.113883.10.20.22.4.89"/>
+    <time>
+      <low value="2017"/>
+      <high value="2017"/>
+    </time>
+    <participantRole>
+      <id root="MDHT" extension="1955202205"/>
+      <code code="1972290718"/>
+      <addr/>
+      <playingEntity/>
+    </participantRole>
+  </participant>
+</act>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::PolicyActivity
+</p>
+<p id="PolicyActivity" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:8900, CONF:10516 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.61"
+</li><li>SHALL conform to CDA Act
+</li><li>Consol Policy Activity SHALL contain exactly one [1..1] @classCode="ACT" Act (CodeSystem: 2.16.840.1.113883.5.6 HL7ActClass) (CONF:8898, R2.1=CONF:1198-8898)
+</li><li>Consol Policy Activity SHALL contain exactly one [1..1] @moodCode="EVN" Event (CodeSystem: 2.16.840.1.113883.5.1001 HL7ActMood) (CONF:8899, R2.1=CONF:1198-8899)
+</li><li>Consol Policy Activity SHALL contain at least one [1..*] id (CONF:8901, R2.1=CONF:1198-8901)
+</li><li>Consol Policy Activity SHALL contain exactly one [1..1] code (CONF:8903), which SHOULD be selected from ValueSet Health Insurance Type 2.16.840.1.113883.3.88.12.3221.5.2 DYNAMIC (CONF:19185)
+</li><li>Consol Policy Activity SHALL contain exactly one [1..1] statusCode/@code="completed" Completed (CodeSystem: 2.16.840.1.113883.5.14 ActStatus) (CONF:8902)
+</li><li>Consol Policy Activity SHALL contain exactly one [1..1] performer, where its type is Payer (CONF:8906)
+</li><li>Consol Policy Activity SHOULD contain zero or one [0..1] performer, where its type is Guarantor (CONF:8961)
+</li><li>Consol Policy Activity SHALL contain exactly one [1..1] participant, where its type is Coverage (CONF:8916)
+</li><li>Consol Policy Activity SHOULD contain zero or one [0..1] participant, where its type is Holder (CONF:8934, R2.1=CONF:1198-8934)
+</li><li>Consol Policy Activity SHALL contain at least one [1..*] entryRelationship, where its type is Entry Relationship (CONF:8939, R2.1=CONF:1198-8939)
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:16808, CONF:16809 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.87"
+</li><li>SHALL conform to CDA Performer2
+</li><li>Consol Payer SHALL contain exactly one [1..1] assignedEntity, where its type is Payer Assigned Entity (CONF:8908)
+</li><li>Consol Payer SHALL contain exactly one [1..1] @typeCode="PRF"  (CONF:8907, R2.1=CONF:1198-8907)
+</li><li>SHALL contain exactly one [1..1] templateId such that it SHALL contain exactly one [1..1] @root=""
+</li><li>Consol Payer Assigned Entity The content of addr SHALL be a conformant US Realm Address (AD.US.FIELDED) (2.16.840.1.113883.10.20.22.5.2) (CONF:10481)
+</li><li>SHALL conform to CDA Assigned Entity
+</li><li>Consol Payer Assigned Entity SHALL contain at least one [1..*] id (CONF:8909, R2.1=CONF:1198-8909)
+</li><li>Consol Payer Assigned Entity SHOULD contain zero or one [0..1] code (CONF:8914, R2.1=CONF:1198-8914), which SHOULD be selected from ValueSet Financially Responsible Party Type Value Set 2.16.840.1.113883.1.11.10416 DYNAMIC (CONF:15992, R2.1=CONF:1198-15992)
+</li><li>Consol Payer Assigned Entity MAY contain zero or one [0..1] addr (CONF:8910, CONF:10481)
+</li><li>Consol Payer Assigned Entity MAY contain zero or one [0..1] telecom (CONF:8911)
+</li><li>Consol Payer Assigned Entity SHOULD contain zero or one [0..1] representedOrganization, where its type is Payer Organization (CONF:8912, R2.1=CONF:1198-8912)
+</li><li>SHALL contain exactly one [1..1] templateId such that it SHALL contain exactly one [1..1] @root=""
+</li><li>SHALL conform to CDA Organization
+</li><li>Consol Payer Organization SHOULD contain zero or one [0..1] name (CONF:1198-8913)
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:16810, CONF:16811 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.88"
+</li><li>SHALL conform to CDA Performer2
+</li><li>Consol Guarantor SHOULD contain zero or one [0..1] time (CONF:8963, R2.1=CONF:1198-8963)
+</li><li>Consol Guarantor SHALL contain exactly one [1..1] assignedEntity, where its type is Guarantor Assigned Entity (CONF:8962)
+</li><li>Consol Guarantor SHOULD contain zero or one [0..1] @typeCode="PRF"  (CONF:8961)
+</li><li>Consol Guarantor Assigned Entity SHOULD include assignedEntity/assignedPerson/name AND/OR assignedEntity/representedOrganization/name (CONF:8967, R2.1=CONF:1198-8967)
+</li><li>Consol Guarantor Assigned Entity The content of addr SHALL be a conformant US Realm Address (AD.US.FIELDED) (2.16.840.1.113883.10.20.22.5.2) (CONF:10482)
+</li><li>SHALL conform to CDA Assigned Entity
+</li><li>Consol Guarantor Assigned Entity SHALL contain exactly one [1..1] code (CONF:8968)/@code="GUAR" Guarantor (CodeSystem: 2.16.840.1.113883.5.110 HL7RoleClass) (CONF:16096)
+</li><li>Consol Guarantor Assigned Entity SHOULD contain zero or one [0..1] addr (CONF:8964, CONF:10482) such that it  The content of addr SHALL be a conformant US Realm Address (AD.US.FIELDED) (2.16.840.1.113883.10.20.22.5.2) (CONF:10482)
+</li><li>Consol Guarantor Assigned Entity SHOULD contain zero or one [0..1] telecom (CONF:8965)
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:16812, CONF:16814 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.89"
+</li><li>Consol Coverage The time, if present, SHOULD contain zero or one [0..1] low (CONF:8919, R2.1=CONF:1198-8919)
+</li><li>Consol Coverage The time, if present, SHOULD contain zero or one [0..1] high (CONF:8920, R2.1=CONF:1198-8920)
+</li><li>SHALL conform to CDA Participant2
+</li><li>Consol Coverage SHALL contain exactly one [1..1] @typeCode="COV"  (CONF:8917, R2.1=CONF:1198-8917)
+</li><li>Consol Coverage SHOULD contain zero or one [0..1] time (CONF:8918, R2.1=CONF:1198-8918)
+</li><li>Consol Coverage SHALL contain exactly one [1..1] participantRole, where its type is Coverage Role (CONF:8921)
+</li><li>SHALL conform to CDA Participant Role
+</li><li>Consol Coverage Role SHALL contain at least one [1..*] id (CONF:8922)
+</li><li>Consol Coverage Role SHALL contain exactly one [1..1] code (CONF:8923, R2.1=CONF:1198-8923), which SHOULD be selected from ValueSet Coverage Role Type 2.16.840.1.113883.1.11.18877 DYNAMIC (CONF:16078, R2.1=CONF:1198-16078)
+</li><li>Consol Coverage Role SHOULD contain zero or one [0..1] addr (CONF:8956, R2.1=CONF:1198-8956)
+</li><li>Consol Coverage Role SHOULD contain zero or one [0..1] playingEntity, where its type is Coverage Playing Entity (CONF:8932)
+</li><li>Consol Coverage Playing Entity If the member date of birth as recorded by the health plan differs from the patient date of birth as recorded in the registration/medication summary, then the member date of birth SHALL be recorded in sdtc:birthTime. (CONF:8933)
+</li><li>SHALL conform to CDA Playing Entity
+</li><li>Consol Coverage Playing Entity SHALL contain exactly one [1..1] name (CONF:8930)
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:16813, CONF:16815, R2.1=CONF:1198-16813, R2.1=CONF:1198-16815 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.4.90"
+</li><li>SHALL conform to CDA Participant2
+</li><li>Consol Holder SHALL contain exactly one [1..1] @typeCode="HLD"  (CONF:8935, R2.1=CONF:1198-8935)
+</li><li>Consol Holder MAY contain zero or one [0..1] time (CONF:8938, R2.1=CONF:1198-8938)
+</li><li>Consol Holder SHALL contain exactly one [1..1] participantRole, where its type is Holder Role (CONF:8936, R2.1=CONF:1198-8936)
+</li><li>SHALL conform to CDA Participant Role
+</li><li>Consol Holder Role SHALL contain at least one [1..*] id (CONF:8937, R2.1=CONF:1198-8937)
+</li><li>Consol Holder Role SHOULD contain zero or one [0..1] addr (CONF:8925, R2.1=CONF:1198-8925)
+</li><li>Consol Entry Relationship The target of a policy activity with act/entryRelationship/@typeCode="REFR" SHALL be an authorization activity (templateId 2.16.840.1.113883.10.20.1.19) OR an act, with act[@classCode="ACT"] and act[@moodCode="DEF"], representing a description of the coverage plan (CONF:8942, R2.1=CONF:1198-8942)
+</li><li>Consol Entry Relationship A description of the coverage plan SHALL contain one or more act/id, to represent the plan identifier, and an act/text with the name of the plan (CONF:8943, R2.1=CONF:1198-8943)
+</li><li>SHALL conform to CDA Entry Relationship
+</li><li>Consol Entry Relationship SHALL contain exactly one [1..1] @typeCode="REFR"  (CONF:8940, R2.1=CONF:1198-8940)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Policy Activity (V3)</ph></p>
+<p id="shortdesc">[Act: templateId <tt>2.16.840.1.113883.10.20.22.4.61</tt>]</p>
+</body>
+</topic>

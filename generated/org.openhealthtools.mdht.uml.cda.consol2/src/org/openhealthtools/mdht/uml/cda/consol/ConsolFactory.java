@@ -2893,6 +2893,51 @@ public interface ConsolFactory extends EFactory {
 	PhysicianReadingStudyPerformer2 createPhysicianReadingStudyPerformer2();
 
 	/**
+	 * Returns a new object of class '<em>Advance Directives Section Entries Optional3</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Advance Directives Section Entries Optional3</em>'.
+	 * @generated
+	 */
+	AdvanceDirectivesSectionEntriesOptional3 createAdvanceDirectivesSectionEntriesOptional3();
+
+	/**
+	 * Returns a new object of class '<em>Advance Directive Organizer2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Advance Directive Organizer2</em>'.
+	 * @generated
+	 */
+	AdvanceDirectiveOrganizer2 createAdvanceDirectiveOrganizer2();
+
+	/**
+	 * Returns a new object of class '<em>Advance Directive Observation3</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Advance Directive Observation3</em>'.
+	 * @generated
+	 */
+	AdvanceDirectiveObservation3 createAdvanceDirectiveObservation3();
+
+	/**
+	 * Returns a new object of class '<em>Advance Directives Section3</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Advance Directives Section3</em>'.
+	 * @generated
+	 */
+	AdvanceDirectivesSection3 createAdvanceDirectivesSection3();
+
+	/**
+	 * Returns a new object of class '<em>Advance Care Planning Intervention</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Advance Care Planning Intervention</em>'.
+	 * @generated
+	 */
+	AdvanceCarePlanningIntervention createAdvanceCarePlanningIntervention();
+
+	/**
 	 * Returns a new object of class '<em>Criticality Observation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

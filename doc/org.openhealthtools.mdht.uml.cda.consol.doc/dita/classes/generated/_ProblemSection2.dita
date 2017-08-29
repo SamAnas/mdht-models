@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Problem Section (V3) (entries required) - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.5.1</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.2.5.1"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This section lists and describes all relevant clinical problems at the time the document is generated. At a minimum, all pertinent current and historical problems should be listed. Overall health status may be represented in this section.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1198-9179, CONF:1198-10441, CONF:1198-32510 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.2.5.1"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2015-08-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../ProblemSectionEntriesOptional2.dita">Problem Section Entries Optional2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.5:2015-08-01</tt>)</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@nullFlavor</b>="NI" </tt> (CONF:1198-32864)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-15409)<tt><b>/@code</b>="11450-4" </tt><i>Problem List</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-15410, CONF:1198-31142)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1198-9181)
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:1198-9182)
+</li>
+<li>
+If section/@nullFlavor is not present, <b>SHALL</b> contain  [1..*] <tt><b>entry</b></tt> such that it  (CONF:1198-9183, CONF:1198-15506)<p>If section/@nullFlavor is not present:</p><ol>
+<li>Conforms to <xref href="../ProblemConcernAct2.dita">Problem Concern Act2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.3:2015-08-01</tt>)</li></ol>
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..1] <tt><b>entry</b></tt> such that it  (CONF:1198-30479, CONF:1198-30480)<ol>
+<li>Conforms to <xref href="../HealthStatusObservation2.dita">Health Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.5:2014-06-09</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../ProblemSectionEntriesOptional.dita">Problem Section Entries Optional</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.5</tt>)</li>
+<li><b>SHALL</b> conform to <xref href="../ProblemSectionEntriesOptional2.dita">Problem Section Entries Optional2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.2.5:2015-08-01</tt>)</li>
+<li><b>MAY</b> contain zero or one [0..1] <tt><b>@nullFlavor</b>="NI" </tt> (CONF:1198-32864)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1198-15409)<tt><b>/@code</b>="11450-4" </tt><i>Problem List</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1198-15410, CONF:1198-31142)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:1198-9181)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:1198-9182)
+</li>
+<li>If section/@nullFlavor is not present, <b>SHOULD</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1198-7881, CONF:1198-15505)
+<ol>
+<li>Conforms to <xref href="../ProblemConcernAct2.dita">Problem Concern Act2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.3:2015-08-01</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..1] <tt><b>entry</b></tt> such that it  (CONF:1198-30481, CONF:1198-30482)
+<ol>
+<li>Conforms to <xref href="../HealthStatusObservation2.dita">Health Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.5:2014-06-09</tt>)</li></ol></li>
+<li>If section/@nullFlavor is not present, <b>SHALL</b> contain  [1..*] <tt><b>entry</b></tt> such that it  (CONF:1198-9183, CONF:1198-15506)
+<ol>
+<li>Conforms to <xref href="../ProblemConcernAct2.dita">Problem Concern Act2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.3:2015-08-01</tt>)</li></ol><p>If section/@nullFlavor is not present:</p></li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..1] <tt><b>entry</b></tt> such that it  (CONF:1198-30479, CONF:1198-30480)
+<ol>
+<li>Conforms to <xref href="../HealthStatusObservation2.dita">Health Status Observation2</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.5:2014-06-09</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::ProblemSection2</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 2.16.840.1.113883.10.20.22.2.5]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>@nullFlavor</entry><entry>0..1</entry><entry>MAY</entry><entry>NullFlavor</entry><entry>CONF:1198-32864</entry><entry> ASKU</entry></row> 
+<row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1198-15410, CONF:1198-31142</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 11450-4</entry></row> 
+<row><entry>title</entry><entry>1..1</entry><entry>SHALL</entry><entry>ST</entry><entry>CONF:1198-9181</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:observation[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.5]</entry><entry>0..1</entry><entry>MAY</entry><entry>HealthStatusObservation2</entry><entry>CONF:1198-30479, CONF:1198-30480</entry><entry> </entry></row> 
+<row><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.3]</entry><entry>1..*</entry><entry>SHALL</entry><entry>ProblemConcernAct2</entry><entry>CONF:1198-9183, CONF:1198-15506</entry><entry> </entry></row> 
+<row><entry>problemSection2</entry><entry>1..1</entry><entry>SHALL</entry><entry>ProblemSection2</entry><entry>CONF:1198-29086, CONF:1198-29087</entry><entry> </entry></row> 
+<row><entry>text</entry><entry>1..1</entry><entry>SHALL</entry><entry>StrucDocText</entry><entry>CONF:1198-9182</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ConsultationNote2.html">Consultation Note (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ContinuityOfCareDocument2.html">Continuity of Care Document (CCD) (V3)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReferralNote.html">Referral Note (V2)</xref></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/TransferSummary.html">Transfer Summary (V2)</xref></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../HealthStatusObservation2.dita">Health Status Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProblemConcernAct2.dita">Problem Concern Act (V3)</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3" nullFlavor="NI">
+  <templateId root="2.16.840.1.113883.10.20.22.2.5.1" extension="2015-08-01"/>
+  <templateId root="2.16.840.1.113883.10.20.22.2.5"/>
+  <templateId root="2.16.840.1.113883.10.20.22.2.5" extension="2015-08-01"/>
+  <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Problem List"/>
+  <title>Problem List</title>
+  <text>oNglPce qIROoa Ogaok EPHCpcbo MMgoAp xNjCHH KYMJWY yOZHFd SzPhvnEhA kOISPOW PkvBPbgq LupiMfD qMmjMFiM DlFFXnPSA WngVlaO wbwIuqvW PPgcGVMEQ BMgbxl zBzXciv lsSVA VMjlx uYSwVPA UgsfQLKDw ZwkJy IhfSDLCX HNFMo CDQHwX sCgScJv AQpTJQzU spwjIL QnMwKKaT 
+PJLcZmVJu lYEKa vLqUjOkb RpXeYj WDBaTA WzYWE fZSfMWL JBnnQOz aZZKbB qytzdS jWjVjaazs WBkBHCbvB vFGul 
+oMsLy NFtjM RnuAQ zBfFHxWwn gPiwF xGkJAEra NjSmrXC RBrmaMWs MMHUyceC EuLoFyiY mzYHFhZud phSNe iegwTuec MOLEV ovdezWZ whMDLVc mtUjnPFC rFjAICuof wTlyJQmNU EuGKJbSPc JOWtoXku isyFj uhwlg Bosxt HASVJIeOK PsGUXWT ojZFD LkCLJfrH eCdsg ZPGxmAqd nGFQvj ZzhZKqalz ryUbax uMcrioFRg ACAQD jedHWphZz SYflZHgk WoBgkv dhkaXsxUx mhuYiK bCEOCqlq RIsoleM rZzBIwLY YxCxXMo DWdcB JkLFR lcuof iCfcZNK bXuVA lwlFHDB 
+</text>
+  <entry>
+    <observation classCode="OBS" moodCode="EVN">
+      <templateId root="2.16.840.1.113883.10.20.22.4.5" extension="2014-06-09"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.5"/>
+      <code code="11323-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Health status"/>
+      <text>Text Value</text>
+      <statusCode code="completed"/>
+    </observation>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::ProblemSection
+</p>
+<p id="ProblemSection" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:9179 ) such that it SHALL contain exactly one [1..1] @root="2.16.840.1.113883.10.20.22.2.5.1"
+</li><li>SHALL conform to Problem Section Entries Optional template (templateId: 2.16.840.1.113883.10.20.22.2.5)
+</li><li>Consol Problem Section If section/@nullFlavor is not present, SHALL contain  [1..*] entry such that it  (CONF:9183) Conforms to Problem Concern Act (templateId: 2.16.840.1.113883.10.20.22.4.3)
+</li><li>Consol Problem Section SHALL contain exactly one [1..1] code (CONF:15409)/@code="11450-4" Problem List (CodeSystem: 2.16.840.1.113883.6.1 LOINC) (CONF:15410)
+</li><li>Consol Problem Section SHALL contain exactly one [1..1] text (CONF:9182)
+</li><li>Consol Problem Section SHALL contain exactly one [1..1] title (CONF:9181)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Problem Section (V3) (entries required)</ph></p>
+<p id="shortdesc">[Section: templateId <tt>2.16.840.1.113883.10.20.22.2.5.1</tt>]</p>
+</body>
+</topic>

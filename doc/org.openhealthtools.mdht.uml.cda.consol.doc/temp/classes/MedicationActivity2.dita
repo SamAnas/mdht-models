@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?><?workdir /Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/temp/classes?><?workdir-uri file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/temp/classes/?><?path2project ../?><?path2project-uri ../?><?doctype-public -//OASIS//DTD DITA Topic//EN?><?doctype-system topic.dtd?><topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" xmlns:dita-ot="http://dita-ot.sourceforge.net/ns/201007/dita-ot" id="classId" xml:lang="en-us" ditaarch:DITAArchVersion="1.3" domains="(topic abbrev-d)                            a(props deliveryTarget)                            (topic equation-d)                            (topic hazard-d)                            (topic hi-d)                            (topic indexing-d)                            (topic markup-d)                            (topic mathml-d)                            (topic pr-d)                            (topic relmgmt-d)                            (topic sw-d)                            (topic svg-d)                            (topic ui-d)                            (topic ut-d)                            (topic markup-d xml-d)   " class="- topic/topic " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/MedicationActivity2.dita" xtrc="topic:1;3:38">
+	<title class="- topic/title " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/MedicationActivity2.dita" xtrc="title:1;4:9"><ph class="- topic/ph " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ph:1;599:29">Medication Activity2</ph></title>
+	<shortdesc class="- topic/shortdesc " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="shortdesc:1;5:27">[SubstanceAdministration: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:1;5:68">2.16.840.1.113883.10.20.22.4.16</tt>]</shortdesc>
+	<prolog class="- topic/prolog " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="prolog:1;6:21">
+<metadata class="- topic/metadata " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="metadata:1;7:11"><category class="- topic/category " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="category:1;7:21">SubstanceAdministration</category></metadata>
+<resourceid id="d488e24" ux-source-priority="topic-and-map" class="- topic/resourceid " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="resourceid:1;8:51"/>
+</prolog>
+	<body class="- topic/body " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/MedicationActivity2.dita" xtrc="body:1;8:8">
+		
+		<section class="- topic/section " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="section:2;13:27">
+<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="p:1;14:4">A Medication Activity describes substance administrations that have actually occurred (e.g., pills ingested or injections given) or are intended to occur (e.g., "take 2 tablets twice a day for the next 10 days"). Medication activities in "INT" mood are reflections of what a clinician intends a patient to be taking. For example, a clinician may intend that a patient to be administered Lisinopril 20 mg PO for blood pressure control. If what was actually administered was Lisinopril 10 mg., then the Medication activities in the "EVN" mood would reflect actual use.
+A moodCode of INT is allowed, but it is recommended that the Planned Medication Activity (V2) template be used for moodCodes other than EVN if the document type contains a section that includes Planned Medication Activity (V2) (for example a Care Plan document with Plan of Treatment, Intervention, or Goal sections).
+At a minimum, a Medication Activity shall include an effectiveTime indicating the duration of the administration (or single-administration timestamp). Ambulatory medication lists generally provide a summary of use for a given medication over time - a medication activity in event mood with the duration reflecting when the medication started and stopped. Ongoing medications will not have a stop date (or will have a stop date with a suitable NULL value). Ambulatory medication lists will generally also have a frequency (e.g., a medication is being taken twice a day). Inpatient medications generally record each administration as a separate act.
+The dose (doseQuantity) represents how many of the consumables are to be administered at each administration event. As a result, the dose is always relative to the consumable and the interval of administration. Thus, a patient consuming a single "metoprolol 25mg tablet" per administration will have a doseQuantity of "1", whereas a patient consuming "metoprolol" will have a dose of "25 mg".</p>
+</section>
+		
+
+		<ol audience="standards" class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:1;19:22">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:1;20:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:1;20:8">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:2;20:49"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:2;20:52">templateId</b></tt> ( CONF:1098-7499, CONF:1098-10504, CONF:1098-32498 ) such that it <ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:2;20:142"><li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:2;20:146"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:3;20:149">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:3;20:190"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:4;20:193">@root</b>="2.16.840.1.113883.10.20.22.4.16"</tt></li> <li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:3;20:251"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:5;20:254">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:4;20:295"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:6;20:298">@extension</b>="2014-06-09"</tt></li></ol></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:4;21:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:7;21:8">SHALL</b> conform to <xref href="generated/../MedicationActivity.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:1;21:69" type="topic"><?ditaot usertext?>Medication Activity<?ditaot genshortdesc?><desc class="- topic/desc ">[SubstanceAdministration: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity.dita" xtrc="tt:1;5:68">2.16.840.1.113883.10.20.22.4.16</tt>]</desc></xref> template (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:5;21:122">2.16.840.1.113883.10.20.22.4.16</tt>)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:5;22:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:8;23:4">MAY</b> contain zero or one [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:6;23:43"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:9;23:46">code</b></tt> (CONF:1098-7506)<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="p:2;23:79">Note: SubstanceAdministration.code is an optional field. Per HL7 Pharmacy Committee, "this is intended to further specify the nature of the substance administration act. To date the committee has made no use of this attribute". Because the type of substance administration is generally implicit in the routeCode, in the consumable participant, etc., the field is generally not used, and there is no defined value set.</p>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:6;25:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:10;26:4">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:7;26:45"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:11;26:48">statusCode</b></tt> (CONF:1098-7507), which <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:12;26:95">SHALL</b> be selected from ValueSet<tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:8;26:134"> ActStatus 2.16.840.1.113883.1.11.159331</tt><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:13;26:182"> DYNAMIC</b> (CONF:1098-32360)
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:7;28:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:14;29:4">MAY</b> contain zero or one [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:9;29:43"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:15;29:46">repeatNumber</b></tt> (CONF:1098-7555)<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="p:3;29:87">In "INT" (intent) mood, the repeatNumber defines the number of allowed administrations. For example, a repeatNumber of "3" means that the substance can be administered up to 3 times. In "EVN" (event) mood, the repeatNumber is the number of occurrences. For example, a repeatNumber of "3" in a substance administration event means that the current administration is the 3rd in a series.</p>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:8;31:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:16;32:4">SHOULD</b> contain zero or one [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:10;32:46"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:17;32:49">routeCode</b></tt>, which <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:18;32:78">SHALL</b> be selected from ValueSet<tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:11;32:117"> Medication Route FDA Value Set 2.16.840.1.113883.3.88.12.3221.8.7</tt><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:19;32:191"> DYNAMIC</b> (CONF:1098-7514)
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:9;34:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:20;35:4">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:12;35:45"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:21;35:48">doseQuantity</b></tt> (CONF:1098-7516)<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="p:4;35:89">b. Pre-coordinated consumable: If the consumable code is a pre-coordinated unit dose (e.g. "metoprolol 25mg tablet") then doseQuantity is a unitless number that indicates the number of products given per administration (e.g. "2", meaning 2 x "metoprolol 25mg tablet" per administration) (CONF:1098-16878).
+
+c. Not pre-coordinated consumable: If the consumable code is not pre-coordinated (e.g. is simply "metoprolol"), then doseQuantity must represent a physical quantity with @unit, e.g. "25" and "mg", specifying the amount of product given per administration (CONF:1098-16879).
+</p>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:10;40:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:22;41:4">MAY</b> contain zero or one [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:13;41:43"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:23;41:46">administrationUnitCode</b></tt>, which <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:24;41:88">SHALL</b> be selected from ValueSet<tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:14;41:127"> AdministrationUnitDoseForm 2.16.840.1.113762.1.4.1021.30</tt><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:25;41:192"> DYNAMIC</b> (CONF:1098-7519)
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:11;43:5">
+contain zero or one [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:15;44:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:26;44:35">text</b></tt>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:12;46:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:27;47:4">SHOULD</b> contain  [0..*] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:16;47:35"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:28;47:38">author</b></tt> such that it  (CONF:1098-31150)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:3;47:89">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:13;48:5">Conforms to <xref href="generated/../AuthorParticipation.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:2;48:58"><?ditaot usertext?>Author Participation</xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:17;48:103">2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:14;50:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:29;51:4">MAY</b> contain  [0..*] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:18;51:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:30;51:35">entryRelationship</b></tt> such that it  (CONF:1098-7536, CONF:1098-7537, CONF:1098-16087)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:4;51:129">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:15;52:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:19;52:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:31;52:21">@typeCode="</b>RSON" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="i:1;52:50">RSON</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:16;53:5">Conforms to <xref href="generated/../Indication2.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:3;53:50" type="topic"><?ditaot usertext?>Indication2<?ditaot genshortdesc?><desc class="- topic/desc ">[Observation: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_Indication2.dita" xtrc="tt:1;5:56">2.16.840.1.113883.10.20.22.4.19</tt>]</desc></xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:20;53:86">2.16.840.1.113883.10.20.22.4.19:2014-06-09</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:17;55:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:32;56:4">MAY</b> contain  [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:21;56:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:33;56:35">entryRelationship</b></tt> such that it  (CONF:1098-7539, CONF:1098-7540, CONF:1098-31387)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:5;56:129">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:18;57:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:22;57:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:34;57:21">@typeCode="</b>SUBJ" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="i:2;57:50">SUBJ</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:19;58:5">Conforms to <xref href="generated/../Instruction2.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:4;58:51" type="topic"><?ditaot usertext?>Instruction2<?ditaot genshortdesc?><desc class="- topic/desc ">[Act: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_Instruction2.dita" xtrc="tt:1;5:48">2.16.840.1.113883.10.20.22.4.20</tt>]</desc></xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:23;58:88">2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:20;60:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:35;61:4">MAY</b> contain  [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:24;61:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:36;61:35">entryRelationship</b></tt> such that it  (CONF:1098-7543, CONF:1098-7547, CONF:1098-16089)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:6;61:129">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:21;62:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:25;62:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:37;62:21">@typeCode="</b>REFR" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="i:3;62:50">REFR</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:22;63:5">Conforms to <xref href="generated/../MedicationSupplyOrder2.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:5;63:61" type="topic"><?ditaot usertext?>Medication Supply Order2<?ditaot genshortdesc?><desc class="- topic/desc ">[Supply: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationSupplyOrder2.dita" xtrc="tt:1;5:51">2.16.840.1.113883.10.20.22.4.17</tt>]</desc></xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:26;63:110">2.16.840.1.113883.10.20.22.4.17:2014-06-09</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:23;65:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:38;66:4">MAY</b> contain  [0..*] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:27;66:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:39;66:35">entryRelationship</b></tt> such that it  (CONF:1098-7549, CONF:1098-7553, CONF:1098-16090)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:7;66:129">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:24;67:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:28;67:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:40;67:21">@typeCode="</b>REFR" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="i:4;67:50">REFR</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:25;68:5">Conforms to <xref href="generated/../MedicationDispense2.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:6;68:58" type="topic"><?ditaot usertext?>Medication Dispense2<?ditaot genshortdesc?><desc class="- topic/desc ">[Supply: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationDispense2.dita" xtrc="tt:1;5:51">2.16.840.1.113883.10.20.22.4.18</tt>]</desc></xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:29;68:103">2.16.840.1.113883.10.20.22.4.18:2014-06-09</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:26;70:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:41;71:4">MAY</b> contain  [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:30;71:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:42;71:35">entryRelationship</b></tt> such that it  (CONF:1098-7552, CONF:1098-7544, CONF:1098-16091)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:8;71:129">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:27;72:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:31;72:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:43;72:21">@typeCode="</b>CAUS" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="i:5;72:50">CAUS</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:28;73:5">Conforms to <xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReactionObservation2.html" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:7;73:163"><?ditaot usertext?>Reaction Observation2</xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:32;73:209">2.16.840.1.113883.10.20.22.4.9:2014-06-09</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:29;75:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:44;76:4">MAY</b> contain  [0..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:33;76:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:45;76:35">entryRelationship</b></tt> such that it  (CONF:1098-30820, CONF:1098-30821, CONF:1098-30822)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:9;76:131">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:30;77:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:34;77:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:46;77:21">@typeCode="</b>COMP" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="i:6;77:50">COMP</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:31;78:5">Conforms to <xref href="generated/../DrugMonitoringAct.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:8;78:56" type="topic"><?ditaot usertext?>Drug Monitoring Act<?ditaot genshortdesc?><desc class="- topic/desc ">[Act: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_DrugMonitoringAct.dita" xtrc="tt:1;5:48">2.16.840.1.113883.10.20.22.4.123</tt>]</desc></xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:35;78:100">2.16.840.1.113883.10.20.22.4.123</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:32;80:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:47;81:4">MAY</b> contain  [0..*] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:36;81:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:48;81:35">entryRelationship</b></tt> such that it  (CONF:1098-31515, CONF:1098-31516, CONF:1098-31519)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:10;81:131"><li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:33;81:135"><p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="p:5;81:138">The following entryRelationship is used to indicate a given medication's order in a series. The nested Substance Administered Act identifies an administration in the series. The entryRelationship/sequenceNumber shows the order of this particular administration in that series.</p></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:34;82:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:37;82:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:49;82:21">@typeCode="</b>COMP" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="i:7;82:50">COMP</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:35;83:5">Conforms to <xref href="generated/../SubstanceAdministeredAct.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:9;83:63" type="topic"><?ditaot usertext?>Substance Administered Act<?ditaot genshortdesc?><desc class="- topic/desc ">[Act: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_SubstanceAdministeredAct.dita" xtrc="tt:1;5:48">2.16.840.1.113883.10.20.22.4.118</tt>]</desc></xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:38;83:114">2.16.840.1.113883.10.20.22.4.118</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:36;85:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:50;86:4">MAY</b> contain zero or more [0..*] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:39;86:44"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:51;86:47">precondition</b></tt> such that it  (CONF:1098-31520) <ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:11;86:105"><li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:37;86:109"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:52;86:112">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:40;86:153"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:53;86:156">@typeCode</b>="PRCN" </tt> (CONF:1098-31882)</li><li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:38;86:209"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:54;86:212">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:41;86:253"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:55;86:256">criterion</b></tt>, where its type is <xref href="generated/../PreconditionForSubstanceAdministration2.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:10;86:355"><?ditaot usertext?>Precondition For Substance Administration2</xref> (CONF:1098-31883)</li></ol> 
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:39;88:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:56;89:4">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:42;89:45"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:57;89:48">consumable</b></tt> such that it  (CONF:1098-7520) <ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:12;89:103"><li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:40;89:107"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:58;89:110">SHALL</b> contain exactly one [1..1] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:43;89:151"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:59;89:154">manufacturedProduct</b></tt>, where its type is <xref href="generated/../MedicationInformation2.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:11;89:246"><?ditaot usertext?>Medication Information2</xref> (CONF:1098-16085)</li></ol> 
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:41;91:5">
+<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:60;92:4">MAY</b> contain  [0..*] <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:44;92:32"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:61;92:35">entryRelationship</b></tt> such that it  (CONF:1098-32907, CONF:1098-32908, CONF:1098-32909)<ol class="- topic/ol " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ol:13;92:131">
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:42;93:5">Contains <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:45;93:18"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:62;93:21">@typeCode="</b>COMP" </tt><i class="+ topic/ph hi-d/i " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="i:8;93:50">COMP</i></li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:43;94:5">Conforms to <xref href="generated/../MedicationFreeTextSig.dita" class="- topic/xref " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="xref:12;94:60" type="topic"><?ditaot usertext?>Medication Free Text Sig<?ditaot genshortdesc?><desc class="- topic/desc ">[SubstanceAdministration: templateId <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationFreeTextSig.dita" xtrc="tt:1;5:68">2.16.840.1.113883.10.20.22.4.147</tt>]</desc></xref> (templateId: <tt class="+ topic/ph hi-d/tt " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="tt:46;94:109">2.16.840.1.113883.10.20.22.4.147</tt>)</li></ol>
+</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:44;96:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:63;96:8">MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:45;97:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:64;97:8">MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:46;98:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:65;98:8">MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:47;99:5">entryRelationship with target entry Instruction2 <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:66;99:57">SHALL</b> contain exactly one [1..1] @inversionInd="true" True (CONF:1098-7542)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:48;100:5">Medication Activity (V2) <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:67;100:33">SHOULD</b> include doseQuantity OR rateQuantity (CONF:1098-30800)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:49;101:5">entryRelationship with target entry Substance Administered Act <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:68;101:71">SHALL</b> contain exactly one [1..1] @inversionInd="true" (CONF:1098-31517)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:50;102:5">entryRelationship with target entry Substance Administered Act <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:69;102:71">MAY</b> contain zero or one [0..1] sequenceNumber (CONF:1098-31518)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:51;103:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:70;103:8">SHALL</b> contain exactly one [1..1] effectiveTime such that it <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:71;103:75">SHALL</b> contain exactly one [1..1] @xsi:type="IVL_TS" or contain exactly one [1..1] @xsi:type="TS" (CONF:1098-7508)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:52;104:5">If effectiveTime @xsi:type="IVL_TS", <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:72;104:45">SHOULD</b> contain zero or one [0..1] low (CONF:1098-32776)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:53;105:5">If effectiveTime @xsi:type="IVL_TS", <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:73;105:45">MAY</b> contain zero or one [0..1] high (CONF:1098-32777)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:54;106:5"><b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:74;106:8">SHOULD</b> contain zero or one [0..1] effectiveTime such that it <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:75;106:76">SHALL</b> contain exactly one [1..1] @xsi:type = "PIVL_TS" or "EIVL_TS" (CONF:1098-7513, CONF:1098-28499)</li>
+<li class="- topic/li " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="li:55;107:5">If an effectiveTime is present with @xsi:type="IVL_TS" or @xsi:type="TS", this effectiveTime <b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="b:76;107:101">SHALL</b> contain either a low or a @value but not both (CONF:1098-32890)</li>
+</ol>
+		
+		<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/MedicationActivity2.dita" xtrc="p:1;20:6">
+		</p>
+		<p class="- topic/p " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/MedicationActivity2.dita" xtrc="p:2;22:6">
+			<b class="+ topic/ph hi-d/b " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/MedicationActivity2.dita" xtrc="b:1;23:7"><ph class="- topic/ph " xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="ph:1;599:29">Medication Activity2</ph> example</b>
+		</p>		
+		<codeblock xml:space="preserve" class="+ topic/pre pr-d/codeblock " outputclass="language-xml" xtrf="file:/Users/seanmuir/git/mdht-models/doc/org.openhealthtools.mdht.uml.cda.consol.doc/dita/classes/generated/_MedicationActivity2.dita" xtrc="codeblock:1;232:52">&lt;substanceadministration xmlns="urn:hl7-org:v3" classCode="SBADM"&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+  &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+  &lt;id root="MDHT" extension="1996233902"/&gt;
+  &lt;code code="1307580737"/&gt;
+  &lt;text&gt;Text Value&lt;/text&gt;
+  &lt;statusCode code="completed"/&gt;
+  &lt;repeatNumber value="1"/&gt;
+  &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+  &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+  &lt;doseQuantity/&gt;
+  &lt;rateQuantity/&gt;
+  &lt;maxDoseQuantity/&gt;
+  &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+  &lt;consumable&gt;
+    &lt;manufacturedProduct classCode="MANU"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.23" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.23"/&gt;
+      &lt;id root="MDHT" extension="1477159946"/&gt;
+      &lt;manufacturedMaterial&gt;
+        &lt;code codeSystem="2.16.840.1.113883.6.88" codeSystemName="RxNorm"/&gt;
+      &lt;/manufacturedMaterial&gt;
+    &lt;/manufacturedProduct&gt;
+  &lt;/consumable&gt;
+  &lt;author&gt;
+    &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+    &lt;time/&gt;
+    &lt;assignedAuthor&gt;
+      &lt;id root="MDHT" extension="536850727"/&gt;
+      &lt;code code="1443100605"/&gt;
+      &lt;assignedPerson/&gt;
+      &lt;representedOrganization/&gt;
+    &lt;/assignedAuthor&gt;
+  &lt;/author&gt;
+  &lt;entryRelationship&gt;
+    &lt;act classCode="ACT" moodCode="INT"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.123"/&gt;
+      &lt;id root="MDHT" extension="1997178893"/&gt;
+      &lt;code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;participant typeCode="RESP"&gt;
+        &lt;participantRole classCode="ASSIGNED"/&gt;
+      &lt;/participant&gt;
+    &lt;/act&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;act classCode="ACT" moodCode="INT"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+      &lt;id root="MDHT" extension="1321234822"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+    &lt;/act&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;act classCode="ACT" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.118"/&gt;
+      &lt;id root="MDHT" extension="1903832895"/&gt;
+      &lt;code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+    &lt;/act&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+      &lt;id root="MDHT" extension="345658290"/&gt;
+      &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;repeatNumber value="1"/&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;supply classCode="SPLY" moodCode="INT"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.17"/&gt;
+      &lt;id root="MDHT" extension="1167164641"/&gt;
+      &lt;code code="1876028012"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;repeatNumber value="1"/&gt;
+      &lt;entryRelationship&gt;
+        &lt;act classCode="ACT" moodCode="INT"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+          &lt;id root="MDHT" extension="1921012843"/&gt;
+          &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+        &lt;/act&gt;
+      &lt;/entryRelationship&gt;
+    &lt;/supply&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;supply classCode="SPLY" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.18"/&gt;
+      &lt;id root="MDHT" extension="365519442"/&gt;
+      &lt;code code="1362396489"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;repeatNumber value="1"/&gt;
+      &lt;entryRelationship&gt;
+        &lt;supply classCode="SPLY" moodCode="INT"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.17"/&gt;
+          &lt;id root="MDHT" extension="1092864789"/&gt;
+          &lt;code code="1278080869"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;repeatNumber value="1"/&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+        &lt;/supply&gt;
+      &lt;/entryRelationship&gt;
+    &lt;/supply&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;observation classCode="OBS" moodCode="EVN"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.9"/&gt;
+      &lt;id root="MDHT" extension="2016002114"/&gt;
+      &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;repeatNumber value="1"/&gt;
+      &lt;entryRelationship&gt;
+        &lt;procedure classCode="PROC" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.14" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.14"/&gt;
+          &lt;id root="MDHT" extension="1526506092"/&gt;
+          &lt;code code="68319601"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/&gt;
+          &lt;approachSiteCode code="1842077170"/&gt;
+          &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;targetSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;specimen/&gt;
+          &lt;performer/&gt;
+          &lt;author&gt;
+            &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+          &lt;/author&gt;
+          &lt;entryRelationship&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/observation&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+              &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+              &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.9"/&gt;
+              &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/observation&gt;
+          &lt;/entryRelationship&gt;
+        &lt;/procedure&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;substanceAdministration classCode="SBADM"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.16" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.16"/&gt;
+          &lt;id root="MDHT" extension="394881493"/&gt;
+          &lt;code code="390729817"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;repeatNumber value="1"/&gt;
+          &lt;routeCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+          &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;approachSiteCode codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+          &lt;doseQuantity/&gt;
+          &lt;rateQuantity/&gt;
+          &lt;maxDoseQuantity/&gt;
+          &lt;administrationUnitCode codeSystem="2.16.840.1.113883.3.26.1.1" codeSystemName="NCI Thesaurus"/&gt;
+          &lt;consumable/&gt;
+          &lt;author&gt;
+            &lt;templateId root="2.16.840.1.113883.10.20.22.4.119"/&gt;
+          &lt;/author&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.123"/&gt;
+              &lt;code code="395170001" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="medication monitoring (regime/therapy)"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.20"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;act classCode="ACT" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.118"/&gt;
+              &lt;code code="416118004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT" displayName="Administration"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/act&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.19"/&gt;
+              &lt;code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/observation&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;supply classCode="SPLY" moodCode="INT"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.17" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.17"/&gt;
+            &lt;/supply&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;supply classCode="SPLY" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.18" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.18"/&gt;
+            &lt;/supply&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;observation classCode="OBS" moodCode="EVN"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.9" extension="2014-06-09"/&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.9"/&gt;
+              &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode"/&gt;
+              &lt;statusCode code="completed"/&gt;
+            &lt;/observation&gt;
+          &lt;/entryRelationship&gt;
+          &lt;entryRelationship&gt;
+            &lt;substanceAdministration classCode="SBADM"&gt;
+              &lt;templateId root="2.16.840.1.113883.10.20.22.4.147"/&gt;
+              &lt;code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/&gt;
+            &lt;/substanceAdministration&gt;
+          &lt;/entryRelationship&gt;
+          &lt;precondition typeCode="PRCN"/&gt;
+        &lt;/substanceAdministration&gt;
+      &lt;/entryRelationship&gt;
+      &lt;entryRelationship&gt;
+        &lt;observation classCode="OBS" moodCode="EVN"&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.8" extension="2014-06-09"/&gt;
+          &lt;templateId root="2.16.840.1.113883.10.20.22.4.8"/&gt;
+          &lt;id root="MDHT" extension="514196677"/&gt;
+          &lt;code code="SEV" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Severity observation"/&gt;
+          &lt;text&gt;Text Value&lt;/text&gt;
+          &lt;statusCode code="completed"/&gt;
+          &lt;repeatNumber value="1"/&gt;
+        &lt;/observation&gt;
+      &lt;/entryRelationship&gt;
+    &lt;/observation&gt;
+  &lt;/entryRelationship&gt;
+  &lt;entryRelationship&gt;
+    &lt;substanceAdministration classCode="SBADM"&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.147"/&gt;
+      &lt;id root="MDHT" extension="1102164033"/&gt;
+      &lt;code code="76662-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Instructions Medication"/&gt;
+      &lt;statusCode code="completed"/&gt;
+      &lt;repeatNumber value="1"/&gt;
+      &lt;routeCode code="257073275"/&gt;
+      &lt;approachSiteCode code="1786693192"/&gt;
+      &lt;doseQuantity/&gt;
+      &lt;rateQuantity/&gt;
+      &lt;maxDoseQuantity/&gt;
+      &lt;administrationUnitCode code="1838794627"/&gt;
+      &lt;consumable&gt;
+        &lt;manufacturedProduct/&gt;
+      &lt;/consumable&gt;
+    &lt;/substanceAdministration&gt;
+  &lt;/entryRelationship&gt;
+  &lt;precondition typeCode="PRCN"&gt;
+    &lt;criterion&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.25" extension="2014-06-09"/&gt;
+      &lt;templateId root="2.16.840.1.113883.10.20.22.4.25"/&gt;
+      &lt;code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="Assertion"/&gt;
+      &lt;text&gt;Text Value&lt;/text&gt;
+    &lt;/criterion&gt;
+  &lt;/precondition&gt;
+&lt;/substanceadministration&gt;</codeblock>
+	</body>
+</topic>

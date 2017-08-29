@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2017" />
+<meta name="DC.rights.owner" content="(C) Copyright 2017" />
+<meta name="DC.Type" content="topic" />
+<meta name="DC.Title" content="Plan Of Treatment Section2" />
+<meta name="abstract" content="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]" />
+<meta name="description" content="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]" />
+<meta name="DC.Coverage" content="Section" />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="classId" />
+<meta name="DC.Language" content="en-us" />
+<link rel="stylesheet" type="text/css" href="../css/commonltr.css" />
+<title>Plan Of Treatment Section2</title>
+</head>
+<body id="classId">
+<div>
+	<p><b>Non-Normative Content</b> The Normative content for these specifications
+	may be found on the HL7, IHE, and HITSP web sites.</p>
+</div>
+	<h1 class="title topictitle1" id="ariaid-title1">
+		<span class="ph">Plan Of Treatment Section2</span>
+	</h1>
+
+	
+	
+	<div class="body"><p class="shortdesc">[Section: templateId <tt class="ph tt">2.16.840.1.113883.10.20.22.2.10</tt>]</p>
+
+		
+		<div class="section">
+<p class="p">This section, formerly known as "Plan of Care", contains data that define pending orders, interventions, encounters, services, and procedures for the patient. It is limited to prospective, unfulfilled, or incomplete orders and requests only. These are indicated by the @moodCode of the entries within this section. All active, incomplete, or pending orders, appointments, referrals, procedures, services, or any other pending event of clinical significance to the current care of the patient should be listed.
+This section may also contain information about ongoing care of the patient, clinical reminders, patient's values, beliefs, preferences, care expectations, and overarching care goals. 
+Clinical reminders are placed here to provide prompts for disease prevention and management, patient safety, and healthcare quality improvements, including widely accepted performance measures. 
+Values may include the importance of quality of life over longevity. These values are taken into account when prioritizing all problems and their treatments.
+Beliefs may include comfort with dying or the refusal of blood transfusions because of the patient's religious convictions.????
+Preferences may include liquid medicines over tablets, or treatment via secure email instead of in person. 
+Care expectations may range from being treated only by female clinicians, to expecting all calls to be returned within 24 hours. 
+Overarching goals described in this section are not tied to a specific condition, problem, health concern, or intervention. Examples of overarching goals could be to minimize pain or dependence on others, or to walk a daughter down the aisle for her marriage.????
+The plan may also indicate that patient education will be provided.</p>
+
+</div>
+
+		
+
+		<ol class="ol">
+<li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">templateId</strong></tt> ( CONF:1098-7723, CONF:1098-10435, CONF:1098-32501 ) such that it <ol class="ol" type="a"><li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@root</strong>="2.16.840.1.113883.10.20.22.2.10"</tt></li>
+ <li class="li"><strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">@extension</strong>="2014-06-09"</tt></li>
+</ol>
+</li>
+
+<li class="li"><strong class="ph b">SHALL</strong> conform to <a class="xref" href="generated/../PlanOfCareSection.html" title="[Section: templateId 2.16.840.1.113883.10.20.22.2.10]">Plan Of Care Section</a> template (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.2.10</tt>)</li>
+
+<li class="li">
+<strong class="ph b">SHALL</strong> contain exactly one [1..1] <tt class="ph tt"><strong class="ph b">code</strong></tt> (CONF:1098-14749)<tt class="ph tt"><strong class="ph b">/@code</strong>="18776-5" </tt><em class="ph i">Plan of Treatment</em> (CodeSystem:<tt class="ph tt"> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-14750, CONF:1098-30813)
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-7726, CONF:1098-14751)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlannedObservation2.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.44]">Planned Observation2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.44:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-8805, CONF:1098-30472)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlannedEncounter2.html" title="[Encounter: templateId 2.16.840.1.113883.10.20.22.4.40]">Planned Encounter2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.40:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-8807, CONF:1098-30473)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlannedAct2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.39]">Planned Act2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.39:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-8809, CONF:1098-30474)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlannedProcedure2.html" title="[Procedure: templateId 2.16.840.1.113883.10.20.22.4.41]">Planned Procedure2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.41:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-8811, CONF:1098-30475)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlannedMedicationActivity2.html" title="[SubstanceAdministration: templateId 2.16.840.1.113883.10.20.22.4.42]">Planned Medication Activity2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.42:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-8813, CONF:1098-30476)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlannedSupply2.html" title="[Supply: templateId 2.16.840.1.113883.10.20.22.4.43]">Planned Supply2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.43:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-14695, CONF:1098-31397)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../Instruction2.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.20]">Instruction2</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.20:2014-06-09</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-29621, CONF:1098-30868)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../HandoffCommunicationParticipants.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.141]">Handoff Communication Participants</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.141</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-31841, CONF:1098-31864)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../NutritionRecommendation.html" title="[Act: templateId 2.16.840.1.113883.10.20.22.4.130]">Nutrition Recommendation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.130</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-32353, CONF:1098-32354)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../PlannedImmunizationActivity.html" title="[SubstanceAdministration: templateId 2.16.840.1.113883.10.20.22.4.120]">Planned Immunization Activity</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.120</tt>)</li>
+</ol>
+
+</li>
+
+<li class="li">
+If section/@nullFlavor is not present, <strong class="ph b">MAY</strong> contain  [0..*] <tt class="ph tt"><strong class="ph b">entry</strong></tt> such that it  (CONF:1098-32887, CONF:1098-32888)<ol class="ol" type="a">
+<li class="li">Conforms to <a class="xref" href="generated/../GoalObservation.html" title="[Observation: templateId 2.16.840.1.113883.10.20.22.4.121]">Goal Observation</a> (templateId: <tt class="ph tt">2.16.840.1.113883.10.20.22.4.121</tt>)</li>
+</ol>
+
+</li>
+
+</ol>
+
+		
+		<p class="p">
+		</p>
+
+	</div>
+
+</body>
+</html>

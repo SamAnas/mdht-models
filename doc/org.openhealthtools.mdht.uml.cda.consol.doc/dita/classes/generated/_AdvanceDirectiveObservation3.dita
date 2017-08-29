@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Advance Directive Observation (V4) - conformance rules</title>
+<shortdesc id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.48</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Observation</category></metadata>
+<resourceid id="2.16.840.1.113883.10.20.22.4.48"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="2.16.840.1.113883.10.20.22.4.48"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2017-05-01"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.48:2015-08-01</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt> (CONF:1198-30804), which <b>SHALL</b> be selected from ValueSet<tt> Advance Directives - Types of Content 2.16.840.1.113883.11.20.9.69.5</tt><b> STATIC</b>
+</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Advance Directives - Kinds of 2.16.840.1.113883.11.20.9.69.4</tt><b> STATIC</b> (CONF:1198-8651)
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../AdvanceDirectiveObservation.dita">Advance Directive Observation</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.48</tt>)</li>
+<li><b>SHALL</b> conform to <xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation2</xref> template (templateId: <tt>2.16.840.1.113883.10.20.22.4.48:2015-08-01</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="OBS" </tt><i>Observation</i> (CodeSystem:<tt> 2.16.840.1.113883.5.6 HL7ActClass</tt>) (CONF:8648, R2.1=CONF:1198-8648)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>@moodCode</b>="EVN" </tt><i>Event</i> (CodeSystem:<tt> 2.16.840.1.113883.5.1001 HL7ActMood</tt>) (CONF:8649, R2.1=CONF:1198-8649)
+</li>
+<li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8654, R2.1=CONF:1198-8654)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Advance Directives - Kinds of 2.16.840.1.113883.11.20.9.69.4</tt><b> STATIC</b> (CONF:1198-8651)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>statusCode</b></tt><tt><b>/@code</b>="completed" </tt><i>Completed</i> (CodeSystem:<tt> 2.16.840.1.113883.5.14 ActStatus</tt>) (CONF:8652, R2.1=CONF:1198-8652, R2.1=CONF:1198-19082)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>effectiveTime</b></tt> (CONF:1198-8656)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>value</b></tt> with <tt><b>@xsi:type</b>="CD"</tt> (CONF:1198-30804), which <b>SHALL</b> be selected from ValueSet<tt> Advance Directives - Types of Content 2.16.840.1.113883.11.20.9.69.5</tt><b> STATIC</b>
+</li>
+<li><b>SHOULD</b> contain zero or more [0..*] <tt><b>reference</b></tt> such that it  (CONF:8692) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt><tt><b>/@code</b>="REFR" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.1002 HL7ActRelationshipType</tt>) (CONF:8694, R2.1=CONF:1198-8694)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>externalDocument</b></tt> such that it  (CONF:8693, R2.1=CONF:1198-8693) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8695, R2.1=CONF:1198-8695)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>text</b></tt> (CONF:8696, R2.1=CONF:1198-8696)</li><li>The text, if present, <b>MAY</b> contain zero or one [0..1] @mediaType (CONF:8703)</li><li>The text, if present, <b>MAY</b> contain zero or one [0..1] reference.
+a. The URL of a referenced advance directive document <b>MAY</b> be present, and <b>SHALL</b> be represented in Observation/reference/ExternalDocument/text/reference.
+b. If a URL is referenced, then it <b>SHOULD</b> have a corresponding linkHTML element in narrative block. (CONF:8697, R2.1=CONF:1198-8697, CONF:8698, R2.1=CONF:1198-8698, CONF:8699, R2.1=CONF:1198-8699)</li></ol></li></ol> 
+</li>
+<li><b>SHOULD</b> contain zero or more [0..*] <tt><b>participant</b></tt> such that it  (CONF:1198-8662) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="VRF" </tt> (CONF:8663, R2.1=CONF:1198-8663)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>time</b></tt> (CONF:1198-8665, CONF:1198-8666)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> such that it  (CONF:1198-8825) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Provider Taxonomy (HIPAA) 2.16.840.1.114222.4.11.1066</tt><b> DYNAMIC</b> (CONF:1198-28446)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>addr</b></tt> (CONF:1198-28451)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>playingEntity</b></tt> such that it  (CONF:1198-28428) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Agent Qualifier Value Set 2.16.840.1.113883.11.20.9.51</tt><b> DYNAMIC</b> (CONF:1198-28429)</li><li><b>MAY</b> contain zero or more [0..*] <tt><b>name</b></tt> (CONF:1198-28454)<p><lines><i>The playingEntity/name SHALL be a conformant US Realm Person Name (PN.US.FIELDED) (2.16.840.1.113883.10.20.22.5.1.1) (CONF:28455).</i></lines></p></li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHOULD</b> contain zero or more [0..*] <tt><b>participant</b></tt> such that it  (CONF:1198-8667) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b>="CST" </tt> (CONF:8668, R2.1=CONF:1198-8668)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>participantRole</b></tt> such that it  (CONF:1198-8669) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@classCode</b>="AGNT" </tt> (CONF:8670, R2.1=CONF:1198-8670)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Personal And Legal Relationship Role Type 2.16.840.1.113883.11.20.12.1</tt><b> DYNAMIC</b> (CONF:1198-28440)</li><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>addr</b></tt> (CONF:1198-8671)</li><li><b>SHOULD</b> contain zero or more [0..*] <tt><b>telecom</b></tt> (CONF:1198-8672)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>playingEntity</b></tt> such that it  (CONF:1198-8824) <ol><li><b>SHOULD</b> contain zero or one [0..1] <tt><b>code</b></tt>, which <b>SHOULD</b> be selected from ValueSet<tt> Healthcare Agent Qualifier Value Set 2.16.840.1.113883.11.20.9.51</tt><b> DYNAMIC</b> (CONF:1198-28444)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>name</b></tt> (CONF:1198-8673)<p><lines><i>Record the name of the agent who can provide a copy of the Advance Directive in the name element.</i></lines></p></li></ol></li></ol></li></ol> 
+</li>
+<li><b>SHOULD</b> contain zero or more [0..*] <tt><b>reference</b></tt> such that it  (CONF:1198-8692) <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@typeCode</b></tt><tt><b>/@code</b>="REFR" </tt> (CodeSystem:<tt> 2.16.840.1.113883.5.1002 HL7ActRelationshipType</tt>) (CONF:8694, R2.1=CONF:1198-8694)</li><li><b>SHALL</b> contain exactly one [1..1] <tt><b>externalDocument</b></tt> such that it  (CONF:8693, R2.1=CONF:1198-8693) <ol><li><b>SHALL</b> contain at least one [1..*] <tt><b>id</b></tt> (CONF:8695, R2.1=CONF:1198-8695)</li><li><b>MAY</b> contain zero or one [0..1] <tt><b>text</b></tt> (CONF:8696, R2.1=CONF:1198-8696)</li><li>The text, if present, <b>MAY</b> contain zero or one [0..1] @mediaType (CONF:8703)</li><li>The text, if present, <b>MAY</b> contain zero or one [0..1] reference.
+a. The URL of a referenced advance directive document <b>MAY</b> be present, and <b>SHALL</b> be represented in Observation/reference/ExternalDocument/text/reference.
+b. If a URL is referenced, then it <b>SHOULD</b> have a corresponding linkHTML element in narrative block. (CONF:8697, R2.1=CONF:1198-8697, CONF:8698, R2.1=CONF:1198-8698, CONF:8699, R2.1=CONF:1198-8699)</li></ol></li></ol> 
+</li>
+<li><b>SHOULD</b> contain  [0..*] <tt><b>author</b></tt> such that it  (CONF:1198-32406)
+<ol>
+<li>Conforms to <xref href="../AuthorParticipation.dita">Author Participation</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.119</tt>)</li></ol></li>
+<li>This effectiveTime <b>SHALL</b> contain exactly one [1..1] low
+i. If the starting time is unknown, the &lt;low&gt; element <b>SHALL</b> have the nullFlavor attribute set to UNK (CONF:8657, CONF:8658)</li>
+<li>This effectiveTime <b>SHALL</b> contain exactly one [1..1] high.
+i. If the ending time is unknown, the &lt;high&gt; element <b>SHALL</b> have the nullFlavor attribute set to UNK.
+ii. If the Advance Directive does not have a specified ending time, the &lt;high&gt; element <b>SHALL</b> have the nullFlavor attribute set to NA. (CONF:8659, CONF:8660)</li>
+<li><b>MAY</b> satisfy: This constraint is being overridden as it has been removed in v2 and should never fire.</li>
+<li>If the Advance Directive does not have a specified ending time, the &lt;high&gt; element <b>SHALL</b> have the nullFlavor attribute set to NA (CONF:1198-32449)</li>
+</ol>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref href="../AdvanceDirectiveOrganizer2.dita">Advance Directive Organizer (V3)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref href="../AdvanceDirectivesSection3.dita">Advance Directives Section (entries required) (V4)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<observation classCode="OBS" moodCode="EVN">
+  <templateId root="2.16.840.1.113883.10.20.22.4.48" extension="2017-05-01"/>
+  <id/>
+  <code>
+    <translation code="75320-2" codeSystem="2.16.840.1.113883.6.1" displayName="Advance directive"/>
+  </code>
+  <statusCode code="completed" codeSystem="2.16.840.1.113883.5.14" displayName="Completed"/>
+  <effectiveTime>
+    <low/>
+    <high/>
+  </effectiveTime>
+  <value xsi:type="CD"/>
+</observation>
+]]></codeblock>
+<!--Error code 1: Pathmap to CDA .ecore files not resolved: pathmap://CDA_MODEL/../../org.eclipse.mdht.uml.hl7.rim/model/rim.ecore#//Act. Will not use any CDA extension!-->
+<section id="changes">
+</section>
+<p><ph id="classformalname">Advance Directive Observation (V4)</ph></p>
+<p id="shortdesc">[Observation: templateId <tt>2.16.840.1.113883.10.20.22.4.48</tt>]</p>
+</body>
+</topic>

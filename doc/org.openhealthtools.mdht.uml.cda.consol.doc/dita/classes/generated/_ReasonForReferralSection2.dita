@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="classId" xml:lang="en-us">
+<title>Reason For Referral Section2 - conformance rules</title>
+<shortdesc id="shortdesc">[Section: templateId <tt>1.3.6.1.4.1.19376.1.5.3.1.3.1</tt>]</shortdesc>
+<prolog id="prolog">
+<metadata><category>Section</category></metadata>
+<resourceid id="1.3.6.1.4.1.19376.1.5.3.1.3.1"/>
+</prolog>
+<body>
+<section id="knownSubclasses">
+</section>
+<section id="description">
+<p>This section describes the clinical reason why a provider is sending a patient to another provider for care. The reason for referral may become the reason for visit documented by the receiving provider.</p>
+</section>
+<ol id="conformance">
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>templateId</b></tt> ( CONF:1098-7844, CONF:1098-10468, CONF:1098-32571 ) such that it <ol><li><b>SHALL</b> contain exactly one [1..1] <tt><b>@root</b>="1.3.6.1.4.1.19376.1.5.3.1.3.1"</tt></li> <li><b>SHALL</b> contain exactly one [1..1] <tt><b>@extension</b>="2014-06-09"</tt></li></ol></li>
+<li><b>SHALL</b> conform to <xref href="../ReasonForReferralSection.dita">Reason For Referral Section</xref> template (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.1</tt>)</li>
+<li>
+<b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-15427)<tt><b>/@code</b>="42349-1" </tt><i>Reason for Referral</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-15428, CONF:1098-30867)
+</li>
+<li>
+If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1098-30808, CONF:1098-30897)<ol>
+<li>Conforms to <xref href="../PatientReferralAct.dita">Patient Referral Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.140</tt>)</li></ol>
+</li>
+</ol>
+<ol id="aggregate">
+<li><b>SHALL</b> conform to <xref href="../ReasonForReferralSection.dita">Reason For Referral Section</xref> template (templateId: <tt>1.3.6.1.4.1.19376.1.5.3.1.3.1</tt>)</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>code</b></tt> (CONF:1098-15427)<tt><b>/@code</b>="42349-1" </tt><i>Reason for Referral</i> (CodeSystem:<tt> 2.16.840.1.113883.6.1 LOINC</tt>) (CONF:1098-15428, CONF:1098-30867)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>title</b></tt> (CONF:7846, R2.0=CONF:1098-7846)
+</li>
+<li><b>SHALL</b> contain exactly one [1..1] <tt><b>text</b></tt> (CONF:7847, R2.0=CONF:1098-7847)
+</li>
+<li>If section/@nullFlavor is not present, <b>MAY</b> contain  [0..*] <tt><b>entry</b></tt> such that it  (CONF:1098-30808, CONF:1098-30897)
+<ol>
+<li>Conforms to <xref href="../PatientReferralAct.dita">Patient Referral Act</xref> (templateId: <tt>2.16.840.1.113883.10.20.22.4.140</tt>)</li></ol></li>
+</ol>
+<section id="tableconformance"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="6" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" colwidth="3*"  /><colspec colname="col1" colnum="1" colwidth="1*"  /><colspec colname="col2" colnum="2" colwidth="1*"  /><colspec colname="col3" colnum="3" colwidth="2*"  /><colspec colname="col4" colnum="4" colwidth="2*"  /><colspec colname="col5" colnum="5" colwidth="3*"  /><thead> <row><entry namest="col0" nameend="col5" >consol::ReasonForReferralSection2</entry>  </row>  <row><entry namest="col0" nameend="col5" >/cda:ClinicalDocument/cda:component/cda:structuredBody/cda:component/cda:section[cda:templateId/@root = 1.3.6.1.4.1.19376.1.5.3.1.3.1]/</entry>  </row> <row><entry>XPath</entry><entry>Card.</entry><entry>Verb</entry><entry>Data Type</entry><entry>CONF#</entry><entry>Fixed Value</entry></row></thead><tbody><row><entry>code</entry><entry>1..1</entry><entry>SHALL</entry><entry>CE</entry><entry>CONF:1098-15428CONF:1098-30867</entry><entry>LOINC 2.16.840.1.113883.6.1LOINC 2.16.840.1.113883.6.1 42349-1</entry></row> 
+<row><entry>cda:entry/cda:act[cda:templateId/@root = 2.16.840.1.113883.10.20.22.4.140]</entry><entry>0..*</entry><entry>MAY</entry><entry>PatientReferralAct</entry><entry>CONF:1098-30808CONF:1098-30897</entry><entry> </entry></row> 
+<row><entry>reasonForReferralSection2</entry><entry>1..1</entry><entry>SHALL</entry><entry>ReasonForReferralSection2</entry><entry>CONF:1198-30924, CONF:1198-30925</entry><entry> </entry></row> 
+</tbody></tgroup></table></p></section>
+<section id="contextTable"><p><table frame="all" scale="80" pgwide="1" ><tgroup cols="2" align="left" colsep = "1" rowsep = "1" > <colspec colname="col0" colnum="0" /><colspec colname="col1" colnum="1" /><thead><row><entry namest="col0" nameend="col0" >Contained By</entry><entry namest="col1" nameend="col1" >Contains</entry></row></thead><tbody><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ReferralNote.html">Referral Note (V2)</xref></entry><entry><xref href="../AdvanceDirectiveObservation2.dita">Advance Directive Observation (V3)</xref></entry></row><row><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/TransferSummary.html">Transfer Summary (V2)</xref></entry><entry><xref href="../AdvanceDirectiveOrganizer.dita">Advance Directive Organizer (V2)</xref></entry></row><row><entry></entry><entry><xref href="../CodeObservations.dita">Code Observations</xref></entry></row><row><entry></entry><entry><xref href="../ExternalDocumentReference.dita">External Document Reference</xref></entry></row><row><entry></entry><entry><xref href="../FetusSubjectContext.dita">Fetus Subject Context</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation.dita">Immunization Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../ImmunizationMedicationInformation2.dita">Immunization Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation.dita">Medication Information</xref></entry></row><row><entry></entry><entry><xref href="../MedicationInformation2.dita">Medication Information2</xref></entry></row><row><entry></entry><entry><xref href="../ObserverContext.dita">Observer Context</xref></entry></row><row><entry></entry><entry><xref href="../PatientReferralAct.dita">Patient Referral Act</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer.dita">Physician Reading Study Performer</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianReadingStudyPerformer2.dita">Physician Reading Study Performer2</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant.dita">Physicianof Record Participant</xref></entry></row><row><entry></entry><entry><xref href="../PhysicianofRecordParticipant2.dita">Physicianof Record Participant2</xref></entry></row><row><entry></entry><entry><xref href="../PolicyActivity2.dita">Policy Activity (V3)</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration.dita">Precondition For Substance Administration</xref></entry></row><row><entry></entry><entry><xref href="../PreconditionForSubstanceAdministration2.dita">Precondition For Substance Administration2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityAct2.dita">Procedure Activity Act2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityObservation2.dita">Procedure Activity Observation2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureActivityProcedure2.dita">Procedure Activity Procedure2</xref></entry></row><row><entry></entry><entry><xref href="../ProcedureContext.dita">Procedure Context</xref></entry></row><row><entry></entry><entry><xref href="../QuantityMeasurementObservation.dita">Quantity Measurement Observation</xref></entry></row><row><entry></entry><entry><xref href="../SOPInstanceObservation.dita">SOP Instance Observation</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent.html">Service Event</xref></entry></row><row><entry></entry><entry><xref format="html" href="http://www.cdatools.org/infocenter/topic/org.openhealthtools.mdht.uml.cda.consol.doc/classes/ServiceEvent2.html">Service Event2</xref></entry></row><row><entry></entry><entry><xref href="../SubstanceAdministeredAct.dita">Substance Administered Act</xref></entry></row><row><entry></entry><entry><xref href="../TextObservation.dita">Text Observation</xref></entry></row></tbody></tgroup></table></p></section>
+<codeblock id="example" outputclass="language-xml"><![CDATA[<section xmlns="urn:hl7-org:v3">
+  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.1" extension="2014-06-09"/>
+  <templateId root="1.3.6.1.4.1.19376.1.5.3.1.3.1"/>
+  <code code="42349-1" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="REASON FOR REFERRAL"/>
+  <title>REASON FOR REFERRAL</title>
+  <text>BUUQTo LMkSD bwvOH HGOeREyBE xeTMZGIn RsujqBXSa yfCwUu iHuBcr upgTWd XQnnh uWqShDOy TXbdiau ldVVQkOEK lfQBLaye DSDKKrMcO FUAxvXMER qilhDn InwdQ TVDpoJ hNenwy AIOan ZnIPWQU IBmDQAcUm ubShU OLYkkGt rAuOsx knjYldE gNMbkToG rpbIiPp rLFmM dwUfPmxk qsyIhYC xreVSP QDKKOK dnWEqbmH iSYbX HDTyFH cjwmpNlK QksQJ QJSyveK nARgpuvh wFBsFHZro mCIfVAjkm mpiKW cHeEFwiQL UAXjHRqNk FsRBRU Wcmsrb 
+UIGnjGhI yTJsuSYv YzbdNJx cdqRKPtW hBLDECt ZVWYvnv tROKgiOM CaeOGK xYHByzNCI wSCOetWdf zOnMLqI getXTl HKZdSFeJJ IFcEFVvA eWMBCvpV xnVSdYpmd ryxKbBe ExRLO AUloKeGC RFCcDq 
+</text>
+  <entry>
+    <act classCode="PCPR">
+      <templateId root="2.16.840.1.113883.10.20.22.4.140"/>
+      <templateId root="2.16.840.1.113883.10.20.22.4.140"/>
+      <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+      <text>Text Value</text>
+      <statusCode code="active"/>
+      <author>
+        <templateId root="2.16.840.1.113883.10.20.22.4.119"/>
+        <time/>
+        <assignedAuthor/>
+      </author>
+      <participant typeCode="REFT">
+        <participantRole>
+          <code codeSystem="2.16.840.1.113883.6.101" codeSystemName="NUCC Health Care Provider Taxonomy"/>
+        </participantRole>
+      </participant>
+      <entryRelationship typeCode="SUBJ">
+        <observation classCode="OBS" moodCode="RQO">
+          <code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemName="HL7ActCode" displayName="assertion"/>
+          <statusCode code="completed"/>
+          <priorityCode codeSystem="2.16.840.1.113883.5.7" codeSystemName="ActPriority"/>
+        </observation>
+      </entryRelationship>
+      <entryRelationship>
+        <observation classCode="OBS" moodCode="EVN">
+          <templateId root="2.16.840.1.113883.10.20.22.4.19" extension="2014-06-09"/>
+          <templateId root="2.16.840.1.113883.10.20.22.4.19"/>
+          <code codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMEDCT"/>
+          <text>Text Value</text>
+          <statusCode code="completed"/>
+        </observation>
+      </entryRelationship>
+    </act>
+  </entry>
+</section>]]></codeblock>
+<section id="changes">
+<p>
+Change Log from Consol::ReasonForReferralSection
+</p>
+<p id="ReasonForReferralSection" >
+<ol><li><b>Modifications</b>
+</li><li>SHALL contain exactly one [1..1] templateId ( CONF:10468 ) such that it SHALL contain exactly one [1..1] @root="1.3.6.1.4.1.19376.1.5.3.1.3.1"
+</li><li>SHALL conform to CDA Section
+</li><li>Consol Reason For Referral Section SHALL contain exactly one [1..1] code (CONF:15427)/@code="42349-1" REASON FOR REFERRAL (CodeSystem: 2.16.840.1.113883.6.1 LOINC) (CONF:15428)
+</li><li>Consol Reason For Referral Section SHALL contain exactly one [1..1] title (CONF:7846, R2.0=CONF:1098-7846)
+</li><li>Consol Reason For Referral Section SHALL contain exactly one [1..1] text (CONF:7847, R2.0=CONF:1098-7847)
+</li><li><b>Additions</b>
+</li></ol></p>
+</section>
+<p><ph id="classformalname">Reason For Referral Section2</ph></p>
+<p id="shortdesc">[Section: templateId <tt>1.3.6.1.4.1.19376.1.5.3.1.3.1</tt>]</p>
+</body>
+</topic>
