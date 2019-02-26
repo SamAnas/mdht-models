@@ -10,13 +10,22 @@
  *******************************************************************************/
 package org.openhealthtools.mdht.uml.cda.ccd.tests;
 
+import java.io.FileInputStream;
+
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.mdht.uml.cda.ClinicalDocument;
 import org.eclipse.mdht.uml.cda.util.BasicValidationHandler;
 import org.eclipse.mdht.uml.cda.util.CDAUtil;
+import org.eclipse.mdht.uml.cda.util.ValidationResult;
+import org.openhealthtools.mdht.uml.cda.ccd.CCDPlugin;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
+
+		// "CoverageActivityCoverageActivitySequenceNumber"
+
+		System.out.println(CCDPlugin.INSTANCE.getString("CoverageActivityCoverageActivitySequenceNumber"));
+
 		// ContinuityOfCareDocument doc = CCDFactory.eINSTANCE.createContinuityOfCareDocument().init();
 		//
 		// Informant12 informant = CDAFactory.eINSTANCE.createInformant12();
@@ -64,14 +73,16 @@ public class Main {
 		// validate(doc);
 		//
 		// System.out.println("\n***** Validate sample CCD *****");
-		// ValidationResult result = new ValidationResult();
-		// CDAUtil.load(new FileInputStream("samples/SampleCCDDocument.xml"), result);
-		// for (Diagnostic diagnostic : result.getErrorDiagnostics()) {
-		// System.out.println("ERROR: " + diagnostic.getMessage());
-		// }
-		// for (Diagnostic diagnostic : result.getWarningDiagnostics()) {
-		// System.out.println("WARNING: " + diagnostic.getMessage());
-		// }
+
+		CDAUtil.loadPackages();
+		ValidationResult result = new ValidationResult();
+		CDAUtil.load(new FileInputStream("samples/SampleCCDDocument.xml"), result);
+		for (Diagnostic diagnostic : result.getErrorDiagnostics()) {
+			System.out.println("ERROR: " + diagnostic.getMessage());
+		}
+		for (Diagnostic diagnostic : result.getWarningDiagnostics()) {
+			System.out.println("WARNING: " + diagnostic.getMessage());
+		}
 	}
 
 	private static void validate(ClinicalDocument clinicalDocument) throws Exception {
